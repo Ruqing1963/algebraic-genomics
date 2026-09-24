@@ -1,0 +1,41 @@
+=== Bio 14: the BEST determinant by Schur complements along the snarl tree ===
+    python 3.12.4
+
+=== (M) det L~ = det L_II * det(Schur), and the Schur complement is a Laplacian ===
+    60 random Eulerian digraphs, random interiors I
+  [ok]   (M) eliminating an interior I multiplies by det L_II and leaves the Schur complement, which is again a (reduced) Laplacian: non-positive off-diagonal, non-negative row sums
+
+=== (F) det L_II counts spanning forests of the interior rooted into the boundary ===
+    40 random interiors
+  [ok]   (F) det of the interior block equals the number of spanning forests of the interior whose roots lie in the boundary (all-minors matrix-tree theorem), by enumeration
+
+=== (B) BEST: t * prod (d-1)! = Eulerian circuits, by brute force ===
+    40 random Eulerian digraphs with up to 12 arcs
+  [ok]   (B) the BEST count agrees with exhaustive enumeration of Eulerian circuits
+
+=== (E) synthetic genome graphs: snarl-tree elimination, exact ===
+      snarls  haplotypes  vertices   arcs   max front   snarl order = Bareiss = contraction
+          10           2        74    126           4   equal (t has 10 digits)
+          20           3       162    360           6   equal (t has 37 digits)
+          40           3       311    691           7   equal (t has 79 digits)
+          60           4       516   1365           8   equal (t has 159 digits; Bareiss skipped)
+  [ok]   (E) on synthetic genome graphs the determinant obtained by eliminating snarl interiors before their boundaries equals the dense Bareiss determinant and the forced-arc contraction, with a bounded front
+
+=== (P) phiX174 de Bruijn graphs (circular genome, single strand) ===
+       k   vertices   arcs   max front (min-degree)   t by elimination = t by contraction
+       7       4115   5386                      196   equal, log10 t = 336.5   [35.5s]
+       8       4928   5386                       80   equal, log10 t = 128.2   [1.6s]
+      10       5339   5386                       12   equal, log10 t = 12.6   [0.1s]
+      12       5384   5386                        2   equal, log10 t = 0.3   [0.1s]
+  [ok]   (P) on the de Bruijn graphs of phiX174 minimum-degree Schur elimination and forced-arc contraction give the same arborescence count
+
+=== (S) scaling: snarl order vs minimum-degree order, exact modulo two primes ===
+      snarls   vertices     arcs   front(snarl)  front(min-deg)   equal mod p1, p2   us per vertex (snarl order)
+         500       3981     8638             8               6                yes          9.2
+        1500      11949    26197             8               6                yes          9.3
+        5000      39714    86967             8               7                yes         10.7
+  [ok]   (S) on synthetic genomes of up to ~45 000 vertices the snarl-order elimination agrees with the minimum-degree elimination modulo two primes; the front stays bounded and the time per vertex stays constant
+
+=== battery summary ===
+  TOTAL 6/6 passed
+  elapsed 44s

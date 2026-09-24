@@ -1,0 +1,30 @@
+=== the recombination group of a real Escherichia coli pan-genome ===
+    strains 5, k = 31, primes (2, 3), python 3.12.4, numpy 1.26.4
+
+    NC_000913.3    K-12 MG1655      4,641,652 bp   strand as deposited   (fwd 6835 / rev 234 sampled 31-mers shared with the reference)
+    NC_010473.1    K-12 DH10B       4,686,137 bp   strand as deposited   (fwd 6842 / rev 335 sampled 31-mers shared with the reference)
+    NC_002695.2    O157:H7 Sakai    5,498,578 bp   strand as deposited   (fwd 4054 / rev 119 sampled 31-mers shared with the reference)
+    NC_004431.1    CFT073           5,231,428 bp   strand as deposited   (fwd 3013 / rev 118 sampled 31-mers shared with the reference)
+    NC_011750.1    IAI39            5,132,068 bp   strand as deposited   (fwd 2331 / rev 1234 sampled 31-mers shared with the reference)
+
+=== k = 31 ===
+    branch vertices of the pooled graph: 180,256   [66s]
+    contents (unitigs): 271,937   [6s]
+    core (in all 5 strains): 45,502 vertices, 22,886 contents; strain-specific contents: 92,044
+      nerve cells: q=0: 5, q=1: 260,369, q=2: 277,947
+        unit-pivot: 20,000 / 277,947 columns   [0s, 133,610/s]
+        unit-pivot: 40,000 / 277,947 columns   [0s, 138,740/s]
+        unit-pivot: 60,000 / 277,947 columns   [0s, 145,406/s]
+        unit-pivot: 80,000 / 277,947 columns   [1s, 147,111/s]
+        unit-pivot: 100,000 / 277,947 columns   [1s, 144,307/s]
+        unit-pivot: 120,000 / 277,947 columns   [1s, 141,906/s]
+        unit-pivot: 140,000 / 277,947 columns   [1s, 134,330/s]
+        unit-pivot: 160,000 / 277,947 columns   [1s, 129,844/s]
+      rank d_1 = 4, rank d_2 = 172,507 of 277,947 columns; unit-pivot reduction COMPLETE   [4s]
+    R = H_1(nerve): R is FREE of rank 87,858 -- certified, every elementary divisor of d_2 is 1   [9s]
+    intersection components: singletons [1, 1, 1, 1, 1], pairs min/median/max 86/28817/36483, triples max 35599
+  [ok]   (E31) k=31: the recombination group of 5 complete E. coli chromosomes is free of rank 87,858, certified by a unit-pivot reduction of d_2   [5 strains] [exact]
+
+=== summary ===
+  1/1 passed
+  elapsed 84s

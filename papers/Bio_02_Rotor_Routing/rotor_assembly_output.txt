@@ -1,0 +1,63 @@
+﻿
+=== (A) rotor-routing action of K(G) on assembly-graph arborescences ===
+    S=ACACCAAAACCA  k=2  |arb|= 12 = |K|= 12  K=[2, 6]  group order 12, orbit 12, free=True  ok
+    S=CCAACAACCAAC  k=3  |arb|= 12 = |K|= 12  K=[2, 6]  group order 12, orbit 12, free=True  ok
+    S=AABABBAABABB  k=2  |arb|= 16 = |K|= 16  K=[2, 2, 4]  group order 16, orbit 16, free=True  ok
+    S=AABBAABBAABB  k=2  |arb|= 27 = |K|= 27  K=[3, 3, 3]  group order 27, orbit 27, free=True  ok
+    S=ACACACACGTGT  k=2  |arb|=  3 = |K|=  3  K=[3]  group order 3, orbit 3, free=True  ok
+    S=CACCCCCAACCA  k=2  |arb|=  6 = |K|=  6  K=[2, 3]  group order 6, orbit 6, free=True  ok
+  [ok]   (A) the action is by permutations, and the generated group is simply transitive (order = orbit = |K|)   [6 assembly graphs] [exact]
+
+=== (B) the BEST bijection, implemented and enumerated ===
+    S=ACACCAAAACCA  k=2: 12 arborescences x local rotations -> 288 circuits; brute force 288  bijection
+    S=CACCCCCAACCA  k=2: 6 arborescences x local rotations -> 576 circuits; brute force 576  bijection
+    S=ACCCCAAACACC  k=2: 6 arborescences x local rotations -> 144 circuits; brute force 144  bijection
+    S=CACCAAACCACA  k=3: 4 arborescences x local rotations -> 8 circuits; brute force 8  bijection
+  [ok]   (B) (arborescence, rotations) -> circuit is a bijection onto the arc-rooted Eulerian circuits   [4 graphs] [exact]
+
+=== (M) a chip is a move: two reconstructions one chip apart ===
+    base reconstruction        : AAAACCAACCAC   (spectrum of ACACCAAAACCA)
+    + one chip at k-mer 'CA'  : ACCAAAACCAAC   (6 positions changed, spectrum preserved: True)
+    + one chip at k-mer 'CC'  : ACCAAAACCAAC   (6 positions changed, spectrum preserved: True)
+    + one chip at k-mer 'AA'  : AAAACCAACCAC   (0 positions changed, spectrum preserved: True)
+  [ok]   (M) each chip yields another reconstruction with the same k-mer spectrum; the move is explicit   [S=ACACCAAAACCA, k=2] [exact]
+
+=== (U)/(W) exact uniform sampling, and the group distance ===
+    S=AABBAABBAABB k=2: |K| = 27, K = [3, 3, 3], 27 arborescences
+    (U) SNF-coordinate sampler: 2700 draws, all 27/27 arborescences hit, chi^2 = 31.2 on 26 df, p = 0.219
+  [ok]   (U) exact uniform sampler via Smith-form coordinates: chi^2 = 31.2 on 26 df, p = 0.22   [2700 draws] [sampled]
+    (W) Wilson sampler          : 2700 draws, all 27/27 hit, chi^2 = 22.3, p = 0.674
+    group distance between two independent samples: 3 chip(s) (word (1, 1, 2))
+  [ok]   (W) Wilson's sampler agrees; the group additionally yields the chip word taking one sample to another   [2700 draws] [sampled]
+
+=== (F) phiX174: the global choices left by the 12-mer and 11-mer spectra ===
+    k=12: 5384 vertices -> 2 branch vertices, K = [2], |K| = 2
+      two repeated 12-mers A=CTTCTGCCGTTT, B=CGTCAAGGACTG, arrangement ABAB (interleaved)
+      segment lengths (X,Y,Z,U) = (2433, 433, 2291, 181); the second reconstruction is A X B U A Z B Y (Y and U exchanged): True
+      => the one global ambiguity of the 12-mer spectrum is the Z/2 of the interleaving theorem, realised in a real genome; one chip at branch vertex 1 performs the exchange
+    k=11: 5376 vertices -> 10 branch vertices, K = [2, 66], |K| = 132
+  [ok]   (F) phiX174 k=12: exactly two global reconstructions (K = Z/2), exhibited, one chip apart; k=11: 132 global classes (K = Z/2 + Z/66)   [5386 bp] [exact]
+
+=== (J) how many junctions does one chip re-thread? ===
+    phiX174 k=11      : 10 branch vertices; junctions re-threaded per chip = [6, 5, 3, 2, 4, 2, 3, 1, 0]  (single re-threading in 1/9)
+    ACACCAAAACCA k=2  : 4 branch vertices; junctions re-threaded per chip = [2, 3, 1]  (single re-threading in 1/3)
+  [ok]   (J) one chip re-threads 0..6 junctions on phiX174 at k=11; a chip is a single transposition in only 1/9 cases   [phiX174 k=11, 10 branch vertices] [exact]
+
+=== (N) are long-read constraints cosets of K(G)? ===
+    S=ACACCAAAACCA k=2: |K|=12; 5/7 constraint sets are cosets  v1:arc1|4|c  v1:arc4|4|c  v1:arc10|4|c  v2:arc3|6|c  v2:arc9|6|c  v3:arc7|6|X  v3:arc11|6|X
+    S=AABABBAABABB k=2: |K|=16; 6/8 constraint sets are cosets  v1:arc1|4|c  v1:arc3|4|c  v1:arc7|4|c  v1:arc9|4|c  v2:arc5|8|c  v2:arc11|8|c  v3:arc4|8|X  v3:arc10|8|X
+    S=AABBAABBAABB k=2: |K|=27; 9/9 constraint sets are cosets  v1:arc1|9|c  v1:arc5|9|c  v1:arc9|9|c  v2:arc2|9|c  v2:arc6|9|c  v2:arc10|9|c  v3:arc3|9|c  v3:arc7|9|c  v3:arc11|9|c
+    S=CCAACAACCAAC k=3: |K|=12; 6/9 constraint sets are cosets  v1:arc1|4|X  v1:arc4|4|X  v1:arc8|4|X  v2:arc5|6|c  v2:arc9|6|c  v3:arc3|12|c  v4:arc6|6|c  v4:arc10|6|c  v5:arc11|12|c
+  [ok]   (N) the constraint 'tree arc at v is e' is NOT a coset of a subgroup of K(G) on 3 of 4 graphs (all cosets only on the single-repeat graph)   [33 constraint sets] [exact]
+
+=== battery summary ===
+  (A)  1/1 passed
+  (B)  1/1 passed
+  (M)  1/1 passed
+  (U)  1/1 passed
+  (W)  1/1 passed
+  (F)  1/1 passed
+  (J)  1/1 passed
+  (N)  1/1 passed
+  TOTAL 8/8 passed
+  elapsed 4.9s

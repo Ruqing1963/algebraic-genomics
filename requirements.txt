@@ -1,0 +1,6 @@
+# Tested with Python 3.12.4 (Anaconda) and the versions below.
+numpy>=1.26
+sympy>=1.12
+numba>=0.59        # Bio 13 (ds_count.py) only
+matplotlib>=3.8    # figures
+networkx>=3.2      # code/generate_figures.py only

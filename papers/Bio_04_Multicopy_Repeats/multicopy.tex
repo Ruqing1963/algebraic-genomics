@@ -1,0 +1,361 @@
+% Multi-copy repeats: where the two-copy theory of assembly ambiguity stops
+% Build: pdflatex multicopy (x3)
+\documentclass[11pt]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Sk}{\mathrm{Sk}}
+
+\title{\bfseries Multi-copy repeats: where the two-copy theory\\ of assembly ambiguity stops}
+\author{Ruqing Chen\\[2pt]
+\normalsize GUT Geoservice Inc., Rivi\`ere-Beaudette, Qu\'ebec J0P 1R0, Canada\\
+\normalsize\texttt{ruqing@hotmail.com}}
+\date{25 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+The sandpile group of a genome's de Bruijn graph splits into a length-driven part and
+the group $\K(D_w)$ of the transition digraph of the circular word of repeat occurrences
+\cite{Bio3}. For repeats of multiplicity two, $\K(D_w)$ is the critical group of a
+one-vertex map: $\coker(A+I)$ for Bouchet's signed interlace matrix, by a theorem of
+Merino, Moffatt and Noble --- a presentation whose entries are \emph{pairwise} data
+about the repeats. This note asks what survives for repeats with three or more copies.
+Two families of any multiplicities $r,s$ give $\K(D_w)=\Z/c$, where $c$ is the number of
+transitions from one family to the other, $1\le c\le\min(r,s)$; this contains the
+interleaving theorem for two-copy repeats. Beyond two families nothing pairwise survives:
+for three-copy repeats, two words with identical pairwise occurrence patterns already
+have groups $\Z/3$ and $\Z/4$ at $m=3$, so no matrix with pairwise entries can present
+$\K(D_w)$; detaching a three-copy vertex into two-copy vertices does not control the
+group; and the literature has no interlacement formula for $r$-in $r$-out digraphs with
+$r\ge3$. A census of the groups realised by three- and four-copy arrangements is given
+($9$, $17$ and $28$ groups for $(3,3,3)$, $(4,4,4)$ and $(3,3,3,3)$, up to $(\Z/3)^{3}$).
+On $\varphi$X174 the skeleton is $2$-in $2$-out at $k=11,10$, where the signed interlace
+matrix reproduces the group exactly, and acquires vertices of out-degree $3$ to $6$ from
+$k=9$ down: the two-copy presentation stops exactly where the arrangement group becomes
+large. Four checks, all exact.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Let $S$ be a circular sequence with repeat families $W_1,\dots,W_m$ of multiplicities
+$r_i$, clean in the sense of \cite{Bio1}, and let $w$ be the circular word of their
+occurrences. The bundle-chain splitting theorem \cite{Bio3} gives
+\[
+\K\bigl(G_k(S)\bigr)\;\cong\;\bigoplus_i(\Z/r_i)^{\,s_i-1}\;\oplus\;\K(D_w),
+\]
+where $D_w$ has one vertex per family and one arc per adjacency of occurrences. The
+first summand is what longer $k$-mers remove. The second, the \emph{arrangement group},
+is what no $k$ removes, and for $r_i=2$ it has a striking description: $D_w$ is the
+directed medial graph of a bouquet whose edges are the repeats, and by
+\cite[Thm.~7.3]{MMN} $\K(D_w)\cong\coker(A+I)$ with $A$ the skew-symmetric
+$\{0,\pm1\}$ matrix recording, for each pair of repeats, whether and in which order
+their occurrences interlace. The entries of $A$ are pairwise data; its determinant is the
+interlace polynomial at $1$ \cite{ABS}, the number of Euler circuits of $D_w$
+\cite{MacrisPule,Jonsson}.
+
+Real genomes have repeats with more than two copies. In $\varphi$X174 the skeleton of
+\cite{Bio3} is $2$-in $2$-out at $k=11$ and $k=10$ but has vertices of out-degree $3$ and
+$4$ at $k=9$ and up to $6$ at $k=7$ (Table~\ref{tab:phix}). This note asks whether the
+two-copy description extends. The answer is: only in the smallest case.
+
+\paragraph{What is known.} For $2$-in $2$-out digraphs the determinant formula
+$\#\text{Euler circuits}=\det(I+A)$ is due to Macris and Pul\'e \cite{MacrisPule}, with
+elementary proofs by Lauri and Jonsson \cite{Jonsson}; the group statement is
+\cite{MMN}. Jonsson \cite[p.~192]{Jonsson} refers to an unpublished report generalising
+the intersection matrix to arbitrary Eulerian digraphs, where the determinant counts
+arborescences rather than circuits; we could not locate it. Lauri's own attempt at
+extensions \cite{Lauri} is described by its reviewer as inconclusive. For rotor-routing
+the picture is different: T\'othm\'er\'esz \cite{Toth} constructs a canonical simply
+transitive action of the sandpile group on compatible Euler tours of any Eulerian ribbon
+digraph, whatever the degrees, so the torsor of \cite{Bio2} generalises even though, as
+we show, the matrix presentation does not.
+
+\section{Setting}\label{sec:setting}
+
+$D_w$ is the transition digraph of the circular word $w$: vertices the letters, one arc
+$e\to f$ per occurrence of $e$ immediately followed by $f$ around the circle; loops are
+deleted (they do not affect the Laplacian). It is balanced with $d^{\pm}(e)=r_e$. Its
+sandpile group is $\K(D_w)=\coker(\Delta_{\hat s}^{\mathsf T})$ with $\Delta=D^{+}-T$,
+$T_{ef}$ the number of transitions $e\to f$; the isomorphism class does not depend on the
+sink $s$ \cite[Lem.~4.12]{HLMPPW}. Groups are compared by elementary divisors. The
+\emph{pairwise pattern} of two letters $e,f$ is the circular binary word obtained by
+deleting all other letters from $w$, taken up to rotation.
+
+\section{Two families}\label{sec:two}
+
+\begin{theorem}[Two families]\label{thm:two}
+Let $w$ be a circular word over $\{A,B\}$ with $r$ copies of $A$ and $s$ of $B$, and let
+$c$ be the number of transitions $A\to B$ (equivalently the number of maximal blocks of
+$A$'s). Then $1\le c\le\min(r,s)$, every such $c$ occurs, and
+\[
+\K(D_w)\;\cong\;\Z/c .
+\]
+\end{theorem}
+
+\begin{proof}
+$D_w$ has two vertices; the number of arcs $A\to B$ equals the number of arcs $B\to A$
+(each block of $A$'s is entered once and left once), namely $c$, and the remaining arcs
+are loops. Reduced at $B$, the Laplacian is the $1\times1$ matrix $(c)$. The word
+$A^{r-c+1}B^{s-c+1}(AB)^{c-1}$ realises $c$, and $c\le\min(r,s)$ since each block
+contains at least one letter.
+\end{proof}
+
+For $r=s=2$ this is the interleaving theorem \cite[Thm.~6]{Bio1}: $c=1$ for
+$A\,A\,B\,B$ and $A\,B\,B\,A$ (disjoint or nested, no arrangement ambiguity) and $c=2$
+for $A\,B\,A\,B$. For two families the arrangement ambiguity is thus a single cyclic
+factor whose order is a crossing number, and no sign is needed. Check~(A) verifies the
+theorem over all $119$ circular words with $r,s\le5$.
+
+\section{Beyond two families nothing pairwise survives}\label{sec:neg}
+
+\begin{proposition}[Pairwise patterns do not determine the group]\label{prop:pair}
+The circular words
+\[
+w_1=A\,A\,B\,A\,C\,C\,B\,B\,C,\qquad w_2=A\,A\,B\,A\,B\,C\,B\,C\,C,
+\]
+each letter three times, have the same pairwise pattern for every pair of letters, and
+\[
+\K(D_{w_1})=\Z/3,\qquad \K(D_{w_2})=\Z/4 .
+\]
+Consequently no square matrix whose $(e,f)$ entry is a function of the pairwise pattern
+of $e$ and $f$ can present $\K(D_w)$ for three-copy repeats, even for $m=3$.
+\end{proposition}
+
+\begin{proof}
+Restricting to $\{A,B\}$, $\{A,C\}$ and $\{B,C\}$ gives, for both words, the cyclic
+patterns $001101$, $000111$ and $001101$ (with the first letter of the pair written as
+$1$). In $w_1$ all six off-diagonal transition counts are $1$, so the Laplacian reduced
+at $C$ is $\bigl(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\bigr)$, of determinant
+$3$ and content $1$: $\Z/3$. In $w_2$ the transitions are $A\to B$ twice, $A\to C$
+never, $B\to A$ once, $B\to C$ twice, giving
+$\bigl(\begin{smallmatrix}2&-2\\-1&3\end{smallmatrix}\bigr)$, of determinant $4$ and
+content $1$: $\Z/4$.
+\end{proof}
+
+\begin{remark}[Why this is sharper than the two-copy failure]\label{rem:sharper}
+For two-copy repeats the pairwise pattern of $e,f$ is a single bit (interlaced or not),
+and the group is likewise not a function of these bits alone --- but the first failure
+is at $m=6$ \cite[Rem.~6.7]{MMN}, and it is repaired by a sign: reading from a base
+point, record whether the occurrences run $e\,f\,e\,f$ or $f\,e\,f\,e$. The sign depends
+on the base point, and the cokernel does not, because changing base point acts by
+pivots \cite[Lem.~4.8]{MMN}. For three or more copies the analogous base-pointed pairwise
+data --- the linear restriction of $w$ to each pair --- determine the whole word for
+every $m$ (they fix the relative order of any two occurrences), so ``the group is a
+function of them'' is vacuous, and the only genuine pairwise invariants are the rotation
+classes of Proposition~\ref{prop:pair}, which fail already at $m=3$. There is no room
+between the two for a sign.
+\end{remark}
+
+\begin{proposition}[No reduction to two copies]\label{prop:detach}
+Let $G$ be a balanced digraph with a vertex $v$ of in- and out-degree $3$, and let $G'$
+be obtained by detaching $v$ into $v'$ (two of the in-arcs, one of the out-arcs) and
+$v''$ (the remaining in-arc, the other two out-arcs) joined by a new arc $v'\to v''$, so
+that $G'$ is $2$-in $2$-out at both. Then $\K(G)$ is in general neither a quotient nor a
+subgroup of $\K(G')$: there is a $G$ with $\K(G)=\Z/4\oplus\Z/5$ whose nine detachments
+have groups $\Z/23$, $\Z/25$, $\Z/31$, $\Z/32$, $\Z/2\oplus\Z/13$, $\Z/3\oplus\Z/8$,
+$\Z/2\oplus\Z/3\oplus\Z/4$ and $\Z/2\oplus\Z/3\oplus\Z/5$.
+\end{proposition}
+
+Over $150$ random balanced digraphs and all nine detachments each, $\K(G)$ is a quotient
+of $\K(G')$ in $140$ of $1350$ cases (check~(C)). Euler circuits of $G'$ are those of $G$
+compatible with the chosen transition at $v$, a subset of no fixed proportion, and the
+group follows the count. So the arrangement group of a multi-copy skeleton cannot be
+computed by splitting it into a two-copy one and applying \cite{MMN}.
+
+\begin{remark}[What does determine it]
+Trivially, the transition matrix $T$: the arrangement group is the sandpile group of the
+transition digraph, which is what \cite{Bio3} says. The content of the two-copy theory is
+that $T$ can be traded for interlacement --- a different, topological parametrisation of
+the same group. Propositions~\ref{prop:pair} and~\ref{prop:detach} say that for three or
+more copies no such trade is available through pairwise data or through two-copy
+surrogates. A Gram-matrix route (the form $x^{\mathsf T}(I-S)y$ of the position cycle
+restricted to consecutive-occurrence differences) was also tried and is not the
+Merino--Moffatt--Noble matrix even for two copies; it is recorded in the ancillary
+README so that it is not retried.
+\end{remark}
+
+\section{Census}\label{sec:census}
+
+Table~\ref{tab:census} lists, for each multiplicity vector, the number of circular words
+(one per rotation class), the number of distinct transition digraphs up to relabelling,
+the number of distinct groups, the largest order, and the non-cyclic groups that occur.
+The last column counts the classes of pairwise patterns and, in parentheses, how many of
+them carry more than one group. For two families the groups are exactly $\Z/c$,
+$c\le\min(r,s)$, as Theorem~\ref{thm:two} predicts, and every pairwise class is pure.
+From three families on the arrangement group is far richer than for two-copy repeats
+--- three two-copy repeats give only $0,\Z/2,\Z/3,(\Z/2)^{2}$ \cite[Prop.~8]{Bio1},
+three three-copy repeats give nine groups up to order $9$ --- and most pairwise classes
+are mixed.
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{lrrrrlr}
+\toprule
+mult. & words & $D_w$ & groups & $\max|\K|$ & non-cyclic groups & pairwise (mixed)\\
+\midrule
+$(3,3)$       &     4 &  3 &  3 &  3 & --- & 3 (0)\\
+$(4,4)$       &    10 &  4 &  4 &  4 & --- & 7 (0)\\
+$(3,3,3)$     &   188 & 12 &  9 &  9 & $(\Z/2)^{2},(\Z/3)^{2}$ & 15 (6)\\
+$(3,3,2)$     &    70 & 15 &  7 &  6 & $(\Z/2)^{2}$ & 10 (4)\\
+$(2,2,3)$     &    30 & 10 &  5 &  4 & $(\Z/2)^{2}$ & 6 (2)\\
+$(4,4,4)$     &  2896 & 26 & 17 & 16 & $(\Z/2)^{2},(\Z/2)^{2}{\oplus}\Z/3,(\Z/3)^{2},(\Z/4)^{2},\Z/2{\oplus}\Z/4$ & 174 (86)\\
+$(3,3,3,3)$   & 30804 & 96 & 28 & 27 & those, and $(\Z/2)^{3},(\Z/3)^{3},\Z/2{\oplus}(\Z/3)^{2}$ & 180 (132)\\
+\bottomrule
+\end{tabular}
+\caption{Arrangement groups of multi-copy repeats, exhaustive over circular words
+(check~(B)). $D_w$: distinct transition digraphs. All entries exact.}
+\label{tab:census}
+\end{table}
+
+\section{$\varphi$X174}\label{sec:phix}
+
+Table~\ref{tab:phix} gives the out-degree profile of the bundle-contracted skeleton of
+$\varphi$X174 (NC\_001422.1) at $k=12,\dots,7$. At $k=11$ and $k=10$ every skeleton
+vertex has in- and out-degree $2$, and the signed interlace matrix of an Euler circuit
+found by Hierholzer's algorithm gives $\coker(A+I)=\Z/3\oplus\Z/11$ and
+$\Z/4\oplus\Z/1076338579$, the groups computed in \cite{Bio3} from the Laplacian
+(check~(D)) --- the theorem of \cite{MMN} on a real genome. From $k=9$ down the skeleton
+has vertices of out-degree $3$ ($5$ of them at $k=9$, $42$ at $k=8$, $147$ at $k=7$),
+$4$, $5$ and $6$: the two-copy presentation stops applying at the same $k$ at which the
+skeleton grows from $37$ to $110$ vertices and the group acquires its large prime factors.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{rrrl}
+\toprule
+$k$ & skeleton & arcs & out-degree multiset\\
+\midrule
+12 &   1 &    0 & (single vertex)\\
+11 &   8 &   16 & $2^{8}$\\
+10 &  37 &   74 & $2^{37}$\\
+ 9 & 110 &  227 & $2^{104}\,3^{5}\,4^{1}$\\
+ 8 & 312 &  679 & $2^{264}\,3^{42}\,4^{5}\,5^{1}$\\
+ 7 & 826 & 1945 & $2^{619}\,3^{147}\,4^{41}\,5^{12}\,6^{7}$\\
+\bottomrule
+\end{tabular}
+\caption{$\varphi$X174: size and out-degree profile of the skeleton ($d^{\,n}$ = $n$
+vertices of out-degree $d$). At $k=11,10$ the skeleton is $2$-in $2$-out and
+$\coker(A+I)$ equals $\K(\Sk)$; below, multi-copy vertices appear. Exact.}
+\label{tab:phix}
+\end{table}
+
+\section{Verification}\label{sec:battery}
+
+The script \texttt{multicopy.py} runs the four checks of Table~\ref{tab:battery} in
+about forty seconds, all passing; its output is archived as
+\texttt{multicopy\_output.txt}. All arithmetic is exact; groups are compared by
+elementary divisors.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{clc}
+\toprule
+key & check & mode\\
+\midrule
+(A) & Theorem~\ref{thm:two} on all $119$ two-letter circular words, $r,s\le5$ & exact\\
+(B) & Table~\ref{tab:census}; the witness of Proposition~\ref{prop:pair} & exact\\
+(C) & Proposition~\ref{prop:detach}: $150$ digraphs, $1350$ detachments; the witness & exact\\
+(D) & Table~\ref{tab:phix}; $\coker(A+I)=\K(\Sk)$ at $k=11,10$ & exact\\
+\bottomrule
+\end{tabular}
+\caption{The verification battery, $4/4$.}
+\label{tab:battery}
+\end{table}
+
+\section{Scope}\label{sec:scope}
+
+\emph{Proved.} Theorem~\ref{thm:two}; Propositions~\ref{prop:pair}
+and~\ref{prop:detach} by explicit witness.
+
+\emph{Quoted.} The splitting theorem \cite{Bio3}; the two-copy presentation \cite{MMN};
+the determinant formula \cite{MacrisPule,Jonsson} and interlace polynomial \cite{ABS};
+sink-independence \cite{HLMPPW}; the rotor torsor for Eulerian ribbon digraphs
+\cite{Toth}.
+
+\emph{Open.} (a) Whether any presentation of $\K(D_w)$ for $r\ge3$ exists whose entries
+are ``local'' in a weaker sense than pairwise --- e.g.\ functions of the patterns of
+triples --- and whether Jonsson's unpublished generalised intersection matrix, which
+counts arborescences, has a cokernel equal to $\K$. Theorem~\ref{thm:two} shows that at
+least for two families the group is a crossing number, so a multi-chord crossing calculus
+is not ruled out; Proposition~\ref{prop:pair} shows it cannot be pairwise. (b) The
+census suggests questions we have not pursued: which groups occur for $(r,r,r)$ as $r$
+grows, and whether the largest order is always attained by an elementary abelian group.
+(c) The $\varphi$X174 skeleton at $k=8$ ($312$ vertices) is beyond the dense exact Smith
+form used here; a modular Smith form would extend Table~\ref{tab:phix} of \cite{Bio3}.
+
+\section*{Provenance}
+
+Unrefereed preprint. Theorem~\ref{thm:two} is elementary and, as far as we can find,
+unstated in this form; the propositions are negative results established by explicit
+computation and are the reason this note exists: the natural extension of \cite{MMN} to
+multi-copy repeats was the obvious next step after \cite{Bio3}, and it does not exist in
+any pairwise form. We searched for an interlacement or determinant formula for Euler
+circuits of $r$-in $r$-out digraphs with $r\ge3$ and found none; a search cannot
+establish a negative.
+
+\begin{thebibliography}{99}
+
+\bibitem{ABS} R.~Arratia, B.~Bollob\'as and G.~B.~Sorkin,
+\emph{The interlace polynomial of a graph},
+J.\ Combin.\ Theory Ser.~B \textbf{92} (2004), 199--233.
+
+\bibitem{Bio1} R.~Chen,
+\emph{Assembly ambiguity is not a function of branch statistics: the sandpile group of a
+de Bruijn graph}, companion preprint (Bio~1, version~2), 2026.
+
+\bibitem{Bio2} R.~Chen,
+\emph{The sandpile group as a coordinate system on genome reconstructions}, companion
+preprint (Bio~2), 2026.
+
+\bibitem{Bio3} R.~Chen,
+\emph{The sandpile group of a de Bruijn graph splits along its repeats}, companion
+preprint (Bio~3), 2026.
+
+\bibitem{HLMPPW} A.~E.~Holroyd, L.~Levine, K.~M\'esz\'aros, Y.~Peres, J.~Propp and
+D.~B.~Wilson, \emph{Chip-firing and rotor-routing on directed graphs}, in: In and Out of
+Equilibrium~2, Progr.\ Probab.\ \textbf{60}, Birkh\"auser, 2008, 331--364.
+
+\bibitem{Jonsson} J.~Jonsson,
+\emph{On the number of Euler trails in directed graphs},
+Math.\ Scand.\ \textbf{90} (2002), 191--214.
+
+\bibitem{Lauri} J.~Lauri,
+\emph{On a determinant formula for enumerating Euler trails in a class of digraphs},
+Rend.\ Sem.\ Mat.\ Messina Ser.~II \textbf{5} (1999), 75--90.
+
+\bibitem{MacrisPule} N.~Macris and J.~V.~Pul\'e,
+\emph{An alternative formula for the number of Euler trails for a class of digraphs},
+Discrete Math.\ \textbf{154} (1996), 301--305.
+
+\bibitem{MMN} C.~Merino, I.~Moffatt and S.~Noble,
+\emph{The critical group of a combinatorial map},
+Combinatorial Theory \textbf{5} (2025), no.~3; arXiv:2308.13342.
+
+\bibitem{Toth} L.~T\'othm\'er\'esz,
+\emph{On canonical sandpile actions of embedded graphs},
+Advances in Combinatorics (2026), no.~6; arXiv:2504.05275.
+
+\end{thebibliography}
+
+\end{document}

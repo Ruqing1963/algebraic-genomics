@@ -1,0 +1,12 @@
+ch,paper,quantity,value,verified_by
+1,Bio 1,reconstructions with equal degree data (two genomes),4 vs 256,papers/Bio_01_Critical_Groups/dbg_sandpile.py
+2,Bio 2,sandpile group of phiX174 at k=12,"Z/2 (2 reconstructions, one chip apart)",papers/Bio_02_Rotor_Routing/rotor_assembly.py
+7,Bio 8,"#DS(phiX174, k=12) / (k=11)",10 / 864,papers/Bio_08_DS_Lattice_Sum/ds_lattice.py
+8,Bio 12,box points of phiX174 at k=10,2481687900,papers/Bio_12_Frontier_Elimination/ds_transfer_matrix.py
+8,Bio 12,"box points with connected support, k=10",909103210,papers/Bio_12_Frontier_Elimination/ds_transfer_matrix.py
+8,Bio 12,"frontier width at k=10, greedy vs genome order",26 vs 62,papers/Bio_12_Frontier_Elimination/ds_transfer_matrix.py; code/generate_figures.py
+9,Bio 13,"#DS(phiX174, k=10)",31925753246212,papers/Bio_13_Fermionic_Partition/ds_count.py
+10,Bio 19,#DS of the constructed genome,2 eps(G) (#P-hard),papers/Bio_19_SharpP_Hardness/bio19_verify.py; code/generate_figures.py
+12,Chen & Chen,"median spectral resolution kappa, human proteome",5,papers/Spectral_Fibres/spectral_fibres.py
+15,Bio 5,"E. coli K-12 at k=150: genome bp (distinct 150-mers) -> branch vertices -> skeleton",4641652 (4594348) -> 23933 -> 115,papers/Bio_05_Ecoli_Decomposition/ecoli_sandpile.py
+16,Bio 14,"snarl-order elimination, us per vertex up to 39714 vertices",9.2-10.7 (front 8),papers/Bio_14_Snarl_Schur/bio14_verify.py

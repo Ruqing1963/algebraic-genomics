@@ -1,0 +1,57 @@
+﻿
+=== (A) clean multi-repeat sequences: K(G_k) = (+)(Z/r_i)^(s_i-1) (+) K(D_w) ===
+    word=AABB       r=[2, 2] L=[13, 10] k=10: K = (Z/2)^3                      pred (+)(Z/r)^(s-1) + K(D_w)=0            ok
+    word=ACCBAB     r=[2, 2, 2] L=[12, 13, 10] k=9: K = (Z/2)^9                      pred (+)(Z/r)^(s-1) + K(D_w)=Z/2          ok
+    word=DDCACBAB   r=[2, 2, 2, 2] L=[12, 11, 10, 11] k=9: K = (Z/2)^8 + Z/3                pred (+)(Z/r)^(s-1) + K(D_w)=Z/3          ok
+    word=BAABCCC    r=[2, 2, 3] L=[11, 10, 13] k=10: K = Z/2 + (Z/3)^3                pred (+)(Z/r)^(s-1) + K(D_w)=0            ok
+    word=BBBAA      r=[2, 3] L=[11, 10] k=9: K = (Z/2)^2 + Z/3                pred (+)(Z/r)^(s-1) + K(D_w)=0            ok
+    word=BAAB       r=[2, 2] L=[12, 11] k=9: K = (Z/2)^5                      pred (+)(Z/r)^(s-1) + K(D_w)=0            ok
+  [ok]   (A) K(G_k) = (+)(Z/r_i)^(s_i-1) (+) K(D_w) on every clean instance, m in 2..4, r_i in 2..4   [120 instances] [exact]
+
+=== (B) the bundle-chain lemma on random balanced digraphs ===
+  [ok]   (B) K(G) = (Z/r)^(s-1) (+) K(G') for a planted bundle chain, r in 2..6, s in 2..4   [60 random balanced digraphs] [exact]
+
+=== (C) the published special cases are instances ===
+  [ok]   (C) m = 1 (Thm 5), m = 2 (Thm 6) and m = 3 (Prop 8) of the companion paper are the formula evaluated on D_w   [9 cases] [exact]
+
+=== (D) two-copy repeats: K(D_w) against invariants of the chord diagram ===
+    m=6 pair abcdefacbdfe / abcfedacbefd: same interlace graph = True; K = Z/2 + (Z/3)^2 / Z/2 + Z/9  (DIFFERENT)
+    m=6 pair abacdcefbdef / abacdebcfdfe: same interlace graph = True; K = Z/2 + Z/9 / Z/2 + (Z/3)^2  (DIFFERENT)
+    m=6 pair abacdefbcdfe / abacdefbcedf: same interlace graph = True; K = Z/2 + Z/9 / Z/2 + (Z/3)^2  (DIFFERENT)
+    K(D_w) = coker(signed interlace matrix + I) on 24543/24543 words (all m <= 5 exhaustive, 300 random each for m = 6..9)
+    m=3: 30 words, 4 intersection graphs
+      groups sharing one F2-rank:       {2: [(2,), (2, 2), (3,)]}
+      groups sharing one integer SNF:   {(0, 1, 1): [(2,), (3,)]}
+      intersection-graph classes with more than one group: 0
+    m=4: 630 words, 11 intersection graphs
+      groups sharing one F2-rank:       {2: [(2,), (2, 2), (2, 3), (3,), (4,), (5,)], 4: [(2, 2), (2, 2, 2), (2, 3), (5,)]}
+      groups sharing one integer SNF:   {(0, 0, 1, 1): [(2,), (3,), (4,), (5,)], (1, 1, 1, 1): [(2, 2), (2, 3), (5,)], (0, 1, 1, 2): [(2, 2), (2, 3)]}
+      intersection-graph classes with more than one group: 0
+    m=5: 22680 words, 34 intersection graphs
+      groups sharing one F2-rank:       {4: [(2, 2), (2, 2, 2), (2, 2, 2, 2), (2, 2, 3), (2, 3), (2, 4), (2, 5), (5,), (7,), (8,), (9,), (11,)], 2: [(2,), (2, 2), (2, 3), (2, 4), (3,), (4,), (5,), (7,), (9,)]}
+      groups sharing one integer SNF:   {(0, 1, 1, 1, 1): [(2, 2), (2, 3), (2, 4), (2, 5), (5,), (7,), (8,), (9,), (11,)], (0, 0, 0, 1, 1): [(2,), (3,), (4,), (5,), (7,)], (0, 0, 1, 1, 2): [(2, 2), (2, 3), (2, 4), (9,)], (1, 1, 1, 1, 2): [(2, 2, 2), (2, 2, 3), (2, 5), (11,)], (0, 1, 1, 1, 3): [(2, 2, 2), (2, 2, 3)], (1, 1, 1, 1, 4): [(2, 2, 2, 2), (2, 2, 3)]}
+      intersection-graph classes with more than one group: 0
+  [ok]   (D) r_i = 2: K(D_w) is NOT a function of the F2-rank nor of the integer Smith form of the unsigned intersection matrix; it is constant on interlace-graph classes for m <= 5 but NOT at m = 6 (Merino-Moffatt-Noble Rem. 6.7: Z/3+Z/6 vs Z/18); it equals coker(A + I) for the signed interlace matrix (their Thm 7.3)   [m = 3..5 exhaustive; 3 pairs at m = 6; 24543 words for A + I] [exact]
+
+=== (E) the skeleton is canonical; the repeat graph is the s_i = 2 case ===
+  [ok]   (E) maximal bundle chains are pairwise disjoint; their partition, the (r, len) multiset and the skeleton's group are invariant under relabelling; the skeleton is chain-free   [100 random balanced digraphs with planted chains] [exact]
+  [ok]   (E) the repeat graph (repeats as multi-arcs, unique segments as arcs) has K(RG) = (+)_i Z/r_i (+) K(D_w)   [200 random circular words, m <= 5, r_i <= 4] [exact]
+
+=== (F) phiX174: bundle-contract the compacted graph and read the skeleton ===
+      k   compacted   chains (r,len)                       skeleton   K(skeleton)          K(G_k) from decomposition           direct
+     12        2     1 chains, r in [2], sum(len-1) = 1        1   0                    Z/2                                Z/2  ok
+     11       10     2 chains, r in [2], sum(len-1) = 2        8   Z/3 + Z/11           (Z/2)^2 + Z/3 + Z/11               (Z/2)^2 + Z/3 + Z/11  ok
+     10       47     8 chains, r in [2], sum(len-1) = 10      37   Z/4 + Z/1076338579   (Z/2)^10 + Z/4 + Z/1076338579      (Z/2)^10 + Z/4 + Z/1076338579  ok
+      9      146     28 chains, r in [2], sum(len-1) = 36    110   (Z/2)^6 + (Z/4)^4 + Z/7 + Z/523 + Z/3779 + Z/5297 + Z/6561 + Z/7669 + Z/2707831823 (Z/2)^42 + (Z/4)^4 + Z/7 + Z/523 + Z/3779 + Z/5297 + Z/6561 + Z/7669 + Z/2707831823 (not computed)  ok
+      8      401     65 chains                                  312   (skeleton too large)
+  [ok]   (F) phiX174 k=10..12: K(G_k) computed directly equals the bundle-chain decomposition; k = 9 (146 branch vertices) becomes computable after contraction   [compacted graphs] [exact]
+
+=== battery summary ===
+  (A)  1/1 passed
+  (B)  1/1 passed
+  (C)  1/1 passed
+  (D)  1/1 passed
+  (E)  2/2 passed
+  (F)  1/1 passed
+  TOTAL 7/7 passed
+  elapsed 29.3s

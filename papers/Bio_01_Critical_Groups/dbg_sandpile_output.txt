@@ -1,0 +1,87 @@
+﻿
+=== (T) the de Bruijn tower is the line-digraph tower ===
+  [ok]   (T) tw(DB(2,1)) = 1 = 2^(2^1-1-1)   [DB(2,1)] [exact]
+  [ok]   (T) tw(DB(2,2)) = 2 = 2^(2^2-2-1); [ANCFT III] line-digraph law holds   [DB(2,2)] [exact]
+  [ok]   (T) tw(DB(2,3)) = 16 = 2^(2^3-3-1); [ANCFT III] line-digraph law holds   [DB(2,3)] [exact]
+  [ok]   (T) L(DB(2,2)) and DB(2,3) agree in size and arborescence count   [sigma=2] [exact]
+  [ok]   (T) tw(DB(3,1)) = 3 = 3^(3^1-1-1)   [DB(3,1)] [exact]
+  [ok]   (T) tw(DB(3,2)) = 729 = 3^(3^2-2-1); [ANCFT III] line-digraph law holds   [DB(3,2)] [exact]
+  [ok]   (T) tw(DB(3,3)) = 94143178827 = 3^(3^3-3-1); [ANCFT III] line-digraph law holds   [DB(3,3)] [exact]
+  [ok]   (T) L(DB(3,2)) and DB(3,3) agree in size and arborescence count   [sigma=3] [exact]
+
+=== (L) our critical groups agree with Levine's published decomposition ===
+  [ok]   (L) K(DB(2,2)) = [2], order 2 = 2^1   [n=2] [exact]
+  [ok]   (L) K(DB(2,3)) = [2, 2, 4], order 16 = 2^4   [n=3] [exact]
+  [ok]   (L) K(DB(2,4)) = [2, 2, 2, 2, 4, 4, 8], order 2048 = 2^11   [n=4] [exact]
+  [ok]   (L) K(DB(2,5)) = [2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 8, 8, 16], order 67108864 = 2^26   [n=5] [exact]
+
+=== (E) BEST: #arc-rooted reconstructions = |K(G_k)| x prod (d-1)! ===
+  [ok]   (E) S=ACACCAAAACCA k=2: |K|=12 x prod(d-1)!=24 = 288 = brute force 288   [N=12] [exact]
+  [ok]   (E) S=CCAACAACCAAC k=3: |K|=12 x prod(d-1)!=4 = 48 = brute force 48   [N=12] [exact]
+  [ok]   (E) S=CACCAAACCACA k=3: |K|=4 x prod(d-1)!=2 = 8 = brute force 8   [N=12] [exact]
+  [ok]   (E) S=CACCCCCAACCA k=2: |K|=6 x prod(d-1)!=96 = 576 = brute force 576   [N=12] [exact]
+  [ok]   (E) S=ACCCCAAACACC k=2: |K|=6 x prod(d-1)!=24 = 144 = brute force 144   [N=12] [exact]
+  [ok]   (E) S=CCCACAAACAAC k=2: |K|=6 x prod(d-1)!=16 = 96 = brute force 96   [N=12] [exact]
+
+=== (R) single repeat of length L, multiplicity r -> (Z/r)^(L-k) ===
+  [ok]   (R) K(G_k) = (Z/r)^(L-k) in every clean instance, L in 8..14, r in 2..4, k in L-4..L   [54 parameter settings] [exact]
+
+=== (I) two repeats: disjoint = nested = (Z/2)^(2s-2), interleaved = (Z/2)^(2s-1) ===
+  [ok]   (I) prediction exact on every clean sequence instance   [15 instances] [exact]
+    disjoint    : 106 -> 6 branch vertices, arc multiplicities [(1, 4), (2, 4)], K = [2, 2, 2, 2]
+    nested      : 106 -> 6 branch vertices, arc multiplicities [(1, 4), (2, 4)], K = [2, 2, 2, 2]
+    interleaved : 106 -> 6 branch vertices, arc multiplicities [(2, 6)], K = [2, 2, 2, 2, 2]
+  [ok]   (I) compacted graphs have 2s vertices with the predicted connector multiplicities (single for disjoint/nested, doubled for interleaved)   [L=8, k=6, s=3] [exact]
+  [ok]   (I) symbolic Smith form of the explicit reduced Laplacians: (Z/2)^(2s-2) and (Z/2)^(2s-1) for s = 1..7   [14 matrices] [exact]
+
+=== (M) three repeats: the correction is K(D_w), not a chord-diagram rank ===
+    pattern     rank_F2   K at s=1     K at s=2
+    none           0      []           [2, 2, 2]
+    one pair       2      [2]          [2, 2, 2, 2]
+    path           2      [3]          [2, 2, 6]
+    triangle       2      [2, 2]       [2, 2, 2, 2, 2]
+  [ok]   (M) all 90 circular words: K(G_L) = Z/2, Z/3, (Z/2)^2 for one-pair / path / triangle crossings (all of F_2-rank 2), 0 for none; and K at s=2 = (Z/2)^3 + K(G_L)   [90 words, s = 1, 2] [exact]
+
+=== (N) the global factor is not a function of the degree data ===
+    both: k=4, n_k=51, branch out-degrees=[2, 2, 2, 2, 2, 2, 2, 3], prod(d-1)!=2
+    W_LO: |K|=2    inv=[2]  #reconstructions=4
+    W_HI: |K|=128  inv=[2, 2, 2, 2, 8]  #reconstructions=256
+  [ok]   (N) identical observable degree data, reconstruction counts 4 vs 256 (64x apart)   [explicit witnesses] [exact]
+  [ok]   (N) 68% of degree-classes split into several sandpile groups   [98 classes] [sampled]
+
+=== (C) the collapse order k* ===
+    40 random sequences of length 100: k* = R in 26, R+1 in 13, neither in 1
+  [ok]   (C) no single closed form for k* in terms of the longest repeat R alone   [N=100] [sampled]
+    minimal k*=R   : S=AACAC (N=5), R=3, k*=3
+    minimal k*=R+1 : S=AACACC (N=6), R=2, k*=3
+    minimal k*<R   : S=AAAA (N=4), R=3, k*=1
+  [ok]   (C) minimal binary witnesses exist for k* = R, k* = R+1 and k* < R   [exhaustive, N <= 10] [exact]
+
+=== (P) contraction and self-loops ===
+  [ok]   (P) linear-time unitig contraction leaves K unchanged in 12/12 cases (largest reduction 68 -> 2 vertices)   [N=70] [exact]
+  [ok]   (P) self-loops leave |K| and the invariant factors unchanged (they cancel in D_out - A)   [1, 2, 5 loops] [exact]
+
+=== (F) real data: phiX174, NC_001422.1 ===
+    length 5386 bp, longest exact circular repeat R = 12
+      k    n_k   branch   arcs   |K(G_k)|            invariant factors
+      8   4928    401    859   (compacted graph above the exact-SNF cap; skipped)
+      9   5233    146    299   (compacted graph above the exact-SNF cap; skipped)
+     10   5339     47     94   4408682819584       [2, 2, 2, 2, 2, 2, 2, 2, '...', 4305354316]   (0.01s)
+     11   5376     10     20   132                 [2, 66]   (0.01s)
+     12   5384      2      4   2                   [2]   (0.01s)
+     13   5386      0      0   1                   []   (single cycle)
+  [ok]   (F) phiX174: R = 12, collapse at k* = 13 (= R+1), |K(G_10)| = 4408682819584, 99% vertex reduction   [5386 bp] [exact]
+
+=== battery summary ===
+  (T)  8/8 passed
+  (L)  4/4 passed
+  (E)  6/6 passed
+  (R)  1/1 passed
+  (I)  3/3 passed
+  (M)  1/1 passed
+  (N)  2/2 passed
+  (C)  2/2 passed
+  (P)  2/2 passed
+  (F)  1/1 passed
+  TOTAL 30/30 passed
+  elapsed 105.5s

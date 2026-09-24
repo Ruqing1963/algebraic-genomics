@@ -1,0 +1,62 @@
+﻿=== the double-stranded lattice sum by frontier elimination ===
+    phiX174 NC_001422.1, 5386 bp circular; python 3.12.4
+
+      k   |V|  fixV  |A_c|  fixA   sum m   orbits   rank Lambda^-
+     12     7     1     14     0      14        7               4   ok
+     11    30     0     53     1      60       26              12   ok
+     10   125     3    222     0     252      111              48   ok
+  [ok]   (D) the double cover rebuilt from the definition reproduces the invariants of Bio 8, Table 1: |V|, fixed vertices, contents, fixed contents, sum m and rank Lambda^-   [k = 10, 11, 12] [exact]
+
+=== (T) frontier elimination against the backtracking enumerator ===
+    k=12: elimination 10, enumeration 10, Bio 8 10, peak states 4, max frontier 6   ok
+    k=11: elimination 528, enumeration 528, Bio 8 528, peak states 20, max frontier 10   ok
+  [ok]   (T) the frontier elimination returns the same box-point count as Bio 8's enumerator   [k = 11, 12] [exact]
+
+=== (C) connectivity of the support = non-vanishing of t(G_c) ===
+    k=12: 10 agree, 0 disagree, of 10 box points
+    k=11: 528 agree, 0 disagree, of 528 box points
+  [ok]   (C) supp(c) is connected exactly when the reduced Laplacian of the support is non-singular, so the connectivity filter of Bio 8 is an optimisation and not a side condition -- Lemma 3   [538 points] [exact]
+
+=== (W) the lattice sum reproduces Bio 8's #DS ===
+    k=12: connected points 8 (Bio 8 8), #DS = 10 (Bio 8 10)   ok
+    k=11: connected points 218 (Bio 8 218), #DS = 864 (Bio 8 864)   ok
+  [ok]   (W) summing N_seq over the box reproduces the published #DS and the published number of connected points   [k = 11, 12] [exact]
+
+=== (O) the genomic coordinate order is not the good order ===
+    k=12 coordinate : width   6,              points 10, peak states         4   [0.0s]
+    k=12 greedy     : width   6,              points 10, peak states         4   [0.0s]
+    k=11 coordinate : width  18,             points 528, peak states       200   [0.0s]
+    k=11 greedy     : width  10,             points 528, peak states        20   [0.0s]
+    k=10 coordinate : width  62,                ABORTED, peak states 1,968,896   [39.3s]
+    k=10 greedy     : width  26,      points 2481687900, peak states    50,758   [8.4s]
+  [ok]   (O) ordering the orbits along the genome gives a frontier of width 62 at k=10 and the elimination does not finish, while the greedy order has width 26 and finishes in seconds: the genome's own coordinate is not the good elimination order, because inverted repeats interleave   [k = 10, 11, 12] [exact]
+
+=== (K) phiX174 at k = 10: the blank row of Bio 8, Table 2 ===
+    rank Lambda^- = 48, orbits = 111
+    box points = 2,481,687,900   peak states 50,758, max frontier 26   [8.4s]
+    pinning orbit 0 and summing over its values: 2,481,687,900   ok
+    pinning orbit 7 and summing over its values: 2,481,687,900   ok
+  [ok]   (K) phiX174 at k = 10 has exactly 2,481,687,900 box points, a row Bio 8 left blank; the count is confirmed by pinning a coordinate and summing over its values   [1 value of k] [exact]
+
+=== (N) connected points by frontier elimination with connectivity classes ===
+    k=12: connected = 8 (Bio 8 8), peak states 8   ok
+    k=11: connected = 218 (Bio 8 218), peak states 136   ok
+  [ok]   (N) carrying the partition of the frontier into connected classes counts the connected points directly, reproducing Bio 8's 8 and 218   [k = 11, 12] [exact]
+        orbit 1/111: frontier 2, states 1   [0s]
+        orbit 11/111: frontier 12, states 48   [0s]
+        orbit 21/111: frontier 20, states 1,776   [0s]
+        orbit 31/111: frontier 24, states 20,592   [3s]
+        orbit 41/111: frontier 24, states 72,270   [15s]
+        orbit 51/111: frontier 26, states 741,444   [106s]
+        orbit 61/111: frontier 24, states 1,575,818   [427s]
+        orbit 71/111: frontier 24, states 4,923,160   [1214s]
+        orbit 81/111: frontier 22, states 2,796,778   [2950s]
+        orbit 91/111: frontier 20, states 2,724,594   [4246s]
+        orbit 101/111: frontier 10, states 26,230   [4738s]
+        orbit 111/111: frontier 0, states 1   [4739s]
+    k=10: connected = 909,103,210 of 2,481,687,900 box points (36.6%)   peak 9,749,212 states   [4739s]
+  [ok]   (M) phiX174 at k = 10 has exactly 909,103,210 box points with connected support, the second blank column of Bio 8's Table 2; the connected fraction falls from 80% at k=12 through 41.3% at k=11 to 36.6% here   [1 value of k] [exact]
+
+=== battery summary ===
+  TOTAL 8/8 passed
+  elapsed 4829s

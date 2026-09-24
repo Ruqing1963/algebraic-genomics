@@ -1,0 +1,56 @@
+(base) PS ...\Bio 13> python -u ds_fermion.py --quick
+=== #DS by a fermionic frontier sweep ===
+    phiX174 NC_001422.1, 5386 bp circular; python 3.12.4
+
+      k   |V|  fixV  |A_c|  fixA   sum m   orbits   odd-m orbits   sum_a c(a)
+     12     7     1     14     0      14        7              7            7   ok
+     11    30     0     53     1      60       26             23           30   ok
+     10   125     3    222     0     252      111             96          126   ok
+  [ok]   (D) the double cover rebuilt from the definition reproduces the invariants of Bio 8, Table 1, and every k carries an orbit of odd multiplicity, which is what the half-box needs   [k = 10, 11, 12] [exact]
+
+=== (F) the Berezin product against the reduced determinant ===
+    phiX174 k=12: 8 of 8 points agree (2 have the test root outside supp c)
+    12 random covers, |V| = [8, 8, 8, 9, 4, 6, 6, 6, 6, 9, 8, 8]: all points agree
+  [ok]   (F) the coefficient of the top monomial in prod_a (1 - c(a) psibar_t (psi_t - psi_h)) times prod_{v outside supp} (1 - psibar_v psi_v) equals (-1)^{|V|-1} det of the Laplacian with the diagonal of the complement of supp c filled in and one row and column deleted -- so t(G_c) is a fermionic partition function   [93 points] [exact]
+
+=== (R) a fixed root on the half-box ===
+    k=12: orbit 0 has m=1; on the half-box f_0>0 the root 0 is outside supp c 0 times, and Nseq disagrees 0 times
+    k=11: orbit 1 has m=1; on the half-box f_1>0 the root 1 is outside supp c 0 times, and Nseq disagrees 0 times
+  [ok]   (R) on the half-box f_{j0}>0 of an orbit of odd multiplicity the tail of a_{j0} lies in supp c for every point, so one fixed root serves the whole sweep and t_root(G_c) Loc(G_c) / prod c(a)! is Nseq(c) there   [k = 11, 12] [exact]
+
+=== (S) Nseq is invariant under c -> m-c ===
+    k=12: Nseq(m-c)=Nseq(c) everywhere: True;  2 x (half-box 5) = 10, #DS = 10   ok
+    k=11: Nseq(m-c)=Nseq(c) everywhere: True;  2 x (half-box 432) = 864, #DS = 864   ok
+  [ok]   (S) reverse complementation acts on the box as c -> m-c and fixes Nseq, because the reverse of a balanced digraph has the same number of arborescences; no orbit of odd multiplicity meets f=0, so the half-box f_{j0}>0 carries exactly half of #DS   [k = 11, 12] [exact]
+
+=== (V) the sweep against Bio 8's published #DS ===
+    k=12: fermionic #DS = 10 (Bio 8 10), peak 16 states   [0.0s]   ok
+    k=11: fermionic #DS = 864 (Bio 8 864), peak 560 states   [0.3s]   ok
+    12 of 12 random covers agree with the brute-force sum of Nseq
+  [ok]   (V) the fermionic frontier sweep reproduces Bio 8's #DS from the half-box, with one fixed root and a single division at the end   [k = 11, 12 and 12 random covers] [exact]
+
+=== (A) the arborescence frontier against the brute-force sum ===
+    forced-arc contraction: Nseq agrees with the full determinant on 636 points: True
+    k=12: arborescence #DS = 10 (Bio 8 10); over 4 sub-boxes 10; width 6, peak 5 states   [0.0s]   ok
+    k=11: arborescence #DS = 864 (Bio 8 864); over 4 sub-boxes 864; width 12, peak 239 states   [0.1s]   ok
+    12 of 12 random covers agree with the brute-force sum of Nseq
+  [ok]   (A) the positive arborescence frontier -- pending vertices carry their candidate classes, a vertex picks a class other than its own when its last out-arc is decided -- reproduces Bio 8's #DS, the brute force on random covers, and itself as a sum over sub-boxes   [k = 11, 12 and 12 random covers] [exact]
+
+=== (Q) k = 10: the arborescence frontier on enumerable sub-boxes ===
+    30 orbits pinned: 24 points, 24 connected, sum Nseq = 276452; sweep agrees (peak 55,890)
+    30 orbits pinned: 12 points, 6 connected, sum Nseq = 16344; sweep agrees (peak 244,472)
+    36 orbits pinned: 32 points, 24 connected, sum Nseq = 151398; sweep agrees (peak 103,974)
+    30 orbits pinned: 166 points, 96 connected, sum Nseq = 1092496; sweep agrees (peak 92,722)
+    30 orbits pinned: 58 points, 26 connected, sum Nseq = 2469705; sweep agrees (peak 623,000)
+    [602s]
+  [ok]   (Q) on random sub-boxes of the k = 10 half-box small enough to enumerate, the arborescence frontier (the same order, windows and root as the full run) equals the point-by-point sum of Nseq   [5 sub-boxes] [exact]
+
+=== (X) k = 10: the size of the fermionic frontier ===
+    skipped
+
+=== (K) phiX174 at k = 10: the last blank of Bio 8, Table 2 ===
+    k=10: skipped (--quick)
+
+=== battery summary ===
+  TOTAL 7/7 passed
+  elapsed 605s

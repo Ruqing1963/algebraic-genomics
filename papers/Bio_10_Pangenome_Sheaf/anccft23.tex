@@ -1,0 +1,525 @@
+% The pan-genome sheaf sees nothing: the recombination group of a pan-genome graph and its torsion   (Bio 10 / XXIII)
+% Build: pdflatex anccft23 (x3)
+\documentclass[11pt]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\Rec}{\mathcal{R}}
+\newcommand{\Nerve}{\mathcal{N}}
+\newcommand{\sheaf}{\mathcal{F}}
+\newcommand{\RP}{\mathbb{RP}^2}
+
+\title{\bfseries The pan-genome sheaf sees nothing:\\
+the recombination group of a pan-genome graph, and its torsion}
+\author{Ruqing Chen\\[2pt]
+\normalsize GUT Geoservice Inc., Rivi\`ere-Beaudette, Qu\'ebec J0P 1R0, Canada\\
+\normalsize\texttt{ruqing@hotmail.com}}
+\date{21 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+A pan-genome graph is the pooled de Bruijn multigraph $G$ of strains $H_1,\dots,H_p$ together
+with the strain walks, so the decomposition of the pooled flow into strains, which the
+phasing note had to count, is here given. The natural cellular sheaf on $G$ --- stalk the
+free abelian group on the strains through a vertex, restriction maps the projections --- is
+the direct sum of the constant sheaves on the strain subgraphs $G_i$: its cohomology is
+$\Z^p$ and $\bigoplus_i H^1(G_i)$, and the integer cokernel of its sheaf Laplacian is
+$\bigoplus_i(\Z\oplus\K(|G_i|))$. It contains no pan-genomic information. What does is the
+\emph{recombination group} $\Rec=Z_1(G)/\sum_iZ_1(G_i)$, the circulations of the pooled
+graph modulo those that live within single strains: the cycles that exist only by switching
+strain. The Mayer--Vietoris spectral sequence of the cover $\{G_i\}$ identifies $\Rec$ with the
+first homology of the nerve of intersection components, $C_q=\bigoplus_{|\sigma|=q+1}
+H_0(G_\sigma)$. For two strains $\Rec$ is free of rank $c(G_1\cap G_2)-1$ --- the number of
+shared blocks minus one, which on a repeat-free reference with $b$ bubbles is $b-1$ and on
+$\phi$X174, whose two-copy repeat glues shared blocks together, is smaller. For three or more
+strains $\Rec$ can have torsion: six synthetic strains whose intersection pattern is the
+six-vertex triangulation of the projective plane have $\Rec=\Z/2$, while the octahedron gives
+$0$ and the seven-vertex torus $\Z^2$. A torsion class is a mosaic cycle twice of which, but
+not itself, is a sum of within-strain cycles; no single strain and no pair can see it. Six
+$\phi$X174 isolates from GenBank, strand- and origin-normalised, give $\Rec=\Z^{38}$ with all
+$63$ intersections non-empty and no torsion. Every group is computed twice, by a Smith form of
+the inclusion of the strain cycle lattices and from the nerve, and the two agree in all $28$
+pools. On complete \emph{E.\ coli} chromosomes --- where the cycle lattice is far out of
+reach but the nerve is not --- $\Rec$ is free, and freely so at every prime at once: the
+\v Cech boundary $d_2$ reduces to the identity under $\pm1$ pivots, which certifies that all
+its elementary divisors are $1$. Torsion needs a tight triangulated surface, and a real
+pan-genome nerve, whose strains share their core in tens of thousands of separate blocks, is
+the opposite shape. The certificate holds on every pool from two to eight chromosomes, up to
+$\Rec=\Z^{117\,848}$ on a nerve with $1.7$ million two-cells, and does so even where $d_2$ has
+a large kernel; the rank of $\Rec$ saturates as strains are added, measuring the diversity of
+the set rather than its size.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Keywords.} pan-genome graph, variation graph, cellular sheaf, sheaf
+Laplacian, cycle space, Mayer--Vietoris spectral sequence, nerve, recombination, torsion.
+
+\noindent\textbf{MSC 2020.} 05C20, 05C50, 55N30, 55T99, 92D20.
+
+\section{What was asked, and what is true}
+
+The plan for this volume listed a note on ``cellular sheaves on pan-genome graphs'' and ranked
+it last, with the warning that the sheaf might turn out to be a relabelling of what the
+phasing note already had. This note carries out the construction and reports that the
+warning was right in one direction and wrong in another. The cellular sheaf that a pan-genome
+graph carries naturally is trivial in a precise sense (Proposition~\ref{prop:sheaf}); but
+the question the sheaf was meant to ask --- what does the pooled graph know that no single
+strain knows --- has a clean answer that is not a relabelling of anything, and it comes with
+an integer invariant that can be torsion.
+
+A pan-genome graph is a sequence graph together with the walks of the individual genomes
+through it \cite{GSN18,EPN20}. In the de Bruijn setting of these notes, that is the pooled
+multigraph $G=G_k(H_1{+}\dots{+}H_p)$ of \cite{Bio9} with the decomposition
+$m=\sum_i\spec(H_i)$ \emph{known}. The phasing note counted the decompositions; here there is
+one, and the object of interest is the relation between the strain subgraphs $G_i$ and their
+union. The cellular sheaf $\sheaf$ that records, at each vertex and arc, which strains pass
+through it is the sheaf-theoretic encoding of that relation, and by the spectral theory of
+cellular sheaves \cite{HG19} one would compute its cohomology and its sheaf Laplacian.
+Proposition~\ref{prop:sheaf} says both decompose strain by strain: $\sheaf$ is the direct sum
+of the constant sheaves on the $G_i$, and everything one computes from it is a list of
+per-strain quantities. The sheaf sees no interaction because the projections that define it
+never mix strains.
+
+The interaction lives one step further along. The circulation lattice $Z_1(G)$ of the pooled
+graph contains the circulation lattices $Z_1(G_i)$ of the strains, and the quotient
+\[
+  \Rec(H_1,\dots,H_p;k)=Z_1(G)\Big/\sum_{i=1}^pZ_1(G_i)
+\]
+is the group of cycles of the pan-genome that cannot be assembled from cycles of individual
+genomes --- the cycles a walk can only close by switching from one strain to another at a
+shared $k$-mer, which is to say the recombination cycles. Section~\ref{sec:R} computes it.
+The Mayer--Vietoris spectral sequence of the cover of $G$ by the $G_i$ identifies $\Rec$ with
+the first homology of a small chain complex built from the connected components of the
+intersections $G_{i_0}\cap\dots\cap G_{i_q}$ (Theorem~\ref{thm:mv}). Two consequences
+follow. For two strains, $\Rec$ is free of rank one less than the number of shared blocks
+(Corollary~\ref{cor:two}). For three or more, $\Rec$ can have torsion, and
+Proposition~\ref{prop:rp2} exhibits six strains with $\Rec=\Z/2$. Section~\ref{sec:data}
+verifies all of it, and computes $\Rec$ for six deposited $\phi$X174 genomes.
+
+Throughout, strains are circular sequences over $\{A,C,G,T\}$, $k$ is fixed, and the pooled
+graph is unitig-compacted with the branch criterion of \cite{Bio9} (a $k$-mer is a vertex if
+it has two distinct successors or two distinct predecessors in the pool); a \emph{content}
+is a unitig string, $A$ the set of contents, and $Z_1(G)\subset\Z^A$ the circulation lattice.
+All computations are exact; the script \texttt{pangenome\_sheaf.py} reproduces every number
+below and prints a five-line pass/fail battery.
+
+\section{The pan-genome sheaf}\label{sec:sheaf}
+
+\begin{definition}\label{def:sheaf}
+Let $G_i\subseteq G$ be the subgraph of contents and vertices used by strain $i$, and for a
+vertex or content $x$ let $S(x)=\{i:x\in G_i\}$. The \emph{pan-genome sheaf} $\sheaf$ has
+stalks $\sheaf(x)=\Z^{S(x)}$ and, for a content $a$ with endpoint $v$, the restriction map
+$\sheaf(v)\to\sheaf(a)$ the coordinate projection $\Z^{S(v)}\to\Z^{S(a)}$ (note
+$S(a)\subseteq S(v)$). Its coboundary $\delta\colon\bigoplus_v\sheaf(v)\to\bigoplus_a\sheaf(a)$
+is $(\delta x)_a=x_{\mathrm{head}(a)}|_{S(a)}-x_{\mathrm{tail}(a)}|_{S(a)}$, and its sheaf
+Laplacian is $L_\sheaf=\delta^{\mathsf T}\delta$.
+\end{definition}
+
+\begin{proposition}\label{prop:sheaf}
+$\sheaf\cong\bigoplus_{i=1}^p\Z_{G_i}$, the direct sum of the constant sheaves $\Z$ supported
+on the strain subgraphs. Consequently $H^0(G;\sheaf)\cong\Z^p$,
+$H^1(G;\sheaf)\cong\bigoplus_iH^1(G_i;\Z)$, $L_\sheaf$ is block diagonal with blocks the
+graph Laplacians of the undirected shadows $|G_i|$, and
+\[
+  \coker L_\sheaf\;\cong\;\bigoplus_{i=1}^p\big(\Z\oplus\K(|G_i|)\big),
+\]
+$\K(|G_i|)$ the critical group of the undirected multigraph $|G_i|$.
+\end{proposition}
+
+\begin{proof}
+The coordinate $i$ of every stalk is present exactly on the cells of $G_i$, and the
+restriction maps are the identity on that coordinate wherever both cells carry it and zero
+otherwise; that is the constant sheaf $\Z$ on the subcomplex $G_i$, extended by zero. Direct
+sums of sheaves have direct sums of cochain complexes, so cohomology and Laplacian decompose;
+the cochain complex of $\Z_{G_i}$ is the cellular cochain complex of the graph $G_i$, whose
+$H^0$ is $\Z$ for connected $G_i$ (a strain walk is connected) and whose Laplacian is the
+graph Laplacian of $|G_i|$, with cokernel $\Z\oplus\K(|G_i|)$.
+\end{proof}
+
+Check (F) computes $\coker L_\sheaf$ for a diploid with three substitutions and for three
+strains, obtaining $\Z/38\oplus\Z/38\oplus\Z^2$ and $(\Z/84)^3\oplus\Z^3$ respectively, and
+confirms the block decomposition by a Smith form of the assembled Laplacian. The numbers
+$38$ and $84$ are the critical groups of the strains' own shadows; they would be the same if
+the strains were sequenced separately. There is nothing pan-genomic in the sheaf, and no
+choice of stalk dimensions rescues this as long as the restriction maps are projections: a
+sheaf whose restriction maps never mix coordinates is a direct sum of coordinate sheaves.
+
+\section{The recombination group}\label{sec:R}
+
+\begin{definition}
+$\Rec=Z_1(G)/\sum_iZ_1(G_i)$, where $Z_1(G_i)=Z_1(G)\cap\Z^{A_i}$ is the circulation
+lattice of the subgraph $G_i$. For a subset $\sigma\subseteq\{1,\dots,p\}$ write
+$G_\sigma=\bigcap_{i\in\sigma}G_i$ and let $C_q=\bigoplus_{|\sigma|=q+1}H_0(G_\sigma)$, the
+free abelian group on the connected components of the $(q{+}1)$-fold intersections, with the
+\v Cech differential $\partial(\sigma,c)=\sum_j(-1)^j(\sigma\setminus\sigma_j,\,c')$, $c'$
+the component of $G_{\sigma\setminus\sigma_j}$ containing $c$. We call $(C_\bullet,\partial)$
+the \emph{nerve of components} $\Nerve$.
+\end{definition}
+
+\begin{theorem}\label{thm:mv}
+$\Rec\cong H_1(\Nerve)$.
+\end{theorem}
+
+\begin{proof}
+The subgraphs $G_i$ are subcomplexes covering the one-dimensional CW complex $G$, so the
+Mayer--Vietoris spectral sequence of the cover \cite[VII.4]{Brown} applies:
+$E^1_{q,r}=\bigoplus_{|\sigma|=q+1}H_r(G_\sigma)\Rightarrow H_{q+r}(G)$, with $d^1$ the
+\v Cech differential. Since intersections of graphs are graphs, $H_r(G_\sigma)=0$ for
+$r\ge2$, and the $E^2$ page has two rows, $E^2_{q,0}=H_q(\Nerve)$ and
+$E^2_{q,1}=H_q\big(\bigoplus_\sigma H_1(G_\sigma)\big)$. The only differentials that can
+touch total degree one are $d^2\colon E^2_{2,0}\to E^2_{0,1}$ and the vanishing
+$d^2\colon E^2_{1,0}\to E^2_{-1,1}$, so $E^\infty_{1,0}=E^2_{1,0}=H_1(\Nerve)$ and
+$E^\infty_{0,1}=E^2_{0,1}/d^2(E^2_{2,0})$. The filtration of $H_1(G)$ has $F_0=E^\infty_{0,1}$
+equal to the image of $\bigoplus_iH_1(G_i)\to H_1(G)$ (the edge homomorphism) and
+$H_1(G)/F_0\cong E^\infty_{1,0}$. For a graph $H_1=Z_1$, and the image of
+$\bigoplus_iZ_1(G_i)$ in $Z_1(G)$ is $\sum_iZ_1(G_i)$.
+\end{proof}
+
+\begin{corollary}[Two strains]\label{cor:two}
+For $p=2$ with $G_1,G_2$ connected and $G_1\cap G_2\ne\emptyset$, $\Rec$ is free of rank
+$c(G_1\cap G_2)-1$, the number of connected components of the shared subgraph minus one.
+\end{corollary}
+
+\begin{proof}
+$\Nerve$ has $C_0=\Z^2$, $C_1=\Z^{c(G_{12})}$ and $C_2=0$; $\partial$ sends every component to
+$e_2-e_1$, so $H_1(\Nerve)=\ker\partial$ is the sublattice of coefficient sum zero.
+\end{proof}
+
+On a repeat-free reference with $b$ substitution sites in distinct $(k{+}1)$-windows, the
+shared subgraph is the $b$ stretches between the bubbles and $\Rec\cong\Z^{b-1}$. When the
+reference has a repeat the shared stretches that contain copies of the same repeated $k$-mer
+are joined through it and $c(G_1\cap G_2)$ drops: for $\phi$X174 at $k=12$, whose two
+repeated $12$-mers $a,b$ each occur twice, five substitutions leave three shared components and
+$\Rec=\Z^2$, three substitutions leave two and $\Rec=\Z$ (Table~\ref{tab:two}). A repeat
+inside a strain thus reduces the number of independent recombination cycles between strains:
+the cycle through the repeat is already a within-strain cycle.
+
+\begin{proposition}[Torsion]\label{prop:rp2}
+Let $T$ be a triangulated closed surface with vertex set $\{1,\dots,p\}$, and construct
+strains as follows: a random segment $F_\tau$ for each face $\tau$ and $E_\varepsilon$ for
+each edge $\varepsilon$; strain $i$ reads, for each edge $\varepsilon=ij$ at $i$ with faces
+$\tau,\tau'$, the word $F_\tau E_\varepsilon F_{\tau'}\,S\,F_{\tau'}E_\varepsilon F_\tau\,S'$
+with unique spacers $S,S'$. Then for $k$ larger than any accidental shared $k$-mer the nerve
+of components is the simplicial chain complex of $T$, and $\Rec\cong H_1(T;\Z)$. In
+particular the six-vertex triangulation of the projective plane gives $\Rec=\Z/2$, the
+octahedron gives $0$, and the seven-vertex torus gives $\Z^2$.
+\end{proposition}
+
+\begin{proof}
+$G_i\cap G_j$ for an edge $ij$ consists of $E_{ij}$, the two face segments at $ij$, and the
+four junction arcs between them, which both strains contain because each reads the two
+junction directions; it is connected. For a face $ijk$, $G_i\cap G_j\cap G_k=F_{ijk}$, a
+segment; for a non-face triple and for all larger subsets the intersection is empty, since
+every segment is shared by the vertices of exactly one simplex and every junction arc by
+exactly two strains. So $C_\bullet$ is the chain complex of $T$ and Theorem~\ref{thm:mv}
+applies. $H_1(\RP;\Z)=\Z/2$, $H_1(S^2)=0$, $H_1(T^2)=\Z^2$.
+\end{proof}
+
+The torsion class is concrete. In the projective-plane pool there is a circulation $z$ of the
+pooled graph such that $2z$ is a sum of cycles each lying within a single strain but $z$
+itself is not; $z$ is a mosaic that closes up only by using every strain, and its double
+decomposes. No pair of strains detects it, because for pairs $\Rec$ is free
+(Corollary~\ref{cor:two}); no strain detects it, because within a strain there is nothing to
+detect. It is an invariant of the pan-genome as a whole.
+
+\section{Verification and data}\label{sec:data}
+
+Every group is computed twice: as the cokernel, via Smith normal form, of the matrix whose
+columns are fundamental cycles of the subgraphs $G_i$ expressed in $\Z^A$ (torsion of
+$\Z^A/\sum Z_1(G_i)$ equals that of $\Rec$ because $Z_1(G)$ is saturated in $\Z^A$), and as
+$H_1(\Nerve)$ from the component structure of the intersections. The two agree in every one
+of the $28$ pools, which is check (T) and part of the others.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrrl}
+\toprule
+pool ($k=12$) & $|V|$ & $|A|$ & $\rank Z_1(G)$ & $\rank\sum Z_1(G_i)$ & $c(G_1\cap G_2)$ & $\Rec$\\
+\midrule
+$\phi$X174, 1 substitution          &  4 &  7 & 4 & 4 & 1 & $0$\\
+$\phi$X174, 2 substitutions         &  6 & 10 & 5 & 4 & 2 & $\Z$\\
+$\phi$X174, 3 substitutions         &  8 & 13 & 6 & 5 & 2 & $\Z$\\
+$\phi$X174, 5 substitutions         & 12 & 19 & 8 & 6 & 3 & $\Z^2$\\
+$\phi$X174, sites $600,606$ linked $+1$ & 6 & 10 & 5 & 4 & 2 & $\Z$\\
+repeat-free reference, 2 sites      &  4 &  6 & 3 & 2 & 2 & $\Z$\\
+repeat-free reference, 3 sites      &  6 &  9 & 4 & 2 & 3 & $\Z^2$\\
+repeat-free reference, 4 sites      &  8 & 12 & 5 & 2 & 4 & $\Z^3$\\
+\bottomrule
+\end{tabular}
+\caption{Two strains. $\Rec$ is free of rank $c(G_1\cap G_2)-1$ in every row; on the
+repeat-free reference (a random $3000$-mer) that is the number of bubbles minus one, on
+$\phi$X174 the repeat glues shared stretches and lowers it. Check (B).}
+\label{tab:two}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrrl}
+\toprule
+surface pool ($k=16$) & strains & $|V|$ & $|A|$ & $\rank Z_1(G)$ & $\rank\sum Z_1(G_i)$ & $\Rec=H_1(\Nerve)$\\
+\midrule
+octahedron ($S^2$)               & 6 & 114 & 190 &  77 &  77 & $0$\\
+seven-vertex torus ($T^2$)       & 7 & 186 & 319 & 134 & 132 & $\Z^2$\\
+hemi-icosahedron ($\RP$)         & 6 & 138 & 233 &  96 &  96 & $\Z/2$\\
+\bottomrule
+\end{tabular}
+\caption{Proposition~\ref{prop:rp2}. In each pool the nerve of components is verified to be
+exactly the designed triangulation (one component per simplex, none elsewhere). At $k=12$
+the $\approx10^4$ random $12$-mers of a pool produce accidental shared $k$-mers and spurious
+components; $k=16$ removes them. Check (S).}
+\label{tab:surfaces}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrrrrrr}
+\toprule
+ & accession & \multicolumn{6}{c}{substitutions after normalisation}\\
+\midrule
+1 & LC786485.1 & 0 & 5 & 27 & 26 & 24 & 33\\
+2 & NC\_001422.1 & 5 & 0 & 26 & 25 & 23 & 32\\
+3 & MH378443.1 & 27 & 26 & 0 & 19 & 24 & 48\\
+4 & MH378442.1 & 26 & 25 & 19 & 0 & 22 & 47\\
+5 & MH378441.1 & 24 & 23 & 24 & 22 & 0 & 45\\
+6 & JQ764988.2 & 33 & 32 & 48 & 47 & 45 & 0\\
+\bottomrule
+\end{tabular}
+\caption{Six $\phi$X174 genomes of length $5386$ from GenBank, brought to the strand and
+origin of NC\_001422.1 (one was deposited rotated). Pooled at $k=12$: $|V|=104$, $|A|=158$,
+$\rank Z_1(G)=55$, $\rank\sum Z_1(G_i)=17$, $\Rec=\Z^{38}$, no torsion; all $63$
+intersections are non-empty, with $4$ to $27$ components for pairs and $41$ for the full
+intersection. Check (D).}
+\label{tab:iso}
+\end{table}
+
+\paragraph{The checks.} In \texttt{pangenome\_sheaf.py}: (F) the sheaf Laplacian's cokernel is
+the direct sum of the strains' $\Z\oplus\K(|G_i|)$; (B) two strains, eight pools, $\Rec$ free
+of rank $c(G_1\cap G_2)-1$; (S) the three surface pools, with the designed nerve; (T) twelve
+random three-strain pools from a shared segment library, Smith form and nerve agreeing, no
+torsion; (D) the six isolates. All pass in seven seconds. In \texttt{real\_pangenome.py},
+for Section~\ref{sec:real}: (A) the hashed branch criterion against brute force on random
+$20$\,kbp fragment pools; (V) the $\mathbb F_p$ detector against the three surface pools,
+where it returns the $\Z/2$ of the projective plane; (E) the complete chromosomes of
+Table~\ref{tab:real}.
+
+\section{A real pan-genome}\label{sec:real}
+
+Theorem~\ref{thm:mv} replaces a lattice quotient by the homology of the nerve, and the nerve
+needs only the \emph{connected components} of the shared subgraphs. Components are cheap:
+the recombination group is therefore computable on complete bacterial chromosomes, where
+$\Rec$ itself, as a quotient of a cycle lattice of rank $10^4$ or more, is not. This section
+carries that out.
+
+\paragraph{The pool.} Complete \emph{Escherichia coli} chromosomes were taken from GenBank
+and brought to the strand of K-12 MG1655 by $k$-mer overlap; a circular genome's $k$-mer set
+is rotation invariant, so only the strand has to be fixed. The pooled graph is compacted by
+the criterion of \cite{Bio9}: a $k$-mer is a vertex when it has two distinct successors or
+two distinct predecessors \emph{in the pool}. Branch vertices are found by hashing on the
+pairs (k-mer, next base) and (k-mer, previous base) and then re-tested on the exact strings,
+so a collision can only propose a candidate that the string pass discards; check (A) audits
+the whole criterion against brute force on random $20$\,kbp fragment pools.
+
+\paragraph{A certificate, not a sample.} Torsion is a statement about every prime, and one
+cannot test them all. Two devices avoid having to.
+
+\begin{proposition}[freeness certificate]\label{prop:cert}
+Suppose the \v Cech boundary $d_2\colon C_2\to C_1$ can be reduced by integer elimination in
+which every pivot is $\pm1$. Then all its elementary divisors are $1$, $\im d_2$ is a direct
+summand of $C_1$, and $\Rec=\ker d_1/\im d_2$ is free.
+\end{proposition}
+
+\begin{proof}
+A $\pm1$ pivot is a unimodular row and column operation, so a complete reduction exhibits
+$d_2$ as $\binom{I}{0}$ up to unimodular change of basis; its elementary divisors are all
+$1$ and $C_1/\im d_2$ is free. A finitely generated submodule of a finitely generated free
+$\Z$-module is free, and $\Rec=\ker d_1/\im d_2\subseteq C_1/\im d_2$.
+\end{proof}
+
+\begin{remark}[a torsion detector without a Smith form]\label{rem:detector}
+When the reduction does not complete, the prime-by-prime test is still cheap. $H_0(\Nerve)$
+is free, so the universal coefficient theorem gives
+$\dim_{\mathbb F_p}H_1(\Nerve;\mathbb F_p)=\rank\Rec+t_p(\Rec)$ with $t_p$ the $p$-torsion
+rank: any excess of the $\mathbb F_p$ dimension over the rational rank is $p$-torsion, and
+both are ranks of sparse matrices. Check (V) runs this detector on the three surface pools of
+Table~\ref{tab:surfaces}, where the answer is known exactly, and it does return the $\Z/2$ of
+the projective plane --- so a null result on real data is a result and not a blind spot.
+\end{remark}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrrll}
+\toprule
+strains ($k=31$) & branch vtx & contents & $C_1$ & $C_2$ & $\rank d_2$ & $\Rec$ & certified\\
+\midrule
+MG1655, DH10B & 1\,509 & 2\,343 & 86 & 0 & 0 & $\Z^{85}$ & yes\\
+$+$ O157:H7 Sakai & 63\,245 & 95\,168 & 58\,454 & 28\,820 & 28\,820 & $\Z^{29\,632}$ & yes\\
+$+$ CFT073 & 137\,375 & 207\,028 & 166\,011 & 134\,401 & 99\,561 & $\Z^{66\,447}$ & yes\\
+$+$ IAI39 & 180\,256 & 271\,937 & 260\,369 & 277\,947 & 172\,507 & $\Z^{87\,858}$ & yes\\
+$+$ S88 & 214\,033 & 323\,073 & 409\,007 & 588\,230 & 304\,507 & $\Z^{104\,495}$ & yes\\
+$+$ 536 & 237\,525 & 358\,660 & 575\,831 & 1\,053\,725 & 459\,769 & $\Z^{116\,056}$ & yes\\
+$+$ UTI89 & 241\,592 & 364\,819 & 744\,598 & 1\,683\,865 & 626\,743 & $\Z^{117\,848}$ & yes\\
+\bottomrule
+\end{tabular}
+\caption{The recombination group of eight complete \emph{E.\ coli} chromosomes, about
+$40$\,Mbp, each row adding one strain to the one above. In every row the unit-pivot reduction
+of $d_2$ completes, so by Proposition~\ref{prop:cert} $\Rec$ is free at every prime, and the
+rank, being $\dim C_1-\rank d_1-\rank d_2$ with both ranks computed by unimodular integer
+elimination, is exact. The two K-12 strains share $86$ blocks and give $\rank\Rec=86-1$,
+which is Corollary~\ref{cor:two} on real data. From the fourth strain on $d_2$ is far from
+injective --- at eight strains $626\,743$ of $1\,683\,865$ --- which costs the certificate
+nothing: a kernel makes columns vanish during the reduction, it does not stop the surviving
+pivots being units. Check (E).}
+\label{tab:real}
+\end{table}
+
+\paragraph{The answer.} $\Rec$ is free, with a certificate, on every pool from two to eight
+complete chromosomes (Table~\ref{tab:real}). This settles the first open question of an
+earlier version of this note for those strains, and the reason is visible in the same table. A
+torsion class needs a tight two-dimensional cycle: the projective-plane pool of
+Proposition~\ref{prop:rp2} has exactly one component per simplex, so its nerve \emph{is} a
+triangulated surface. A real pan-genome nerve is the opposite shape. Each pair of divergent
+strains shares its core genome in tens of thousands of blocks --- $86$ for two K-12 strains,
+$28\,817$ and $29\,551$ for K-12 against O157:H7 --- and each triple intersection is more
+fragmented still, so the nerve is wide and sparse, every elementary divisor of $d_2$ is $1$,
+and $H_1$ is a large free group. The synthetic construction of
+Section~\ref{sec:R} was necessary precisely because real data does not produce that shape,
+and the honest reading of Proposition~\ref{prop:rp2} is that torsion is realisable in
+principle rather than observed in \emph{E.\ coli}.
+
+\paragraph{The rank saturates.} One thing in Table~\ref{tab:real} is not about torsion. The
+successive increments of $\rank\Rec$ are $29\,547$, $36\,815$, $21\,411$, $16\,637$,
+$11\,561$, $1\,792$: after the third strain each new chromosome contributes less than the
+one before, and the eighth contributes an order of magnitude less than the fourth, on a
+nerve whose two-cells meanwhile grew to $1.7$ million. The pooled graph agrees --- the last
+strain adds $4\,067$ branch vertices where the fifth added $42\,881$. The ordering is not
+neutral: the last four additions (CFT073, S88, 536, UTI89, with IAI39 between them) are
+extraintestinal pathogenic strains, so each arrives with most of its mosaic structure
+already represented, and the two K-12 strains at the top are a pair, not a sample. Read as
+an observation on these eight genomes rather than a law, it says that $\rank\Rec$ is a
+measure of the \emph{diversity} of a strain set and not of its size, which is what a count
+of independent strain-switching cycles ought to be.
+
+\begin{remark}[a failed certificate is a statement about the elimination]\label{rem:order}
+Proposition~\ref{prop:cert} is one-sided: it certifies freeness when the reduction completes
+and says nothing when it does not, because $d_2$ may have all its elementary divisors equal
+to one with no $\pm1$ pivot surviving to the end of one particular elimination. That is not a
+theoretical caveat. An earlier version of this computation chose each pivot by scanning the
+$64$ shortest live columns, and stalled at four strains with $70\,374$ columns left and at
+five with $190\,814$, from which we could conclude only --- via
+Remark~\ref{rem:detector} --- that there is no $2$- and no $3$-torsion. Taking instead the
+globally shortest column, and within it the row meeting fewest columns, produces less fill-in,
+the entries never leave $\{0,\pm1\}$, and every column is eliminated: those two rows of
+Table~\ref{tab:real} became certificates, and the three below them became feasible at all.
+The ranks $99\,561$ and $172\,507$ are the same
+under both orderings, which is what says the two runs compute the same map. Two consequences
+for the arithmetic. Because the unit-pivot phase is a unimodular column reduction over $\Z$ it
+is valid modulo every prime with its pivots still units, so when it \emph{does} stall,
+$\rank_{\mathbb F_p}d_2$ is the number of pivots plus the rank of the residual block alone;
+and the ordering is worth more than the arithmetic, the five-strain reduction taking $4$
+seconds where the scan took $14\,080$.
+\end{remark}
+
+\paragraph{What the single-strand convention costs here.} Of the eight strains, IAI39
+matched the reference on $2331$ of its sampled $31$-mers forward against $1234$ reverse,
+where every other strain ran between $6835$ against $234$ and $2970$ against $109$. That is a
+large inversion, and to the
+single-strand pooled graph an inverted segment is strain-specific sequence: real homology is
+lost and the nerve is cut into more components than it should be. The rank of $\Rec$ reported
+here is therefore an overcount for divergent strains, in a way a bidirected pooled graph
+would repair. The freeness is not affected, being a statement about the shape of the nerve.
+
+\section{Scope, provenance, and what is open}
+
+\paragraph{Scope.} Proposition~\ref{prop:sheaf}, Theorem~\ref{thm:mv},
+Corollary~\ref{cor:two} and Proposition~\ref{prop:cert} hold for arbitrary strains;
+Proposition~\ref{prop:rp2} is a construction; Section~\ref{sec:real} is a computation on
+named genomes and claims nothing beyond them.
+The pooled graph is single-stranded, as in \cite{Bio9}; the reverse-complement
+version would pool $D_k$'s and is not attempted. ``Recombination'' is used in the graph sense
+--- a cycle that switches strain --- and no claim is made about the biological mechanism that
+produced any particular mosaic.
+
+\paragraph{Provenance.} Cellular sheaves on graphs and their Laplacians are \cite{HG19};
+pan-genome and variation graphs are \cite{GSN18,EPN20}, and the bubble/snarl decomposition of
+such graphs, which is the combinatorial shadow of the components of pairwise intersections,
+is \cite{PNE18}. The Mayer--Vietoris spectral sequence for a cover by subcomplexes is
+standard, e.g.\ \cite[VII.4]{Brown}; Theorem~\ref{thm:mv} is its two-row case read off for
+graphs. We are not aware of prior work defining the quotient $Z_1(G)/\sum Z_1(G_i)$ for a
+pan-genome graph or observing that it can have torsion; a targeted search found none.
+
+\paragraph{Open.} \emph{First}, torsion in a real pan-genome. Section~\ref{sec:real} answers
+this for the \emph{E.\ coli} chromosomes pooled there --- $\Rec$ is free, with a certificate
+--- and explains why: the nerve of a real pan-genome is wide and sparse, nothing like the
+triangulated surface a torsion class needs. What is open is whether any real pan-genome has
+one. A plausible place to look is a set of strains whose shared blocks are \emph{few and
+large}, so that the nerve is small enough to close up: closely related strains with a
+handful of recombination breakpoints, rather than the divergent ones used here. \emph{Second},
+the relation of $H_1(\Nerve)$ to the snarl tree of \cite{PNE18}, which organises the pairwise
+components hierarchically. \emph{Third}, a bidirected pooled graph, so that an inversion is
+homology rather than strain-specific sequence; by the last paragraph of Section~\ref{sec:real}
+this changes the rank of $\Rec$ for divergent strains, and Bio~7's anti-automorphism theorem
+says the repair cannot be a quotient by the strand involution. \emph{Fourth}, a sheaf that
+does see interaction: the restriction maps would
+have to mix strains, and the natural candidate is the sheaf of local decompositions of the
+pooled flow, whose stalk at a bubble is the homogeneous space of \cite{Bio9}; it is not a
+sheaf of abelian groups.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bio9} R.~Chen, \emph{Polyploid phasing as a $p$-fold decomposition of a balanced
+flow, and the homogeneous space of alleles}, companion note (Bio 9, XXII), September 2026.
+
+\bibitem{Brown} K.~S.~Brown, \emph{Cohomology of Groups}, Graduate Texts in Mathematics
+\textbf{87}, Springer, 1982.
+
+\bibitem{EPN20} J.~M.~Eizenga, A.~M.~Novak, J.~A.~Sibbesen, S.~Heumos, A.~Ghaffaari,
+G.~Hickey, X.~Chang, J.~D.~Seaman, R.~Rounthwaite, J.~Ebler, M.~Rautiainen, S.~Garg,
+B.~Paten, T.~Marschall, J.~Sir\'en and E.~Garrison,
+\emph{Pangenome graphs},
+Annu.\ Rev.\ Genomics Hum.\ Genet.\ \textbf{21} (2020), 139--162.
+
+\bibitem{GSN18} E.~Garrison, J.~Sir\'en, A.~M.~Novak, G.~Hickey, J.~M.~Eizenga, E.~T.~Dawson,
+W.~Jones, S.~Garg, C.~Markello, M.~F.~Lin, B.~Paten and R.~Durbin,
+\emph{Variation graph toolkit improves read mapping by representing genetic variation in the
+reference}, Nature Biotechnology \textbf{36} (2018), 875--879.
+
+\bibitem{HG19} J.~Hansen and R.~Ghrist,
+\emph{Toward a spectral theory of cellular sheaves},
+J. Appl.\ Comput.\ Topol.\ \textbf{3} (2019), 315--358.
+
+\bibitem{PNE18} B.~Paten, A.~M.~Novak, J.~M.~Eizenga and E.~Garrison,
+\emph{Superbubbles, ultrabubbles, and cacti},
+J. Comput.\ Biol.\ \textbf{25} (2018), no.~7, 649--663.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,99 @@
+﻿=== double-stranded reconstructions of phiX174 as a lattice sum ===
+    genome 5386 bp circular
+
+=== (D) the double cover with labelled arcs; (L) rank of Lambda^- ===
+      k   |V|  fixV   |A_c|  fixA   sum m   b0   rank Z_1   rank Lambda^-   (|A_c|-|V|+2-fixA-fixV)/2
+     13     0     0       0     0       0    -          -               0                          -     (no repeated k-mer on either strand: D_k is the two disjoint cycles S, Sbar)
+     12     7     1      14     0      14    1          8               4                          4.0     ok
+     11    30     0      53     1      60    1         24              12                         12.0     ok
+     10   125     3     222     0     252    1         98              48                         48.0     ok
+      9   396     0     685     3     812    1        290             144                        144.0     ok
+  [ok]   (D) D_k with labelled arcs is balanced; rho is a free involution on labelled arcs with rc contents; m(rho a) = m(a); rho-fixed contents have even multiplicity   [k = 9..12] [exact]
+  [ok]   (L) rank Lambda^- = (|A_c| - |V| + 2 - #fixA - #fixV)/2, the Hopf trace of the arc-reversing involution -- not the number of inverted repeats   [k = 9..12] [exact]
+
+    the k-mers shared by the two strands (what glues D_k):
+      k=12: 1 inverted-repeat pair(s), 1 palindrome(s); rank Lambda^- = 4
+         AATGAGCTTAAT at [1448]   /   ATTAAGCTCATT at [441]
+         TGGAGGCCTCCA = its own reverse complement, at [4483]
+      k=11: 5 inverted-repeat pair(s), 0 palindrome(s); rank Lambda^- = 12
+         AATGAGCTTAA at [1448]   /   TTAAGCTCATT at [442]
+         ACGGAAAACAT at [699]   /   ATGTTTTCCGT at [1998]
+         ATGAGCTTAAT at [1449]   /   ATTAAGCTCAT at [441]
+         CATTGCATTCA at [2566]   /   TGAATGCAATG at [4534]
+         GGAGGCCTCCA at [4484]   /   TGGAGGCCTCC at [4483]
+
+=== k = 12: the box  Lambda^- cap {|f| <= m, f == m mod 2} ===
+    10 box points   [0.0s]
+    every point: c >= 0, balanced, c + rho c = m   [0.0s]
+    connected support (N_seq > 0): 8 of 10 points
+    #DS = sum_f N_seq(c_f) = 10      un-normalised sum_f t(c_f) prod(d+-1)! = 10
+  [ok]   (B) k=12: all 10 box points give c >= 0, balanced, c + rho c = m   [10 points] [exact]
+    spectrum of S   : t = 2 = |K(G_12)| = 2;  labelled count 2 = |K| Loc = 2;  N_seq = 2 = 2/1   ok
+    spectrum of Sbar: t = 2 = |K(G_12)| = 2;  labelled count 2 = |K| Loc = 2;  N_seq = 2 = 2/1   ok
+  [ok]   (S) k=12: the spectra of S and Sbar are box points and the lattice formula there returns the published single-strand count |K(G_12)| Loc / prod m!   [2 points] [exact]
+    the connected points (spectrum classes), by N_seq:
+      N_seq =        2   = spec(S)
+      N_seq =        2   = spec(Sbar)
+      N_seq =        1   drops S[264..452][1448..2771]  takes rc(S[264..452][1448..2771])
+      N_seq =        1   drops S[264..452][1448..2771][2760..3216][3205..4494][4483..5661]  takes rc(S[264..452][1448..2771][2760..3216][3205..4494][4483..5661])
+      N_seq =        1   drops S[457..1459][1448..2771][2760..3216]  takes rc(S[457..1459][1448..2771][2760..3216])
+      N_seq =        1   drops S[264..452][441..468][3205..4494][4483..5661]  takes rc(S[264..452][441..468][3205..4494][4483..5661])
+      N_seq =        1   drops S[441..468][457..1459]  takes rc(S[441..468][457..1459])
+      N_seq =        1   drops S[441..468][457..1459][2760..3216][3205..4494][4483..5661]  takes rc(S[441..468][457..1459][2760..3216][3205..4494][4483..5661])
+    N_seq histogram over the connected points: 2x2, 1x6
+
+=== k = 11: the box  Lambda^- cap {|f| <= m, f == m mod 2} ===
+    528 box points   [0.1s]
+    every point: c >= 0, balanced, c + rho c = m   [0.4s]
+    connected support (N_seq > 0): 218 of 528 points
+    #DS = sum_f N_seq(c_f) = 864      un-normalised sum_f t(c_f) prod(d+-1)! = 2756
+  [ok]   (B) k=11: all 528 box points give c >= 0, balanced, c + rho c = m   [528 points] [exact]
+    spectrum of S   : t = 132 = |K(G_11)| = 132;  labelled count 132 = |K| Loc = 132;  N_seq = 33 = 132/4   ok
+    spectrum of Sbar: t = 132 = |K(G_11)| = 132;  labelled count 132 = |K| Loc = 132;  N_seq = 33 = 132/4   ok
+  [ok]   (S) k=11: the spectra of S and Sbar are box points and the lattice formula there returns the published single-strand count |K(G_11)| Loc / prod m!   [2 points] [exact]
+    the connected points (spectrum classes), by N_seq:
+      N_seq =       33   = spec(S)
+      N_seq =       33   = spec(Sbar)
+      N_seq =       18   drops 21 segment(s) of S in 18..5414, takes 21 of Sbar
+      N_seq =       18   drops 5 segment(s) of S in 442..1458, takes 5 of Sbar
+      N_seq =       16   drops 5 segment(s) of S in 699..2008, takes 5 of Sbar
+      N_seq =       16   drops 22 segment(s) of S in 18..5414, takes 22 of Sbar
+      N_seq =       15   drops 21 segment(s) of S in 264..5414, takes 21 of Sbar
+      N_seq =       15   drops 8 segment(s) of S in 264..3224, takes 8 of Sbar
+      N_seq =       15   drops 21 segment(s) of S in 18..5414, takes 21 of Sbar
+      N_seq =       15   drops 8 segment(s) of S in 18..807, takes 8 of Sbar
+      N_seq =       11   drops 16 segment(s) of S in 18..5414, takes 16 of Sbar
+      N_seq =       11   drops 11 segment(s) of S in 797..5414, takes 11 of Sbar
+      N_seq =       11   drops 13 segment(s) of S in 797..5414, takes 13 of Sbar
+      N_seq =       11   drops 14 segment(s) of S in 18..3224, takes 14 of Sbar
+      ... 204 more
+    N_seq histogram over the connected points: 33x2, 18x2, 16x2, 15x4, 11x6, 10x2, 9x6, 6x22, 5x20, 4x6, 3x36, 2x56, 1x54
+
+=== (E) k = 12: brute force over closed walks with usage + rho usage = m ===
+    90 search nodes, 8 spectra found, 10 reconstructions   [0s]
+    all bucket weights integral: True
+    spectra found == lattice points with N_seq > 0: True   (8 vs 8)
+    every bucket count == N_seq(c_f): True
+    brute-force total 10  vs  lattice sum 10  vs  un-normalised sum 10
+  [ok]   (E) k=12: the brute-force enumeration of double-stranded reconstructions returns exactly the lattice points with connected support, with the same count at every point   [8 spectra, 10 reconstructions] [exact]
+
+=== (E) k = 11: brute force over closed walks with usage + rho usage = m ===
+    45061 search nodes, 218 spectra found, 864 reconstructions   [0s]
+    all bucket weights integral: True
+    spectra found == lattice points with N_seq > 0: True   (218 vs 218)
+    every bucket count == N_seq(c_f): True
+    brute-force total 864  vs  lattice sum 864  vs  un-normalised sum 2756
+  [ok]   (E) k=11: the brute-force enumeration of double-stranded reconstructions returns exactly the lattice points with connected support, with the same count at every point   [218 spectra, 864 reconstructions] [exact]
+  [ok]   (N) k=11 has contents of multiplicity >= 2, and there the un-normalised BEST sum over the lattice is NOT the reconstruction count; the per-sequence sum is   [1 value of k] [exact]
+
+=== the comparison: what the blind double-cover group counts, and what is true ===
+      k   |K(D_k)|     ec(D_k) = |K| Loc(D_k)    single-strand N_seq(S)+N_seq(Sbar)   box pts   connected   #DS (lattice)   #DS (brute)
+     12          33                       33                                  4        10           8              10            10
+     11    25318912                 25318912                                 66       528         218             864           864
+     10   3.420e+35                1.368e+36                         8610708632         -           -               -             -
+    (ec(D_k) counts Eulerian circuits of the double cover -- one walk through both strands;
+     #DS counts circular sequences T with spec(T) + spec(Tbar) = spec(S) + spec(Sbar).)
+
+=== battery summary ===
+  TOTAL 9/9 passed
+  elapsed 2s

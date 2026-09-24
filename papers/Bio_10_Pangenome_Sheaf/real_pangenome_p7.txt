@@ -1,0 +1,47 @@
+=== the recombination group of a real Escherichia coli pan-genome ===
+    strains 7, k = 31, primes (2, 3), python 3.12.4, numpy 1.26.4
+
+    NC_000913.3    K-12 MG1655      4,641,652 bp   strand as deposited   (fwd 6835 / rev 234 sampled 31-mers shared with the reference)
+    NC_010473.1    K-12 DH10B       4,686,137 bp   strand as deposited   (fwd 6842 / rev 335 sampled 31-mers shared with the reference)
+    NC_002695.2    O157:H7 Sakai    5,498,578 bp   strand as deposited   (fwd 4054 / rev 119 sampled 31-mers shared with the reference)
+    NC_004431.1    CFT073           5,231,428 bp   strand as deposited   (fwd 3013 / rev 118 sampled 31-mers shared with the reference)
+    NC_011750.1    IAI39            5,132,068 bp   strand as deposited   (fwd 2331 / rev 1234 sampled 31-mers shared with the reference)
+    NC_011742.1    S88              5,032,268 bp   strand as deposited   (fwd 3121 / rev 127 sampled 31-mers shared with the reference)
+    NC_008253.1    536              4,938,920 bp   strand as deposited   (fwd 2970 / rev 109 sampled 31-mers shared with the reference)
+
+=== k = 31 ===
+    branch vertices of the pooled graph: 237,525   [94s]
+    contents (unitigs): 358,660   [9s]
+    core (in all 7 strains): 44,329 vertices, 22,266 contents; strain-specific contents: 91,644
+      nerve cells: q=0: 7, q=1: 575,831, q=2: 1,053,725
+        unit-pivot: 20,000 / 1,053,725 columns   [0s, 78,167/s]
+        unit-pivot: 40,000 / 1,053,725 columns   [0s, 84,033/s]
+        unit-pivot: 60,000 / 1,053,725 columns   [1s, 89,167/s]
+        unit-pivot: 80,000 / 1,053,725 columns   [1s, 89,646/s]
+        unit-pivot: 100,000 / 1,053,725 columns   [1s, 90,997/s]
+        unit-pivot: 120,000 / 1,053,725 columns   [1s, 92,147/s]
+        unit-pivot: 140,000 / 1,053,725 columns   [2s, 92,962/s]
+        unit-pivot: 160,000 / 1,053,725 columns   [2s, 93,451/s]
+        unit-pivot: 180,000 / 1,053,725 columns   [2s, 91,832/s]
+        unit-pivot: 200,000 / 1,053,725 columns   [2s, 90,310/s]
+        unit-pivot: 220,000 / 1,053,725 columns   [2s, 88,836/s]
+        unit-pivot: 240,000 / 1,053,725 columns   [3s, 87,891/s]
+        unit-pivot: 260,000 / 1,053,725 columns   [3s, 87,013/s]
+        unit-pivot: 280,000 / 1,053,725 columns   [3s, 86,348/s]
+        unit-pivot: 300,000 / 1,053,725 columns   [4s, 84,243/s]
+        unit-pivot: 320,000 / 1,053,725 columns   [4s, 81,689/s]
+        unit-pivot: 340,000 / 1,053,725 columns   [4s, 79,588/s]
+        unit-pivot: 360,000 / 1,053,725 columns   [5s, 77,866/s]
+        unit-pivot: 380,000 / 1,053,725 columns   [5s, 76,282/s]
+        unit-pivot: 400,000 / 1,053,725 columns   [6s, 72,503/s]
+        unit-pivot: 420,000 / 1,053,725 columns   [7s, 57,130/s]
+        unit-pivot: 440,000 / 1,053,725 columns   [8s, 54,862/s]
+      reduction cached in nerve_p7_k31.pkl
+      rank d_1 = 6, rank d_2 = 459,769 of 1,053,725 columns; unit-pivot reduction COMPLETE   [16s]
+    R = H_1(nerve): R is FREE of rank 116,056 -- certified, every elementary divisor of d_2 is 1   [33s]
+    intersection components: singletons [1, 1, 1, 1, 1, 1, 1], pairs min/median/max 86/28817/36483, triples max 36517
+  [ok]   (E31) k=31: the recombination group of 7 complete E. coli chromosomes is free of rank 116,056, certified by a unit-pivot reduction of d_2   [7 strains] [exact]
+
+=== summary ===
+  1/1 passed
+  elapsed 140s

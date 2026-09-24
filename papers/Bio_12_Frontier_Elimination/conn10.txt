@@ -1,0 +1,13 @@
+﻿        orbit 1/111: frontier 2, states 1   [0s]
+        orbit 11/111: frontier 12, states 48   [0s]
+        orbit 21/111: frontier 20, states 1,776   [0s]
+        orbit 31/111: frontier 24, states 20,592   [3s]
+        orbit 41/111: frontier 24, states 72,270   [15s]
+        orbit 51/111: frontier 26, states 741,444   [105s]
+        orbit 61/111: frontier 24, states 1,575,818   [426s]
+        orbit 71/111: frontier 24, states 4,923,160   [1176s]
+        orbit 81/111: frontier 22, states 2,796,778   [2870s]
+        orbit 91/111: frontier 20, states 2,724,594   [4157s]
+        orbit 101/111: frontier 10, states 26,230   [4662s]
+        orbit 111/111: frontier 0, states 1   [4663s]
+k=10 connected = 909103210  peak 9749212  4663s

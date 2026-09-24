@@ -1,0 +1,69 @@
+=== Bio 19: #DS is #P-hard -- undirected Eulerian circuits inside genomes ===
+    python 3.12.4
+
+=== (E) sum over Eulerian orientations of ec(O) = 2 eps(G) ===
+    4-regular         n=3 |E|= 6: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    4-regular         n=3 |E|= 6: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    4-regular         n=3 |E|= 6: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    4-regular         n=4 |E|= 8: eps(G) =     44, Eulerian orientations    16, sum ec =      88   ok
+    4-regular         n=4 |E|= 8: eps(G) =     44, Eulerian orientations    16, sum ec =      88   ok
+    4-regular         n=4 |E|= 8: eps(G) =     44, Eulerian orientations    16, sum ec =      88   ok
+    4-regular         n=5 |E|=10: eps(G) =     96, Eulerian orientations    30, sum ec =     192   ok
+    4-regular         n=5 |E|=10: eps(G) =    112, Eulerian orientations    28, sum ec =     224   ok
+    4-regular         n=5 |E|=10: eps(G) =    112, Eulerian orientations    28, sum ec =     224   ok
+    4-regular         n=6 |E|=12: eps(G) =    328, Eulerian orientations    42, sum ec =     656   ok
+    4-regular         n=6 |E|=12: eps(G) =    328, Eulerian orientations    42, sum ec =     656   ok
+    4-regular         n=6 |E|=12: eps(G) =    328, Eulerian orientations    42, sum ec =     656   ok
+    4-regular simple  n=5 |E|=10: eps(G) =    132, Eulerian orientations    24, sum ec =     264   ok
+    4-regular simple  n=6 |E|=12: eps(G) =    372, Eulerian orientations    38, sum ec =     744   ok
+    4-regular simple  n=7 |E|=14: eps(G) =   1052, Eulerian orientations    60, sum ec =    2104   ok
+    Eulerian          n=6 |E|=10: eps(G) =     36, Eulerian orientations    18, sum ec =      72   ok
+    Eulerian          n=6 |E|= 9: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    Eulerian          n=4 |E|= 8: eps(G) =     40, Eulerian orientations    18, sum ec =      80   ok
+    Eulerian          n=5 |E|= 9: eps(G) =     40, Eulerian orientations    18, sum ec =      80   ok
+    Eulerian          n=6 |E|= 9: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    Eulerian          n=5 |E|= 8: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    Eulerian          n=3 |E|= 6: eps(G) =     16, Eulerian orientations    10, sum ec =      32   ok
+    Eulerian          n=4 |E|= 6: eps(G) =      6, Eulerian orientations     6, sum ec =      12   ok
+  [ok]   (E) summing BEST's ec over the Eulerian orientations of G counts each undirected Eulerian circuit twice (once per direction of traversal)
+
+=== (R) realization, (D) #DS by Bio 8's lattice sum, (K) closure under Bio 17's moves ===
+    4-regular         n=3 |E|= 6: |S| =  180 bp, k = 12, D_k: 3 palindromic vertices, 6 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    4-regular         n=3 |E|= 6: |S| =  180 bp, k = 12, D_k: 3 palindromic vertices, 6 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    4-regular         n=3 |E|= 6: |S| =  180 bp, k = 12, D_k: 3 palindromic vertices, 6 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    4-regular         n=4 |E|= 8: |S| =  240 bp, k = 12, D_k: 4 palindromic vertices, 8 orbits (m = 1); box points    16 (= 16), #DS =      88 (= 2 x 44); closure      88   [0.0s]
+    4-regular         n=4 |E|= 8: |S| =  240 bp, k = 12, D_k: 4 palindromic vertices, 8 orbits (m = 1); box points    16 (= 16), #DS =      88 (= 2 x 44); closure      88   [0.0s]
+    4-regular         n=4 |E|= 8: |S| =  240 bp, k = 12, D_k: 4 palindromic vertices, 8 orbits (m = 1); box points    16 (= 16), #DS =      88 (= 2 x 44); closure      88   [0.0s]
+    4-regular         n=5 |E|=10: |S| =  300 bp, k = 12, D_k: 5 palindromic vertices, 10 orbits (m = 1); box points    30 (= 30), #DS =     192 (= 2 x 96); closure     192   [0.0s]
+    4-regular         n=5 |E|=10: |S| =  300 bp, k = 12, D_k: 5 palindromic vertices, 10 orbits (m = 1); box points    28 (= 28), #DS =     224 (= 2 x 112); closure     224   [0.0s]
+    4-regular         n=5 |E|=10: |S| =  300 bp, k = 12, D_k: 5 palindromic vertices, 10 orbits (m = 1); box points    28 (= 28), #DS =     224 (= 2 x 112); closure     224   [0.0s]
+    4-regular         n=6 |E|=12: |S| =  360 bp, k = 12, D_k: 6 palindromic vertices, 12 orbits (m = 1); box points    42 (= 42), #DS =     656 (= 2 x 328); closure     656   [0.0s]
+    4-regular         n=6 |E|=12: |S| =  360 bp, k = 12, D_k: 6 palindromic vertices, 12 orbits (m = 1); box points    42 (= 42), #DS =     656 (= 2 x 328); closure     656   [0.1s]
+    4-regular         n=6 |E|=12: |S| =  360 bp, k = 12, D_k: 6 palindromic vertices, 12 orbits (m = 1); box points    42 (= 42), #DS =     656 (= 2 x 328); closure     656   [0.1s]
+    4-regular simple  n=5 |E|=10: |S| =  300 bp, k = 12, D_k: 5 palindromic vertices, 10 orbits (m = 1); box points    24 (= 24), #DS =     264 (= 2 x 132); closure     264   [0.0s]
+    4-regular simple  n=6 |E|=12: |S| =  360 bp, k = 12, D_k: 6 palindromic vertices, 12 orbits (m = 1); box points    38 (= 38), #DS =     744 (= 2 x 372); closure     744   [0.0s]
+    4-regular simple  n=7 |E|=14: |S| =  420 bp, k = 12, D_k: 7 palindromic vertices, 14 orbits (m = 1); box points    60 (= 60), #DS =    2104 (= 2 x 1052); closure    2104   [0.2s]
+    Eulerian          n=6 |E|=10: |S| =  300 bp, k = 12, D_k: 6 palindromic vertices, 10 orbits (m = 1); box points    18 (= 18), #DS =      72 (= 2 x 36); closure      72   [0.0s]
+    Eulerian          n=6 |E|= 9: |S| =  270 bp, k = 12, D_k: 6 palindromic vertices, 9 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    Eulerian          n=4 |E|= 8: |S| =  240 bp, k = 12, D_k: 4 palindromic vertices, 8 orbits (m = 1); box points    18 (= 18), #DS =      80 (= 2 x 40); closure      80   [0.0s]
+    Eulerian          n=5 |E|= 9: |S| =  270 bp, k = 12, D_k: 5 palindromic vertices, 9 orbits (m = 1); box points    18 (= 18), #DS =      80 (= 2 x 40); closure      80   [0.0s]
+    Eulerian          n=6 |E|= 9: |S| =  270 bp, k = 12, D_k: 6 palindromic vertices, 9 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    Eulerian          n=5 |E|= 8: |S| =  240 bp, k = 12, D_k: 5 palindromic vertices, 8 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    Eulerian          n=3 |E|= 6: |S| =  180 bp, k = 12, D_k: 3 palindromic vertices, 6 orbits (m = 1); box points    10 (= 10), #DS =      32 (= 2 x 16); closure      32   [0.0s]
+    Eulerian          n=4 |E|= 6: |S| =  180 bp, k = 12, D_k: 4 palindromic vertices, 6 orbits (m = 1); box points     6 (= 6), #DS =      12 (= 2 x 6); closure      12   [0.0s]
+  [ok]   (R) from every test graph G a circular sequence S is built whose double cover D_k(S) has exactly the palindromic words P_x as vertices, one orbit of multiplicity 1 per edge, no self-complementary content, and quotient G
+  [ok]   (D) #DS(S,k) computed by Bio 8's lattice sum equals 2 eps(G), and the box points of Bio 12 are exactly the Eulerian orientations of G
+  [ok]   (K) the closure of S under inversions at (palindromic) inverted repeats and reverse complementation is all of DS(S,k): Bio 17's conjecture holds on this class, by Kotzig's theorem
+
+=== (S) the reduction is linear, the count is exponential ===
+      n  |E|   |S| (bp)   Eulerian orientations         #DS = 2 eps(G)     [s]
+      4    8       240                      18                       80     0.0
+      5   10       300                      24                      264     0.0
+      6   12       360                      38                      744     0.0
+      7   14       420                      60                     2112     0.0
+      8   16       480                      94                     6008     0.0
+  [ok]   (S) |S| = |E(G)| (k + |Sigma|) grows linearly with the graph
+
+=== battery summary ===
+  TOTAL 5/5 passed
+  elapsed 1s

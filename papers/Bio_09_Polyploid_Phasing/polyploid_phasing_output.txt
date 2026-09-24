@@ -1,0 +1,99 @@
+﻿=== polyploid phasing as a p-fold decomposition of the pooled flow (phiX174) ===
+    genome 5386 bp; k = 12; single-haplotype reconstruction count N_seq(S) = ?
+    N_seq(S) = 2  (branch vertices 2, contents 4)
+
+--- (L) diploid with b unlinked SNPs: 2^b equal-length decompositions ---
+
+=== diploid, 1 SNP(s) at [600]: p = 2, k = 12 ===
+    branch vertices 4, contents 7, sum m = 12, rank Z_1 = 4, balanced True
+    box points 26, with connected support 25
+    equal-length ordered decompositions 2 (2 with pairwise distinct parts); labelled phasings 8; unordered decompositions 1; unlabelled phasings 4
+    (W) 68 walk nodes, 13 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 8 vs lattice 8: True
+    (U) 16 distinct T_1, 4 unordered pairs {T_1, T_2} vs multiset formula 4: True
+    prediction 2^1 = 2 decompositions, labelled 2*2^2 = 8, unlabelled 4: ok
+
+=== diploid, 2 SNP(s) at [600, 1700]: p = 2, k = 12 ===
+    branch vertices 6, contents 10, sum m = 16, rank Z_1 = 5, balanced True
+    box points 40, with connected support 39
+    equal-length ordered decompositions 4 (4 with pairwise distinct parts); labelled phasings 16; unordered decompositions 2; unlabelled phasings 8
+    (W) 161 walk nodes, 21 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 16 vs lattice 16: True
+    (U) 29 distinct T_1, 8 unordered pairs {T_1, T_2} vs multiset formula 8: True
+    prediction 2^2 = 4 decompositions, labelled 4*2^2 = 16, unlabelled 8: ok
+
+=== diploid, 3 SNP(s) at [600, 1700, 2900]: p = 2, k = 12 ===
+    branch vertices 8, contents 13, sum m = 20, rank Z_1 = 6, balanced True
+    box points 56, with connected support 55
+    equal-length ordered decompositions 8 (8 with pairwise distinct parts); labelled phasings 32; unordered decompositions 4; unlabelled phasings 16
+    (W) 301 walk nodes, 31 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 32 vs lattice 32: True
+    (U) 46 distinct T_1, 16 unordered pairs {T_1, T_2} vs multiset formula 16: True
+    prediction 2^3 = 8 decompositions, labelled 8*2^2 = 32, unlabelled 16: ok
+
+=== diploid, 5 SNP(s) at [600, 1700, 2900, 3900, 4900]: p = 2, k = 12 ===
+    branch vertices 12, contents 19, sum m = 28, rank Z_1 = 8, balanced True
+    box points 122, with connected support 121
+    equal-length ordered decompositions 32 (32 with pairwise distinct parts); labelled phasings 128; unordered decompositions 16; unlabelled phasings 64
+    (W) 1003 walk nodes, 76 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 128 vs lattice 128: True
+    (U) 116 distinct T_1, 64 unordered pairs {T_1, T_2} vs multiset formula 64: True
+    prediction 2^5 = 32 decompositions, labelled 32*2^2 = 128, unlabelled 64: ok
+
+--- (L) diploid: two SNPs within k of each other are one site ---
+
+=== diploid, SNPs at 600, 606 (linked), 1700, 2900: p = 2, k = 12 ===
+    branch vertices 8, contents 13, sum m = 20, rank Z_1 = 6, balanced True
+    box points 56, with connected support 55
+    equal-length ordered decompositions 8 (8 with pairwise distinct parts); labelled phasings 32; unordered decompositions 4; unlabelled phasings 16
+    (W) 301 walk nodes, 31 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 32 vs lattice 32: True
+    (U) 46 distinct T_1, 16 unordered pairs {T_1, T_2} vs multiset formula 16: True
+    4 SNPs but 3 linkage sites: prediction 2^3 = 8 decompositions: ok
+
+=== diploid, haplotypes differ at 600 and 606 vs 600 only (one linked site, 2 alleles): p = 2, k = 12 ===
+    branch vertices 4, contents 7, sum m = 12, rank Z_1 = 4, balanced True
+    box points 26, with connected support 25
+    equal-length ordered decompositions 2 (2 with pairwise distinct parts); labelled phasings 8; unordered decompositions 1; unlabelled phasings 4
+    (W) 64 walk nodes, 13 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 8 vs lattice 8: True
+    (U) 16 distinct T_1, 4 unordered pairs {T_1, T_2} vs multiset formula 4: True
+    prediction 2 decompositions: ok
+  [ok]   (P) pooled compacted graph is balanced and gains exactly two branch vertices per SNP away from repeats   [5 pools] [exact]
+  [ok]   (L) b unlinked biallelic sites give 2^b equal-length decompositions and 2^b N_seq(S)^2 labelled phasings; two sites within k are one site   [6 pools] [exact]
+  [ok]   (W) p=2: brute-force enumeration of T_1 reproduces N_seq on every spectrum and the labelled count   [walk enumeration] [exact]
+  [ok]   (U) p=2: unordered phasings as multisets of explicit walk pairs equal the multiset formula   [nested enumeration] [exact]
+
+--- (T) triploid: the local fibre is S_3/(S_a x S_{3-a}), not S_3 ---
+
+=== triploid: site 600 (1 of 3), site 1700 (2 of 3), site 2900 triallelic: p = 3, k = 12 ===
+    branch vertices 8, contents 14, sum m = 30, rank Z_1 = 7, balanced True
+    box points 248, with connected support 247
+    equal-length ordered decompositions 54 (54 with pairwise distinct parts); labelled phasings 432; unordered decompositions 9; unlabelled phasings 72
+    prediction binom(3,1)*binom(3,2)*3! = 54 ordered decompositions, labelled 54*2^3 = 432: ok;  |Hom(pi_1, S_3)| would be 6^3 = 216
+    unlabelled 72 vs labelled/3! = 72.00: equal
+
+=== triploid: one site, haplotypes S, S', S (two identical): p = 3, k = 12 ===
+    branch vertices 4, contents 7, sum m = 18, rank Z_1 = 4, balanced True
+    box points 68, with connected support 67
+    equal-length ordered decompositions 3 (0 with pairwise distinct parts); labelled phasings 24; unordered decompositions 1; unlabelled phasings 6
+    prediction 3 ordered decompositions, unlabelled N_seq * binom(N_seq+1, 2) = 6: ok
+  [ok]   (T) p=3: ordered decompositions = prod_sites binom(3, a_site), 3! at a triallelic site; the unlabelled count is the multiset count, not labelled/3!   [2 pools] [exact]
+
+--- (C) without the equal-length constraint: copy-number decompositions ---
+
+=== diploid, 1 SNP, all lengths: p = 2, k = 12 ===
+    branch vertices 4, contents 7, sum m = 12, rank Z_1 = 4, balanced True
+    box points 26, with connected support 25
+    ordered decompositions 24 (24 with pairwise distinct parts); labelled phasings 66; unordered decompositions 12; unlabelled phasings 32  (4 ordered decompositions have a periodic part -- a tandem-dimer circle -- and are counted with weight 1/d(T))
+    length profiles of the parts: [2496, 8276]x4, [2638, 8134]x2, [2748, 8024]x4, [2890, 7882]x2, [4992, 5780]x2, [5134, 5638]x4, [5244, 5528]x2, [5276, 5496]x2
+    (W) 274 walk nodes, 25 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 66 vs lattice 66: True
+    (U) 63 distinct T_1, 34 unordered pairs {T_1, T_2} explicitly; the multiset formula gives 32 on the 10 decompositions without a periodic part, and the remaining 2 pairs each contain a tandem-dimer circle (weight 1/2 in the lattice sum)
+    22 ordered decompositions with unequal haplotype lengths (repeat copies moved between haplotypes), beside the 2 equal-length ones
+
+=== homozygous diploid S + S, all lengths: p = 2, k = 12 ===
+    branch vertices 2, contents 4, sum m = 8, rank Z_1 = 3, balanced True
+    box points 19, with connected support 18
+    ordered decompositions 17 (16 with pairwise distinct parts); labelled phasings 33; unordered decompositions 9; unlabelled phasings 17  (4 ordered decompositions have a periodic part -- a tandem-dimer circle -- and are counted with weight 1/d(T))
+    length profiles of the parts: [2496, 8276]x2, [2638, 8134]x2, [2748, 8024]x2, [2890, 7882]x2, [4992, 5780]x2, [5134, 5638]x2, [5244, 5528]x2, [5276, 5496]x2
+    (W) 92 walk nodes, 18 spectra; N_seq matches on every spectrum: True; sum_T1 N_seq(m - spec T1) = 33 vs lattice 33: True
+    homozygous pool: 17 ordered decompositions, of which 1 at equal length with 3 unlabelled phasings = binom(2+1, 2) = 3: True
+  [ok]   (C) free lengths admit copy-number decompositions through the repeat: one haplotype carries both copies of the 13-mer repeat block, the other none   [2 pools] [exact]
+
+=== battery summary ===
+  TOTAL 6/6 passed
+  elapsed 0s

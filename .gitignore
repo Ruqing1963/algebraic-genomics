@@ -1,0 +1,22 @@
+# LaTeX by-products
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+# Python
+__pycache__/
+*.pyc
+*.nbi
+*.nbc
+# build outputs
+_build/
+build_report.txt
+*.build_hidden
+*.part
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

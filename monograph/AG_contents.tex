@@ -1,0 +1,181 @@
+% Algebraic Genomics -- contents and synthesis of the monograph
+% Build: pdflatex AG_contents (x2)
+\documentclass[11pt]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=2em
+
+\newcommand{\DS}{\mathrm{DS}}
+\newcommand{\Lm}{\Lambda^{-}}
+\newcommand{\K}{\mathcal K}
+\newcommand{\sP}{\#\mathrm{P}}
+\newcommand{\Nseq}{N_{\mathrm{seq}}}
+
+% Zenodo archive of the monograph (concept record)
+\newcommand{\AGdoi}{10.5281/zenodo.22943487}
+\newcommand{\AGrelease}{24 September 2026}
+
+\title{\bfseries Algebraic Genomics:\\[2pt] Contents and Synthesis of the Monograph}
+\author{Ruqing Chen}
+\date{\normalsize
+  DOI:~\href{https://doi.org/\AGdoi}{\texttt{\AGdoi}}\\[3pt]
+  \small Archived on Zenodo (\href{https://doi.org/\AGdoi}{\texttt{doi.org/\AGdoi}}),
+  released \AGrelease\\[1pt]
+  Code and data: \url{https://github.com/Ruqing1963/algebraic-genomics}}
+
+\begin{document}
+\maketitle
+
+\noindent The monograph collects the \emph{Bio} papers of the applied strand of the series, together with one
+co-authored paper. Series numbers are those written in the files; for Bio~1--7 no number is written,
+and the numbers XIV--XX follow from Bio~8 = XXI by position. Bio~15, 16 and~18 were specified and then
+dropped, so XXVIII, XXIX and XXXI are unused. Every chapter comes with a verification script that
+reproduces its numbers.
+
+\section*{The one-paragraph version}
+
+A genome's $k$-mer data determine it only up to a \emph{fibre}: the set of sequences with the same
+data. For one strand the fibre is the set of Eulerian circuits of a de Bruijn graph. Its size is the BEST
+determinant, which factors into a local part and a global part, the order of the sandpile group, and the
+sandpile group splits along the repeats (Part~I). For two strands the fibre is a union of such sets over the
+points of a lattice in a box. Its size is a lattice sum of determinants. We compute it exactly for
+$\phi$X174 at $k=10$, $\#\DS=31\,925\,753\,246\,212$, and prove that no closed formula exists: the
+problem is $\sP$-hard (Part~II). The fibre is traversed by explicit moves. These are chips on one strand,
+and transpositions and inversion flips on two, with a Tate-cohomology dichotomy for the lattice the flips
+span. The same fibres are exactly what local sequence encoders cannot see (Part~III). Where the problem
+is tractable it is so for a reason that can be named: bounded frontier or snarl width, repeat-only
+compaction, or linear structure. Those reasons give linear-time algorithms on real genomes (Part~IV).
+
+\section*{Contents}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.07\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.72\textwidth}}
+\toprule
+ch. & paper & title and core theorem\\
+\midrule
+\endhead
+\multicolumn{3}{l}{\textbf{Part I. Classical foundations: the BEST theorem and the sandpile group}}\\[2pt]
+1 & Bio~1 (XIV) & \emph{Assembly ambiguity is not determined by branch statistics: critical groups of
+de Bruijn graphs.} BEST $=$ local factor $\prod(d^+-1)!$ $\times$ global factor $|\K(G_k)|$. Equal degree data
+can give $4$ versus $256$ reconstructions. A repeat of length $L$ and multiplicity $r$ contributes
+$(\mathbb Z/r)^{L-k}$, and interleaving adds a $\mathbb Z/2$ that nested or disjoint repeats do not.\\
+2 & Bio~2 (XV) & \emph{The sandpile group as a coordinate system on genome reconstructions.} $\K(G)$ acts
+simply transitively on arborescences by rotor-routing. One chip is an explicit rearrangement between
+two candidate genomes. $\phi$X174 at $k=12$ has $\K=\mathbb Z/2$ and exactly two reconstructions, exchanged
+by one chip.\\
+3 & Bio~3 (XVI) & \emph{The sandpile group of a de Bruijn graph splits along its repeats.} Bundle-chain
+lemma: an $r$-bundle chain of length $s$ splits off $(\mathbb Z/r)^{s-1}$. So
+$\K(G_k)\cong\bigoplus_c(\mathbb Z/r_c)^{\ell_c-1}\oplus\K(\mathrm{Sk})$, a length-driven part plus the group
+of the repeat-adjacency skeleton, which no $k$ removes. For two-copy repeats it is
+$\operatorname{coker}(A+I)$ of Bouchet's interlace matrix.\\
+4 & Bio~4 (XVII) & \emph{Multi-copy repeats: where the two-copy theory stops.} For two families,
+$\K=\mathbb Z/c$ with $c$ the number of transitions. For three-copy repeats no pairwise presentation
+exists: equal pairwise patterns give $\mathbb Z/3$ and $\mathbb Z/4$. A census of realized groups.\\[4pt]
+\multicolumn{3}{l}{\textbf{Part II. The double-stranded frontier and its complexity}}\\[2pt]
+5 & Bio~6 (XIX) & \emph{Double strands without a new lemma: the reverse-complement double cover.} $D_k$,
+built from the $(k+1)$-mers of $S$ and $\bar S$, is balanced, so all single-strand lemmas apply
+verbatim. Multiplicities add across strands. $D_k$ is connected iff $S$ has an inverted repeat of length
+$\ge k$. The involution $\rho$ reverses arcs.\\
+6 & Bio~7 (XX) & \emph{The reverse-complement quotient is a signed graph.} The quotient $D_k/\rho$ is a
+Zaslavsky signed graph, unbalanced iff there is an inverted repeat, and the Reiner--Tseng sequence holds.
+But $P\Delta P=\Delta^{\mathsf T}$: $\rho$ is an anti-automorphism, and the directed sandpile group lies
+in no covering sequence. What $\rho$ gives is a symmetric linking form.\\
+7 & Bio~8 (XXI) & \emph{Double-stranded genome assembly as a lattice sum, and the inversion-flip group.}
+$\#\DS(S,k)=\sum_{f\in\Lm,\,|f|\le m}\Nseq\bigl((m+f)/2\bigr)$, with the mandatory division by
+$\prod c(a)!$. $\operatorname{rank}\Lm=(|A|-|V|+2-\#\mathrm{fix}_A-\#\mathrm{fix}_V)/2$ by the Hopf trace formula.
+Inversion flips preserve the double-stranded spectrum. $\phi$X174: $\#\DS=10$ at $k=12$ and $864$ at
+$k=11$, and the flip graph is connected there.\\
+8 & Bio~12 (XXV) & \emph{The double-stranded lattice sum by frontier elimination.} The cost is set by the
+frontier width, not the rank. $\phi$X174 at $k=10$ has $2\,481\,687\,900$ box points, with $50\,758$
+states and $26$ open vertices; $909\,103\,210$ of them have connected support. Connectivity is not a side
+condition but the non-vanishing of $t(G_c)$.\\
+9 & Bio~13 (XXVI) & \emph{The double-stranded lattice sum as a fermionic partition function.}
+$t(G_c)$ is a Berezin integral with one even factor per arc. Fixing a root on the half-box and using
+$c\mapsto m-c$ halves the box; integrality follows. The fermionic and arborescence frontiers are exact but
+too wide. Compiled enumeration with forced-arc contraction gives
+$\#\DS(\phi\mathrm X174,10)=31\,925\,753\,246\,212$.\\
+10 & Bio~19 (XXXII) & \emph{Why there is no closed formula for $\#\DS$.} From any graph $G$ of maximum
+degree~$4$ we build a genome with $\#\DS=2\varepsilon(G)$ using palindromic vertices. So $\#\DS$ and the
+box-point count are $\sP$-hard, and no polynomial or ``meshless'' formula exists unless
+$\mathrm{FP}=\sP$. Odd $k$ is open.\\[4pt]
+\multicolumn{3}{l}{\textbf{Part III. Spectral fibres and rearrangements}}\\[2pt]
+11 & Bio~17 (XXX) & \emph{Inversions at inverted repeats and the double-stranded fibre.} Flips (Bio~8)
+together with transpositions and reverse complement generate $\DS(S,k)$ in every case closed. This is
+stated as a conjecture, and proved on the class of Bio~19 by Kotzig's theorem. The Tate dichotomy:
+$[\Lm:(1-\rho)Z_1]=2$ iff there is no palindromic vertex and no self-complementary content, and the flip
+lattice is always $\Lm$.\\
+12 & Chen \& Chen & \emph{What a local encoder cannot see: spectral fibres of the human proteome.}
+Encoders local of order $k$ are constant on fibres, and fibre sizes are exact BEST counts. Across the
+reviewed human proteome the median $\kappa$ is $5$. Separation of the proteome is not resolution. The
+unresolved order lives in segmental-duplication families and KZFPs. Explicit PseAAC and CNN collisions
+are exhibited.\footnote{Joint work with Zhengyi Chen (Guangxi Key Laboratory of Drug Discovery and
+Optimization, School of Pharmacy, Guilin Medical University), published separately; included here with
+the co-author's agreement.}\\
+13 & Bio~9 (XXII) & \emph{Polyploid phasing as a $p$-fold decomposition of a balanced flow.} Labelled
+phasings form a lattice sum over ordered decompositions $m=c_1+\dots+c_p$. $\mathrm{Sym}_p$ gives a
+homogeneous space of alleles, not a monodromy.\\
+14 & Bio~10 (XXIII) & \emph{The pan-genome sheaf sees nothing.} The natural sheaf is a direct sum. The
+information lies in the recombination group $\mathrm{Rec}=Z_1(G)/\sum_iZ_1(G_i)$, which is the $H_1$ of
+the nerve and can have torsion ($\mathbb Z/2$ for $\mathbb{RP}^2$-patterned strains).\\[4pt]
+\multicolumn{3}{l}{\textbf{Part IV. Algorithmic implementations on genomes}}\\[2pt]
+15 & Bio~5 (XVIII) & \emph{The bundle-chain decomposition of a bacterial genome: E.\ coli K-12.} A vertex
+survives unitig contraction iff its $k$-mer is repeated. At $k=150$, $4\,641\,652$ vertices reduce to
+$23\,933$ and then to $115$ in $13$ seconds. The length-driven summand is $10^{10439}$ and the
+irreducible one $10^{49.7}$. The ribosomal operons split by strand.\\
+16 & Bio~14 (XXVII) & \emph{The BEST determinant along the snarl tree.} Snarl elimination is a Schur
+complement. The boundary data form a Laplacian, and $\det L_{II}$ counts boundary-rooted forests. Snarl
+order runs in linear time: front $8$ and $\approx10\,\mu$s per vertex up to $39\,714$ vertices.\\
+17 & Bio~11 (XXIV) & \emph{The isoform decomposition polytope of a splicing graph.}
+$\dim\Theta(w)=\#\text{paths}-(|E|-|V|+2)$. Deconvolution is unique for one alternative event and fails
+for two. Vertices of $\Theta$ need not be integral. A BEST identity holds for the integer points.\\
+\bottomrule
+\end{longtable}
+
+\section*{How the chapters interlock}
+
+\paragraph{One strand (Part I).} BEST splits the count into local and global parts. The global part is
+a group. Bio~1 shows what the group records, Bio~2 turns it into coordinates (chips are moves), Bio~3
+splits it along the repeats, and Bio~4 finds where pairwise data stop. Part~IV uses Bio~3's splitting
+theorem (Bio~5) and Bio~1's determinant (Bio~14).
+
+\paragraph{Two strands (Part II).} The double cover (Bio~6) keeps every lemma, but its involution is an
+anti-automorphism (Bio~7). So there is no quotient sandpile group to count with, and the count must be
+assembled point by point (Bio~8). Bio~12 organizes the points by a frontier. Bio~13 identifies the
+determinant as a fermionic integral and evaluates $\phi$X174 at $k=10$. Bio~19 explains why nothing
+better is possible in general.
+
+\paragraph{Moves (Parts I and III).} Every fibre has explicit moves. On one strand there are chips (Bio~2)
+and transpositions (Ukkonen--Pevzner). On two strands there are flips (Bio~8), which generate a lattice
+that Bio~17 computes: always $\Lm$, with a $\mathbb Z/2$ gap for cycle flips governed by palindromes.
+Bio~17's generation conjecture is proved on Bio~19's hard instances.
+
+\paragraph{Fibres as blind spots (Part III).} The fibre that bounds assembly also bounds representation.
+A local encoder cannot separate a sequence from its fibre-mates (Chen \& Chen). Phasing and pan-genomes
+are fibres of pooled spectra: of $p$ summands (Bio~9) and of strain walks (Bio~10).
+
+\paragraph{Tractability (Part IV).} Hardness is worst-case. Real genomes are tractable because their
+width is small. That is the width of the repeat skeleton (Bio~5), of the snarl tree (Bio~14), of the
+frontier (Bio~12), and of splicing graphs as DAGs (Bio~11).
+
+\section*{Open problems carried by the monograph}
+\begin{enumerate}
+\item The double-stranded Ukkonen--Pevzner conjecture (Bio~17) in general.
+\item $\sP$-hardness of $\#\DS$ for odd $k$, where the quotient is a signed graph (Bio~7, Bio~19).
+\item An FPRAS for $\#\DS$; for undirected Eulerian circuits this is open as well.
+\item The parity of flip distances between same-spectrum reconstructions (Bio~8, Remark on
+transpositions).
+\item Interlacement formulas for $r$-in $r$-out skeleta with $r\ge3$ (Bio~4).
+\end{enumerate}
+
+\section*{Dropped}
+Bio~15 (Massey products), Bio~16 (recombination sheaf) and Bio~18 (chromatin gauge theory) were
+specified and not written. Their premises were analogies without a mathematical object: products into
+$H^2$ of a graph, which is zero; a reformulation that leaves the complexity of phasing unchanged; and a
+lattice gauge theory with no derivable observable.
+
+\end{document}

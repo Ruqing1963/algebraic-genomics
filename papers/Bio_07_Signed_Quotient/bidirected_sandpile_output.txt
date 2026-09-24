@@ -1,0 +1,137 @@
+﻿=== the reverse-complement quotient as a signed graph ===
+
+=== (P) is rho free?  palindromic repeated k-mers ===
+      genome      k  parity  |V(D_k)|  rho-fixed  A_sigma symmetric
+      phiX174     9  odd        396          0               True
+      phiX174    10  even       125          3              False
+      phiX174    11  odd         30          0               True
+      phiX174    12  even         7          1              False
+      no 5-mer is its own reverse complement: True  (a middle base would have to be its own complement)
+  [ok]   (P) rho is free on V(D_k) exactly when no repeated k-mer is its own reverse complement, which is automatic for odd k and fails for phiX174 at k = 10 and k = 12   [4 values of k] [exact]
+
+=== (W) bundles have constant sign; K(Sigma_k) is a switching invariant ===
+      k=11: Sigma_k has 15 vertices and 30 edges in 26 bundles;  every bundle monochromatic: True;  K(Sigma_k) unchanged by 8 random switchings: True
+            K(Sigma_11) = (Z/2)^2 + Z/4204481
+      k= 9: Sigma_k has 198 vertices and 406 edges in 344 bundles;  every bundle monochromatic: True;  K(Sigma_k) unchanged by 8 random switchings: True
+            K(Sigma_9) = (Z/2)^10 + (Z/4)^6 + Z/43 + Z/127 + Z/12917 + Z/203281194732936663087271665753865541003665069192889502264175538969425545058029274372963
+  [ok]   (W) the sign of an edge of Sigma_k depends only on its endpoints, so every bundle is monochromatic and Sigma_k has honest r-bundles; K(Sigma_k) is unchanged by switching   [2 values of k, 8 switchings each] [exact]
+
+=== (B) balance of Sigma_k vs inverted repeats of S ===
+      k   Sigma_k balanced  |D_k| connected  longest inverted repeat >= k
+       9              False             True                yes: CTTCCATGA
+      11              False             True              yes: ATTAAGCTCAT
+      13               True            False                            no
+      15               True            False                            no
+  [ok]   (B) Sigma_k is unbalanced exactly when the signed double cover D_k is connected (Reiner-Tseng Prop. 11.4-11.5), which by Bio 6 happens exactly when S carries an inverted repeat of length >= k   [4 values of k] [exact]
+
+=== (R) Reiner-Tseng: 0 -> K(Sigma_k) -> K(|D_k|) -> K(|Sigma_k|) -> 0 ===
+      k=11
+        K(Sigma_11)   = (Z/2)^2 + Z/4204481   order 16817924
+        K(|D_11|)     = (Z/2)^2 + Z/4 + Z/23 + Z/12757 + Z/4204481   order 19738255595056
+        K(|Sigma_11|) = (Z/2)^2 + Z/23 + Z/12757   order 1173644
+        orders multiply: True
+        2-primary parts (Z/2)^2 and (Z/2)^2 vs (Z/2)^2 + Z/4 in the middle: split = False
+  [ok]   (R) on the reverse-complement double cover the Reiner-Tseng sequence holds with orders multiplying, and its 2-primary part is a NON-SPLIT extension -- (Z/2)^2 by (Z/2)^2 giving (Z/2)^2 (+) Z/4, exactly their Thm 1.2   [1 value of k] [exact]
+
+=== (N) the deck involution is an ANTI-automorphism of the Laplacian ===
+      k= 9: P Delta P = Delta^t: True;   P Delta P = Delta: False
+            |K(D_9)| (digraph)  = 1558620327755625153757937987066761972248387763849394599279485695035542643192430958508802717178662163895110803198985633792
+            |K(|D_9|)| (shadow) = 1599923170482065271826851829765375462177280199311663149846642785296344741521975990430852627344164861757674321978263171899817228534937061499027083394767724441205176558309829068108508691874978694430720
+            the shadow order is not a multiple of the digraph order: True
+      k=11: P Delta P = Delta^t: True;   P Delta P = Delta: False
+            |K(D_11)| (digraph)  = 25318912
+            |K(|D_11|)| (shadow) = 19738255595056
+            the shadow order is not a multiple of the digraph order: True
+  [ok]   (N) P Delta(D_k) P equals Delta^t and never Delta, so the +-1 eigenlattices of the deck involution are not Delta-stable and the directed sandpile group sits in no covering sequence   [2 values of k] [exact]
+
+=== (D) the pairing rho induces on K(D_k) is SYMMETRIC, not alternating ===
+      k=12: |K(D_k)| = 33;  symmetric mod Z: True;  alternating mod Z: False
+            |K| a perfect square: False  ->  a metabolizer L = L^perp CANNOT exist
+            root 0: 33 in-trees -> rho -> out-trees at rho(root) True; in-trees there False; image meets the in-trees at root in 1
+            root 1: 33 in-trees -> rho -> out-trees at rho(root) True; in-trees there False; image meets the in-trees at root in 1
+            root 2: 33 in-trees -> rho -> out-trees at rho(root) True; in-trees there False; image meets the in-trees at root in 1
+      k=11: |K(D_k)| = 25318912;  symmetric mod Z: True;  alternating mod Z: False
+            |K| a perfect square: False  ->  a metabolizer L = L^perp CANNOT exist
+  [ok]   (D) the Bowen-Franks pairing that rho induces on the sandpile group is a SYMMETRIC linking form, so the relevant notion is a metabolizer and not a Lagrangian; and for phiX174 the order is not a square, so no metabolizer exists   [2 values of k] [exact]
+
+=== (C) a signed r-bundle chain does not contract ===
+      the digraph row is r(x_t - x_{t+1}); the signed row is r(d_{t-1} - d_t)
+       r  s   K(Sigma)                          K(Sigma/C)                |Sigma|/|Sigma/C|   r^s   r-rank gain
+        3  1  (Z/3)^2 + Z/8                     Z/2 + Z/9                     4.0000       3       1
+        3  2  Z/2 + (Z/3)^3 + Z/8               (Z/2)^2 + Z/9                12.0000       9       2
+        3  3  (Z/3)^3 + Z/4 + Z/9               Z/2 + Z/9                    54.0000      27       3
+        5  2  (Z/2)^2 + (Z/5)^2 + Z/17          Z/2 + Z/4 + Z/7              30.3571      25       2
+        5  3  Z/4 + (Z/5)^3 + Z/11              Z/2 + Z/13                  211.5385     125       3
+        7  2  Z/2 + (Z/7)^2 + Z/23              Z/2 + Z/17                   66.2941      49       2
+        7  3  Z/4 + (Z/7)^3 + Z/13              Z/2 + Z/17                  524.5882     343       3
+       11  2  Z/2 + (Z/11)^2 + Z/64             (Z/2)^2 + Z/29              133.5172     121       2
+      the r-rank gain is s in every case, but the ORDER ratio equals r^s in only 0 of 8: the residual first difference obeys the series law, and the row at the endpoint a differs between Sigma and Sigma/C by s*r*d_0
+  [ok]   (C) a signed r-bundle chain of s internal vertices raises the r-rank by exactly s, but K(Sigma) is NOT (Z/r)^s (+) K(Sigma/C): the chain obeys the series law, so Bio 3's splitting theorem has no bidirected analogue   [8 pairs (r,s)] [exact]
+
+=== (Q) the p-divisible subgraph lemma, and the p-rank gain it forces ===
+      H a subgraph whose every bundle has multiplicity divisible by p:
+      an interior vertex of H has degree = 0 and all adjacencies = 0 mod p, so its
+      whole row and column of Delta vanish; every other vertex loses only its
+      H-part.  Hence rank_p(Delta_Sigma) = rank_p(Delta_{Sigma minus H}).
+
+      (i) the block structure, verbatim
+        r= 3 s=2 p= 3: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r= 4 s=2 p= 2: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r= 6 s=3 p= 2: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r= 6 s=3 p= 3: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r= 9 s=2 p= 3: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r=12 s=2 p= 2: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r=12 s=2 p= 3: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+        r= 2 s=3 p= 2: base block agrees True, chain rows and columns vanish True, contraction agrees True, rank_p equal True
+
+      (ii) the p-rank gain, for EVERY prime dividing r -- composite and even included
+         r  s   p   p-rank K(Sigma)  p-rank K(Sigma/C)   gain   predicted
+         3  1   3                2                  1       1          1   ok
+         3  2   3                3                  1       2          2   ok
+         3  3   3                4                  1       3          3   ok
+         5  2   5                2                  0       2          2   ok
+         5  3   5                3                  0       3          3   ok
+         7  2   7                2                  0       2          2   ok
+         7  3   7                3                  0       3          3   ok
+        11  2  11                2                  0       2          2   ok
+         9  2   3                3                  1       2          2   ok
+         9  3   3                4                  1       3          3   ok
+        25  2   5                2                  0       2          2   ok
+        15  2   3                3                  1       2          2   ok
+        15  2   5                2                  0       2          2   ok
+        15  3   3                4                  1       3          3   ok
+        15  3   5                3                  0       3          3   ok
+        21  2   3                3                  1       2          2   ok
+        21  2   7                2                  0       2          2   ok
+         2  2   2                3                  1       2          2   ok
+         2  3   2                4                  1       3          3   ok
+         4  2   2                3                  1       2          2   ok
+         4  3   2                4                  1       3          3   ok
+         6  2   2                3                  1       2          2   ok
+         6  2   3                3                  1       2          2   ok
+         6  3   2                4                  1       3          3   ok
+         6  3   3                4                  1       3          3   ok
+        12  2   2                3                  1       2          2   ok
+        12  2   3                3                  1       2          2   ok
+        10  2   2                3                  1       2          2   ok
+        10  2   5                2                  0       2          2   ok
+
+      (iii) shapes the chain statement says nothing about: the gain is the number
+            of INTERIOR vertices of H (all of whose bundles lie in H)
+        tree, three arms of length two       p= 3: gain  6, interior vertices  6   ok
+        cycle of length four at one vertex   p= 5: gain  3, interior vertices  3   ok
+        theta with two attachments           p= 3: gain  5, interior vertices  5   ok
+  [ok]   (Q) modulo every prime p | r the chain's rows and columns of the signed Laplacian vanish, so rank_p is unchanged by deleting any p-divisible subgraph; hence the p-rank gain is EXACTLY the number of interior vertices of that subgraph, s for a chain -- which proves the equality left open by Theorem 7   [6 + 29 + 3 instances] [exact]
+
+=== (E) E. coli K-12 NC_000913.3: the seven rRNA operons in Sigma_k ===
+      genome 4641652 bp; 7 rRNA operons
+      k    |V(D_k)|  |V(Sigma_k)|  rho-fixed  7-bundles  longest 7-chain  its span (bp)  F_7-nullity  F_7 single strand
+       31     60548        30274          0       4919              698            728         7441               3496   [513s]
+       51     53380        26690          0       4352              678            728         6581               3201   [671s]
+       75     48498        24249          0       3814              654            728         5864               2996   [582s]
+      the longest 7-chain spans [728] bp -- the SAME block at every k, and the 728 bp seven-copy block that Bio 6 matched one-to-one onto the seven rRNA operons
+  [ok]   (E) the seven rRNA operons of E. coli K-12 survive the quotient as genuine 7-bundles of Sigma_k, and their chain shows up in the F_7-nullity of the signed Laplacian -- the only trace of them that the quotient retains   [3 values of k] [exact]
+
+=== battery summary ===
+  TOTAL 9/9 passed
+  elapsed 1888s

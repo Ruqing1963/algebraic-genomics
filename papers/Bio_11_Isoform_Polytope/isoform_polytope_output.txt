@@ -1,0 +1,72 @@
+﻿=== the isoform decomposition polytope of a splicing DAG ===
+
+--- (R)/(D) rank of the path-arc matrix and the dimension of Theta(w) ---
+
+=== cassette exon: |V| = 3, |E| = 3, s-t paths 2, |E|-|V|+2 = 2 ===
+    rank of the path-arc matrix 2 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 0  -> deconvolution UNIQUE
+
+=== mutually exclusive exons: |V| = 4, |E| = 4, s-t paths 2, |E|-|V|+2 = 2 ===
+    rank of the path-arc matrix 2 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 0  -> deconvolution UNIQUE
+
+=== alternative 5' site: |V| = 2, |E| = 2, s-t paths 2, |E|-|V|+2 = 2 ===
+    rank of the path-arc matrix 2 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 0  -> deconvolution UNIQUE
+
+=== two cassettes: |V| = 5, |E| = 6, s-t paths 4, |E|-|V|+2 = 3 ===
+    rank of the path-arc matrix 3 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 1
+
+=== three cassettes: |V| = 7, |E| = 9, s-t paths 8, |E|-|V|+2 = 4 ===
+    rank of the path-arc matrix 4 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 4
+
+=== tropomyosin-like: |V| = 16, |E| = 22, s-t paths 64, |E|-|V|+2 = 8 ===
+    rank of the path-arc matrix 8 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 56
+
+=== parallel pairs x3: |V| = 4, |E| = 6, s-t paths 8, |E|-|V|+2 = 4 ===
+    rank of the path-arc matrix 4 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 4
+  [ok]   (R) the path-arc matrix of a splicing DAG has rank |E| - |V| + 2 (the flow space)   [7 graphs] [exact]
+  [ok]   (D) dim Theta(w) = #paths - (|E|-|V|+2); for events in series prod k_i - sum(k_i - 1) - 1   [7 graphs] [exact]
+  [ok]   (U) deconvolution from junction counts is unique for a single alternative event and already non-unique (dim 1) for two cassette exons in series   [4 graphs] [exact]
+
+--- Dscam: four blocks of mutually exclusive exons, 12 x 48 x 33 x 2 ---
+    |V| = 100, |E| = 190, isoforms 38016, |E|-|V|+2 = 92
+    rank of the 190 x 38016 path-arc matrix modulo 2^31-1: 92   [12s]
+    dim of the isoform polytope for a full-support flow: 37924
+  [ok]   (S) Dscam: 38016 isoforms, junction counts determine a 37924-dimensional polytope of abundances (rank 92 = |E|-|V|+2)   [1 graph] [exact mod p]
+
+--- (V)/(B) integer points, vertices, MFD and the BEST identity ---
+
+=== two cassettes: |V| = 5, |E| = 6, s-t paths 4, |E|-|V|+2 = 3 ===
+    rank of the path-arc matrix 3 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 1
+    w = [3, 3, 3, 2, 4, 2]  (F = 6); paths in supp(w): 4; rank there 3; dim Theta(w) = 1
+    integer points 3; vertices 2 of which fractional 0; MFD real 3, integer 3; all integer minima are vertices: True
+    BEST identity: N_seq(G_w + F returns) = 50  vs  sum_theta (F-1)!/prod theta! = 50   ok   (arborescences 216)
+
+=== parallel pairs x3: |V| = 4, |E| = 6, s-t paths 8, |E|-|V|+2 = 4 ===
+    rank of the path-arc matrix 4 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 4
+    w = [1, 1, 1, 1, 1, 1]  (F = 2); paths in supp(w): 8; rank there 4; dim Theta(w) = 4
+    integer points 4; vertices 6 of which fractional 2; MFD real 2, integer 2; all integer minima are vertices: True
+    a fractional vertex: 0, 1/2, 1/2, 0, 1/2, 0, 0, 1/2
+    BEST identity: N_seq(G_w + F returns) = 4  vs  sum_theta (F-1)!/prod theta! = 4   ok   (arborescences 8)
+
+=== tropomyosin-like: |V| = 16, |E| = 22, s-t paths 64, |E|-|V|+2 = 8 ===
+    rank of the path-arc matrix 8 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 56
+    w = [2, 8, 2, 8, 0, 10, 0, 1, 9, 1, 9, 7, 3, 7, 3, 3, 0, 4, 3, 3, 0, 4]  (F = 10); paths in supp(w): 24; rank there 6; dim Theta(w) = 18
+    integer points 714; vertices 358 of which fractional 90; MFD real 4, integer 4; all integer minima are vertices: True
+    a fractional vertex: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1/2, 0, 0, 0, 1/2, 3, 0, 7/2, 0, 1/2, 0
+    BEST identity: N_seq(G_w + F returns) = 22680000  vs  sum_theta (F-1)!/prod theta! = 22680000   ok   (arborescences 3628800000)
+
+=== three cassettes: |V| = 7, |E| = 9, s-t paths 8, |E|-|V|+2 = 4 ===
+    rank of the path-arc matrix 4 (= |E|-|V|+2: True); dim Theta(w) for full-support w: 4
+    w = [6, 1, 6, 4, 3, 4, 7, 0, 7]  (F = 7); paths in supp(w): 4; rank there 3; dim Theta(w) = 1
+    integer points 2; vertices 2 of which fractional 0; MFD real 3, integer 3; all integer minima are vertices: True
+    BEST identity: N_seq(G_w + F returns) = 35  vs  sum_theta (F-1)!/prod theta! = 35   ok   (arborescences 57624)
+  [ok]   (V) every minimum-support decomposition is a vertex of Theta(w); vertices can be fractional for integer w (three parallel pairs: four weights 1/2 beside an integer MFD of two paths)   [6 flows] [exact]
+  [ok]   (B) BEST identity: N_seq of G_w with F return arcs equals sum over integer decompositions of (F-1)!/prod theta_j!   [6 flows] [exact]
+
+--- (I) real MFD vs integer MFD, random small DAGs ---
+    232 instances; 1 with a fractional vertex; BEST identity and vertex property held on all: True
+    no instance with real MFD < integer MFD among these (integer weights were never worse)
+  [ok]   (I) on random small flows the minimum-support real and integer decompositions were compared (result in the log); the vertex property and the BEST identity held throughout   [232 instances] [exact]
+
+=== battery summary ===
+  TOTAL 7/7 passed
+  elapsed 212s

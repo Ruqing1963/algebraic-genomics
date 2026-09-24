@@ -1,0 +1,39 @@
+﻿
+=== (A) two families: K(D_w) = Z/c, c = number of A-blocks ===
+    119 circular words over two letters, r, s <= 5; every c in 1..min(r,s) realised: True
+  [ok]   (A) two repeat families of multiplicities r, s: K(D_w) = Z/c with c the number of A->B transitions, and every c in 1..min(r,s) occurs   [119 words] [exact]
+
+=== (B) census of arrangement groups for multi-copy repeats ===
+      mult        words   D_w   groups  max|K|   non-cyclic groups            pairwise-necklace classes (split)
+    (3, 3)            4     3       3       3   -                            3 (0)
+    (4, 4)           10     4       4       4   -                            7 (0)
+    (3, 3, 3)       188    12       9       9   (Z/2)^2, (Z/3)^2             15 (6)
+    (3, 3, 2)        70    15       7       6   (Z/2)^2                      10 (4)
+    (2, 2, 3)        30    10       5       4   (Z/2)^2                      6 (2)
+    (4, 4, 4)      2896    26      17      16   (Z/2)^2, (Z/2)^2 + Z/3, (Z/3)^2, (Z/4)^2, Z/2 + Z/4 174 (86)
+    (3, 3, 3, 3)  30804    96      28      27   (Z/2)^2, (Z/2)^2 + Z/3, (Z/2)^3, (Z/3)^2, (Z/3)^3, (Z/4)^2, Z/2 + (Z/3)^2, Z/2 + Z/4 180 (132)
+    witness: AABACCBBC -> Z/3,  AABABCBCC -> Z/4,  same pairwise necklaces: True
+  [ok]   (B) K(D_w) is a function of the transition digraph (trivially) but NOT of the pairwise restriction necklaces: AABACCBBC (Z/3) and AABABCBCC (Z/4) agree on all three pairs   [7 multiplicity vectors, exhaustive] [exact]
+
+=== (C) detaching a 3-in 3-out vertex into two 2-in 2-out vertices ===
+    150 graphs x 9 detachments: K(G) is a quotient of K(G') in 140/1350
+    witness: K(G) = Z/4 + Z/5; the nine detachments give Z/2 + Z/3 + Z/4, Z/2 + Z/3 + Z/5, Z/2 + Z/13, Z/3 + Z/8, Z/23, Z/25, Z/31, Z/32
+  [ok]   (C) K(G) is a quotient of the detached K(G') in a minority of cases; no containment either way   [1350 detachments] [exact]
+
+=== (D) phiX174: where multi-copy vertices appear ===
+      k   skeleton   arcs   out-degree multiset                     MMN on the skeleton
+     12        1       0   {0: 1}                                 (trivial)
+     11        8      16   {2: 8}                                 coker(A+I) = Z/3 + Z/11 = K(Sk): ok
+     10       37      74   {2: 37}                                coker(A+I) = Z/4 + Z/1076338579 = K(Sk): ok
+      9      110     227   {2: 104, 3: 5, 4: 1}                   not 2-in 2-out: 6 vertices of out-degree >= 3
+      8      312     679   {2: 264, 3: 42, 4: 5, 5: 1}            not 2-in 2-out: 48 vertices of out-degree >= 3
+      7      826    1945   {2: 619, 3: 147, 4: 41, 5: 12, 6: 7}   not 2-in 2-out: 207 vertices of out-degree >= 3
+  [ok]   (D) phiX174 skeleton is 2-in 2-out at k = 11, 10 (signed interlace matrix reproduces K(Sk)) and acquires vertices of out-degree 3..6 from k = 9 down   [k = 12..7] [exact]
+
+=== battery summary ===
+  (A)  1/1 passed
+  (B)  1/1 passed
+  (C)  1/1 passed
+  (D)  1/1 passed
+  TOTAL 4/4 passed
+  elapsed 35.7s

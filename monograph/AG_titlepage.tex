@@ -1,0 +1,37 @@
+% Algebraic Genomics -- master title page (for the full monograph volume AG_monograph.tex)
+% Standalone:  pdflatex AG_titlepage
+% For the master volume, copy the three \newcommand lines and the titlepage environment.
+\documentclass[11pt]{book}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\AGdoi}{10.5281/zenodo.22943487}
+\newcommand{\AGrelease}{24 September 2026}
+\newcommand{\AGversion}{1.0.0}
+
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries Algebraic Genomics\par}
+\vspace{0.6cm}
+{\Large The Combinatorics of Sequence Reconstruction\\[2pt] and Representation\par}
+\vspace{2cm}
+{\Large Ruqing Chen\par}
+\vfill
+{\large Exact Eulerian reconstruction, double-stranded spectral fibres,\\
+sandpile groups, and the computational complexity of sequence space\par}
+\vspace{1.5cm}
+\begin{tabular}{rl}
+DOI: & \href{https://doi.org/\AGdoi}{\texttt{\AGdoi}}\\[2pt]
+Archive: & Zenodo, \href{https://doi.org/\AGdoi}{\texttt{https://doi.org/\AGdoi}}\\[2pt]
+Code and data: & \href{https://github.com/Ruqing1963/algebraic-genomics}{\texttt{github.com/Ruqing1963/algebraic-genomics}}\\[2pt]
+Release: & version \AGversion, \AGrelease
+\end{tabular}
+\vspace{1.2cm}
+
+{\small Texts and figures: CC BY 4.0.\quad Code: MIT License.\par}
+\end{titlepage}
+\end{document}

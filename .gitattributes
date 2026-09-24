@@ -1,0 +1,8 @@
+* text=auto
+*.pdf binary
+*.png binary
+*.gz binary
+*.zip binary
+*.fasta text eol=lf
+*.py text eol=lf
+*.tex text eol=lf

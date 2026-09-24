@@ -1,0 +1,365 @@
+% Double strands without a new lemma: the reverse-complement double cover
+% Build: pdflatex rc_double_cover (x3)
+\documentclass[11pt]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Sk}{\mathrm{Sk}}
+\newcommand{\mult}{\operatorname{mult}}
+
+\title{\bfseries Double strands without a new lemma:\\
+the reverse-complement double cover of a de Bruijn graph}
+\author{Ruqing Chen\\[2pt]
+\normalsize GUT Geoservice Inc., Rivi\`ere-Beaudette, Qu\'ebec J0P 1R0, Canada\\
+\normalsize\texttt{ruqing@hotmail.com}}
+\date{19 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+The single-strand theory of the companion notes sees a repeat only between co-oriented
+copies, so the seven ribosomal operons of \emph{E.\ coli} --- five on one strand, two on
+the other --- appear as a five-copy family and a two-copy family and never as a
+seven-copy one. Repairing this was expected to need a sandpile theory for bidirected
+graphs, which does not exist. It does not need one. Let $D_k(S)$ be the multidigraph
+whose arcs are the $(k{+}1)$-mer occurrences in $S$ \emph{and} in its reverse complement
+$\bar S$. Then $\mult_D(v)=\mult_S(v)+\mult_S(\bar v)$ and
+$d^{+}(v)=d^{-}(v)=\mult_D(v)$: $D_k$ is balanced, so the unitig lemma, the bundle-chain
+lemma and the splitting theorem apply to it verbatim. Three consequences. \emph{One:}
+multiplicities add across strands, so a family with $a$ forward and $b$ reverse copies has
+multiplicity $a+b$ in $D_k$; for \emph{E.\ coli} the longest multiplicity-seven chain has
+span $728$\,bp and its seven occurrences are the seven operons, one each, the two
+minus-strand ones on the reverse strand of $D_k$. \emph{Two:} $D_k$ is connected exactly
+when $S$ contains an inverted repeat of length $\ge k$, so the inverted repeats are
+precisely what glues the strands; $\varphi$X174 already qualifies at $k=12$, through
+\texttt{ATTAAGCTCATT} at $441$ and its reverse complement at $1448$. \emph{Three:} the
+involution $\rho(v)=\bar v$ reverses arcs, hence carries $D_k$ to its opposite; since
+$\Delta^{\mathrm{op}}=\Delta^{\mathsf T}$ for a balanced digraph and the two Bowen--Franks
+cokernels are dual, $\rho$ \emph{dualises} $\K(D_k)$ instead of splitting it --- which is
+what the warning against $\pm1$-eigenspace decompositions was pointing at. The phage's
+celebrated single global bit is a single-strand phenomenon: $\K(G_{12})=\Z/2$ but
+$\K(D_{12})=\Z/33$. Six checks, all exact. What is \emph{not} done: $D_k$ is the double
+cover, not the bidirected quotient, and $\K(D_k)$ does not count double-stranded
+reconstructions; that problem is left exactly where it was.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+For a circular sequence $S$ and $k\ge1$, $G_k(S)$ has the distinct $k$-mers as vertices
+and the occurrences of $(k{+}1)$-mers as arcs, and
+$\K\bigl(G_k(S)\bigr)\cong\bigoplus_c(\Z/r_c)^{\ell_c-1}\oplus\K(\Sk)$ by the bundle-chain
+splitting theorem \cite{Bio3}. The theory is single-strand throughout \cite{Bio1,Bio2,Bio3,Bio4},
+and \cite{Bio5} measured what that costs on a real genome: of the seven \emph{rrn} operons
+of \emph{E.\ coli} K-12, five lie on the $+$ strand and two on the $-$, and since a repeat
+of $G_k(S)$ requires co-oriented copies, the operons split into a multiplicity-five family
+and a multiplicity-two family, with multiplicity seven occurring nowhere.
+
+The obvious repair is to work with the bidirected graph that assemblers actually build,
+whose vertices are the classes $\{v,\bar v\}$; \cite{Bio1,Bio2} left this open and warned
+against the tempting shortcut of decomposing $\K$ into $\pm1$-eigenspaces of the
+reverse-complement involution, since an involution splits an abelian group only after $2$
+is inverted and the $2$-torsion is where the interesting phenomena live. That warning
+stands. What this note observes is that most of what one wants from the bidirected picture
+is already available, without any new lemma, from a balanced digraph.
+
+\section{The double cover}\label{sec:cover}
+
+\begin{definition}[Reverse-complement double cover]\label{def:cover}
+Let $\bar S$ be the reverse complement of $S$, again circular of length $N$. Let
+$D_k=D_k(S)$ be the multidigraph whose vertices are the $k$-mers occurring in $S$ or in
+$\bar S$ and whose arcs are the occurrences of $(k{+}1)$-mers in $S$ together with those
+in $\bar S$; it has $2N$ arcs. Write $\rho(v)=\bar v$.
+\end{definition}
+
+\begin{lemma}[Balance]\label{lem:balance}
+$\mult_{D}(v)=\mult_S(v)+\mult_S(\bar v)$ and $d^{+}(v)=d^{-}(v)=\mult_D(v)$ for every
+vertex. Hence $D_k$ is a balanced multidigraph.
+\end{lemma}
+
+\begin{proof}
+$\mult_{\bar S}(v)=\mult_S(\bar v)$, because a copy of $v$ in $\bar S$ is a copy of
+$\bar v$ in $S$; the first formula follows. In each of the two circular sequences
+separately, every occurrence of $v$ contributes one arc out of $v$ and one arc into $v$,
+as in \cite[Lem.~4]{Bio1}; summing the two gives the second.
+\end{proof}
+
+\begin{corollary}[Nothing new is needed]\label{cor:applies}
+The unitig contraction lemma \cite[Lem.~4]{Bio1}, the bundle-chain lemma
+\cite[Lem.~2]{Bio3}, the canonicity of the skeleton \cite[Lem.~6]{Bio3} and the splitting
+theorem \cite[Thm.~5]{Bio3} apply to $D_k$ verbatim, and a vertex of $D_k$ survives unitig
+contraction if and only if $\mult_S(v)+\mult_S(\bar v)\ge2$ \cite[Lem.~2.1]{Bio5}.
+\end{corollary}
+
+That last clause is the practical point: the branch vertices of $D_k$ are the $k$-mers
+that are repeated \emph{when both strands are counted}, so the entire fast pipeline of
+\cite{Bio5} runs on $D_k$ unchanged, with the positions of $\bar S$ appended to those of
+$S$.
+
+\begin{proposition}[The strands are glued by the inverted repeats]\label{prop:conn}
+$D_k$ is connected if and only if some $k$-mer $w$ occurs in $S$ together with $\bar w$;
+otherwise $D_k=G_k(S)\sqcup G_k(\bar S)$, two isomorphic components.
+\end{proposition}
+
+\begin{proof}
+The arcs coming from $S$ form a closed walk through every $k$-mer of $S$, so those
+vertices lie in one component, and likewise for $\bar S$; the two vertex sets are the
+$k$-mers of $S$ and their reverse complements. They meet exactly when some $w$ and
+$\bar w$ both occur in $S$.
+\end{proof}
+
+So the double cover is interesting precisely to the extent that the genome has inverted
+repeats of length at least $k$. Both of our genomes qualify: $\varphi$X174 at $k=12$
+through \texttt{ATTAAGCTCATT} at position $441$, whose reverse complement sits at $1448$;
+\emph{E.\ coli} at $k=150$ through a $150$-mer at $19\,796$ whose reverse complement is at
+$3\,584\,046$ (check~(C)).
+
+\section{Multiplicities add across strands}\label{sec:merge}
+
+\begin{theorem}[Strand merging]\label{thm:merge}
+Let $W$ be a sequence occurring $a$ times on the forward strand of $S$ and $b$ times on the
+reverse, with $a+b\ge1$ and $W$ not equal to $\bar W$. In $G_k(S)$ the $k$-mers of $W$
+have multiplicity $a$ and those of $\bar W$ multiplicity $b$. In $D_k$ both have
+multiplicity $a+b$, and the two families are exchanged by $\rho$. If, moreover, the $a+b$
+copies agree over a window of $s+k-1$ letters, that window contributes a bundle chain of
+multiplicity $a+b$ and length $s$ to $D_k$, hence a summand $(\Z/(a+b))^{\,s-1}$ to
+$\K(D_k)$, and another from its $\rho$-image.
+\end{theorem}
+
+\begin{proof}
+A reverse-strand copy of $W$ is a forward occurrence of $\bar W$, so
+$\mult_S(w)=a$ and $\mult_S(\bar w)=b$ for a $k$-mer $w$ of $W$ in general position; by
+Lemma~\ref{lem:balance}, $\mult_D(w)=a+b$, and symmetrically for $\bar w$. The last
+sentence is Lemma~\ref{lem:balance} followed by \cite[Lem.~2]{Bio3} applied to the
+balanced digraph $D_k$.
+\end{proof}
+
+\begin{corollary}[The seven operons]\label{cor:rrna}
+For \emph{E.\ coli} K-12 the seven \emph{rrn} operons carry, in $D_k$, bundle chains of
+multiplicity seven. At $k=150,100,51$ the longest such chain has span $728$\,bp and its
+seven occurrences are the seven operons, one each:
+\[
+\begin{array}{lll}
++\,224\,044\to223\,771, & -\,2\,730\,735\to2\,726\,069, & -\,3\,428\,340\to3\,423\,423,\\
++\,3\,942\,081\to3\,941\,808, & +\,4\,035\,804\to4\,035\,531, & +\,4\,166\,932\to4\,166\,659,\\
++\,4\,208\,420\to4\,208\,147, & &
+\end{array}
+\]
+the sign giving the strand of $D_k$ on which the occurrence lies and the arrow pointing to
+the operon it meets. The multiplicity-seven chains carry more $k$-mers than the chains of
+any other multiplicity over the operons: $4154$ at $k=150$, $5254$ at $k=100$, $6660$ at
+$k=51$ (check~(M)).
+\end{corollary}
+
+\begin{remark}[What was wrong with $5+2$, exactly]\label{rem:52}
+Nothing was wrong with it; it was the correct answer to a single-strand question. The
+content of Corollary~\ref{cor:rrna} is that the question has a balanced-digraph answer
+too, and that the object which answers it is not the bidirected quotient but the double
+cover, on which the existing theorems already hold. The residual multiplicities
+$2,3,4,5,6$ that still appear over the operons in $D_k$ are the sub-families on which only
+some of the seven copies agree --- the operons are not identical to one another, on either
+strand.
+\end{remark}
+
+\section{The involution dualises, it does not split}\label{sec:rho}
+
+\begin{proposition}[$\rho$ and the opposite digraph]\label{prop:rho}
+$\rho$ is an involution of the vertex set of $D_k$ carrying the arc for a $(k{+}1)$-mer
+$x$ to the arc for $\bar x$ with its direction reversed. Hence $\rho$ is an isomorphism
+$D_k\to D_k^{\mathrm{op}}$, and it induces an isomorphism
+\[
+\K(D_k)\;\xrightarrow{\ \sim\ }\;\K(D_k)^{\vee}
+\]
+onto the Pontryagin dual, i.e.\ a perfect pairing on $\K(D_k)$.
+\end{proposition}
+
+\begin{proof}
+The prefix of $\bar x$ is the reverse complement of the suffix of $x$ and vice versa, so
+the arc of $\bar x$ runs $\rho(\text{suffix})\to\rho(\text{prefix})$: direction reverses,
+and $\rho$ is an isomorphism onto the opposite digraph. For a balanced digraph
+$\Delta^{\mathrm{op}}=D^{+}-A^{\mathsf T}=\Delta^{\mathsf T}$, so
+$\K(D_k^{\mathrm{op}})=\operatorname{Tor}\coker\Delta_{\hat s}$ while
+$\K(D_k)=\operatorname{Tor}\coker\Delta_{\hat s}^{\mathsf T}$, and these two are
+canonically dual by the Bowen--Franks pairing \cite[Lem.~1.5]{ANCFT8}. Composing gives the
+stated isomorphism.
+\end{proof}
+
+\begin{remark}[Against the eigenspace decomposition]\label{rem:nosplit}
+\cite[Open (c)]{Bio1} warned that $\K$ should not be split into $\pm1$-eigenspaces of
+$\rho$, because that discards the $2$-torsion. Proposition~\ref{prop:rho} is what happens
+instead: an involution that reverses arcs cannot act on $\K(D_k)$ at all --- it does not
+preserve the presentation --- but it identifies $\K(D_k)$ with its dual. No inversion of
+$2$ occurs anywhere, and the $2$-torsion is untouched. We do not determine whether the
+resulting pairing is symmetric or alternating; that question, and whether it is
+independent of the choice of sink, are left open.
+\end{remark}
+
+\section{Computations}\label{sec:comp}
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{rlrrrll}
+\toprule
+$k$ & graph & branch & chains & skeleton & $\K(\Sk)$ & length-driven\\
+\midrule
+12 & $G_k$ &   2 &  1 &  1 & $0$ & $\Z/2$\\
+   & $D_k$ &   7 &  0 &  7 & $\Z/3\oplus\Z/11$ & $0$\\[2pt]
+11 & $G_k$ &  10 &  2 &  8 & $\Z/3\oplus\Z/11$ & $(\Z/2)^{2}$\\
+   & $D_k$ &  30 &  7 & 23 & $(\Z/2)^{2}\oplus\Z/49451$ & $(\Z/2)^{7}$\\[2pt]
+10 & $G_k$ &  47 &  8 & 37 & $\Z/4\oplus\Z/1076338579$ & $(\Z/2)^{10}$\\
+   & $D_k$ & 125 & 23 & 97 & $(\Z/4)^{2}\oplus\Z/79624452132275189516228869$ & $(\Z/2)^{28}$\\
+\bottomrule
+\end{tabular}
+\caption{$\varphi$X174: the single-strand graph and its double cover. All entries exact
+(check~(K)); the single-strand rows reproduce \cite[Tab.~1]{Bio3}.}
+\label{tab:phix}
+\end{table}
+
+\begin{remark}[The phage's single bit is single-strand]\label{rem:bit}
+$\K(G_{12})=\Z/2$: the $12$-mer spectrum of $\varphi$X174 leaves exactly two global
+reconstructions, and \cite{Bio2} located the bit as a pair of interleaved $12$-mers. On
+the double-stranded spectrum the answer is different: $\K(D_{12})=\Z/3\oplus\Z/11=\Z/33$,
+and it is entirely arrangement --- $D_{12}$ has no bundle chain at all, so the
+length-driven summand is trivial. The two statements do not conflict; they answer
+different questions, and the contrast is a fair measure of how much of the single-strand
+picture is an artefact of ignoring one strand.
+\end{remark}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{rrrrrrr}
+\toprule
+$k$ & branch & chains & skeleton & $\log_{10}$ length-driven & $\log_{10}|\K(\Sk)|$
+& $\log_{10}|\K(D_k)|$\\
+\midrule
+150 & 39\,768 & 278 & 312 & 20\,987.91 & 156.51 & 21\,144.42\\
+100 & 44\,808 & 396 & 434 & 23\,394.31 & 208.92 & 23\,603.24\\
+ 51 & 53\,380 & 798 & 886 & 27\,405.96 & 395.80 & 27\,801.75\\
+\bottomrule
+\end{tabular}
+\caption{\emph{E.\ coli} K-12 MG1655, the double cover. Structural entries exact;
+$\log_{10}|\K(\Sk)|$ by float LU. Compare \cite[Tab.~1]{Bio5}: on one strand the same $k$
+give skeletons of $115$, $175$ and $366$ vertices and arrangement exponents $49.71$,
+$71.11$ and $143.17$.}
+\label{tab:ecoli}
+\end{table}
+
+Two readings of Table~\ref{tab:ecoli}. The skeleton roughly triples ($115\to312$ at
+$k=150$) and the arrangement exponent does too ($49.71\to156.51$): inverted repeats are a
+large part of the irreducible ambiguity of this genome and the single-strand theory sees
+none of them. And $\log_{10}|\K(D_k)|$ exceeds twice the single-strand value by $166.6$,
+$222.1$ and $368.1$ at $k=150,100,51$ --- a crude but honest measure of what
+double-strandedness adds beyond simply having two strands to reconstruct.
+
+\section{Verification}\label{sec:battery}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{clc}
+\toprule
+key & check & mode\\
+\midrule
+(B) & Lemma~\ref{lem:balance}: $D_k$ balanced, multiplicities add across strands & exact\\
+(C) & Proposition~\ref{prop:conn}: connected iff an inverted repeat of length $\ge k$, with witness & exact\\
+(R) & Proposition~\ref{prop:rho}: $\rho$ is an involution with $A(\rho u,\rho v)=A(v,u)$ & exact\\
+(M) & Corollary~\ref{cor:rrna}: the multiplicity-seven chains and their seven operons & exact\\
+(K) & Table~\ref{tab:phix}: $\K(D_k)$ exactly, beside $\K(G_k)$ & exact\\
+(E) & Table~\ref{tab:ecoli} & exact/numeric\\
+\bottomrule
+\end{tabular}
+\caption{The verification battery (\texttt{rc\_double\_cover.py}), $6/6$, about $33$
+seconds.}
+\label{tab:battery}
+\end{table}
+
+\section{Scope}\label{sec:scope}
+
+\emph{Proved.} Lemma~\ref{lem:balance}, Corollary~\ref{cor:applies},
+Proposition~\ref{prop:conn}, Theorem~\ref{thm:merge}, Corollary~\ref{cor:rrna} and
+Proposition~\ref{prop:rho}. All are short; the work is in noticing that the double cover
+is balanced and that this is enough.
+
+\emph{What this is not.} $D_k$ is the \emph{double cover}, not the bidirected quotient.
+The two are different objects and only the first is a digraph. In particular:
+\begin{itemize}
+\item $\K(D_k)$ does \emph{not} count double-stranded reconstructions. By BEST,
+$|\K(D_k)|\prod_v(d^{+}(v)-1)!$ is the number of arc-rooted Eulerian circuits of $D_k$,
+and such a circuit traverses all $2N$ arcs in one closed walk, which is not a genome. A
+double-stranded circular molecule corresponds instead to a decomposition of $D_k$ into two
+$\rho$-conjugate circuits. Counting those is not solved here.
+\item No sandpile theory for the bidirected quotient is offered. The tools
+\cite{Zaslavsky} named in \cite{Bio1,Bio2} remain the place to start, and the obstruction
+noted there --- that reverse complementation reverses arc direction, so the quotient map
+is not a covering of digraphs and \cite{RT} does not apply --- is untouched.
+\item The pairing of Proposition~\ref{prop:rho} is not identified as symmetric or
+alternating, and we have not checked that it is independent of the sink.
+\end{itemize}
+
+\emph{Numeric.} $\log_{10}|\K(\Sk)|$ in Table~\ref{tab:ecoli} is a float LU determinant of
+a $311$- to $885$-dimensional matrix; everything else is exact integer work.
+
+\emph{Open.} (a) The two questions just listed. (b) Whether
+Theorem~\ref{thm:merge} has a converse: is every multiplicity-$r$ family of $D_k$ a
+strand-split family of $S$, and can $a$ and $b$ be recovered from $D_k$ alone?
+(c) The $26$-digit prime in Table~\ref{tab:phix} we do not interpret, as in \cite{Bio3}.
+
+\section*{Provenance}
+
+Unrefereed preprint. Every statement above is proved in full and every number is produced
+by \texttt{rc\_double\_cover.py} from the two public genomes. The task that prompted this
+note asked for a bidirected bundle-chain lemma yielding summands
+$(\Z/2r)^{s-1}$; no such lemma is needed for the double cover, and
+Theorem~\ref{thm:merge} shows the correct multiplicity is $a+b$, the number of copies on
+both strands together, not $2r$. The same task asked for ``the algebraic proof that the
+seven operons participate in the skeleton as a single seven-copy family''; that is
+Corollary~\ref{cor:rrna}, with the caveat of Remark~\ref{rem:52} --- they do so in the
+double cover, and there are two such families exchanged by $\rho$, not one.
+
+\begin{thebibliography}{99}
+
+\bibitem{ANCFT8} R.~Chen, \emph{Algorithmic non-commutative class field theory, VIII: the
+tower-level Hecke--Kirchberg limit and the non-commutative Iwasawa $K$-module}, 2026.
+
+\bibitem{Bio1} R.~Chen, \emph{Assembly ambiguity is not determined by branch statistics:
+critical groups of de Bruijn graphs}, companion note (Bio~1, version~2), 2026.
+
+\bibitem{Bio2} R.~Chen, \emph{The sandpile group as a coordinate system on genome
+reconstructions}, companion note (Bio~2), 2026.
+
+\bibitem{Bio3} R.~Chen, \emph{The sandpile group of a de Bruijn graph splits along its
+repeats}, companion note (Bio~3), 2026.
+
+\bibitem{Bio4} R.~Chen, \emph{Multi-copy repeats: where the two-copy theory of assembly
+ambiguity stops}, companion note (Bio~4), 2026.
+
+\bibitem{Bio5} R.~Chen, \emph{The bundle-chain decomposition of a bacterial genome:
+Escherichia coli K-12 at five $k$-mer lengths}, companion note (Bio~5), 2026.
+
+\bibitem{RT} V.~Reiner and D.~Tseng, \emph{Critical groups of covering, voltage and signed
+graphs}, Discrete Math.\ \textbf{318} (2014), 10--40.
+
+\bibitem{Zaslavsky} T.~Zaslavsky, \emph{Signed graphs}, Discrete Appl.\ Math.\ \textbf{4}
+(1982), 47--74.
+
+\end{thebibliography}
+
+\end{document}

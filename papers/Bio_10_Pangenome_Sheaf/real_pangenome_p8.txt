@@ -1,0 +1,57 @@
+=== the recombination group of a real Escherichia coli pan-genome ===
+    strains 8, k = 31, primes (2, 3), python 3.12.4, numpy 1.26.4
+
+    NC_000913.3    K-12 MG1655      4,641,652 bp   strand as deposited   (fwd 6835 / rev 234 sampled 31-mers shared with the reference)
+    NC_010473.1    K-12 DH10B       4,686,137 bp   strand as deposited   (fwd 6842 / rev 335 sampled 31-mers shared with the reference)
+    NC_002695.2    O157:H7 Sakai    5,498,578 bp   strand as deposited   (fwd 4054 / rev 119 sampled 31-mers shared with the reference)
+    NC_004431.1    CFT073           5,231,428 bp   strand as deposited   (fwd 3013 / rev 118 sampled 31-mers shared with the reference)
+    NC_011750.1    IAI39            5,132,068 bp   strand as deposited   (fwd 2331 / rev 1234 sampled 31-mers shared with the reference)
+    NC_011742.1    S88              5,032,268 bp   strand as deposited   (fwd 3121 / rev 127 sampled 31-mers shared with the reference)
+    NC_008253.1    536              4,938,920 bp   strand as deposited   (fwd 2970 / rev 109 sampled 31-mers shared with the reference)
+    NC_007946.1    UTI89            5,065,741 bp   strand as deposited   (fwd 2993 / rev 162 sampled 31-mers shared with the reference)
+
+=== k = 31 ===
+    branch vertices of the pooled graph: 241,592   [113s]
+    contents (unitigs): 364,819   [10s]
+    core (in all 8 strains): 43,760 vertices, 21,986 contents; strain-specific contents: 83,171
+      nerve cells: q=0: 8, q=1: 744,598, q=2: 1,683,865
+        unit-pivot: 20,000 / 1,683,865 columns   [0s, 65,978/s]
+        unit-pivot: 40,000 / 1,683,865 columns   [1s, 71,542/s]
+        unit-pivot: 60,000 / 1,683,865 columns   [1s, 75,344/s]
+        unit-pivot: 80,000 / 1,683,865 columns   [1s, 77,388/s]
+        unit-pivot: 100,000 / 1,683,865 columns   [1s, 78,514/s]
+        unit-pivot: 120,000 / 1,683,865 columns   [2s, 79,708/s]
+        unit-pivot: 140,000 / 1,683,865 columns   [2s, 80,056/s]
+        unit-pivot: 160,000 / 1,683,865 columns   [2s, 80,881/s]
+        unit-pivot: 180,000 / 1,683,865 columns   [2s, 81,547/s]
+        unit-pivot: 200,000 / 1,683,865 columns   [2s, 81,129/s]
+        unit-pivot: 220,000 / 1,683,865 columns   [3s, 79,968/s]
+        unit-pivot: 240,000 / 1,683,865 columns   [3s, 78,687/s]
+        unit-pivot: 260,000 / 1,683,865 columns   [3s, 77,359/s]
+        unit-pivot: 280,000 / 1,683,865 columns   [4s, 76,768/s]
+        unit-pivot: 300,000 / 1,683,865 columns   [4s, 75,818/s]
+        unit-pivot: 320,000 / 1,683,865 columns   [4s, 75,013/s]
+        unit-pivot: 340,000 / 1,683,865 columns   [5s, 74,403/s]
+        unit-pivot: 360,000 / 1,683,865 columns   [5s, 73,161/s]
+        unit-pivot: 380,000 / 1,683,865 columns   [5s, 70,906/s]
+        unit-pivot: 400,000 / 1,683,865 columns   [6s, 68,816/s]
+        unit-pivot: 420,000 / 1,683,865 columns   [6s, 66,950/s]
+        unit-pivot: 440,000 / 1,683,865 columns   [7s, 65,378/s]
+        unit-pivot: 460,000 / 1,683,865 columns   [7s, 63,848/s]
+        unit-pivot: 480,000 / 1,683,865 columns   [8s, 62,378/s]
+        unit-pivot: 500,000 / 1,683,865 columns   [9s, 57,308/s]
+        unit-pivot: 520,000 / 1,683,865 columns   [11s, 46,265/s]
+        unit-pivot: 540,000 / 1,683,865 columns   [13s, 43,051/s]
+        unit-pivot: 560,000 / 1,683,865 columns   [13s, 42,805/s]
+        unit-pivot: 580,000 / 1,683,865 columns   [14s, 41,636/s]
+        unit-pivot: 600,000 / 1,683,865 columns   [17s, 35,633/s]
+        unit-pivot: 620,000 / 1,683,865 columns   [19s, 32,033/s]
+      reduction cached in nerve_p8_k31.pkl
+      rank d_1 = 7, rank d_2 = 626,743 of 1,683,865 columns; unit-pivot reduction COMPLETE   [28s]
+    R = H_1(nerve): R is FREE of rank 117,848 -- certified, every elementary divisor of d_2 is 1   [55s]
+    intersection components: singletons [1, 1, 1, 1, 1, 1, 1, 1], pairs min/median/max 86/28817/36483, triples max 36517
+  [ok]   (E31) k=31: the recombination group of 8 complete E. coli chromosomes is free of rank 117,848, certified by a unit-pivot reduction of d_2   [8 strains] [exact]
+
+=== summary ===
+  1/1 passed
+  elapsed 182s

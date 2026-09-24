@@ -1,0 +1,58 @@
+﻿=== the reverse-complement double cover D_k ===
+
+=== (B) D_k is balanced, with mult_D(v) = mult_S(v) + mult_S(vbar) ===
+    phiX174  k=  12:      7 branch vertices, balanced True, multiplicities add across strands True
+    phiX174  k=  11:     30 branch vertices, balanced True, multiplicities add across strands True
+    phiX174  k=  10:    125 branch vertices, balanced True, multiplicities add across strands True
+    E. coli  k= 150:  39768 branch vertices, balanced True, multiplicities add across strands True
+  [ok]   (B) D_k is a balanced multidigraph and mult_D(v) = mult_S(v) + mult_S(vbar); every result of Bio 1-3 therefore applies to it unchanged   [4 instances] [exact]
+
+=== (C) D_k is connected iff S has an inverted repeat of length >= k ===
+    phiX174  k=  12: 1 component(s); witness ATTAAGCTCATT at 441 and its reverse complement at 1448   ok
+    phiX174  k=  11: 1 component(s); witness ATTAAGCTCAT at 441 and its reverse complement at 1449   ok
+    phiX174  k=  10: 1 component(s); witness TGTCAAAAAC at 209 and its reverse complement at 4575   ok
+    E. coli  k= 150: 1 component(s); witness GGTAATGACTCCAACTTATTGATA... at 19796 and its reverse complement at 3584046   ok
+    E. coli  k= 100: 1 component(s); witness GGTAATGACTCCAACTTATTGATA... at 19796 and its reverse complement at 1050446   ok
+  [ok]   (C) the two strands are glued precisely by the inverted repeats: D_k is connected exactly when some k-mer occurs together with its reverse complement   [5 instances] [exact]
+
+=== (R) rho is an isomorphism D_k -> D_k^op ===
+    phiX174  k=  12: rho is an involution True; A(rho u, rho v) = A(v, u) True   ok
+    phiX174  k=  11: rho is an involution True; A(rho u, rho v) = A(v, u) True   ok
+    phiX174  k=  10: rho is an involution True; A(rho u, rho v) = A(v, u) True   ok
+  [ok]   (R) rho(v) = vbar is a fixed-point-free-on-arcs involution carrying D_k to its opposite, so it dualises K(D_k) rather than splitting it   [3 instances] [exact]
+
+=== (K) phiX174: K(D_k) beside K(G_k) ===
+    k=12: single strand  branch    2 chains   1 skeleton    1  K(Sk) 0                      length-driven (Z/2)^1
+          double cover   branch    7 chains   0 skeleton    7  K(Sk) Z/3 + Z/11             length-driven 0
+    k=11: single strand  branch   10 chains   2 skeleton    8  K(Sk) Z/3 + Z/11             length-driven (Z/2)^2
+          double cover   branch   30 chains   7 skeleton   23  K(Sk) (Z/2)^2 + Z/49451      length-driven (Z/2)^7
+    k=10: single strand  branch   47 chains   8 skeleton   37  K(Sk) Z/4 + Z/1076338579     length-driven (Z/2)^10
+          double cover   branch  125 chains  23 skeleton   97  K(Sk) (Z/4)^2 + Z/79624452132275189516228869 length-driven (Z/2)^28
+  [ok]   (K) the full decomposition of D_k for phiX174 at k = 10, 11, 12, with the exact arrangement group, beside the single-strand answer   [3 values of k] [exact]
+
+=== (M) the seven rRNA operons as one multiplicity-7 family ===
+    7 operons, 5 on the + strand and 2 on the -; single-strand multiplicities are 5 and 2, and 5+2 = 7 is what D_k should show
+    k= 150: rRNA-bearing chains of D_k -> r=2: 24 chains, 1854 k-mers, r=3: 16 chains, 1326 k-mers, r=4: 11 chains, 851 k-mers, r=5: 14 chains, 1189 k-mers, r=6: 24 chains, 1782 k-mers, r=7: 20 chains, 4154 k-mers
+            longest r=7 chain: s=579, span 728 bp
+              occurrences (strand, position in S, operon): (+224044->223771), (-2730735->2726069), (-3428340->3423423), (+3942081->3941808), (+4035804->4035531), (+4166932->4166659), (+4208420->4208147)
+              all 7 operons hit, one each: True
+    k= 100: rRNA-bearing chains of D_k -> r=2: 21 chains, 1637 k-mers, r=3: 18 chains, 1282 k-mers, r=4: 16 chains, 817 k-mers, r=5: 18 chains, 845 k-mers, r=6: 30 chains, 1530 k-mers, r=7: 26 chains, 5254 k-mers
+            longest r=7 chain: s=629, span 728 bp
+              occurrences (strand, position in S, operon): (+224044->223771), (-2730785->2726069), (-3428390->3423423), (+3942081->3941808), (+4035804->4035531), (+4166932->4166659), (+4208420->4208147)
+              all 7 operons hit, one each: True
+    k=  51: rRNA-bearing chains of D_k -> r=2: 21 chains, 1073 k-mers, r=3: 22 chains, 1110 k-mers, r=4: 26 chains, 681 k-mers, r=5: 20 chains, 475 k-mers, r=6: 38 chains, 1274 k-mers, r=7: 34 chains, 6660 k-mers, r=8: 2 chains, 58 k-mers
+            longest r=7 chain: s=678, span 728 bp
+              occurrences (strand, position in S, operon): (+224044->223771), (-2730834->2726069), (-3428439->3423423), (+3942081->3941808), (+4035804->4035531), (+4166932->4166659), (+4208420->4208147)
+              all 7 operons hit, one each: True
+  [ok]   (M) in D_k the rRNA operons carry chains of multiplicity 7 -- the 5+2 strand split of the single-strand theory is repaired -- and those chains carry more k-mers than any other multiplicity   [k = 150, 100, 51] [exact]
+
+=== (E) E. coli: the decomposition of the double cover ===
+      k | branch | chains | skeleton | log10 length-driven | log10|K(Sk)| | log10|K(D_k)|
+     150 |  39768 |    278 |      312 |            20987.91 |       156.51 |      21144.42
+     100 |  44808 |    396 |      434 |            23394.31 |       208.92 |      23603.24
+      51 |  53380 |    798 |      886 |            27405.96 |       395.80 |      27801.75
+  [ok]   (E) the double cover of E. coli decomposes by the same splitting theorem; the arrangement part is larger than on one strand because inverted repeats are now visible   [k = 150, 100, 51] [exact/numeric]
+
+=== battery summary ===
+  TOTAL 6/6 passed
+  elapsed 33s

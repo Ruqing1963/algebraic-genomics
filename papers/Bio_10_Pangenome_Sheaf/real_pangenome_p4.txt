@@ -1,0 +1,25 @@
+=== the recombination group of a real Escherichia coli pan-genome ===
+    strains 4, k = 31, primes (2, 3), python 3.12.4, numpy 1.26.4
+
+    NC_000913.3    K-12 MG1655      4,641,652 bp   strand as deposited   (fwd 6835 / rev 234 sampled 31-mers shared with the reference)
+    NC_010473.1    K-12 DH10B       4,686,137 bp   strand as deposited   (fwd 6842 / rev 335 sampled 31-mers shared with the reference)
+    NC_002695.2    O157:H7 Sakai    5,498,578 bp   strand as deposited   (fwd 4054 / rev 119 sampled 31-mers shared with the reference)
+    NC_004431.1    CFT073           5,231,428 bp   strand as deposited   (fwd 3013 / rev 118 sampled 31-mers shared with the reference)
+
+=== k = 31 ===
+    branch vertices of the pooled graph: 137,375   [49s]
+    contents (unitigs): 207,028   [4s]
+    core (in all 4 strains): 70,141 vertices, 35,307 contents; strain-specific contents: 73,529
+      nerve cells: q=0: 4, q=1: 166,011, q=2: 134,401
+        unit-pivot: 20,000 / 134,401 columns   [0s, 174,077/s]
+        unit-pivot: 40,000 / 134,401 columns   [0s, 185,174/s]
+        unit-pivot: 60,000 / 134,401 columns   [0s, 195,177/s]
+        unit-pivot: 80,000 / 134,401 columns   [0s, 187,501/s]
+      rank d_1 = 3, rank d_2 = 99,561 of 134,401 columns; unit-pivot reduction COMPLETE   [2s]
+    R = H_1(nerve): R is FREE of rank 66,447 -- certified, every elementary divisor of d_2 is 1   [4s]
+    intersection components: singletons [1, 1, 1, 1], pairs min/median/max 86/35140/36483, triples max 35599
+  [ok]   (E31) k=31: the recombination group of 4 complete E. coli chromosomes is free of rank 66,447, certified by a unit-pivot reduction of d_2   [4 strains] [exact]
+
+=== summary ===
+  1/1 passed
+  elapsed 60s

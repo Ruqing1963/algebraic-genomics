@@ -1,0 +1,96 @@
+﻿=== Escherichia coli K-12 MG1655 (NC_000913.3): the bundle-chain decomposition ===
+
+=== (V) the fast code path against the published phiX174 decomposition ===
+     k=12  branch    2/2    chains   1/1   skeleton    1/1    sum(s-1)   1/1    K(Sk) matches   ok
+     k=11  branch   10/10   chains   2/2   skeleton    8/8    sum(s-1)   2/2    K(Sk) matches   ok
+     k=10  branch   47/47   chains   8/8   skeleton   37/37   sum(s-1)  10/10   K(Sk) matches   ok
+     k= 9  branch  146/146  chains  28/28  skeleton  110/110  sum(s-1)  36/36   K(Sk) matches   ok
+  [ok]   (V) on phiX174 the fast path reproduces every published number of the companion chapter: branch vertices, chain count, skeleton size, length-driven exponent and the exact skeleton group at k = 9, 10, 11, 12   [4 values of k] [exact]
+    genome 4641652 bp circular; 4390 annotated features
+
+      k   distinct k-mers   branch   arcs    chains   skeleton   log10|K(Sk)|   log10|K|
+      150           4594348    23933   71237      107        115        49.7092    10488.89    [2s]
+      100           4588709    26631   79574      166        175        71.1074    11690.57    [2s]
+       75           4584636    28579   85595      243        261        99.7995    12563.08    [2s]
+       51           4579164    31011   93499      342        366       143.1732    13716.83    [2s]
+       31           4570869    34272  105055      683        870       393.7465    15350.54    [2s]
+  [ok]   (H) k-mer multiplicities: 64-bit hashing finds candidates, exact string comparison decides; no collision survives   [5 values of k] [exact]
+  [ok]   (C) compacted graph is balanced with d+(v) = mult(v) (spot-checked on <=2000 vertices)   [5 values of k] [exact]
+  [ok]   (B) maximal bundle chains found in one pass (Lemma 6 injectivity asserted)   [1541 chains] [exact]
+  [ok]   (K) skeleton group exactly for <= 200 vertices, log10 of the order by float LU otherwise   [5 skeletons] [exact/numeric]
+
+=== (R) the rRNA operons, located in the decomposition ===
+    feature table: 22 rRNA genes in 7 operons: 223771+, 2726069-, 3423423-, 3941808+, 4035531+, 4166659+, 4208147+
+    5 operons on the + strand, 2 on the -.  The theory of Bio 1-4 is
+    SINGLE-STRAND: two copies are a repeat of G_k only if they are co-oriented in S.
+    So the seven operons cannot form one multiplicity-7 family; they must split into
+    a 5-copy (+ strand) family and a 2-copy (- strand) family.
+    k= 150: rRNA-bearing chains -> r=2: 14 chain(s), 5201 k-mers, r=3: 9 chain(s), 717 k-mers, r=4: 13 chain(s), 1212 k-mers, r=5: 10 chain(s), 2221 k-mers
+    k= 100: rRNA-bearing chains -> r=2: 17 chain(s), 5243 k-mers, r=3: 12 chain(s), 596 k-mers, r=4: 16 chain(s), 1026 k-mers, r=5: 13 chain(s), 2777 k-mers
+    k=  75: rRNA-bearing chains -> r=2: 16 chain(s), 5174 k-mers, r=3: 16 chain(s), 632 k-mers, r=4: 18 chain(s), 879 k-mers, r=5: 16 chain(s), 3128 k-mers
+    k=  51: rRNA-bearing chains -> r=2: 16 chain(s), 5278 k-mers, r=3: 17 chain(s), 582 k-mers, r=4: 20 chain(s), 727 k-mers, r=5: 17 chain(s), 3518 k-mers
+    k=  31: rRNA-bearing chains -> r=2: 18 chain(s), 5384 k-mers, r=3: 15 chain(s), 436 k-mers, r=4: 23 chain(s), 594 k-mers, r=5: 22 chain(s), 3902 k-mers
+  [ok]   (R) no rRNA-bearing chain ever has multiplicity 7; the largest is 5 (the + strand operons), and at every k the LONGEST chain in the whole genome is the multiplicity-2 spine of the two co-oriented minus-strand operons   [5 values of k] [exact]
+    The five + strand operons are not identical either: they contribute chains of
+    multiplicity 3 and 4 as well as 5, one per sub-family of copies that agree.
+
+    the highest-multiplicity repeat families, annotated
+      k=150
+        r= 8:   4 chains, longest s=425 (span 574 bp)   insertion sequence:IS5A; IS5 transposase and trans-activator
+        r= 7:   5 chains, longest s=150 (span 299 bp)   insertion sequence:IS5A; IS5 transposase and trans-activator
+        r= 5:  12 chains, longest s=626 (span 775 bp)   16S ribosomal RNA
+        r= 4:  15 chains, longest s=557 (span 706 bp)   insertion sequence:IS2A; IS2 element protein
+      k=31
+        r=23:   1 chains, longest s=2 (span 32 bp)   (unannotated)
+        r=22:   3 chains, longest s=5 (span 35 bp)   (unannotated)
+        r=13:   1 chains, longest s=4 (span 34 bp)   (unannotated)
+        r=11:   1 chains, longest s=2 (span 32 bp)   (unannotated)
+
+    the six longest bundle chains at each k, with their annotation
+      k=150
+        r= 2  s= 3881  span=  4030 bp  at [2726063, 3423662]
+              5S ribosomal RNA; 23S ribosomal RNA; 16S ribosomal RNA
+        r= 3  s= 1196  span=  1345 bp  at [15387, 608007, 2514273]
+              insertion sequence:IS186A; IS186/IS421 family transposase
+        r= 3  s= 1182  span=  1331 bp  at [1467910, 2068941, 2996361]
+              insertion sequence:IS2D; IS2 insertion element protein InsB; IS2 insertion element repressor InsA
+        r= 2  s= 1111  span=  1260 bp  at [391708, 1094244]
+              putative autotransporter YaiT; insertion sequence:IS3B; IS3 element protein InsF; IS3 element protein InsE
+        r= 3  s= 1106  span=  1255 bp  at [315229, 566780, 2170174]
+              insertion sequence:IS3A; IS3 element protein InsE; IS3 element protein InsF
+        r= 3  s= 1053  span=  1202 bp  at [1299496, 1396041, 3130143]
+              insertion sequence:IS5U; IS5 transposase and trans-activator
+      k=51
+        r= 2  s= 4412  span=  4462 bp  at [2726127, 3423726]
+              5S ribosomal RNA; 23S ribosomal RNA; 16S ribosomal RNA
+        r= 3  s= 1295  span=  1345 bp  at [15387, 608007, 2514273]
+              insertion sequence:IS186A; IS186/IS421 family transposase
+        r= 3  s= 1281  span=  1331 bp  at [1467910, 2068941, 2996361]
+              insertion sequence:IS2D; IS2 insertion element protein InsB; IS2 insertion element repressor InsA
+        r= 2  s= 1210  span=  1260 bp  at [391708, 1094244]
+              putative autotransporter YaiT; insertion sequence:IS3B; IS3 element protein InsF; IS3 element protein InsE
+        r= 3  s= 1205  span=  1255 bp  at [315229, 566780, 2170174]
+              insertion sequence:IS3A; IS3 element protein InsE; IS3 element protein InsF
+        r= 3  s= 1152  span=  1202 bp  at [1299496, 1396041, 3130143]
+              insertion sequence:IS5U; IS5 transposase and trans-activator
+
+=== (K) the arrangement group, exactly (skeletons of at most 200 vertices) ===
+      k= 150: skeleton  115 vertices -> K(Sk) = (Z/2)^17 + (Z/3)^9 + (Z/4)^12 + (Z/5)^10 + (Z/7)^3 + (Z/8)^4 + (Z/9)^3 + (Z/16)^3 + Z/27 + (Z/32)^2 + Z/49 + Z/21308303   [0s]
+      k= 100: skeleton  175 vertices -> K(Sk) = (Z/2)^29 + (Z/3)^16 + (Z/4)^15 + (Z/5)^15 + (Z/7)^2 + (Z/8)^4 + (Z/9)^2 + (Z/16)^6 + Z/25 + Z/27 + (Z/32)^2 + Z/49 + Z/81 + Z/128 + Z/512 + Z/3448649   [0s]
+      k=  75: skeleton  261 vertices -- beyond the exact range; |K(Sk)| = 10^99.80 (float LU)
+      k=  51: skeleton  366 vertices -- beyond the exact range; |K(Sk)| = 10^143.17 (float LU)
+      k=  31: skeleton  870 vertices -- beyond the exact range; |K(Sk)| = 10^393.75 (float LU)
+
+=== summary table ===
+   k | branch | chains | skel | K(Sk) arrangement part            | log10 length-driven | log10|K(G_k)| | log10 #reconstructions
+  150 |  23933 |    107 |  115 | (Z/2)^17 + (Z/3)^9 + (Z/4)^12 + ( |            10439.18 |      10488.89 |               20735.14
+  100 |  26631 |    166 |  175 | (Z/2)^29 + (Z/3)^16 + (Z/4)^15 +  |            11619.47 |      11690.57 |               23310.20
+   75 |  28579 |    243 |  261 | order 10^99.80 (261 vtx)          |            12463.28 |      12563.08 |               25132.01
+   51 |  31011 |    342 |  366 | order 10^143.17 (366 vtx)         |            13573.65 |      13716.83 |               27624.76
+   31 |  34272 |    683 |  870 | order 10^393.75 (870 vtx)         |            14956.79 |      15350.54 |               31748.76
+    (#reconstructions = |K(G_k)| * prod_v (d+(v)-1)!, the BEST theorem: the number of
+     circular sequences with exactly this k-mer spectrum, read as arc-rooted circuits.)
+
+=== battery summary ===
+  TOTAL 6/6 passed
+  elapsed 13s

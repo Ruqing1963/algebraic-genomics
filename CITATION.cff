@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you use this monograph, its code or its data, please cite it as below."
+title: "Algebraic Genomics: The Combinatorics of Sequence Reconstruction and Representation"
+abstract: >-
+  Exact Eulerian reconstruction, double-stranded spectral fibres, sandpile groups, and the
+  computational complexity of sequence space. The monograph collects the Bio papers 1-19
+  (Bio 15, 16 and 18 were dropped) and one co-authored paper, each with a verification script
+  that reproduces its numbers.
+type: software
+authors:
+  - family-names: Chen
+    given-names: Ruqing
+doi: 10.5281/zenodo.22943487
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22943487
+    description: "Zenodo archive of the monograph"
+repository-code: "https://github.com/Ruqing1963/algebraic-genomics"
+url: "https://doi.org/10.5281/zenodo.22943487"
+date-released: 2026-09-24
+version: 1.0.0
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - genomics
+  - bioinformatics
+  - graph theory
+  - combinatorics
+  - Eulerian circuits
+  - BEST theorem
+  - sandpile group
+  - spectral fibres
+  - computational complexity
+  - mathematical biology
+preferred-citation:
+  type: book
+  title: "Algebraic Genomics: The Combinatorics of Sequence Reconstruction and Representation"
+  authors:
+    - family-names: Chen
+      given-names: Ruqing
+  doi: 10.5281/zenodo.22943487
+  publisher:
+    name: Zenodo
+  year: 2026
+  url: "https://doi.org/10.5281/zenodo.22943487"

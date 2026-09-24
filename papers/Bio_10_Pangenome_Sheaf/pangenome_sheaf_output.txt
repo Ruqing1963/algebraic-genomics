@@ -1,0 +1,58 @@
+﻿=== the pan-genome sheaf and the recombination group ===
+
+--- (F) the pan-genome sheaf is a sum of constant sheaves ---
+    diploid, 3 SNPs: coker(sheaf Laplacian) = Z/38 + Z/38 + Z^2 = (+)_i (Z + K(|G_i|)): True
+    three strains, 2+2+1 SNPs: coker(sheaf Laplacian) = Z/84 + Z/84 + Z/84 + Z^3 = (+)_i (Z + K(|G_i|)): True
+  [ok]   (F) the pan-genome sheaf (stalk Z^{strains through v}, projections) is (+)_i Z_{G_i}: its Laplacian cokernel is the direct sum of the strains' undirected critical groups plus Z^p; no interaction term   [2 pools] [exact]
+
+--- (B) two strains: R is free of rank c(G_1 cap G_2) - 1 ---
+    (the reference has a two-copy repeat a..b, so shared stretches containing copies of a or b
+     merge into one component of G_1 cap G_2: the rank is c(G_1 cap G_2) - 1, not #bubbles - 1)
+    1 SNP(s), c(G_1 cap G_2) = 1: |V| = 4, |A| = 7, rank Z_1(G) = 4, rank sum Z_1(G_i) = 4;  R = 0   H_1(nerve) = 0   agree
+    2 SNP(s), c(G_1 cap G_2) = 2: |V| = 6, |A| = 10, rank Z_1(G) = 5, rank sum Z_1(G_i) = 4;  R = Z   H_1(nerve) = Z   agree
+    3 SNP(s), c(G_1 cap G_2) = 2: |V| = 8, |A| = 13, rank Z_1(G) = 6, rank sum Z_1(G_i) = 5;  R = Z   H_1(nerve) = Z   agree
+    5 SNP(s), c(G_1 cap G_2) = 3: |V| = 12, |A| = 19, rank Z_1(G) = 8, rank sum Z_1(G_i) = 6;  R = Z^2   H_1(nerve) = Z^2   agree
+    SNPs 600, 606 (linked), 1700, c(G_1 cap G_2) = 2: |V| = 6, |A| = 10, rank Z_1(G) = 5, rank sum Z_1(G_i) = 4;  R = Z   H_1(nerve) = Z   agree
+    repeat-free reference, 2 SNPs: |V| = 4, |A| = 6, rank Z_1(G) = 3, rank sum Z_1(G_i) = 2;  R = Z   H_1(nerve) = Z   agree
+    repeat-free reference, 3 SNPs: |V| = 6, |A| = 9, rank Z_1(G) = 4, rank sum Z_1(G_i) = 2;  R = Z^2   H_1(nerve) = Z^2   agree
+    repeat-free reference, 4 SNPs: |V| = 8, |A| = 12, rank Z_1(G) = 5, rank sum Z_1(G_i) = 2;  R = Z^3   H_1(nerve) = Z^3   agree
+  [ok]   (B) two strains: R = Z_1(G)/(Z_1(G_1) + Z_1(G_2)) is free of rank c(G_1 cap G_2) - 1; on a repeat-free reference with b bubbles that is b - 1   [8 pools] [exact]
+
+--- (S) three or more strains: R = H_1(nerve of intersection components), with torsion ---
+    nerve equals the designed triangulation (one component per simplex, none elsewhere): True
+      intersection components: 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 12:1, 13:1, 14:1, 15:1, 23:1, 25:1, 26:1, 34:1, 36:1, 45:1, 46:1, 56:1, 123:1, 125:1, 134:1, 145:1, 236:1, 256:1, 346:1, 456:1
+    octahedron (sphere), 6 strains, k = 16: |V| = 114, |A| = 190, rank Z_1(G) = 77, rank sum Z_1(G_i) = 77;  R = 0   H_1(nerve) = 0   agree
+    nerve equals the designed triangulation (one component per simplex, none elsewhere): True
+      intersection components: 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:1, 12:1, 13:1, 14:1, 15:1, 16:1, 17:1, 23:1, 24:1, 25:1, 26:1, 27:1, 34:1, 35:1, 36:1, 37:1, 45:1, 46:1, 47:1, 56:1, 57:1, 67:1, 124:1, 126:1, 134:1, 137:1, 156:1, 157:1, 235:1, 237:1, 245:1, 267:1, 346:1, 356:1, 457:1, 467:1
+    7-vertex torus, 7 strains, k = 16: |V| = 186, |A| = 319, rank Z_1(G) = 134, rank sum Z_1(G_i) = 132;  R = Z^2   H_1(nerve) = Z^2   agree
+    nerve equals the designed triangulation (one component per simplex, none elsewhere): True
+      intersection components: 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 12:1, 13:1, 14:1, 15:1, 16:1, 23:1, 24:1, 25:1, 26:1, 34:1, 35:1, 36:1, 45:1, 46:1, 56:1, 123:1, 126:1, 134:1, 145:1, 156:1, 235:1, 245:1, 246:1, 346:1, 356:1
+    hemi-icosahedron (projective plane), 6 strains, k = 16: |V| = 138, |A| = 233, rank Z_1(G) = 96, rank sum Z_1(G_i) = 96;  R = Z/2   H_1(nerve) = Z/2   agree
+  [ok]   (S) six strains whose intersection nerve is the projective plane have R = Z/2; the sphere gives 0 and the torus Z^2; R equals H_1 of the nerve of intersection components in every case   [3 pools] [exact]
+
+--- (T) random three-strain pools from a shared segment library ---
+    trial 0: |V| = 16, |A| = 26, rank Z_1(G) = 11, rank sum Z_1(G_i) = 8;  R = Z^3   H_1(nerve) = Z^3   agree
+    trial 1: |V| = 14, |A| = 23, rank Z_1(G) = 10, rank sum Z_1(G_i) = 9;  R = Z   H_1(nerve) = Z   agree
+    trial 2: |V| = 20, |A| = 32, rank Z_1(G) = 13, rank sum Z_1(G_i) = 10;  R = Z^3   H_1(nerve) = Z^3   agree
+    trial 3: |V| = 11, |A| = 19, rank Z_1(G) = 9, rank sum Z_1(G_i) = 9;  R = 0   H_1(nerve) = 0   agree
+    trial 4: |V| = 12, |A| = 19, rank Z_1(G) = 8, rank sum Z_1(G_i) = 7;  R = Z   H_1(nerve) = Z   agree
+    trial 5: |V| = 16, |A| = 25, rank Z_1(G) = 10, rank sum Z_1(G_i) = 8;  R = Z^2   H_1(nerve) = Z^2   agree
+    trial 6: |V| = 14, |A| = 22, rank Z_1(G) = 9, rank sum Z_1(G_i) = 7;  R = Z^2   H_1(nerve) = Z^2   agree
+    trial 7: |V| = 15, |A| = 24, rank Z_1(G) = 10, rank sum Z_1(G_i) = 8;  R = Z^2   H_1(nerve) = Z^2   agree
+    trial 8: |V| = 13, |A| = 21, rank Z_1(G) = 9, rank sum Z_1(G_i) = 6;  R = Z^3   H_1(nerve) = Z^3   agree
+    trial 9: |V| = 13, |A| = 20, rank Z_1(G) = 8, rank sum Z_1(G_i) = 6;  R = Z^2   H_1(nerve) = Z^2   agree
+    trial 10: |V| = 10, |A| = 17, rank Z_1(G) = 8, rank sum Z_1(G_i) = 7;  R = Z   H_1(nerve) = Z   agree
+    trial 11: |V| = 20, |A| = 32, rank Z_1(G) = 13, rank sum Z_1(G_i) = 9;  R = Z^4   H_1(nerve) = Z^4   agree
+    torsion appeared in 0 of the random pools
+  [ok]   (T) R computed by Smith form agrees with H_1(nerve) on random three-strain pools   [12 pools] [exact]
+
+--- (D) phiX174 isolates from NCBI ---
+    6 isolates (strand- and origin-normalised to NC_001422.1): LC786485.1 (5386 bp, 0.989 of the reference 12-mers), NC_001422.1 (5386 bp, 1.000 of the reference 12-mers), MH378443.1 (5386 bp, 0.963 of the reference 12-mers), MH378442.1 (5386 bp, 0.964 of the reference 12-mers), MH378441.1 (5386 bp, 0.967 of the reference 12-mers), JQ764988.2 (5386 bp, 0.932 of the reference 12-mers)
+    pairwise substitution counts after normalisation (-1: different lengths): [[0, 5, 27, 26, 24, 33], [5, 0, 26, 25, 23, 32], [27, 26, 0, 19, 24, 48], [26, 25, 19, 0, 22, 47], [24, 23, 24, 22, 0, 45], [33, 32, 48, 47, 45, 0]]
+      intersection components: 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 12:4, 13:10, 14:10, 15:9, 16:26, 23:9, 24:9, 25:8, 26:26, 34:11, 35:8, 36:27, 45:9, 46:27, 56:26, 123:12, 124:12, 125:11, 126:28, 134:15, 135:14, 136:31, 145:14, 146:31, 156:30, 234:14, 235:13, 236:31, 245:13, 246:31, 256:30, 345:13, 346:31, 356:31, 456:30, 1234:17, 1235:16, 1236:33, 1245:16, 1246:33, 1256:32, 1345:19, 1346:35, 1356:35, 1456:34, 2345:18, 2346:35, 2356:35, 2456:34, 3456:35, 12345:21, 12346:37, 12356:37, 12456:36, 13456:39, 23456:39, 123456:41
+    6 isolates at k = 12: |V| = 104, |A| = 158, rank Z_1(G) = 55, rank sum Z_1(G_i) = 17;  R = Z^38   H_1(nerve) = Z^38   agree
+  [ok]   (D) 6 phiX174 isolates: R computed both ways agrees; R = Z^38   [1 pool] [exact]
+
+=== battery summary ===
+  TOTAL 5/5 passed
+  elapsed 7s
