@@ -21,7 +21,7 @@ build_all.py can treat it like the chapter verification scripts.
     python code/generate_figures.py            all five  (about 1-2 minutes)
     python code/generate_figures.py 2 4        only figures 2 and 4
 
-Requires numpy, matplotlib, networkx; figure 4 needs papers/Spectral_Fibres/human_reviewed.tsv.gz.
+Requires numpy, matplotlib, networkx; figure 4 needs papers/Ch12_Spectral_Fibres/human_reviewed.tsv.gz.
 Output: figures/figN_*.pdf (vector) and .png (300 dpi).
 """
 import os, sys, re, math, random, itertools, collections, importlib.util
@@ -39,7 +39,7 @@ ROOT = os.path.dirname(HERE)
 PAPERS = os.path.join(ROOT, "papers")
 OUT = os.path.join(ROOT, "figures")
 
-# palette shared with papers/Spectral_Fibres/make_figures.py
+# palette shared with papers/Ch12_Spectral_Fibres/make_figures.py
 INK, INK2, MUTED, GRID, BASE = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
 BLUE, ORANGE, AQUA, GRAY, RED, PURPLE = "#2a78d6", "#eb6834", "#1baf7a", "#b9b8b1", "#d23c3c", "#7a5cc7"
 plt.rcParams.update({
@@ -274,7 +274,7 @@ def figure1():
 # ================================================================== Figure 2
 def figure2():
     print("Figure 2: phiX174 double cover and frontier (Bio 6, Bio 12)")
-    B12 = load("Bio_12_Frontier_Elimination", "ds_transfer_matrix")
+    B12 = load("Ch08_Bio_12_Frontier_Elimination", "ds_transfer_matrix")
     S = B12.load_phix()
     c12 = B12.Cover(S, 12)
     check("phiX174 D_12: 7 vertices, 1 palindromic, 14 contents, 0 self-complementary",
@@ -471,7 +471,7 @@ def figure3():
 # ================================================================== Figure 4
 def figure4():
     print("Figure 4: ZNF91 and a fibre-mate (Spectral Fibres)")
-    SF = load("Spectral_Fibres", "spectral_fibres")
+    SF = load("Ch12_Spectral_Fibres", "spectral_fibres")
     items = SF.load()
     S = next(x[3] for x in items if x[1] == "ZNF91")
     # sample fibre-mates (random Eulerian trails of the 25-mer graph) and keep the most rearranged
@@ -545,7 +545,7 @@ def figure4():
 # ================================================================== Figure 5
 def figure5():
     print("Figure 5: snarl tree and Schur reduction (Bio 14)")
-    B14 = load("Bio_14_Snarl_Schur", "bio14_verify")
+    B14 = load("Ch16_Bio_14_Snarl_Schur", "bio14_verify")
     rnd = random.Random(20260924)
     verts, arcs, order, root = B14.synthetic_genome(3, 3, 2, rnd)
     FR = B14.Field("frac")
@@ -581,7 +581,7 @@ def figure5():
     check("the Schur complement is again a Laplacian (off-diagonal <= 0, row sums >= 0)", rowsums_ok)
     # scaling table (S) of Bio 14's reference transcript:
     # snarls, vertices, arcs, front(snarl), front(min-deg), equal mod p1,p2, us per vertex
-    txt = open(os.path.join(PAPERS, "Bio_14_Snarl_Schur", "bio14_output.txt"), encoding="utf-8").read()
+    txt = open(os.path.join(PAPERS, "Ch16_Bio_14_Snarl_Schur", "bio14_output.txt"), encoding="utf-8").read()
     scal = [(int(sn), int(nv), int(fs), float(us)) for sn, nv, _, fs, _, us in
             re.findall(r"^\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(?:yes|no)\s+([\d.]+)", txt, re.M)]
     check("Bio 14 scaling rows found in its transcript (snarls, vertices, front, us/vertex)", len(scal) >= 3,

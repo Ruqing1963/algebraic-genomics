@@ -1,0 +1,126 @@
+% Algebraic Genomics -- the master volume.
+% Build (from monograph/):  pdflatex AG_monograph; bibtex AG_monograph; pdflatex AG_monograph (x2)
+% Chapters are read from chapters/chNN.tex, produced from papers/ by make_chapters.py (step 3 of the
+% roadmap).  Until a chapter has been converted, a placeholder page is printed in its place.
+\documentclass[11pt,twoside,openright]{book}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{booktabs,array,longtable,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\raggedbottom
+\emergencystretch=2em
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\slshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\slshape\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+% ---- numbering: theorems, equations and figures by chapter
+\numberwithin{equation}{chapter}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newenvironment{chaptersummary}{\begin{quotation}\small\noindent\textbf{Summary.}\ }{\end{quotation}\medskip}
+
+% ---- release metadata
+\newcommand{\AGdoi}{10.5281/zenodo.22943487}
+\newcommand{\AGrelease}{24 September 2026}
+\newcommand{\AGversion}{1.0.0}
+
+% ---- unified notation (AG_macros.tex collects every chapter's macros, conflicts resolved)
+\InputIfFileExists{AG_macros.tex}{}{%
+  \newcommand{\Z}{\mathbb{Z}}\newcommand{\Q}{\mathbb{Q}}\newcommand{\K}{\mathcal K}
+  \newcommand{\DS}{\mathrm{DS}}\newcommand{\Lm}{\Lambda^{-}}\newcommand{\Nseq}{N_{\mathrm{seq}}}
+  \newcommand{\ec}{\operatorname{ec}}\newcommand{\Loc}{\operatorname{Loc}}
+  \newcommand{\rc}{\operatorname{rc}}\newcommand{\spec}{\operatorname{spec}}
+  \newcommand{\sP}{\#\mathrm{P}}}
+
+% ---- a chapter, or a placeholder until it has been converted
+\newcommand{\AGchapter}[3]{% #1 file, #2 title, #3 source paper
+  \IfFileExists{chapters/#1.tex}{\input{chapters/#1}}{%
+    \chapter{#2}\label{chap:#1}
+    \sloppy\noindent\emph{Placeholder.} This chapter is the paper #3, to be converted by
+    \texttt{make\_chapters.py}; the standalone paper is in \texttt{papers/}.}}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries Algebraic Genomics\par}
+\vspace{0.6cm}
+{\Large The Combinatorics of Sequence Reconstruction\\[2pt] and Representation\par}
+\vspace{2cm}
+{\Large Ruqing Chen\par}
+\vfill
+{\large Exact Eulerian reconstruction, double-stranded spectral fibres,\\
+sandpile groups, and the computational complexity of sequence space\par}
+\vspace{1.5cm}
+{\small
+\begin{tabular}{rl}
+DOI: & \href{https://doi.org/\AGdoi}{\texttt{\AGdoi}}\\[2pt]
+Archive: & Zenodo, \href{https://doi.org/\AGdoi}{\texttt{https://doi.org/\AGdoi}}\\[2pt]
+Code and data: & \href{https://github.com/Ruqing1963/algebraic-genomics}{\texttt{github.com/Ruqing1963/algebraic-genomics}}\\[2pt]
+Release: & version \AGversion, \AGrelease
+\end{tabular}\par}
+\vspace{1.2cm}
+
+{\small Texts and figures: CC BY 4.0.\quad Code: MIT License.\par}
+\end{titlepage}
+\tableofcontents
+\input{AG_preface}
+
+\mainmatter
+\part{Classical foundations: the BEST theorem and the sandpile group}
+\AGchapter{ch01}{Critical groups of de Bruijn graphs}{Bio~1}
+\AGchapter{ch02}{The sandpile group as a coordinate system on reconstructions}{Bio~2}
+\AGchapter{ch03}{The sandpile group splits along the repeats}{Bio~3}
+\AGchapter{ch04}{Multi-copy repeats}{Bio~4}
+
+\part{The double-stranded frontier and its complexity}
+\AGchapter{ch05}{The reverse-complement double cover}{Bio~6}
+\AGchapter{ch06}{The reverse-complement quotient is a signed graph}{Bio~7}
+\AGchapter{ch07}{Double-stranded assembly as a lattice sum}{Bio~8}
+\AGchapter{ch08}{Frontier elimination}{Bio~12}
+\AGchapter{ch09}{The lattice sum as a fermionic partition function}{Bio~13}
+\AGchapter{ch10}{Double-stranded reconstruction is \#P-hard}{Bio~19}
+
+\part{Spectral fibres and rearrangements}
+\AGchapter{ch11}{Inversions at inverted repeats}{Bio~17}
+\AGchapter{ch12}{What a local encoder cannot see (with Zhengyi Chen)}{Chen \& Chen}
+\AGchapter{ch13}{Polyploid phasing}{Bio~9}
+\AGchapter{ch14}{The recombination group of a pan-genome}{Bio~10}
+
+\part{Algorithmic implementations on genomes}
+\AGchapter{ch15}{The bundle-chain decomposition of \emph{E.~coli}}{Bio~5}
+\AGchapter{ch16}{The BEST determinant along the snarl tree}{Bio~14}
+\AGchapter{ch17}{The isoform decomposition polytope}{Bio~11}
+
+\backmatter
+\input{AG_epilogue}
+\IfFileExists{AG_build_state.tex}{\input{AG_build_state}}{}
+\IfFileExists{AG_monograph.bib}{\bibliographystyle{plain}\bibliography{AG_monograph}}{}
+\end{document}

@@ -44,28 +44,33 @@ All figures are regenerated, and every number in them re-checked, by `python cod
 
 ## Chapter matrix
 
+Folders are numbered by **monograph chapter**, `Ch01` to `Ch17`, without gaps. The paper's own series
+number stays in the folder name (`Ch10_Bio_19_…`), because the papers cite one another by it. Bio 15,
+16 and 18 were specified and then withdrawn before being written, so those numbers are retired, not
+missing. Chapter 12 is joint work with Zhengyi Chen and carries no Bio number.
+
 Checks = the chapter script's own battery (`TOTAL a/b passed` in its reference transcript).
 *quick*: runs in `build_all.py --quick`; *full*: only in `--full`.
 
 | ch. | Part | paper | folder | core result | checks |
 |---:|:---:|---|---|---|:---:|
-| 1 | I | Bio 1 (XIV) | [`Bio_01_Critical_Groups`](papers/Bio_01_Critical_Groups) | BEST = local factor × \|𝒦(G_k)\|; equal degree data can give 4 vs 256 reconstructions; interleaving adds ℤ/2 | 30/30 quick |
-| 2 | I | Bio 2 (XV) | [`Bio_02_Rotor_Routing`](papers/Bio_02_Rotor_Routing) | 𝒦 acts simply transitively by rotor-routing; φX174 at *k*=12: 𝒦 = ℤ/2, two reconstructions one chip apart | 8/8 quick |
-| 3 | I | Bio 3 (XVI) | [`Bio_03_Repeat_Splitting`](papers/Bio_03_Repeat_Splitting) | 𝒦 ≅ ⊕(ℤ/r_c)^(ℓ_c−1) ⊕ 𝒦(Sk); two-copy skeleton = coker(A+I) of the interlace matrix | 7/7 quick |
-| 4 | I | Bio 4 (XVII) | [`Bio_04_Multicopy_Repeats`](papers/Bio_04_Multicopy_Repeats) | three-copy repeats have no pairwise presentation (ℤ/3 vs ℤ/4) | 4/4 quick |
-| 5 | II | Bio 6 (XIX) | [`Bio_06_RC_Double_Cover`](papers/Bio_06_RC_Double_Cover) | reverse-complement double cover *D_k*: balanced, connected iff an inverted repeat ≥ *k* | 6/6 quick |
-| 6 | II | Bio 7 (XX) | [`Bio_07_Signed_Quotient`](papers/Bio_07_Signed_Quotient) | *D_k*/ρ is a signed graph; ρ is an anti-automorphism, giving a linking form | 9/9 full |
-| 7 | II | Bio 8 (XXI) | [`Bio_08_DS_Lattice_Sum`](papers/Bio_08_DS_Lattice_Sum) | #DS as a lattice sum over Λ⁻; φX174: #DS = 10 (*k*=12), 864 (*k*=11) | 9/9 + 4/4 quick |
-| 8 | II | Bio 12 (XXV) | [`Bio_12_Frontier_Elimination`](papers/Bio_12_Frontier_Elimination) | frontier elimination: 2 481 687 900 box points at *k*=10, width 26, 50 758 states | 8/8 quick |
-| 9 | II | Bio 13 (XXVI) | [`Bio_13_Fermionic_Partition`](papers/Bio_13_Fermionic_Partition) | Berezin-integral form; **#DS(φX174, 10) = 31 925 753 246 212** | 7/7 + 4/4 quick |
-| 10 | II | Bio 19 (XXXII) | [`Bio_19_SharpP_Hardness`](papers/Bio_19_SharpP_Hardness) | #DS = 2ε(G) for palindromic genomes ⇒ #P-hard | 5/5 quick |
-| 11 | III | Bio 17 (XXX) | [`Bio_17_Inversions_Fibre`](papers/Bio_17_Inversions_Fibre) | flips + transpositions + rc generate DS(S,k) (conjecture; proved on Bio 19's class); Tate dichotomy | 6/6 quick |
-| 12 | III | Chen & Chen | [`Spectral_Fibres`](papers/Spectral_Fibres) | local encoders are constant on fibres; median κ = 5 over the human proteome; PseAAC and CNN collisions | 5/5 full |
-| 13 | III | Bio 9 (XXII) | [`Bio_09_Polyploid_Phasing`](papers/Bio_09_Polyploid_Phasing) | polyploid phasing as a *p*-fold decomposition of a balanced flow | 6/6 quick |
-| 14 | III | Bio 10 (XXIII) | [`Bio_10_Pangenome_Sheaf`](papers/Bio_10_Pangenome_Sheaf) | the pan-genome sheaf is a direct sum; information in Rec = Z₁(G)/ΣZ₁(Gᵢ) | 5/5 quick + 3/3 full |
-| 15 | IV | Bio 5 (XVIII) | [`Bio_05_Ecoli_Decomposition`](papers/Bio_05_Ecoli_Decomposition) | *E. coli* K-12 at *k*=150: 23 933 branch vertices → 115-vertex skeleton in seconds | 6/6 quick |
-| 16 | IV | Bio 14 (XXVII) | [`Bio_14_Snarl_Schur`](papers/Bio_14_Snarl_Schur) | snarl elimination = Schur complement; linear time, ≈10 µs/vertex, front 8 | 6/6 quick |
-| 17 | IV | Bio 11 (XXIV) | [`Bio_11_Isoform_Polytope`](papers/Bio_11_Isoform_Polytope) | isoform decomposition polytope, dim Θ = #paths − (\|E\|−\|V\|+2) | 7/7 quick |
+| 1 | I | Bio 1 (XIV) | [`Ch01_Bio_01_Critical_Groups`](papers/Ch01_Bio_01_Critical_Groups) | BEST = local factor × \|𝒦(G_k)\|; equal degree data can give 4 vs 256 reconstructions; interleaving adds ℤ/2 | 30/30 quick |
+| 2 | I | Bio 2 (XV) | [`Ch02_Bio_02_Rotor_Routing`](papers/Ch02_Bio_02_Rotor_Routing) | 𝒦 acts simply transitively by rotor-routing; φX174 at *k*=12: 𝒦 = ℤ/2, two reconstructions one chip apart | 8/8 quick |
+| 3 | I | Bio 3 (XVI) | [`Ch03_Bio_03_Repeat_Splitting`](papers/Ch03_Bio_03_Repeat_Splitting) | 𝒦 ≅ ⊕(ℤ/r_c)^(ℓ_c−1) ⊕ 𝒦(Sk); two-copy skeleton = coker(A+I) of the interlace matrix | 7/7 quick |
+| 4 | I | Bio 4 (XVII) | [`Ch04_Bio_04_Multicopy_Repeats`](papers/Ch04_Bio_04_Multicopy_Repeats) | three-copy repeats have no pairwise presentation (ℤ/3 vs ℤ/4) | 4/4 quick |
+| 5 | II | Bio 6 (XIX) | [`Ch05_Bio_06_RC_Double_Cover`](papers/Ch05_Bio_06_RC_Double_Cover) | reverse-complement double cover *D_k*: balanced, connected iff an inverted repeat ≥ *k* | 6/6 quick |
+| 6 | II | Bio 7 (XX) | [`Ch06_Bio_07_Signed_Quotient`](papers/Ch06_Bio_07_Signed_Quotient) | *D_k*/ρ is a signed graph; ρ is an anti-automorphism, giving a linking form | 9/9 full |
+| 7 | II | Bio 8 (XXI) | [`Ch07_Bio_08_DS_Lattice_Sum`](papers/Ch07_Bio_08_DS_Lattice_Sum) | #DS as a lattice sum over Λ⁻; φX174: #DS = 10 (*k*=12), 864 (*k*=11) | 9/9 + 4/4 quick |
+| 8 | II | Bio 12 (XXV) | [`Ch08_Bio_12_Frontier_Elimination`](papers/Ch08_Bio_12_Frontier_Elimination) | frontier elimination: 2 481 687 900 box points at *k*=10, width 26, 50 758 states | 8/8 quick |
+| 9 | II | Bio 13 (XXVI) | [`Ch09_Bio_13_Fermionic_Partition`](papers/Ch09_Bio_13_Fermionic_Partition) | Berezin-integral form; **#DS(φX174, 10) = 31 925 753 246 212** | 7/7 + 4/4 quick |
+| 10 | II | Bio 19 (XXXII) | [`Ch10_Bio_19_SharpP_Hardness`](papers/Ch10_Bio_19_SharpP_Hardness) | #DS = 2ε(G) for palindromic genomes ⇒ #P-hard | 5/5 quick |
+| 11 | III | Bio 17 (XXX) | [`Ch11_Bio_17_Inversions_Fibre`](papers/Ch11_Bio_17_Inversions_Fibre) | flips + transpositions + rc generate DS(S,k) (conjecture; proved on Bio 19's class); Tate dichotomy | 6/6 quick |
+| 12 | III | Chen & Chen | [`Ch12_Spectral_Fibres`](papers/Ch12_Spectral_Fibres) | local encoders are constant on fibres; median κ = 5 over the human proteome; PseAAC and CNN collisions | 5/5 full |
+| 13 | III | Bio 9 (XXII) | [`Ch13_Bio_09_Polyploid_Phasing`](papers/Ch13_Bio_09_Polyploid_Phasing) | polyploid phasing as a *p*-fold decomposition of a balanced flow | 6/6 quick |
+| 14 | III | Bio 10 (XXIII) | [`Ch14_Bio_10_Pangenome_Sheaf`](papers/Ch14_Bio_10_Pangenome_Sheaf) | the pan-genome sheaf is a direct sum; information in Rec = Z₁(G)/ΣZ₁(Gᵢ) | 5/5 quick + 3/3 full |
+| 15 | IV | Bio 5 (XVIII) | [`Ch15_Bio_05_Ecoli_Decomposition`](papers/Ch15_Bio_05_Ecoli_Decomposition) | *E. coli* K-12 at *k*=150: 23 933 branch vertices → 115-vertex skeleton in seconds | 6/6 quick |
+| 16 | IV | Bio 14 (XXVII) | [`Ch16_Bio_14_Snarl_Schur`](papers/Ch16_Bio_14_Snarl_Schur) | snarl elimination = Schur complement; linear time, ≈10 µs/vertex, front 8 | 6/6 quick |
+| 17 | IV | Bio 11 (XXIV) | [`Ch17_Bio_11_Isoform_Polytope`](papers/Ch17_Bio_11_Isoform_Polytope) | isoform decomposition polytope, dim Θ = #paths − (\|E\|−\|V\|+2) | 7/7 quick |
 
 Bio 15, 16 and 18 were specified and dropped (see `monograph/AG_contents.pdf`, “Dropped”). The
 Spectral Fibres paper is joint work with Zhengyi Chen (Guilin Medical University).

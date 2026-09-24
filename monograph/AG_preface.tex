@@ -1,0 +1,81 @@
+% Preface of the monograph (input by AG_monograph.tex)
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+\paragraph{What this book is about.} Sequencing does not read a genome; it reads its words. From
+short reads one learns, at best, the multiset of $k$-mers of the genome and of its reverse
+complement, and everything an assembler, a variant caller or a sequence encoder does is constrained
+by what that multiset determines. This book is about the exact size and shape of that constraint.
+Given the data, the set of genomes compatible with them is a \emph{fibre}. We count fibres exactly,
+describe the moves that connect their members, prove where exact counting stops being tractable, and
+show where the same fibres reappear in modern machine-learning representations of biological
+sequences.
+
+\paragraph{One strand (Part I).} For a single strand the fibre is the set of Eulerian circuits of a
+de Bruijn multigraph, and its size is a determinant, by the theorem of van Aardenne-Ehrenfest,
+de Bruijn, Smith and Tutte. The determinant factors into a local part, fixed by the branch
+statistics, and a global part: the order of the graph's sandpile group. Chapter~1 shows that the
+global part is not determined by the branch statistics. Chapter~2 turns the group into a coordinate
+system on reconstructions, one chip per rearrangement. Chapter~3 splits it along the repeats into a
+part that longer words remove and a part that no word length removes. Chapter~4 shows where pairwise
+repeat data stop describing it.
+
+\paragraph{Two strands (Part II).} Real data do not know which strand a word came from. The
+reverse-complement double cover keeps every single-strand lemma (Chapter~5). But its involution is an
+anti-automorphism of the Laplacian (Chapter~6), and the double-stranded count is no longer one
+determinant but a sum of determinants over the lattice points of a box (Chapter~7). For the phage
+$\phi$X174 at word length $10$ the box has $2\,481\,687\,900$ points (Chapter~8), and the count is
+$31\,925\,753\,246\,212$ (Chapter~9). Chapter~10 proves that this is not a failure of ingenuity:
+the double-stranded count is $\#$P-hard, so no closed formula computes it unless $\mathrm{FP}=\#\mathrm P$.
+
+\paragraph{Fibres and moves (Part III).} The members of a fibre are connected by explicit moves:
+transpositions between direct repeats and inversions between inverted repeats. Chapter~11 computes
+the lattice that the inversions span, by a Tate-cohomology dichotomy, and states a conjecture on
+generation. Chapter~12, written with Zhengyi Chen, shows that the fibres are exactly what local
+sequence encoders cannot see. It computes them for the whole human proteome and constructs explicit
+proteins that a widely used composition encoder cannot tell apart. Chapters~13 and~14 treat pooled
+data: polyploid phasing as a decomposition of one flow, and pan-genomes through their recombination
+group.
+
+\paragraph{Algorithms (Part IV).} Hardness is a statement about the worst case. Real genomes are
+tractable when their tangled parts are small, and the book names the reason each time. Chapter~15
+reduces the $4.6$-million-vertex graph of \emph{E.~coli} to $115$ vertices by contracting everything
+except repeats. Chapter~16 computes the single-strand determinant in linear time along the snarl tree
+of a genome graph. Chapter~17 describes the polytope of isoform abundances compatible with splicing
+data.
+
+\paragraph{How the results are checked.} Every chapter comes with a verification script, and every
+number in the text, the tables and the figures is printed by one of them. The scripts check three
+kinds of statement, and the book keeps them apart:
+\begin{itemize}
+\item \emph{theorems}, which are proved in the text; the scripts test them on exhaustive or random
+instances, and a failure would indicate an error in the proof or in the code;
+\item \emph{computations}, such as $\#\DS(\phi\mathrm X174,10)$, which the scripts produce and
+cross-check by independent methods;
+\item \emph{conjectures and empirical statements}, which are labelled as such and for which the
+scripts report the evidence and nothing more.
+\end{itemize}
+The repository \url{https://github.com/Ruqing1963/algebraic-genomics}, archived under
+DOI~\href{https://doi.org/\AGdoi}{\texttt{\AGdoi}}, contains the papers, the scripts, the input data
+and the reference transcripts. The script \texttt{build\_all.py} compiles every chapter and reruns
+every check; \texttt{--quick} takes about half an hour, \texttt{--full} an afternoon. The state of
+that build for this release is recorded at the end of the book.
+
+\paragraph{What the book corrects.} Several chapters began as specifications that turned out to be
+wrong in part: a rank that was not the number of inverted repeats, a normalisation that was missing,
+a tensor network that was a Schur complement, a polynomial formula that cannot exist. Each chapter
+says which parts of its specification failed and why. We have kept these corrections in the text
+because they are part of the result.
+
+\paragraph{How to read it.} Part~I is self-contained. Part~II assumes Chapters~1 and~3. Part~III can be
+read after Chapter~7. Part~IV uses Chapter~3 (Chapter~15) and the BEST theorem (Chapters~16, 17). The
+chapters were written as papers; we have removed repetitions, unified the notation and merged the
+bibliographies, but each chapter still opens with a summary that can be read alone.
+
+\paragraph{Acknowledgements.} Chapter~12 is joint work with Zhengyi Chen (Guangxi Key Laboratory of
+Drug Discovery and Optimization, School of Pharmacy, Guilin Medical University), and is included with
+the co-author's agreement. The phage, bacterial and human data are those of NCBI RefSeq, GenBank and UniProtKB.
+
+\bigskip
+\noindent Ruqing Chen\hfill Rivi\`ere-Beaudette, Qu\'ebec, \AGrelease

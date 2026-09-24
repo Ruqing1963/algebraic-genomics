@@ -1,0 +1,455 @@
+\begin{thebibliography}{100}
+
+\bibitem{ABCS}
+R.~Arratia, B.~Bollob\'as, D.~Coppersmith and G.~B.~Sorkin, \emph{Euler
+  circuits and DNA sequencing by hybridization}, Discrete Appl.\ Math.\
+  \textbf{104} (2000), 63--96.
+
+\bibitem{ABS}
+R.~Arratia, B.~Bollob\'as and G.~B.~Sorkin, \emph{The interlace polynomial of a
+  graph}, J.\ Combin.\ Theory Ser.~B \textbf{92} (2004), 199--233.
+
+\bibitem{AE}
+S.~F.~Altschul and B.~W.~Erickson, \emph{Significance of nucleotide sequence
+  alignments: a method for random sequence permutation that preserves
+  dinucleotide and codon usage}, Mol.\ Biol.\ Evol.\ \textbf{2} (1985),
+  526--538.
+
+\bibitem{AEdB}
+T.~van Aardenne-Ehrenfest and N.~G.~de Bruijn, \emph{Circuits and trees in
+  oriented linear graphs}, Simon Stevin \textbf{28} (1951), 203--217.
+
+\bibitem{AI12}
+D.~Aguiar and S.~Istrail, \emph{HapCompass: a fast cycle basis algorithm for
+  accurate haplotype assembly of sequence data}, J. Comput. Biol. \textbf{19}
+  (2012), no.~6, 577--590.
+
+\bibitem{Alar}
+D.~Alar, M.~Celaya, L.~D.~Garc\'ia Puente, S.~Henson and A.~Wheeler, \emph{The
+  sandpile group of a thick cycle graph}, Electron.\ J.\ Graph Theory Appl.\
+  \textbf{10} (2022), no.~2.
+
+\bibitem{ANCFT}
+R.~Chen, \emph{Algorithmic non-commutative class field theory, I--XVI},
+  preprints (2026); here III, V and I.
+
+\bibitem{ANCFT8}
+R.~Chen, \emph{Algorithmic non-commutative class field theory, VIII: the
+  tower-level Hecke--Kirchberg limit and the non-commutative Iwasawa
+  $K$-module}, 2026.
+
+\bibitem{Barvinok94}
+A.~I.~Barvinok, \emph{A polynomial time algorithm for counting integral points
+  in polyhedra when the dimension is fixed}, Math.\ Oper.\ Res.\ \textbf{19}
+  (1994), 769--779.
+
+\bibitem{BB08}
+V.~Bansal and V.~Bafna, \emph{HapCUT: an efficient and accurate algorithm for
+  the haplotype assembly problem}, Bioinformatics \textbf{24} (2008), no.~16,
+  i153--i159.
+
+\bibitem{BBT}
+G.~Bresler, M.~Bresler and D.~Tse, \emph{Optimal assembly for high throughput
+  shotgun sequencing}, BMC Bioinformatics \textbf{14} (Suppl.~5) (2013), S18.
+
+\bibitem{BCALM}
+R.~Chikhi, A.~Limasset and P.~Medvedev, \emph{Compacting de Bruijn graphs from
+  sequencing data quickly and in low memory}, Bioinformatics \textbf{32}
+  (2016), i201--i208.
+
+\bibitem{BEST}
+T.~van Aardenne-Ehrenfest, N.~G.~de Bruijn, \emph{Circuits and trees in
+  oriented linear graphs}, Simon Stevin \textbf{28} (1951) 203--217.
+
+\bibitem{BidkhoriKishore}
+H.~Bidkhori and S.~Kishore, \emph{Counting the spanning trees of a directed
+  line graph}, Combin.\ Probab.\ Comput.\ \textbf{20} (2011), 11--25.
+
+\bibitem{BL06}
+Y.~Bilu and N.~Linial, \emph{Lifts, discrepancy and nearly optimal spectral
+  gap}, Combinatorica \textbf{26} (2006), no.~5, 495--519.
+
+\bibitem{Blattner}
+F.~R.~Blattner \emph{et al.}, \emph{The complete genome sequence of Escherichia
+  coli K-12}, Science \textbf{277} (1997), 1453--1462.
+
+\bibitem{Bodlaender98}
+H.~L.~Bodlaender, \emph{A partial $k$-arboretum of graphs with bounded
+  treewidth}, Theoret.\ Comput.\ Sci.\ \textbf{209} (1998), 1--45.
+
+\bibitem{BP96}
+V.~Bafna and P.~A.~Pevzner, \emph{Genome rearrangements and sorting by
+  reversals}, SIAM J. Comput. \textbf{25} (1996), no.~2, 272--289.
+
+\bibitem{Bro82}
+K.~S.~Brown, \emph{Cohomology of Groups}, Graduate Texts in Mathematics~87,
+  Springer (1982).
+
+\bibitem{BW}
+G.~R.~Brightwell and P.~Winkler, \emph{Counting Eulerian circuits is
+  $\#$P-complete}, in: Proc.\ ALENEX/ANALCO 2005, SIAM, 2005, pp.~259--262.
+
+\bibitem{BW05}
+G.~R.~Brightwell, P.~Winkler, \emph{Counting Eulerian circuits is
+  \#P-complete}, in Proc.\ 7th ALENEX and 2nd ANALCO (2005) 259--262.
+
+\bibitem{CC}
+P.~Creed and M.~Cryan, \emph{The number of Euler tours of random directed
+  graphs}, Electron.\ J.\ Combin.\ \textbf{20} (2013), P13.
+
+\bibitem{CDIOSZ}
+M.~Cho, A.~Dochtermann, R.~Inagaki, S.~Oh, D.~Snustad and B.~Zacovic,
+  \emph{Chip-firing and critical groups of signed graphs}, preprint,
+  arXiv:2306.09315v2 (2024).
+
+\bibitem{Cha82}
+S.~Chaiken, \emph{A combinatorial proof of the all minors matrix tree theorem},
+  SIAM J.\ Algebraic Discrete Methods \textbf{3} (1982) 319--329.
+
+\bibitem{ChenSchedler}
+W.~Chen and T.~Schedler, \emph{Concrete and abstract structure of the sandpile
+  group for thick trees with loops}, preprint, arXiv:math/0701381 (2007).
+
+\bibitem{Chou01}
+K.-C.~Chou, \emph{Prediction of protein cellular attributes using pseudo-amino
+  acid composition}, Proteins \textbf{43} (2001) 246--255.
+
+\bibitem{Chou05}
+K.-C.~Chou, \emph{Using amphiphilic pseudo amino acid composition to predict
+  enzyme subfamily classes}, Bioinformatics \textbf{21} (2005) 10--19.
+
+\bibitem{CHP}
+S.~H.~Chan, H.~D.~L.~Hollmann and D.~V.~Pasechnik, \emph{Sandpile groups of
+  generalized de Bruijn and Kautz graphs and circulant matrices over finite
+  fields}, J.\ Algebra \textbf{421} (2015), 268--295.
+
+\bibitem{CMN}
+C.~J.~Colbourn, W.~J.~Myrvold and E.~Neufeld, \emph{Two algorithms for
+  unranking arborescences}, J.\ Algorithms \textbf{20} (1996), 268--281.
+
+\bibitem{DB13}
+F.~D\"orfler, F.~Bullo, \emph{Kron reduction of graphs with applications to
+  electrical networks}, IEEE Trans.\ Circuits Syst.\ I \textbf{60} (2013)
+  150--163.
+
+\bibitem{DT22}
+F.~H.~C.~Dias, L.~Williams, B.~Mumey and A.~I.~Tomescu, \emph{Fast, flexible,
+  and exact minimum flow decompositions via ILP}, in: Research in Computational
+  Molecular Biology (RECOMB 2022), Lecture Notes in Computer Science
+  \textbf{13278}, Springer, 2022, pp.~230--245.
+
+\bibitem{EPN20}
+J.~M.~Eizenga, A.~M.~Novak, J.~A.~Sibbesen, S.~Heumos, A.~Ghaffaari, G.~Hickey,
+  X.~Chang, J.~D.~Seaman, R.~Rounthwaite, J.~Ebler, M.~Rautiainen, S.~Garg,
+  B.~Paten, T.~Marschall, J.~Sir\'en and E.~Garrison, \emph{Pangenome graphs},
+  Annu.\ Rev.\ Genomics Hum.\ Genet.\ \textbf{21} (2020), 139--162.
+
+\bibitem{ESM2}
+Z.~Lin et al., \emph{Evolutionary-scale prediction of atomic-level protein
+  structure with a language model}, Science \textbf{379} (2023) 1123--1130.
+
+\bibitem{Fle90}
+H.~Fleischner, \emph{Eulerian Graphs and Related Topics}, Part~1, Vol.~1,
+  Annals of Discrete Mathematics~45, North-Holland (1990).
+
+\bibitem{Flye}
+M.~Kolmogorov, J.~Yuan, Y.~Lin and P.~A.~Pevzner, \emph{Assembly of long,
+  error-prone reads using repeat graphs}, Nat.\ Biotechnol.\ \textbf{37}
+  (2019), 540--546.
+
+\bibitem{Flyech15}
+M.~Kolmogorov, J.~Yuan, Y.~Lin and P.~A.~Pevzner, \emph{Assembly of long,
+  error-prone reads using repeat graphs}, Nature Biotechnology \textbf{37}
+  (2019), 540--546.
+
+\bibitem{Garg21}
+S.~Garg, \emph{Computational methods for chromosome-scale haplotype
+  reconstruction}, Genome Biology \textbf{22} (2021), 101.
+
+\bibitem{GK16}
+J.~Guzm\'an and C.~Klivans, \emph{Chip firing on general invertible matrices},
+  SIAM J. Discrete Math. \textbf{30} (2016), no.~2, 1115--1127.
+
+\bibitem{GS12}
+Q.~Ge, D.~\v Stefankovi\v c, \emph{The complexity of counting Eulerian tours in
+  $4$-regular graphs}, Algorithmica \textbf{63} (2012) 588--601.
+
+\bibitem{GSN18}
+E.~Garrison, J.~Sir\'en, A.~M.~Novak, G.~Hickey, J.~M.~Eizenga, E.~T.~Dawson,
+  W.~Jones, S.~Garg, C.~Markello, M.~F.~Lin, B.~Paten and R.~Durbin,
+  \emph{Variation graph toolkit improves read mapping by representing genetic
+  variation in the reference}, Nature Biotechnology \textbf{36} (2018),
+  875--879.
+
+\bibitem{HAST02}
+S.~Heber, M.~Alekseyev, S.-H.~Sze, H.~Tang and P.~A.~Pevzner, \emph{Splicing
+  graphs and EST assembly problem}, Bioinformatics \textbf{18} (2002),
+  suppl.~1, S181--S188.
+
+\bibitem{HG19}
+J.~Hansen and R.~Ghrist, \emph{Toward a spectral theory of cellular sheaves},
+  J. Appl.\ Comput.\ Topol.\ \textbf{3} (2019), 315--358.
+
+\bibitem{HHKS12}
+T.~Hartman, A.~Hassidim, H.~Kaplan, D.~Raz and M.~Segalov, \emph{How to split a
+  flow?}, in: Proc.\ IEEE INFOCOM 2012, pp.~828--836.
+
+\bibitem{HJXW09}
+D.~Hiller, H.~Jiang, W.~Xu and W.~H.~Wong, \emph{Identifiability of isoform
+  deconvolution from junction arrays and RNA-Seq}, Bioinformatics \textbf{25}
+  (2009), no.~23, 3056--3059.
+
+\bibitem{HLMPPW}
+A.~E.~Holroyd, L.~Levine, K.~M\'esz\'aros, Y.~Peres, J.~Propp and D.~B.~Wilson,
+  \emph{Chip-firing and rotor-routing on directed graphs}, in: In and Out of
+  Equilibrium 2, Progress in Probability \textbf{60}, Birkh\"auser, 2008,
+  pp.~331--364.
+
+\bibitem{HP99}
+S.~Hannenhalli and P.~A.~Pevzner, \emph{Transforming cabbage into turnip:
+  polynomial algorithm for sorting signed permutations by reversals}, J. ACM
+  \textbf{46} (1999), no.~1, 1--27.
+
+\bibitem{HP99ch11}
+S.~Hannenhalli, P.~A.~Pevzner, \emph{Transforming cabbage into turnip:
+  polynomial algorithm for sorting signed permutations by reversals}, J.\ ACM
+  \textbf{46} (1999) 1--27.
+
+\bibitem{Imb17}
+M.~Imbeault, P.-Y.~Helleboid, D.~Trono, \emph{KRAB zinc-finger proteins
+  contribute to the evolution of gene regulatory networks}, Nature \textbf{543}
+  (2017) 550--554.
+
+\bibitem{Jonsson}
+J.~Jonsson, \emph{On the number of Euler trails in directed graphs}, Math.\
+  Scand.\ \textbf{90} (2002), 191--214.
+
+\bibitem{KIIM17}
+J.~Kawahara, T.~Inoue, H.~Iwashita and S.~Minato, \emph{Frontier-based search
+  for enumerating all constrained subgraphs with compressed representation},
+  IEICE Trans.\ Fundamentals \textbf{E100-A} (2017), 1773--1784.
+
+\bibitem{KKO18}
+K.~Kloster, P.~Kuinke, M.~P.~O'Brien, F.~Reidl, F.~S.~Villaamil, B.~D.~Sullivan
+  and A.~van der Poel, \emph{A practical fpt algorithm for flow decomposition
+  and transcript assembly}, in: Proc.\ Workshop on Algorithm Engineering and
+  Experiments (ALENEX 2018), SIAM, 2018, pp.~75--86.
+
+\bibitem{KM}
+J.~D.~Kececioglu and E.~W.~Myers, \emph{Combinatorial algorithms for DNA
+  sequence assembly}, Algorithmica \textbf{13} (1995), 7--51.
+
+\bibitem{KMUW}
+D.~Kandel, Y.~Matias, R.~Unger and P.~Winkler, \emph{Shuffling biological
+  sequences}, Discrete Appl.\ Math.\ \textbf{71} (1996), 171--185.
+
+\bibitem{Knuth}
+D.~E.~Knuth, \emph{Oriented subtrees of an arc digraph}, J.\ Combin.\ Theory
+  \textbf{3} (1967), 309--314.
+
+\bibitem{Knuth4A}
+D.~E.~Knuth, \emph{The Art of Computer Programming, Volume 4A: Combinatorial
+  Algorithms, Part 1}, Addison-Wesley, 2011, \S7.1.4.
+
+\bibitem{Kot68}
+A.~Kotzig, \emph{Eulerian lines in finite $4$-valent graphs and their
+  transformations}, in Theory of Graphs (Proc.\ Colloq.\ Tihany, 1966),
+  Academic Press (1968) 219--230.
+
+\bibitem{KSP}
+C.~Kingsford, M.~C.~Schatz and M.~Pop, \emph{Assembly complexity of prokaryotic
+  genomes using short reads}, BMC Bioinformatics \textbf{11} (2010), 21.
+
+\bibitem{LasVergnas}
+M.~Las Vergnas, \emph{Le polyn\^ome de Martin d'un graphe eul\'erien}, Ann.\
+  Discrete Math.\ \textbf{17} (1983), 397--411.
+
+\bibitem{Lauri}
+J.~Lauri, \emph{On a determinant formula for enumerating Euler trails in a
+  class of digraphs}, Rend.\ Sem.\ Mat.\ Messina Ser.~II \textbf{5} (1999),
+  75--90.
+
+\bibitem{LBIL01}
+G.~Lancia, V.~Bafna, S.~Istrail, R.~Lippert and R.~Schwartz, \emph{SNPs
+  problems, complexity, and algorithms}, in: Algorithms --- ESA 2001, Lecture
+  Notes in Computer Science \textbf{2161}, Springer, 2001, pp.~182--193.
+
+\bibitem{Levine}
+L.~Levine, \emph{Sandpile groups and spanning trees of directed line graphs},
+  J.\ Combin.\ Theory Ser.~A \textbf{118} (2011), 350--364.
+
+\bibitem{Loukides}
+G.~Loukides, S.~P.~Pissis et al., \emph{Beyond the BEST theorem: fast
+  assessment of Eulerian trails}, in: Fundamentals of Computation Theory (FCT
+  2021), Lecture Notes in Comput.\ Sci.\ \textbf{12867}, Springer, 2021,
+  pp.~162--175.
+
+\bibitem{LSGB08}
+V.~Lacroix, M.~Sammeth, R.~Guig\'o and A.~Bergeron, \emph{Exact transcriptome
+  reconstruction from short sequence reads}, in: Algorithms in Bioinformatics
+  (WABI 2008), Lecture Notes in Computer Science \textbf{5251}, Springer, 2008,
+  pp.~50--63.
+
+\bibitem{MacrisPule}
+N.~Macris and J.~V.~Pul\'e, \emph{An alternative formula for the number of
+  Euler trails for a class of digraphs}, Discrete Math.\ \textbf{154} (1996),
+  301--305.
+
+\bibitem{MB}
+P.~Medvedev and M.~Brudno, \emph{Maximum likelihood genome assembly}, J.\
+  Comput.\ Biol.\ \textbf{16} (2009), 1101--1116.
+
+\bibitem{MGMB07}
+P.~Medvedev, K.~Georgiou, G.~Myers and M.~Brudno, \emph{Computability of models
+  for sequence assembly}, in: Algorithms in Bioinformatics (WABI 2007), Lecture
+  Notes in Computer Science, Springer, 2007, pp.~289--301.
+
+\bibitem{MMN}
+C.~Merino, I.~Moffatt and S.~Noble, \emph{The critical group of a combinatorial
+  map}, Combinatorial Theory \textbf{5} (2025), no.~3; arXiv:2308.13342.
+
+\bibitem{MW96}
+M.~Mihail, P.~Winkler, \emph{On the number of Eulerian orientations of a
+  graph}, Algorithmica \textbf{16} (1996) 402--414.
+
+\bibitem{NagarajanPop}
+N.~Nagarajan and M.~Pop, \emph{Parametric complexity of sequence assembly:
+  theory and applications to next generation sequencing}, J.\ Comput.\ Biol.\
+  \textbf{16} (2009), 897--908.
+
+\bibitem{OBl12}
+M.~O'Bleness et al., \emph{Evolutionary history and genome organization of
+  DUF1220 protein domains}, G3 \textbf{2} (2012) 977--986.
+
+\bibitem{ObscuraTomescu}
+N.~Obscura Acosta and A.~I.~Tomescu, \emph{Simplicity in Eulerian circuits:
+  uniqueness and safety}, preprint, arXiv:2208.08522 (2022).
+
+\bibitem{Pat18}
+B.~Paten, J.~M.~Eizenga, Y.~M.~Rosen, A.~M.~Novak, E.~Garrison, G.~Hickey,
+  \emph{Superbubbles, ultrabubbles, and cacti}, J.\ Comput.\ Biol.\ \textbf{25}
+  (2018) 649--663.
+
+\bibitem{PDDK}
+V.~B.~Priezzhev, D.~Dhar, A.~Dhar and S.~Krishnamurthy, \emph{Eulerian walkers
+  as a model of self-organized criticality}, Phys.\ Rev.\ Lett.\ \textbf{77}
+  (1996), 5079--5082.
+
+\bibitem{Pev95}
+P.~A.~Pevzner, \emph{DNA physical mapping and alternating Eulerian cycles in
+  colored graphs}, Algorithmica \textbf{13} (1995) 77--105.
+
+\bibitem{PNE18}
+B.~Paten, A.~M.~Novak, J.~M.~Eizenga and E.~Garrison, \emph{Superbubbles,
+  ultrabubbles, and cacti}, J. Comput.\ Biol.\ \textbf{25} (2018), no.~7,
+  649--663.
+
+\bibitem{PS04}
+L.~Pachter and B.~Sturmfels, \emph{Tropical geometry of statistical models},
+  Proc.\ Natl.\ Acad.\ Sci.\ USA \textbf{101} (2004), no.~46, 16132--16137.
+
+\bibitem{PSX}
+D.~Perkinson, N.~Salter and T.~Xu, \emph{A note on the critical group of a line
+  graph}, Electron.\ J.\ Combin.\ \textbf{18} (2011), P124.
+
+\bibitem{PTT}
+P.~A.~Pevzner, H.~Tang and G.~Tesler, \emph{De novo repeat classification and
+  fragment assembly}, Genome Res.\ \textbf{14} (2004), 1786--1796.
+
+\bibitem{PTTch15}
+P.~A.~Pevzner, H.~Tang and G.~Tesler, \emph{De novo repeat classification and
+  fragment assembly}, Genome Research \textbf{14} (2004), 1786--1796.
+
+\bibitem{PTW}
+P.~A.~Pevzner, H.~Tang and M.~S.~Waterman, \emph{An Eulerian path approach to
+  DNA fragment assembly}, Proc.\ Natl.\ Acad.\ Sci.\ USA \textbf{98} (2001),
+  9748--9753.
+
+\bibitem{PW}
+J.~G.~Propp and D.~B.~Wilson, \emph{How to get a perfectly random sample from a
+  generic Markov chain and generate a random spanning tree of a directed
+  graph}, J.\ Algorithms \textbf{27} (1998), 170--217.
+
+\bibitem{RH10}
+D.~Rogers, M.~Hahn, \emph{Extended-connectivity fingerprints}, J.\ Chem.\ Inf.\
+  Model.\ \textbf{50} (2010) 742--754.
+
+\bibitem{RT}
+V.~Reiner and D.~Tseng, \emph{Critical groups of covering, voltage and signed
+  graphs}, Discrete Math.\ \textbf{318} (2014), 10--40.
+
+\bibitem{RT14}
+V.~Reiner and D.~Tseng, \emph{Critical groups of covering, voltage and signed
+  graphs}, Discrete Math. \textbf{318} (2014), 10--40; arXiv:1301.2977.
+
+\bibitem{SCH00}
+D.~Schmucker, J.~C.~Clemens, H.~Shu, C.~A.~Worby, J.~Xiao, M.~Muda, J.~E.~Dixon
+  and S.~L.~Zipursky, \emph{Drosophila Dscam is an axon guidance receptor
+  exhibiting extraordinary molecular diversity}, Cell \textbf{101} (2000),
+  no.~6, 671--684.
+
+\bibitem{SL02}
+P.~Stankiewicz, J.~R.~Lupski, \emph{Genome architecture, rearrangements and
+  genomic disorders}, Trends Genet.\ \textbf{18} (2002) 74--82.
+
+\bibitem{SmithTutte}
+C.~A.~B.~Smith and W.~T.~Tutte, \emph{On unicursal paths in a network of degree
+  4}, Amer.\ Math.\ Monthly \textbf{48} (1941), 233--237.
+
+\bibitem{SmithTuttech08}
+C.~A.~B.~Smith and W.~T.~Tutte, \emph{On unicursal paths in a network of degree
+  four}, Amer.\ Math.\ Monthly \textbf{48} (1941), 233--237.
+
+\bibitem{Toth}
+L.~T\'othm\'er\'esz, \emph{On canonical sandpile actions of embedded graphs},
+  Advances in Combinatorics (2026), no.~6; arXiv:2504.05275.
+
+\bibitem{Tutte48}
+W.~T.~Tutte, \emph{The dissection of equilateral triangles into equilateral
+  triangles}, Proc.\ Cambridge Philos.\ Soc.\ \textbf{44} (1948), 463--482.
+
+\bibitem{Ukk92}
+E.~Ukkonen, \emph{Approximate string-matching with $q$-grams and maximal
+  matches}, Theoret.\ Comput.\ Sci.\ \textbf{92} (1992) 191--211.
+
+\bibitem{UniPert}
+Y.~Li, M.~Zeng, J.~Zhu, L.~Liu, F.~Wang, L.~Huang, F.~Yang, M.~Li, J.~Yao,
+  \emph{UniPert-G2CP bridges genetic and chemical screens from molecular
+  representation to phenotype modeling}, Cell \textbf{189} (2026) 4946--4963.
+
+\bibitem{UniProt}
+The UniProt Consortium, \emph{UniProt: the Universal Protein Knowledgebase in
+  2023}, Nucleic Acids Res.\ \textbf{51} (2023) D523--D531.
+
+\bibitem{uShuffle}
+M.~Jiang, J.~Anderson, J.~Gillespie and M.~Mayne, \emph{uShuffle: a useful tool
+  for shuffling biological sequences while preserving the $k$-let counts}, BMC
+  Bioinformatics \textbf{9} (2008), 192.
+
+\bibitem{VCCM08}
+B.~Vatinlen, F.~Chauvet, P.~Chr\'etienne and P.~Mahey, \emph{Simple bounds and
+  greedy algorithms for decomposing a flow into a minimal set of paths},
+  European J. Oper.\ Res.\ \textbf{185} (2008), no.~3, 1390--1401.
+
+\bibitem{Wilson}
+D.~B.~Wilson, \emph{Generating random spanning trees more quickly than the
+  cover time}, in: Proc.\ 28th ACM Symp.\ Theory of Computing (1996),
+  pp.~296--303.
+
+\bibitem{XHLJ19}
+K.~Xu, W.~Hu, J.~Leskovec, S.~Jegelka, \emph{How powerful are graph neural
+  networks?}, International Conference on Learning Representations (2019).
+
+\bibitem{Zas82}
+T.~Zaslavsky, \emph{Signed graphs}, Discrete Appl. Math. \textbf{4} (1982),
+  no.~1, 47--74; erratum \textbf{5} (1983), 248.
+
+\bibitem{Zas98}
+T.~Zaslavsky, \emph{Glossary of signed and gain graphs and allied areas},
+  Electron. J. Combin., Dynamic Survey \#DS9 (1998).
+
+\bibitem{Zaslavsky}
+T.~Zaslavsky, \emph{Signed graphs}, Discrete Appl.\ Math.\ \textbf{4} (1982),
+  47--74.
+
+\end{thebibliography}

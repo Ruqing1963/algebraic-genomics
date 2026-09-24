@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: AG_monograph.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: AG_monograph.bib
+You've used 100 entries,
+            2118 wiz_defined-function locations,
+            794 strings with 21038 characters,
+and the built_in function-call counts, 14424 in all, are:
+= -- 1100
+> -- 100
+< -- 0
++ -- 100
+- -- 0
+* -- 402
+:= -- 1313
+add.period$ -- 100
+call.type$ -- 100
+change.case$ -- 300
+chr.to.int$ -- 0
+cite$ -- 100
+duplicate$ -- 700
+empty$ -- 2301
+format.name$ -- 0
+if$ -- 3601
+int.to.chr$ -- 0
+int.to.str$ -- 100
+missing$ -- 0
+newline$ -- 303
+num.names$ -- 0
+pop$ -- 1100
+preamble$ -- 1
+purify$ -- 300
+quote$ -- 0
+skip$ -- 798
+stack$ -- 0
+substring$ -- 500
+swap$ -- 100
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 400
+warning$ -- 0
+while$ -- 0
+width$ -- 103
+write$ -- 502
