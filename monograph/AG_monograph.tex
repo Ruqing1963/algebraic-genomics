@@ -58,6 +58,9 @@
   \newcommand{\rc}{\operatorname{rc}}\newcommand{\spec}{\operatorname{spec}}
   \newcommand{\sP}{\#\mathrm{P}}}
 
+% ---- clickable DOIs in the bibliography
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
+
 % ---- a chapter, or a placeholder until it has been converted
 \newcommand{\AGchapter}[3]{% #1 file, #2 title, #3 source paper
   \IfFileExists{chapters/#1.tex}{\input{chapters/#1}}{%
@@ -121,6 +124,7 @@ Release: & version \AGversion, \AGrelease
 
 \backmatter
 \input{AG_epilogue}
+\input{AG_guide}
 \IfFileExists{AG_build_state.tex}{\input{AG_build_state}}{}
 \IfFileExists{AG_monograph.bib}{\bibliographystyle{plain}\bibliography{AG_monograph}}{}
 \end{document}

@@ -1,0 +1,34 @@
+% Build record of this release (input by AG_monograph.tex, back matter)
+\chapter*{Build record}
+\addcontentsline{toc}{chapter}{Build record}
+\markboth{Build record}{Build record}
+
+The repository was built with \texttt{python build\_all.py -{}-quick} on 24 September 2026 (Python
+3.12.4, Windows~11), after the chapter folders were renumbered. The build compiles every paper twice
+with \texttt{pdflatex} and reruns its verification scripts; a script passes when it exits normally and
+its final line reports all of its checks passed.
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+items passed & 37\\
+items failed & 0\\
+items skipped (run only with \texttt{-{}-full}) & 4\\
+wall-clock time & 24 min\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent All $17$ papers compile with no error and no undefined reference. Every script run in quick mode
+passes all of its checks. Two of them, Chapter~\ref{chap:ch08} (\texttt{ds\_transfer\_matrix.py}) and
+Chapter~\ref{chap:ch09} (\texttt{ds\_count.py}), run a subset of their checks in quick mode ($7$ of
+$8$, $2$ of $4$).
+
+\paragraph{Not rerun in this build.} The four items that run only with \texttt{-{}-full} are the
+signed-quotient battery of Chapter~\ref{chap:ch06}, the eight-strain pan-genome of
+Chapter~\ref{chap:ch14}, and the proteome computation and its figures in Chapter~\ref{chap:ch12}. The
+long computations of Chapters~\ref{chap:ch08} and~\ref{chap:ch09} were also run only in their quick
+form. These are the connected count at $k=10$ and the enumeration of the $1\,240\,843\,950$ half-box
+points. For all of them the numbers in the text come from the reference transcripts in the repository,
+which were produced when the chapters were written. A \texttt{-{}-full} build, of about four hours,
+reruns them.

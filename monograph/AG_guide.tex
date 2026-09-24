@@ -1,0 +1,41 @@
+% Guide to chapters and verification scripts (input by AG_monograph.tex, back matter)
+\chapter*{Guide to chapters and verification scripts}
+\addcontentsline{toc}{chapter}{Guide to chapters and verification scripts}
+\markboth{Guide to chapters and verification scripts}{Guide to chapters and verification scripts}
+
+Every chapter was first written as a paper with its own verification script. The scripts, their
+reference transcripts and their input data live in the repository
+\url{https://github.com/Ruqing1963/algebraic-genomics}, archived under
+DOI~\href{https://doi.org/\AGdoi}{\texttt{\AGdoi}}, in the folder listed below. In the second
+column, ``Bio~$n$'' is the number of the paper in its series; the numbers~15, 16 and~18 were
+withdrawn before being written. \texttt{build\_all.py} recompiles every paper and reruns every
+script: \texttt{-{}-quick} in about half an hour, \texttt{-{}-full} including the long computations.
+The last column gives the checks of the reference transcript.
+
+\medskip
+{\small
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.33\textwidth}l>{\raggedright\arraybackslash}p{0.36\textwidth}r}
+\toprule
+chapter & paper & folder \texttt{papers/} and script & checks\\
+\midrule
+\endhead
+\ref{chap:ch01}\ Critical groups of de Bruijn graphs & Bio~1 & \texttt{Ch01\_Bio\_01\_Critical\_Groups/} \texttt{dbg\_sandpile.py} & 30\\
+\ref{chap:ch02}\ The sandpile group as a coordinate system & Bio~2 & \texttt{Ch02\_Bio\_02\_Rotor\_Routing/} \texttt{rotor\_assembly.py} & 8\\
+\ref{chap:ch03}\ The sandpile group splits along the repeats & Bio~3 & \texttt{Ch03\_Bio\_03\_Repeat\_Splitting/} \texttt{repeat\_splitting.py} & 7\\
+\ref{chap:ch04}\ Multi-copy repeats & Bio~4 & \texttt{Ch04\_Bio\_04\_Multicopy\_Repeats/} \texttt{multicopy.py} & 4\\
+\ref{chap:ch05}\ The reverse-complement double cover & Bio~6 & \texttt{Ch05\_Bio\_06\_RC\_Double\_Cover/} \texttt{rc\_double\_cover.py} & 6\\
+\ref{chap:ch06}\ The quotient is a signed graph & Bio~7 & \texttt{Ch06\_Bio\_07\_Signed\_Quotient/} \texttt{bidirected\_sandpile.py} & 9\\
+\ref{chap:ch07}\ Double-stranded assembly as a lattice sum & Bio~8 & \texttt{Ch07\_Bio\_08\_DS\_Lattice\_Sum/} \texttt{ds\_lattice.py}, \texttt{ds\_flips.py} & 9, 4\\
+\ref{chap:ch08}\ Frontier elimination & Bio~12 & \texttt{Ch08\_Bio\_12\_Frontier\_Elimination/} \texttt{ds\_transfer\_matrix.py} & 8\\
+\ref{chap:ch09}\ A fermionic partition function & Bio~13 & \texttt{Ch09\_Bio\_13\_Fermionic\_Partition/} \texttt{ds\_fermion.py}, \texttt{ds\_count.py} & 7, 4\\
+\ref{chap:ch10}\ Double-stranded reconstruction is \#P-hard & Bio~19 & \texttt{Ch10\_Bio\_19\_SharpP\_Hardness/} \texttt{bio19\_verify.py} & 5\\
+\ref{chap:ch11}\ Inversions at inverted repeats & Bio~17 & \texttt{Ch11\_Bio\_17\_Inversions\_Fibre/} \texttt{bio17\_verify.py} & 6\\
+\ref{chap:ch12}\ What a local encoder cannot see & joint & \texttt{Ch12\_Spectral\_Fibres/} \texttt{spectral\_fibres.py} & 5\\
+\ref{chap:ch13}\ Polyploid phasing & Bio~9 & \texttt{Ch13\_Bio\_09\_Polyploid\_Phasing/} \texttt{polyploid\_phasing.py} & 6\\
+\ref{chap:ch14}\ The recombination group of a pan-genome & Bio~10 & \texttt{Ch14\_Bio\_10\_Pangenome\_Sheaf/} \texttt{pangenome\_sheaf.py}, \texttt{real\_pangenome.py} & 5, 3\\
+\ref{chap:ch15}\ The bundle-chain decomposition of \emph{E.~coli} & Bio~5 & \texttt{Ch15\_Bio\_05\_Ecoli\_Decomposition/} \texttt{ecoli\_sandpile.py} & 6\\
+\ref{chap:ch16}\ The BEST determinant along the snarl tree & Bio~14 & \texttt{Ch16\_Bio\_14\_Snarl\_Schur/} \texttt{bio14\_verify.py} & 6\\
+\ref{chap:ch17}\ The isoform decomposition polytope & Bio~11 & \texttt{Ch17\_Bio\_11\_Isoform\_Polytope/} \texttt{isoform\_polytope.py} & 7\\
+\bottomrule
+\end{longtable}}
