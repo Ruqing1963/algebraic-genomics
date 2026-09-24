@@ -2,7 +2,7 @@
 % Source paper: Bio 6
 \chapter[The reverse-complement double cover]{Double strands without a new lemma: the reverse-complement double cover of a de Bruijn graph}\label{chap:ch05}
 \begin{chaptersummary}
-The single-strand theory of the companion notes sees a repeat only between co-oriented
+The single-strand theory of Part~I sees a repeat only between co-oriented
 copies, so the seven ribosomal operons of \emph{E.\ coli} --- five on one strand, two on
 the other --- appear as a five-copy family and a two-copy family and never as a
 seven-copy one. Repairing this was expected to need a sandpile theory for bidirected
@@ -30,21 +30,20 @@ reconstructions; that problem is left exactly where it was.
 
 \section{Introduction}\label{ch05:sec:intro}
 
-For a circular sequence $S$ and $k\ge1$, $G_k(S)$ has the distinct $k$-mers as vertices
-and the occurrences of $(k{+}1)$-mers as arcs, and
-$\K\bigl(G_k(S)\bigr)\cong\bigoplus_c(\Z/r_c)^{\ell_c-1}\oplus\K(\Sk)$ by the bundle-chain
-splitting theorem Chapter~\ref{chap:ch03}. The theory is single-strand throughout Chapters~\ref{chap:ch01}, \ref{chap:ch02}, \ref{chap:ch03}, \ref{chap:ch04},
-and Chapter~\ref{chap:ch15} measured what that costs on a real genome: of the seven \emph{rrn} operons
+The theory of Part~I is single-strand throughout: $G_k(S)$ is the de Bruijn multigraph of
+Section~\ref{ch01:sec:setting}, and its sandpile group splits along the repeats by
+Theorem~\ref{ch03:thm:split}. Chapter~\ref{chap:ch15} measures what that costs on a real genome: of the seven \emph{rrn} operons
 of \emph{E.\ coli} K-12, five lie on the $+$ strand and two on the $-$, and since a repeat
 of $G_k(S)$ requires co-oriented copies, the operons split into a multiplicity-five family
 and a multiplicity-two family, with multiplicity seven occurring nowhere.
 
 The obvious repair is to work with the bidirected graph that assemblers actually build,
-whose vertices are the classes $\{v,\bar v\}$; Chapters~\ref{chap:ch01}, \ref{chap:ch02} left this open and warned
+whose vertices are the classes $\{v,\bar v\}$; Chapters~\ref{chap:ch01} and~\ref{chap:ch02} left this open
+(Sections~\ref{ch01:sec:open} and~\ref{ch02:sec:scope}) and warned
 against the tempting shortcut of decomposing $\K$ into $\pm1$-eigenspaces of the
 reverse-complement involution, since an involution splits an abelian group only after $2$
 is inverted and the $2$-torsion is where the interesting phenomena live. That warning
-stands. What this note observes is that most of what one wants from the bidirected picture
+stands. What this chapter observes is that most of what one wants from the bidirected picture
 is already available, without any new lemma, from a balanced digraph.
 
 \section{The double cover}\label{ch05:sec:cover}
@@ -65,14 +64,15 @@ vertex. Hence $D_k$ is a balanced multidigraph.
 $\mult_{\bar S}(v)=\mult_S(\bar v)$, because a copy of $v$ in $\bar S$ is a copy of
 $\bar v$ in $S$; the first formula follows. In each of the two circular sequences
 separately, every occurrence of $v$ contributes one arc out of $v$ and one arc into $v$,
-as in Chapter~\ref{chap:ch01}, Lem.~4; summing the two gives the second.
+as in Lemma~\ref{ch15:lem:branch}; summing the two gives the second.
 \end{proof}
 
 \begin{corollary}[Nothing new is needed]\label{ch05:cor:applies}
-The unitig contraction lemma Chapter~\ref{chap:ch01}, Lem.~4, the bundle-chain lemma
-Chapter~\ref{chap:ch03}, Lem.~2, the canonicity of the skeleton Chapter~\ref{chap:ch03}, Lem.~6 and the splitting
-theorem Chapter~\ref{chap:ch03}, Thm.~5 apply to $D_k$ verbatim, and a vertex of $D_k$ survives unitig
-contraction if and only if $\mult_S(v)+\mult_S(\bar v)\ge2$ Chapter~\ref{chap:ch15}, Lem.~2.1.
+The unitig contraction lemma (Lemma~\ref{ch01:lem:contract}), the bundle-chain lemma
+(Lemma~\ref{ch03:lem:bundle}), the canonicity of the skeleton (Lemma~\ref{ch03:lem:canon}) and the
+splitting theorem (Theorem~\ref{ch03:thm:split}) apply to $D_k$ verbatim, and a vertex of $D_k$
+survives unitig contraction if and only if $\mult_S(v)+\mult_S(\bar v)\ge2$
+(Lemma~\ref{ch15:lem:branch}).
 \end{corollary}
 
 That last clause is the practical point: the branch vertices of $D_k$ are the $k$-mers
@@ -114,7 +114,7 @@ $\K(D_k)$, and another from its $\rho$-image.
 A reverse-strand copy of $W$ is a forward occurrence of $\bar W$, so
 $\mult_S(w)=a$ and $\mult_S(\bar w)=b$ for a $k$-mer $w$ of $W$ in general position; by
 Lemma~\ref{ch05:lem:balance}, $\mult_D(w)=a+b$, and symmetrically for $\bar w$. The last
-sentence is Lemma~\ref{ch05:lem:balance} followed by Chapter~\ref{chap:ch03}, Lem.~2 applied to the
+sentence is Lemma~\ref{ch05:lem:balance} followed by Lemma~\ref{ch03:lem:bundle} applied to the
 balanced digraph $D_k$.
 \end{proof}
 
@@ -173,13 +173,13 @@ stated isomorphism.
 \end{proof}
 
 \begin{remark}[Against the eigenspace decomposition]\label{ch05:rem:nosplit}
-Chapter~\ref{chap:ch01}, Open (c) warned that $\K$ should not be split into $\pm1$-eigenspaces of
+Section~\ref{ch01:sec:open}, item~(c), warned that $\K$ should not be split into $\pm1$-eigenspaces of
 $\rho$, because that discards the $2$-torsion. Proposition~\ref{ch05:prop:rho} is what happens
 instead: an involution that reverses arcs cannot act on $\K(D_k)$ at all --- it does not
 preserve the presentation --- but it identifies $\K(D_k)$ with its dual. No inversion of
-$2$ occurs anywhere, and the $2$-torsion is untouched. We do not determine whether the
-resulting pairing is symmetric or alternating; that question, and whether it is
-independent of the choice of sink, are left open.
+$2$ occurs anywhere, and the $2$-torsion is untouched. Remark~\ref{ch06:rem:pairing} shows that
+the resulting pairing is symmetric; whether it is independent of the choice of sink is left
+open.
 \end{remark}
 
 \section{Computations}\label{ch05:sec:comp}
@@ -199,13 +199,13 @@ $k$ & graph & branch & chains & skeleton & $\K(\Sk)$ & length-driven\\
 \bottomrule
 \end{tabular}
 \caption{$\varphi$X174: the single-strand graph and its double cover. All entries exact
-(check~(K)); the single-strand rows reproduce Chapter~\ref{chap:ch03}, Tab.~1.}
+(check~(K)); the single-strand rows reproduce Table~\ref{ch03:tab:phix}.}
 \label{ch05:tab:phix}
 \end{table}
 
 \begin{remark}[The phage's single bit is single-strand]\label{ch05:rem:bit}
 $\K(G_{12})=\Z/2$: the $12$-mer spectrum of $\varphi$X174 leaves exactly two global
-reconstructions, and Chapter~\ref{chap:ch02} located the bit as a pair of interleaved $12$-mers. On
+reconstructions, and Proposition~\ref{ch02:prop:phix} located the bit as a pair of interleaved $12$-mers. On
 the double-stranded spectrum the answer is different: $\K(D_{12})=\Z/3\oplus\Z/11=\Z/33$,
 and it is entirely arrangement --- $D_{12}$ has no bundle chain at all, so the
 length-driven summand is trivial. The two statements do not conflict; they answer
@@ -226,7 +226,7 @@ $k$ & branch & chains & skeleton & $\log_{10}$ length-driven & $\log_{10}|\K(\Sk
 \bottomrule
 \end{tabular}
 \caption{\emph{E.\ coli} K-12 MG1655, the double cover. Structural entries exact;
-$\log_{10}|\K(\Sk)|$ by float LU. Compare Chapter~\ref{chap:ch15}, Tab.~1: on one strand the same $k$
+$\log_{10}|\K(\Sk)|$ by float LU. Compare Table~\ref{ch15:tab:main}: on one strand the same $k$
 give skeletons of $115$, $175$ and $366$ vertices and arrangement exponents $49.71$,
 $71.11$ and $143.17$.}
 \label{ch05:tab:ecoli}
@@ -274,13 +274,13 @@ The two are different objects and only the first is a digraph. In particular:
 $|\K(D_k)|\prod_v(d^{+}(v)-1)!$ is the number of arc-rooted Eulerian circuits of $D_k$,
 and such a circuit traverses all $2N$ arcs in one closed walk, which is not a genome. A
 double-stranded circular molecule corresponds instead to a decomposition of $D_k$ into two
-$\rho$-conjugate circuits. Counting those is not solved here.
-\item No sandpile theory for the bidirected quotient is offered. The tools
-\cite{Zas82} named in Chapters~\ref{chap:ch01}, \ref{chap:ch02} remain the place to start, and the obstruction
+$\rho$-conjugate circuits. Counting those is the subject of Chapter~\ref{chap:ch07}.
+\item No sandpile theory for the bidirected quotient is offered here; Chapter~\ref{chap:ch06} takes it
+up. The tools \cite{Zas82} named in Chapters~\ref{chap:ch01} and~\ref{chap:ch02} are the place to start, and the obstruction
 noted there --- that reverse complementation reverses arc direction, so the quotient map
 is not a covering of digraphs and \cite{RT14} does not apply --- is untouched.
-\item The pairing of Proposition~\ref{ch05:prop:rho} is not identified as symmetric or
-alternating, and we have not checked that it is independent of the sink.
+\item The pairing of Proposition~\ref{ch05:prop:rho} is identified as symmetric only in
+Chapter~\ref{chap:ch06}, and we have not checked that it is independent of the sink.
 \end{itemize}
 
 \emph{Numeric.} $\log_{10}|\K(\Sk)|$ in Table~\ref{ch05:tab:ecoli} is a float LU determinant of
@@ -289,13 +289,14 @@ a $311$- to $885$-dimensional matrix; everything else is exact integer work.
 \emph{Open.} (a) The two questions just listed. (b) Whether
 Theorem~\ref{ch05:thm:merge} has a converse: is every multiplicity-$r$ family of $D_k$ a
 strand-split family of $S$, and can $a$ and $b$ be recovered from $D_k$ alone?
-(c) The $26$-digit prime in Table~\ref{ch05:tab:phix} we do not interpret, as in Chapter~\ref{chap:ch03}.
+(c) The $26$-digit prime in Table~\ref{ch05:tab:phix} we do not interpret, as in
+Section~\ref{ch03:sec:scope}.
 
 \section*{Provenance}
 
-Unrefereed preprint. Every statement above is proved in full and every number is produced
-by \texttt{rc\_double\_cover.py} from the two public genomes. The task that prompted this
-note asked for a bidirected bundle-chain lemma yielding summands
+Every statement above is proved in full and every number is produced
+by \texttt{rc\_double\_cover.py} from the two public genomes. The specification that prompted this
+chapter asked for a bidirected bundle-chain lemma yielding summands
 $(\Z/2r)^{s-1}$; no such lemma is needed for the double cover, and
 Theorem~\ref{ch05:thm:merge} shows the correct multiplicity is $a+b$, the number of copies on
 both strands together, not $2r$. The same task asked for ``the algebraic proof that the

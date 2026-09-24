@@ -24,22 +24,18 @@ Chapter~\ref{chap:ch11} holds, by Kotzig's theorem. All identities are verified 
 it, are therefore not an artefact of the approach; they are what the problem requires.
 \end{chaptersummary}
 
-\medskip
-\noindent\textbf{Keywords.} computational complexity, $\sP$-completeness, Eulerian circuits, Eulerian
-orientations, BEST theorem, de Bruijn graph, reverse complement, palindromes, genome assembly.
-
 \section{The question}\label{ch10:sec:q}
 
 For one strand the count of sequences with a given $(k+1)$-mer spectrum is a determinant times
-factorials \cite{BEST}. For two strands, Chapter~\ref{chap:ch07} wrote
+factorials \cite{BEST}. For two strands, Theorem~\ref{ch07:thm:lattice} gives
 \[
 \#\DS(S,k)=\sum_{f\in\Lm,\ |f|\le m,\ f\equiv m\ (2)}\Nseq\bigl(\tfrac{m+f}2\bigr)
 \]
-Chapter~\ref{chap:ch07}. Chapter~\ref{chap:ch08} counted the $2\,481\,687\,900$ points of the box for $\phi$X174 at $k=10$, and Chapter~\ref{chap:ch09}
-evaluated the sum, $31\,925\,753\,246\,212$ Chapters~\ref{chap:ch08}, \ref{chap:ch09}. Each step needed an exponential-size
-object: a frontier of width $26$, or a visit to every point. A proposal for this paper asked for a
+Chapter~\ref{chap:ch08} counted the $2\,481\,687\,900$ points of the box for $\phi$X174 at $k=10$, and Chapter~\ref{chap:ch09}
+evaluated the sum, $31\,925\,753\,246\,212$. Each step needed an exponential-size
+object: a frontier of width $26$, or a visit to every point. A proposal for this chapter asked for a
 ``meshless'' formula instead. It would be a Gauss sum built on the symmetric linking form of the double
-cover's sandpile group Chapter~\ref{chap:ch06}, Rem.~5, or a Pfaffian in a Clifford algebra, evaluated in time polynomial in the
+cover's sandpile group (Remark~\ref{ch06:rem:pairing}), or a Pfaffian in a Clifford algebra, evaluated in time polynomial in the
 number of vertices. We prove that such a formula cannot exist unless every problem in $\sP$ is solvable
 in polynomial time.
 
@@ -103,7 +99,7 @@ $\rho$-orbit of multiplicity $m=1$ per edge of $G$, with no self-complementary c
 \end{lemma}
 
 \begin{proof}
-The vertices of $D_k$ are the repeated $k$-mers Chapter~\ref{chap:ch07}; $P_x$ occurs $\deg(x)\ge2$ times. The contents
+The vertices of $D_k$ are the repeated $k$-mers (Definition~\ref{ch07:def:cover}); $P_x$ occurs $\deg(x)\ge2$ times. The contents
 are the stretches between consecutive vertex occurrences, i.e.\ the $P\Sigma P$ words of $S$ and their
 reverse complements in $\rc S$. Each occurs once, so it has multiplicity $1$. The orbit of the $i$-th one
 joins $P_{x_{i-1}}$ and $P_{x_i}$, which are fixed by $\rho$.
@@ -146,7 +142,7 @@ For $S$ and $k$ as in Section~\ref{ch10:sec:real},
 \[
 \#\DS(S,k)=2\,\varepsilon(G),
 \]
-and the box points of Chapter~\ref{chap:ch07} are in bijection with the Eulerian orientations of $G$.
+and the box points of Theorem~\ref{ch07:thm:lattice} are in bijection with the Eulerian orientations of $G$.
 \end{theorem}
 
 \begin{proof}
@@ -154,7 +150,7 @@ Every orbit has $m=1$. So a point of the box chooses, for each orbit $\{a,\rho a
 and $\rho a$. Since all vertices are palindromic, $a\colon P_x\to P_y$ and $\rho a\colon P_y\to P_x$
 are the two orientations of the edge $\{x,y\}$ of $G$. A point is a circulation iff the chosen
 orientation is balanced, i.e.\ Eulerian. At it, $c(a)\in\{0,1\}$, so the factorials of
-$\Nseq=\tau\prod(d^+-1)!/\prod c(a)!$ disappear and $\Nseq=\ec(O)$ Chapter~\ref{chap:ch07}. Summing gives
+$\Nseq=\tau\prod(d^+-1)!/\prod c(a)!$ disappear and $\Nseq=\ec(O)$ (Theorem~\ref{ch07:thm:lattice}). Summing gives
 Lemma~\ref{ch10:lem:orient}.
 \end{proof}
 
@@ -199,16 +195,16 @@ give genomes of $240$--$480$ bp, linear in $|E|$. On them $\#\DS$ grows from $80
 
 \section{Two by-products}\label{ch10:sec:by}
 
-\paragraph{Chapter~\ref{chap:ch11}'s conjecture on this class.} Chapter~\ref{chap:ch11} conjectured that transpositions, inversions at
-inverted repeats, and reverse complementation connect $\DS(S,k)$ Chapter~\ref{chap:ch11}. Here every vertex is its
+\paragraph{Chapter~\ref{chap:ch11}'s conjecture on this class.} Conjecture~\ref{ch11:conj:gen} of Chapter~\ref{chap:ch11} states that transpositions, inversions
+at inverted repeats, and reverse complementation connect $\DS(S,k)$. Here every vertex is its
 own complement. So an inversion between two visits of $P_x$ (a flip in the sense of
-Chapter~\ref{chap:ch07}, \S7) reverses the closed stretch of the circuit between them, which is a
+Definition~\ref{ch07:def:flip}) reverses the closed stretch of the circuit between them, which is a
 \emph{$\kappa$-transformation}. Kotzig proved that the $\kappa$-transformations
 connect all Eulerian circuits of a connected graph \cite{Kot68,Fle90}. Reversal of the whole circuit
 supplies the direction.
 
 \begin{corollary}
-The generation conjecture of Chapter~\ref{chap:ch11} holds for every genome of Section~\ref{ch10:sec:real}.
+Conjecture~\ref{ch11:conj:gen} holds for every genome of Section~\ref{ch10:sec:real}.
 \end{corollary}
 
 Check~(K) confirms it: the closure of $S$ under inversions and reverse complementation alone is all of
@@ -234,7 +230,7 @@ tractable. $\phi$X174 at $k=10$ has width $26$, which is why it was feasible.
 \item \emph{Not excluded:} efficient approximation. Whether $\#\DS$ admits a fully polynomial randomized
 approximation scheme is open; so is the corresponding question for undirected Eulerian circuits.
 \item \emph{Odd $k$.} The construction needs palindromic $k$-mers, which exist only for even $k$. For odd
-$k$ no vertex is its own complement, and the quotient of $D_k$ is the signed graph of Chapter~\ref{chap:ch06} Chapter~\ref{chap:ch06}.
+$k$ no vertex is its own complement, and the quotient of $D_k$ is the signed graph of Chapter~\ref{chap:ch06}.
 The strand choices are then orientations of a signed graph, and the count is one of Eulerian circuits of a
 bidirected graph. We expect hardness there too, but do not prove it.
 \end{itemize}

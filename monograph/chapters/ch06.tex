@@ -2,7 +2,7 @@
 % Source paper: Bio 7
 \chapter[The quotient is a signed graph]{The reverse-complement quotient is a signed graph: what Zaslavsky's theory gives, and what it cannot}\label{chap:ch06}
 \begin{chaptersummary}
-The companion note built the reverse-complement double cover $D_k(S)$ of a de Bruijn
+Chapter~\ref{chap:ch05} built the reverse-complement double cover $D_k(S)$ of a de Bruijn
 multidigraph and found that the involution $\rho(v)=\bar v$ carries $D_k$ to its
 \emph{opposite} digraph, so that $\rho$ induces no endomorphism of $\K(D_k)$ and the cover
 does not descend. The obvious repair is to pass to the quotient $\Sig_k=D_k/\rho$ and to use
@@ -12,7 +12,7 @@ reverse complement, which is automatic for odd $k$ and genuinely fails for even 
 ($\phi$X174 has three palindromic repeated $10$-mers and one palindromic repeated $12$-mer);
 every bundle of $\Sig_k$ is monochromatic, so $\Sig_k$ carries honest $r$-bundles; $\Sig_k$
 is \emph{unbalanced} precisely when $S$ carries an inverted repeat of length $\ge k$, which
-is Zaslavsky balance read through the connectivity criterion of the companion note; and the
+is Zaslavsky balance read through the connectivity criterion of Chapter~\ref{chap:ch05}; and the
 Reiner--Tseng sequence
 $0\to\K(\Sig_k)\to\K(|D_k|)\to\K(|\Sig_k|)\to 0$
 holds on the nose, with a non-split $2$-primary part.
@@ -35,32 +35,29 @@ $s$ for every prime $p\mid r$, composite $r$ included, and it is also what the
 $\mathbb{F}_7$-nullity below measures.
 The seven ribosomal operons of \emph{E.\ coli} K-12 merge into genuine
 $7$-bundles of $\Sig_k$ whose longest block spans $728$\,bp at $k=31$, $51$ and $75$ alike ---
-the same block the companion note matched one-to-one onto the seven operons --- and the only
+the same block Chapter~\ref{chap:ch05} matched one-to-one onto the seven operons --- and the only
 trace the quotient keeps of them is the $\mathbb{F}_7$-nullity of the signed Laplacian.
 \end{chaptersummary}
 
-\section{What was asked, and what is true}
+\section{What was asked, and what is true}\label{ch06:sec:asked}
 
-The single-strand theory of these notes assigns to a sequence $S$ and a word length $k$ the
-de Bruijn multidigraph $G_k(S)$, whose vertices are the repeated $k$-mers and whose arcs are
-the $(k{+}1)$-mer occurrences, and reads the reconstruction count off the critical group
-$\K(G_k)$ through the BEST theorem. Double-strandedness was handled in the companion note by
-passing to the \emph{double cover} $D_k(S)$: the multidigraph whose arcs are the
-$(k{+}1)$-mer occurrences in $S$ \emph{and} in $\bar S$. That graph is balanced, the unitig
-lemma and the splitting theorem apply to it verbatim, and the seven ribosomal operons of
-\emph{E.\ coli} --- five on one strand, two on the other --- finally appear as one
-seven-copy family instead of a five-copy and a two-copy family.
+Part~I reads the reconstruction count of a sequence off the critical group $\K(G_k)$ through
+the BEST theorem. Chapter~\ref{chap:ch05} handled double-strandedness by passing to the
+\emph{double cover} $D_k(S)$ of Definition~\ref{ch05:def:cover}, to which the unitig lemma and
+the splitting theorem apply verbatim (Corollary~\ref{ch05:cor:applies}), and on which the seven
+ribosomal operons of \emph{E.\ coli} --- five on one strand, two on the other --- appear as one
+seven-copy family (Corollary~\ref{ch05:cor:rrna}).
 
-What the companion note could not do was quotient. The map $\rho(v)=\bar v$ satisfies
+What Chapter~\ref{chap:ch05} could not do was quotient. The map $\rho(v)=\bar v$ satisfies
 \[
   \rho\colon D_k \longrightarrow D_k^{\mathrm{op}},\qquad
   \rho(u\to v)=\bar v\to\bar u ,
 \]
 so it reverses arcs; the quotient of a digraph by a direction-reversing involution is not a
 digraph, and $\rho$ induces a map $\K(D_k)\to\K(D_k^{\mathrm{op}})\cong\K(D_k)^\vee$ rather
-than an endomorphism. The standard repair in combinatorics is to forget the directions, to
+than an endomorphism (Proposition~\ref{ch05:prop:rho}). The standard repair in combinatorics is to forget the directions, to
 record instead a \emph{sign} on each edge of the quotient, and to work with Zaslavsky's
-signed Laplacian $\Delta_\Sig=D-A_\sigma$ \cite{Zas82}. This note carries that out, and
+signed Laplacian $\Delta_\Sig=D-A_\sigma$ \cite{Zas82}. This chapter carries that out, and
 reports both what it yields and the two places where it provably cannot yield what was
 wanted.
 
@@ -80,12 +77,12 @@ complement, and $\bar w$ the reverse complement of a word $w$. All computations 
 integer arithmetic; the script \texttt{bidirected\_sandpile.py} reproduces every number below
 and prints a seven-line pass/fail battery.
 
-\section{The quotient, and when it exists}
+\section{The quotient, and when it exists}\label{ch06:sec:quotient}
 
 \begin{definition}
-$D_k=D_k(S)$ is the multidigraph of the companion note: one vertex per $k$-mer occurring at
-least twice in the concatenation $S\bar S$, one arc $u\to v$ per occurrence of a
-$(k{+}1)$-mer $w$ with prefix $u$ and suffix $v$ in $S$ or in $\bar S$. The involution
+$D_k=D_k(S)$ is the double cover of Definition~\ref{ch05:def:cover}, unitig-contracted as in
+Corollary~\ref{ch05:cor:applies}, so that its vertices are the $k$-mers occurring at least twice
+in $S$ and $\bar S$ together. The involution
 $\rho$ sends the vertex $w$ to $\bar w$ and the arc $u\to v$ to $\bar v\to\bar u$.
 \end{definition}
 
@@ -187,7 +184,7 @@ obtaining for instance
 \]
 every time. Check (W).
 
-\section{Balance is an inverted repeat}
+\section{Balance is an inverted repeat}\label{ch06:sec:balance}
 
 \begin{theorem}\label{ch06:thm:balance}
 $\Sig_k$ is unbalanced if and only if $S$ carries an inverted repeat of length at least $k$.
@@ -197,7 +194,7 @@ $\Sig_k$ is unbalanced if and only if $S$ carries an inverted repeat of length a
 A signed graph is balanced if and only if its signed double cover is disconnected; for the
 $\Z/2$-voltage double cover this is Reiner and Tseng, Propositions 11.4 and 11.5
 \cite{RT14}. The underlying multigraph of $D_k$ \emph{is} that double cover, by
-Definition~\ref{ch06:def:sigma}. The companion note proves that $D_k$ is connected exactly when
+Definition~\ref{ch06:def:sigma}. Proposition~\ref{ch05:prop:conn} says that $D_k$ is connected exactly when
 $S$ carries an inverted repeat of length at least $k$, the two components otherwise being
 the plus-strand and minus-strand halves.
 \end{proof}
@@ -251,7 +248,7 @@ $(\Z/2)^2$ by $(\Z/2)^2$ has produced $(\Z/2)^2\oplus\Z/4$, of the right order $
 wrong isomorphism type. This is precisely the failure Reiner and Tseng exhibit with
 $0\to\Z_2\to\Z_4\to\Z_2\to 0$, arising here from a real bacteriophage. Check (R).
 
-\section{The deck involution is an anti-automorphism}
+\section{The deck involution is an anti-automorphism}\label{ch06:sec:anti}
 
 Theorem~\ref{ch06:thm:rt} is a statement about $|D_k|$, the undirected shadow. The quantity the
 single-strand theory actually computes is $\K(D_k)$, the sandpile group of the
@@ -283,8 +280,8 @@ For the consequence: a decomposition along the eigenlattices of $P$ requires
 $\Delta P=P\Delta$. Here $\Delta P=P\Delta^{\mathsf T}$, and $\Delta^{\mathsf T}\ne\Delta$.
 \end{proof}
 
-This is the structural reason the companion note's obstruction was not an accident of its
-proof. The classical covering-graph factorisation --- of Bilu and Linial \cite{BL06}, in the
+This is the structural reason the obstruction of Proposition~\ref{ch05:prop:rho} was not an
+accident of its proof. The classical covering-graph factorisation --- of Bilu and Linial \cite{BL06}, in the
 form used for signed graphs --- decomposes the Laplacian of a double cover into an unsigned
 and a signed part on the $\pm1$ eigenspaces of the deck transformation. That decomposition
 needs the deck transformation to \emph{commute} with the Laplacian. Here it conjugates the
@@ -302,7 +299,7 @@ anything by $\K(\Sig_k)$ and is not a quotient of anything by it. Check (N).
 
 \begin{remark}[What $\rho$ gives instead: a symmetric linking form]\label{ch06:rem:pairing}
 The honest formulation is that $\rho$ makes $D_k$ into a digraph with a \emph{duality}, not a
-digraph with a symmetry. Bowen--Franks duality (Paper VIII, Lem.~1.5 of the main series) says
+digraph with a symmetry. Bowen--Franks duality (the proof of Proposition~\ref{ch05:prop:rho}) says
 $\coker M$ and $\coker M^{\mathsf T}$ are canonically dual for a square integer matrix $M$
 with finite cokernel, and Theorem~\ref{ch06:thm:anti} identifies $\Delta^{\mathsf T}$ with
 $P\Delta P$. Composing gives a perfect pairing on the sandpile group itself:
@@ -315,7 +312,8 @@ It is well defined --- if $u=\Delta^{\mathsf T}z$ then $Pu=P\Delta^{\mathsf T}P\
 \emph{symmetric}, not alternating: inverting $P\Delta P=\Delta^{\mathsf T}$ gives
 $P\Delta^{-\mathsf T}=\Delta^{-1}P$, whence
 $\langle u,v\rangle=u^{\mathsf T}P\Delta^{-\mathsf T}v=u^{\mathsf T}\Delta^{-1}Pv=
-\langle v,u\rangle$. Verified exactly for $\phi$X174 at $k=11$ and $k=12$; check (D).
+\langle v,u\rangle$. Verified exactly for $\phi$X174 at $k=11$ and $k=12$; check (D). This
+answers the first question left open in Remark~\ref{ch05:rem:nosplit}.
 
 This matters for how one should look for a double-stranded count. A symmetric linking form
 has no Lagrangians in the symplectic sense; the relevant notion is a \emph{metabolizer}, a
@@ -346,9 +344,10 @@ check (D). A double-stranded theory must be built from that bijection.
 \section{Signed bundle chains do not contract}\label{ch06:sec:series}
 
 The single-strand computation for a bacterial genome is only possible because of the
-splitting theorem: a \emph{chain} $C=(c_1,\dots,c_s)$ of vertices each of which sends all
+splitting theorem (Theorem~\ref{ch03:thm:split}): a \emph{chain} $C=(c_1,\dots,c_s)$ of vertices each of which sends all
 $r$ of its out-arcs to the next splits off a factor $(\Z/r)^{s-1}$ and can be contracted,
-reducing \emph{E.\ coli} at $k=75$ from $28\,579$ vertices to a skeleton of $261$. The
+reducing \emph{E.\ coli} at $k=75$ from $28\,579$ vertices to a skeleton of $261$
+(Table~\ref{ch15:tab:main}). The
 question is whether this survives in $\Sig_k$. It does not, and the reason is elementary
 enough to state exactly.
 
@@ -504,7 +503,8 @@ $k$ & $|V(D_k)|$ & $|V(\Sig_k)|$ & $\rho$-fixed & $7$-bundles & longest $7$-chai
 \caption{\emph{E.\ coli} K-12 MG1655, NC\_000913.3, $4\,641\,652$\,bp, at the three odd word
 lengths of the single-strand study. The longest $7$-bundle chain spans the same $728$
 base pairs at all three $k$ --- $698+31-1=678+51-1=654+75-1$ --- which is the seven-copy
-block the companion note matched one-to-one onto the seven ribosomal operons. Check (E).}
+block Chapter~\ref{chap:ch05} matched one-to-one onto the seven ribosomal operons
+(Corollary~\ref{ch05:cor:rrna}). Check (E).}
 \label{ch06:tab:ecoli}
 \end{table}
 
@@ -512,7 +512,7 @@ The construction does what was asked of it structurally. $\rho$ is free at all t
 lengths, $\Sig_k$ is a signed graph, and the seven operons appear as genuine $7$-bundles:
 $4919$ of them at $k=31$, organised into chains of which the longest has $698$ vertices. That
 chain spans $698+31-1=728$ base pairs, and the corresponding numbers at $k=51$ and $k=75$
-give $728$ as well. The agreement with the companion note is literal and not merely
+give $728$ as well. The agreement with Chapter~\ref{chap:ch05} is literal and not merely
 numerical: working on $D_{51}$ rather than on $\Sig_{51}$, and identifying the chain's seven
 occurrences against the RefSeq annotation, it reports a longest multiplicity-seven chain of
 $s=678$ spanning $728$\,bp whose occurrences hit the seven \texttt{rrn} operons one each.
@@ -542,11 +542,11 @@ expects from a construction that cannot see five copies and two copies as seven.
 undirected shadow. Proposition~\ref{ch06:prop:parity}, Lemma~\ref{ch06:lem:mono},
 Lemma~\ref{ch06:lem:switch}, Theorem~\ref{ch06:thm:anti} and Theorem~\ref{ch06:thm:series} are proved in
 full generality. Theorem~\ref{ch06:thm:balance} is a combination of Reiner--Tseng
-Prop.~11.4--11.5 with the connectivity criterion of the companion note. Theorem~\ref{ch06:thm:rt}
+Prop.~11.4--11.5 with the connectivity criterion of Proposition~\ref{ch05:prop:conn}. Theorem~\ref{ch06:thm:rt}
 is \emph{not} ours: it is Reiner and Tseng's Theorem 1.2, and what is new here is only that
 it is exhibited on a reverse-complement de Bruijn graph, including a non-split $2$-primary
 extension arising from a real genome. Lemma~\ref{ch06:lem:pdiv} and Theorem~\ref{ch06:thm:prank} are
-proved in full; an earlier version of this note had the exactness of the $r$-rank gain as a
+proved in full; an earlier version of this chapter had the exactness of the $r$-rank gain as a
 computational observation only. Lemma~\ref{ch06:lem:pdiv} is elementary enough that we would not
 be surprised to find it in the literature on $p$-ranks of critical groups, and we claim
 novelty only for its two consequences here. What remains unproved is the case $p=2$ for the
@@ -582,7 +582,7 @@ symmetric linking form of Remark~\ref{ch06:rem:pairing}, and that is the structu
 double-stranded theory should use. Two things are already known about it and both are
 constraints rather than encouragements: the form is symmetric, so there are no Lagrangians
 in the symplectic sense; and for $\phi$X174 the group order is not a square, so there is no
-metabolizer either. A count modulo strand exchange must therefore be a weighted sum over
-isotropic subgroups, or over the orbits of the form's isometry group, rather than the order
-of a single distinguished subgroup. We have not attempted it, and we note that the naive
-guess --- that the answer is $\sqrt{|\K(D_k)|}$ --- is already excluded.
+metabolizer either. So a count modulo strand exchange cannot be the order of a single
+distinguished subgroup, and the naive guess --- that the answer is $\sqrt{|\K(D_k)|}$ --- is
+already excluded. Chapter~\ref{chap:ch07} answers the question differently: the count is a
+lattice sum in which the form does not enter at all (Remark~\ref{ch07:rem:form}).

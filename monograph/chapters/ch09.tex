@@ -22,31 +22,22 @@ the exact arborescence elimination on $k=10$ sub-boxes. The result is
 \[
 \#\DS(\phi\mathrm{X}174,10)=31\,925\,753\,246\,212 ,
 \]
-the last blank entry of Chapter~\ref{chap:ch07}'s Table~2.
+the last blank entry of Table~\ref{ch07:tab:lattice}.
 \end{chaptersummary}
-
-\medskip
-\noindent\textbf{Keywords.} de Bruijn graph, reverse-complement double cover, circulation
-lattice, matrix-tree theorem, Berezin integral, Grassmann variables, transfer matrix,
-frontier elimination, Eulerian circuits, multimodular arithmetic, genome assembly.
 
 \section{What is left to count}\label{ch09:sec:left}
 
-We keep the notation of Chapter~\ref{chap:ch07} and Chapter~\ref{chap:ch08}. $S$ is a circular sequence, $D_k$ the
-labelled reverse-complement double cover, $A$ its set of arc contents, $m(a)$ the number of
-labelled arcs of content $a$, and $\rho$ the reverse-complement involution, so that
-$m(\rho a)=m(a)$ and $D_k$ is balanced. A circular sequence $T$ is a \emph{double-stranded
-reconstruction} of $S$ at word length $k$ when $\spec(T)+\spec(\bar T)=\spec(S)+\spec(\bar S)$;
-writing $c=\spec(T)$ this says that $c$ is a circulation with $c+\rho c=m$, and with
-$f=2c-m$ that $f$ lies in the $(-1)$-eigenlattice $\Lm=\{f\in Z_1(D_k):\rho f=-f\}$, inside the
-box $|f|\le m$ and in the parity class of $m$. Hence Chapter~\ref{chap:ch07}, Thm.~7
+We keep the notation of Chapters~\ref{chap:ch07} and~\ref{chap:ch08}: $D_k$ is the labelled double
+cover of Definition~\ref{ch07:def:cover}, $A$ its set of arc contents, $m(a)$ the number of
+labelled arcs of content $a$, $\rho$ the reverse-complement involution, and $\Lm$ its
+$(-1)$-eigenlattice on the circulations. By Theorem~\ref{ch07:thm:lattice}
 \begin{equation}\label{ch09:eq:sum}
 \#\DS(S,k)\;=\;\sum_{f}\Nseq\Big(\frac{m+f}{2}\Big),
 \qquad
 \Nseq(c)=\frac{t(G_c)\,\Loc(G_c)}{\prod_a c(a)!},
 \end{equation}
-where $G_c$ is the multidigraph with $c(a)$ copies of each content, $t(G_c)$ its number of
-spanning arborescences to a root, and $\Loc(G_c)=\prod_v(d^+_c(v)-1)!$.
+the sum over $f\in\Lm$ in the box $|f|\le m$, $f\equiv m\ (2)$, with $G_c$, $t(G_c)$ and
+$\Loc(G_c)$ as there.
 
 Chapter~\ref{chap:ch08} observed that the constraint defining the sum is one linear equation per vertex, each
 involving only the four endpoints of one $\rho$-orbit, and replaced Chapter~\ref{chap:ch07}'s backtracking by a
@@ -61,7 +52,7 @@ arborescences is the determinant of a reduced Laplacian of the whole support ---
 at $k=10$ --- and a determinant is not a product of local scalars. A frontier state that is a
 number, or a partition, cannot carry it.
 
-The point of this note is that it \emph{is} a product of local \emph{fermions}.
+The point of this chapter is that it \emph{is} a product of local \emph{fermions}.
 
 \section{The determinant as a product over arcs}\label{ch09:sec:berezin}
 
@@ -144,7 +135,7 @@ is block diagonal, $L_c$ on $\supp c$ and the identity off it. Deleting $r\in\su
 $\det$ equal to the corresponding reduced Laplacian of $G_c$, which is $t(G_c)$ by the
 matrix-tree theorem; $G_c$ is balanced, so its weak components are strongly connected and the
 arborescence count does not depend on the root, and the nullity of $L_c$ on $\supp c$ is the
-number of those components Chapter~\ref{chap:ch08}, Lemma~3. Deleting $r\notin\supp c$ leaves the whole
+number of those components (Lemma~\ref{ch08:lem:conn}). Deleting $r\notin\supp c$ leaves the whole
 singular block $L_c$ on $\supp c$ intact, so the determinant is $0$.
 \end{proof}
 
@@ -215,7 +206,7 @@ The state of the sweep is
 and its value is an integer. Each vertex is given a \emph{slot} for the length of its window, by
 colouring the windows as intervals; slots are reused, so the layout is fixed once and for all
 and nothing has to be relabelled from step to step. The imbalances live in fixed-width fields of
-one machine word, biased so that an empty field reads zero, and the capacity bound of Chapter~\ref{chap:ch08}
+one machine word, biased so that an empty field reads zero, and the capacity bound of Theorem~\ref{ch08:thm:elim}
 ---
 $|b_v|$ at most the capacity still to come --- is tested on all fields at once by two additions
 and two masks, which also forces a vertex leaving the frontier to balance. The out-arc window of
@@ -314,8 +305,8 @@ All of this is done modulo the five largest primes below $2^{31}$, so every prod
 machine word. The points are visited by Chapter~\ref{chap:ch07}'s imbalance-bounded backtracking in Chapter~\ref{chap:ch08}'s
 greedy order, compiled with \texttt{numba}. The first $35$ levels are expanded into $28\,512$
 prefixes, which are shuffled and processed in parallel. The half-sum is recovered by the
-Chinese remainder theorem. This is exact: the half-sum is at most half of Chapter~\ref{chap:ch07}'s upper bound
-$1.368\cdot10^{36}$, far below the product of the five primes (about $2^{155}$).
+Chinese remainder theorem. This is exact: the half-sum is at most half of the upper bound
+$1.368\cdot10^{36}$ of Remark~\ref{ch08:rem:wall}, far below the product of the five primes (about $2^{155}$).
 
 The run is checked in three ways, all exactly:
 \begin{enumerate}
@@ -342,7 +333,8 @@ The sum of $\Nseq$ over the half-box, doubled, is
 \[
 \boxed{\;\#\DS(\phi\mathrm{X}174,10)=31\,925\,753\,246\,212\approx3.19\cdot10^{13}.\;}
 \]
-This lies inside Chapter~\ref{chap:ch07}'s bounds $8\,610\,708\,632\le\#\DS\le1.368\cdot10^{36}$: about $3\,700$
+This lies inside the bounds $8\,610\,708\,632\le\#\DS\le1.368\cdot10^{36}$ of
+Remark~\ref{ch08:rem:wall}: about $3\,700$
 times the lower bound and twenty-three orders of magnitude below the upper one. Averaged over
 the $909\,103\,210$ points with connected support, a point carries about $35\,118$ circular
 sequences. At $k=11$ the average is $864/218\approx4$.
@@ -363,8 +355,8 @@ $k$ & $\rank\Lm$ & box points & connected & $\#\DS$ \\
 10 & 48 & 2\,481\,687\,900 & 909\,103\,210 & 31\,925\,753\,246\,212 \\
 \bottomrule
 \end{tabular}
-\caption{Chapter~\ref{chap:ch07}'s Table~2, completed. The first two columns at $k=10$ are Chapter~\ref{chap:ch08}'s; the last is
-this note's.}\label{ch09:tab:done}
+\caption{Table~\ref{ch07:tab:lattice}, completed. The two counting columns before the last at
+$k=10$ are Chapter~\ref{chap:ch08}'s; the last is this chapter's.}\label{ch09:tab:done}
 \end{table}
 
 \section*{Ancillary files}

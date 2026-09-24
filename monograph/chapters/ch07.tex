@@ -2,11 +2,11 @@
 % Source paper: Bio 8
 \chapter[Double-stranded assembly as a lattice sum]{Double-stranded genome assembly as a lattice sum, and the inversion-flip group}\label{chap:ch07}
 \begin{chaptersummary}
-The two companion notes on double strands ended with a question: the sandpile group
+Chapters~\ref{chap:ch05} and~\ref{chap:ch06} ended with a question: the sandpile group
 $\K(D_k)$ of the reverse-complement double cover counts Eulerian circuits through both
 strands at once, its deck involution is an anti-automorphism carrying a symmetric linking
 form and no metabolizer, and what a double-stranded reconstruction count is built from was
-left open. This note answers it. A circular sequence $T$ is a double-stranded reconstruction
+left open. This chapter answers it. A circular sequence $T$ is a double-stranded reconstruction
 of $S$ at word length $k$ when $\spec(T)+\spec(\bar T)=\spec(S)+\spec(\bar S)$; writing $m$
 for the arc multiplicities of $D_k$ and $c=\spec(T)$, this says $c+\rho c=m$, and with
 $f=2c-m$ it says that $f$ lies in the $(-1)$-eigenlattice $\Lm$ of $\rho$ on the circulation
@@ -16,7 +16,7 @@ multigraph divided by $\prod_a c(a)!$ --- and that division, invisible on one st
 is a constant, is mandatory here because it varies from point to point. The rank of $\Lm$ is
 $(|A|-|V|+2-\#\mathrm{fix}_A-\#\mathrm{fix}_V)/2$ by the Hopf trace formula applied to an
 arc-reversing involution; it is \emph{not} the number of inverted repeats, and the guess that
-it is --- made in the planning of this note --- is refuted at $k=12$, where one inverted-repeat
+it is --- made in the planning of this chapter --- is refuted at $k=12$, where one inverted-repeat
 pair and one palindrome meet a lattice of rank four. For $\phi$X174 the sum gives $10$
 reconstructions at $k=12$ and $864$ at $k=11$, against $|\K(D_k)|=33$ and $25\,318\,912$, and
 an independent enumeration of closed walks with the strand-pairing constraint returns the
@@ -35,16 +35,15 @@ flip graph.
 
 \section{What was asked, and what is true}
 
-The single-strand theory of these notes reads the reconstruction count of a circular sequence
-$S$ at word length $k$ off the critical group of its de Bruijn multidigraph $G_k(S)$ through
-the BEST theorem \cite{BEST,SmithTutte}. The first companion note Chapter~\ref{chap:ch05} passed to the
-reverse-complement double cover $D_k(S)$, the multidigraph whose arcs are the $(k{+}1)$-mer
-occurrences in $S$ and in $\bar S$, and found that everything single-stranded applies to it
-verbatim but that its involution $\rho(v)=\bar v$ reverses arcs. The second Chapter~\ref{chap:ch06} proved
-that this is fatal for every covering-theoretic route: $P\Delta P=\Delta^{\mathsf T}$, the
+Part~I reads the reconstruction count of a circular sequence $S$ at word length $k$ off the
+critical group of its de Bruijn multidigraph $G_k(S)$ through the BEST theorem
+\cite{BEST,SmithTutte}. Chapter~\ref{chap:ch05} passed to the reverse-complement double cover
+$D_k(S)$ of Definition~\ref{ch05:def:cover} and found that everything single-stranded applies to
+it verbatim but that its involution $\rho(v)=\bar v$ reverses arcs. Chapter~\ref{chap:ch06} proved
+(Theorem~\ref{ch06:thm:anti}) that this is fatal for every covering-theoretic route: $P\Delta P=\Delta^{\mathsf T}$, the
 eigenlattices of $\rho$ are not $\Delta$-stable, the sandpile group $\K(D_k)$ sits in no
 covering sequence, and what $\rho$ provides instead is a symmetric linking form on $\K(D_k)$
-which for $\phi$X174 has no metabolizer because $|\K(D_k)|$ is not a square. That note closed
+which for $\phi$X174 has no metabolizer because $|\K(D_k)|$ is not a square. That chapter closed
 with the statement that whatever counts double-stranded reconstructions is not the order of a
 distinguished subgroup of $\K(D_k)$, and left open what it is.
 
@@ -64,7 +63,7 @@ An enumeration that never mentions the lattice --- closed walks of $D_k$ with th
 strand-pairing constraint, bucketed by spectrum --- returns exactly the connected lattice
 points, with exactly the predicted count at each (check (E)).
 
-The second half of the note is about moves between reconstructions. If $T$ contains a $k$-mer
+The second half of the chapter is about moves between reconstructions. If $T$ contains a $k$-mer
 $w$ and, later, its reverse complement $\bar w$, the block between and including them may be
 reverse-complemented in place; this is the inversion of classical genome rearrangement, and it
 is the only move that changes which strand a stretch of $T$ is read from. For $\phi$X174 the
@@ -76,7 +75,7 @@ at least four. This is the de Bruijn-graph shadow of the fact, familiar from sor
 reversals \cite{HP99,BP96}, that a transposition is a product of reversals; here each reversal
 must be flanked by an inverted-repeat pair, and the price is four rather than three.
 
-Three corrections to the specification of this note are recorded in
+Three corrections to the specification of this chapter are recorded in
 Remark~\ref{ch07:rem:corrections}: the rank of $\Lm$ is not the number of inverted repeats; the
 per-point count must be divided by $\prod c(a)!$; and flip-connectivity is a property of the
 genome, not a theorem.
@@ -87,12 +86,12 @@ rotation. All computations are exact; the scripts \texttt{ds\_lattice.py} and
 \texttt{ds\_flips.py} reproduce every number below and print pass/fail batteries of nine and
 four checks.
 
-\section{The double cover, its contents, and the spectrum of a reconstruction}
+\section{The double cover, its contents, and the spectrum of a reconstruction}\label{ch07:sec:cover}
 
 \begin{definition}\label{ch07:def:cover}
-$D_k=D_k(S)$ is the multidigraph of Chapter~\ref{chap:ch05}: one vertex per $k$-mer occurring at least
-twice in $S$ and $\bar S$ together, one arc per occurrence of a $(k{+}1)$-mer in $S$ or in
-$\bar S$, unitig-contracted so that an arc is a maximal segment between two consecutive
+$D_k=D_k(S)$ is the double cover of Definition~\ref{ch05:def:cover}: one vertex per $k$-mer
+occurring at least twice in $S$ and $\bar S$ together, one arc per occurrence of a
+$(k{+}1)$-mer in $S$ or in $\bar S$, unitig-contracted (Corollary~\ref{ch05:cor:applies}) so that an arc is a maximal segment between two consecutive
 repeated $k$-mers on one strand. An arc is thus a \emph{labelled} object (a strand and a
 position); its \emph{content} is the segment string from the start of its tail $k$-mer to the
 end of its head $k$-mer; two arcs with the same content are parallel copies. Let $V$ be the
@@ -122,13 +121,13 @@ $k$ and two otherwise, the two being the $S$-half and the $\bar S$-half, exchang
 arcs; its image on contents is reverse complementation, which preserves length and, being a
 bijection on occurrences, preserves multiplicity. The arc $u\to v$ of content $a$ maps to the
 arc $\bar v\to\bar u$ of content $\bar a$.
-(b) The vertex statement is Chapter~\ref{chap:ch06}, Prop.~2. A content with two parallel copies is a
+(b) The vertex statement is Proposition~\ref{ch06:prop:parity}. A content with two parallel copies is a
 repeated segment, so its interior $k$-mers are repeated; but the interior $k$-mers of a
 unitig segment are by construction not repeated, so the segment has no interior $k$-mer and
 is a single $(k{+}1)$-mer, of odd length when $k$ is even, and no word of odd length equals
 its reverse complement. If $a=\bar a$ then the occurrences of $a$ are paired by $\rho$ with
 occurrences of $a$, in pairs, so $m(a)$ is even.
-(c) is Chapter~\ref{chap:ch05}, Thm.~3: all $k$-mers of $S$ are joined by the closed walk $S$, all those of
+(c) is Proposition~\ref{ch05:prop:conn}: all $k$-mers of $S$ are joined by the closed walk $S$, all those of
 $\bar S$ by $\bar S$, and the two walks meet exactly at $k$-mers common to $S$ and $\bar S$.
 \end{proof}
 
@@ -165,7 +164,7 @@ a closed walk. Finally $\sum_a c(a)\ell(a)+\sum_a c(\bar a)\ell(\bar a)=\sum_a m
 and the two sums on the left are equal.
 \end{proof}
 
-\section{The lattice sum}
+\section{The lattice sum}\label{ch07:sec:lattice}
 
 \begin{definition}
 $Z_1=\ker\partial\subset\Z^A$ is the circulation lattice of $D_k$, $\rho$ acts on it by
@@ -225,13 +224,13 @@ un-normalised sum $\sum_f t(c_f)\Loc(c_f)$ is $\sum_T \prod_a c_T(a)!/d(T)$, whi
 reconstruction with a weight of its own. The two agree whenever $m\le1$, which is the case at
 $k=12$ for $\phi$X174, and disagree as soon as a content has two copies: at $k=11$ the
 un-normalised sum is $2756$ and the count is $864$ (check (N)). The single-strand number
-quoted for $\phi$X174 at $k=11$ in Chapter~\ref{chap:ch01}, $|\K(G_{11})|\Loc=132$, is the arc-rooted
+quoted for $\phi$X174 at $k=11$ in Table~\ref{ch01:tab:phix}, $|\K(G_{11})|\Loc=132$, is the arc-rooted
 count; the number of circular sequences with the spectrum of $S$ is $132/4=33$, and $33$ is
 what appears at the point $c=\spec(S)$ of Table~\ref{ch07:tab:lattice}.
 \end{remark}
 
-\begin{remark}[Where the linking form went]
-The symmetric linking form of Chapter~\ref{chap:ch06}, Rem.~5 does not enter Theorem~\ref{ch07:thm:lattice},
+\begin{remark}[Where the linking form went]\label{ch07:rem:form}
+The symmetric linking form of Remark~\ref{ch06:rem:pairing} does not enter Theorem~\ref{ch07:thm:lattice},
 and the guess that a double-stranded count is a Gauss sum or an isotropic count on $\K(D_k)$
 can be discarded: on $\K(D_{12})=\Z/3\oplus\Z/11$ any non-degenerate quadratic form has a
 single isotropic vector and a Gauss sum of modulus $\sqrt{33}$, while $\#\DS(S,12)=10$. What
@@ -311,7 +310,7 @@ $D_k$ is the pair of disjoint cycles $S,\bar S$. Check (L).}
 
 \begin{remark}[Not the number of inverted repeats]\label{ch07:rem:notIR}
 It is tempting to read $\rank\Lm$ as the number of independent inversions available to the
-genome, and both the specification of this note and its planning did. Table~\ref{ch07:tab:rank}
+genome, and both the specification of this chapter and its planning did. Table~\ref{ch07:tab:rank}
 refutes it. At $k=12$, $\phi$X174 carries exactly one inverted-repeat pair of length $\ge12$
 (\texttt{ATTAAGCTCATT} at $441$ against its reverse complement at $1448$) and one palindromic
 repeated $12$-mer, and $\rank\Lm=4$. At the other extreme, Corollary~\ref{ch07:cor:parity} says
@@ -369,7 +368,7 @@ $1/u(a_0)$; the search never sees $\Lm$. It returns $90$ nodes and $8$ spectra a
 $45\,061$ nodes and $218$ spectra at $k=11$; the spectra found are exactly the connected box
 points, and the count at each spectrum is exactly $\Nseq$.
 
-\section{The inversion flip}
+\section{The inversion flip}\label{ch07:sec:flip}
 
 \begin{definition}\label{ch07:def:flip}
 Let $T$ be a double-stranded reconstruction, read as the closed walk $a_0a_1\cdots a_{L-1}$
@@ -459,7 +458,7 @@ first flip.
 \end{remark}
 
 \begin{remark}[Corrections to the specification]\label{ch07:rem:corrections}
-Three statements in the specification of this note, one of them originating in its planning,
+Three statements in the specification of this chapter, one of them originating in its planning,
 are not correct as stated. \emph{First}, $\rank\Lm$ is not the number of independent inverted
 repeats of length $\ge k$ (Remark~\ref{ch07:rem:notIR}); it is given by Theorem~\ref{ch07:thm:rank}.
 \emph{Second}, the per-point term is not $t(c_f)\prod(d^+-1)!$ but that quantity divided by
@@ -479,7 +478,8 @@ in full generality for a single circular sequence. Theorem~\ref{ch07:thm:flips} 
 for one genome at two word lengths. The lattice sum is evaluated at $k=12$ and $k=11$; at
 $k=10$ the lattice has rank $48$ and the capacity-pruned backtracking enumerator of
 \texttt{ds\_lattice.py} produces no point in ten minutes, so only the rank row of
-Table~\ref{ch07:tab:rank} is reported there. The count is a count of circular sequences, each
+Table~\ref{ch07:tab:rank} is reported there; Chapters~\ref{chap:ch08} and~\ref{chap:ch09} fill the
+rest. The count is a count of circular sequences, each
 weighted by $1/d(T)$; in the data $d(T)=1$ throughout.
 
 \paragraph{Provenance.} The BEST theorem is \cite{BEST,SmithTutte}; its use to count genome
@@ -488,20 +488,22 @@ which a double-stranded reconstruction is a walk in a bidirected de Bruijn graph
 \cite{MGMB07} after \cite{KM}, and those papers ask for existence and for one solution, not
 for the count. Sorting by reversals and the transposition-as-three-reversals identity are
 \cite{BP96,HP99}. The double cover $D_k$, its balance and its connectivity criterion are
-Chapter~\ref{chap:ch05}; the anti-automorphism theorem and the symmetric linking form are Chapter~\ref{chap:ch06}; the
-single-strand counting convention is Chapter~\ref{chap:ch01}. The Hopf trace formula is standard. We are
+Chapter~\ref{chap:ch05}'s; the anti-automorphism theorem and the symmetric linking form are
+Theorem~\ref{ch06:thm:anti} and Remark~\ref{ch06:rem:pairing}; the single-strand counting convention
+is Remark~\ref{ch01:rem:convention}. The Hopf trace formula is standard. We are
 not aware of prior work expressing a double-stranded reconstruction count as a sum over an
 eigenlattice of the strand involution, or of prior work on the flip graph of a de Bruijn
 graph; a targeted search found none.
 
 \paragraph{Open.} \emph{First}, the number of connected box points --- the number of spectrum
 classes, or equivalently the size of the orbit of $\spec(S)$ under the flip pseudo-group ---
-has no formula; $8$ and $218$ are all that is known. \emph{Second}, the genome-scale question:
+has no formula; $8$ and $218$ are known here, Chapter~\ref{chap:ch08} adds $909\,103\,210$ at $k=10$,
+and Chapter~\ref{chap:ch10} shows that counting the box points is $\sP$-hard in general. \emph{Second}, the genome-scale question:
 Theorem~\ref{ch07:thm:rank} evaluates the rank of $\Lm$ for \emph{E.\ coli} in one line from the
 double cover of Chapter~\ref{chap:ch05}, but the sum is not enumerable there, and what is wanted is a
 transfer-matrix or generating-function evaluation of $\sum_f\Nseq(c_f)$ along the genome, or
 an Ehrhart-type asymptotic in $k$. \emph{Third}, the parity of same-spectrum flip distances in
 Theorem~\ref{ch07:thm:flips}(c). \emph{Fourth}, the same lattice with the involution removed and
 $m$ split into $p$ parts is the phasing problem for a polyploid, where the symmetric group on
-the parts acts on the decompositions rather than on the graph; that is the subject of the next
-note.
+the parts acts on the decompositions rather than on the graph; that is the subject of
+Chapter~\ref{chap:ch13}.

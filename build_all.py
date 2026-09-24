@@ -3,7 +3,8 @@ r"""
 build_all.py -- one-click build and verification of the Algebraic Genomics repository
 (adapted from AG_build.py to the repository layout: papers/<chapter>/, monograph/, lib/).
 
-For every chapter: compile the paper with pdflatex (twice), run its verification script(s), and
+For every chapter: compile the paper with pdflatex (twice; with bibtex in between when the document
+uses a .bib database, as the master volume monograph/AG_monograph.tex does), run its verification script(s), and
 compare the result with the saved reference transcript.  Writes AG_build_report.txt and the new
 transcripts under _build/logs/.  Reference transcripts are never modified: every .txt file of a
 chapter folder is snapshotted before its scripts run and restored afterwards, and checkpoints that
@@ -56,6 +57,7 @@ CHAPTERS = [
     ("12", "papers/Ch12_Spectral_Fibres", "spectral_fibres.tex",
                                                [dict(file="spectral_fibres.py", ref="spectral_fibres_output.txt", quick=None, full=[], timeout=2 * H),
                                                 dict(file="make_figures.py", ref=None, quick=None, full=[], timeout=H)]),
+    ("-", "monograph",      "AG_monograph.tex",       []),
     ("-", "monograph",      "AG_contents.tex",        []),
     ("-", "monograph",      "AG_titlepage.tex",       []),
     ("F", "code",           None,                     [dict(file="generate_figures.py", ref=None, quick=[], full=[], timeout=H)]),
@@ -127,9 +129,18 @@ def compile_tex(folder, tex, log):
         return "SKIP", "pdflatex not found", 0.0
     t0 = time.time()
     base = tex[:-4]
-    for _ in range(2):
+
+    def latex():
         subprocess.run(["pdflatex", "-interaction=nonstopmode", tex], cwd=folder,
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=600)
+    latex()
+    # a document with a .bib database (the master volume) gets pdflatex -> bibtex -> pdflatex x 2
+    aux = os.path.join(folder, base + ".aux")
+    if os.path.exists(aux) and "\\bibdata" in read_text(aux) and shutil.which("bibtex"):
+        subprocess.run(["bibtex", base], cwd=folder,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=600)
+        latex()
+    latex()
     lp = os.path.join(folder, base + ".log")
     L = read_text(lp) if os.path.exists(lp) else ""
     errors = len(re.findall(r"^! ", L, re.M))
