@@ -12,7 +12,7 @@ multisets and hence identical local factors, but admit $4$ and $256$ reconstruct
 factor of $64$. This is a strict sharpening of the observation of Kingsford, Schatz and Pop
 that repeat counting is insufficient. Second, the group structure reads off repeat
 parameters: a word of length $L$ occurring $r$ times in an otherwise $k$-unique sequence
-contributes $\K(G_k)\cong(\Z/r)^{L-k}$. Third --- and this is new in this version --- the
+contributes $\K(G_k)\cong(\Z/r)^{L-k}$. Third, the
 group detects how repeats \emph{interleave}: for two repeats of length $L$ occurring twice
 each, the disjoint and nested arrangements $A\,A\,B\,B$ and $A\,B\,B\,A$ have isomorphic
 compacted graphs and $\K(G_k)\cong(\Z/2)^{2s-2}$, the direct sum of the two single-repeat
@@ -43,8 +43,9 @@ prokaryotic genomes as a measure of assembly complexity; Loukides, Pissis and co
 
 Equation~\eqref{ch01:eq:best} splits the ambiguity into two factors of different character. The
 product of factorials is a function of the out-degree multiset alone --- the \emph{branch
-statistics}, read off the graph by inspection. The other factor is not. This paper is
-about what the other factor knows.
+statistics}, read off the graph by inspection. The other factor is not. This chapter is
+about what the other factor knows; Chapters~\ref{chap:ch02}--\ref{chap:ch04} are about the group
+behind it.
 
 \paragraph{What is already known.}
 Two literatures meet here, and we claim nothing in either. On the combinatorial side the
@@ -66,7 +67,7 @@ degree data. Two explicit sequences have identical branch statistics and reconst
 counts differing by $64\times$.
 \item[(ii)] \textbf{Theorem~\ref{ch01:thm:repeat}}: for a single repeat of length $L$ and
 multiplicity $r$, $\K(G_k)\cong(\Z/r)^{L-k}$.
-\item[(iii)] \textbf{Theorem~\ref{ch01:thm:interleave}} (new in this version): for two repeats
+\item[(iii)] \textbf{Theorem~\ref{ch01:thm:interleave}}: for two repeats
 the group is additive in the disjoint and nested arrangements and picks up exactly one
 extra $\Z/2$ in the interleaved arrangement. Since interleaved repeats are the notoriously
 hard case for assembly, this is the first place the algebra and the practice visibly
@@ -243,9 +244,10 @@ two interleaved repeats at $k=L$ there is a genuine choice --- leave $A$ for the
 or the second --- and $\Z/2$ records it. Nested and disjoint repeats offer no such
 choice: whichever way one threads $A$, the two $B$'s are traversed consecutively. This is
 the algebraic form of the folklore that interleaved repeats are what makes assembly hard.
-Additivity of $\K$ over repeats, asked for in version~1, therefore holds exactly when the
-repeats do not interleave; the general correction term is indexed by the interleaving
-pattern, and Theorem~\ref{ch01:thm:interleave} is its two-repeat case.
+Additivity of $\K$ over two repeats therefore holds exactly when they do not interleave;
+the general correction term is indexed by the interleaving pattern,
+Theorem~\ref{ch01:thm:interleave} is its two-repeat case, and Chapter~\ref{chap:ch03} identifies it in
+general.
 \end{remark}
 
 Check~(I) verifies the theorem three ways: on clean random sequence instances (the
@@ -256,7 +258,7 @@ $s\le7$.
 
 \subsection*{Three repeats, and what the correction is not}
 
-With three repeats the natural guess --- suggested to us by a reader --- is that the
+With three repeats the natural guess is that the
 interleaving correction is a function of the chord diagram of the six occurrences through
 the rank over $\mathbb F_2$ of its intersection matrix. It is not.
 
@@ -287,8 +289,8 @@ the loops), which gives $\K(G_L)=\K(D_w)$; the four values are the sandpile grou
 four $2$-regular digraphs on three vertices that occur. For instance the path pattern
 $A\,B\,A\,C\,B\,C$ gives the complete symmetric digraph on three vertices, whose sandpile
 group is $\Z/3$. The $s=2$ column and the splitting are verified exactly on all $90$
-circular words with two of each letter (check~(M)); we have not proved the splitting for
-general $s$.
+circular words with two of each letter (check~(M)); the splitting for general $s$, and for
+any number of repeats, is Corollary~\ref{ch03:cor:clean}.
 \end{proof}
 
 \begin{remark}\label{ch01:rem:notrank}
@@ -372,9 +374,9 @@ no network access is needed.}
 
 Two remarks. The levels $k\le9$ have compacted graphs of $146$ to $1384$ vertices; they are
 within reach of a sparse or $p$-adic Smith normal form but not of the dense routine used
-here, and we have not pursued them. And $k^{*}=R+1$ for this genome. A single isolated repeat collapses at $k=R$
+here; Chapter~\ref{chap:ch03} reaches $k=9$ by a different route (Table~\ref{ch03:tab:phix}). And $k^{*}=R+1$ for this genome. A single isolated repeat collapses at $k=R$
 (Theorem~\ref{ch01:thm:repeat}), so a surviving $\Z/2$ at $k=12$ is \emph{consistent with}
-Theorem~\ref{ch01:thm:interleave} rather than implied by it; the companion paper Chapter~\ref{chap:ch02}
+Theorem~\ref{ch01:thm:interleave} rather than implied by it; Proposition~\ref{ch02:prop:phix}
 settles the question by exhibiting the two reconstructions: the longest $12$-mer repeat is
 interleaved with a second repeated $12$-mer, and the residual bit is exactly the one of
 Theorem~\ref{ch01:thm:interleave} at $s=1$.
@@ -393,11 +395,12 @@ Theorem~\ref{ch01:thm:interleave} the second, but we have no closed form for $k^
 \paragraph{Open.} (a) \emph{Additivity beyond two repeats.} Theorem~\ref{ch01:thm:interleave}
 and Proposition~\ref{ch01:prop:three} identify the correction at $s=1$ with the sandpile group
 of the connector digraph $D_w$ of the circular word of occurrences, and show it is not a
-function of the chord diagram's intersection rank. We conjecture
+function of the chord diagram's intersection rank. The general form,
 $\K(G_k)\cong\bigoplus_i(\Z/r_i)^{s_i-1}\oplus\K(D_w)$ for $m$ repeats of multiplicities
-$r_i$ (with $D_w$ then carrying multiplicities); it is proved for $m\le2$ and verified for
-$m=3$, $r_i=2$, $s\le2$. (b) \emph{Higher multiplicity.} We have not
-computed the interleaving correction for repeats of multiplicity $r>2$. (c)
+$r_i$ (with $D_w$ then carrying multiplicities), is proved in Chapter~\ref{chap:ch03}
+(Corollary~\ref{ch03:cor:clean}); what stays open is the structure of $\K(D_w)$ itself.
+(b) \emph{Higher multiplicity.} For repeats of multiplicity $r>2$ the two-copy description of
+$\K(D_w)$ does not extend (Chapter~\ref{chap:ch04}). (c)
 \emph{Double-strandedness.} Real assembly graphs are bidirected. This is a different
 combinatorial object, and we warn against the tempting decomposition of $\K$ into
 $\pm1$-eigenspaces of the reverse-complement involution: an involution splits an abelian
@@ -406,7 +409,7 @@ examples live, and where inverted repeats would show up --- is exactly what such
 splitting discards. The tools that survive are the signed and $\Z/2$-voltage Laplacians
 \cite{Zas82,RT14}, with one caveat: reverse complementation reverses arc direction, so
 the passage to the bidirected graph is not a covering of digraphs and the covering theory
-of \cite{RT14} does not apply as it stands. (d) \emph{Errors and coverage.} We assume an exact $k$-mer spectrum
+of \cite{RT14} does not apply as it stands. Part~II starts from this point. (d) \emph{Errors and coverage.} We assume an exact $k$-mer spectrum
 with true multiplicities.
 
 \section{Verification}\label{ch01:sec:battery}
@@ -439,9 +442,9 @@ key & check & \# & mode\\
 \label{ch01:tab:battery}
 \end{table}
 
-\section*{Provenance and changes in version 2}
+\section*{Provenance}
 
-Unrefereed preprint. The classical inputs are the BEST theorem \cite{BEST,SmithTutte},
+The classical inputs are the BEST theorem \cite{BEST,SmithTutte},
 Knuth's recursion \cite{Knuth} and the matrix--tree theorem for digraphs; the critical
 groups of complete de Bruijn graphs \cite{Levine,BidkhoriKishore,CHP} are used only as
 checks. Proposition~\ref{ch01:prop:decomp} is a reading of \eqref{ch01:eq:best}; the use of BEST to
@@ -450,11 +453,5 @@ Theorems~\ref{ch01:thm:repeat}, \ref{ch01:thm:interleave} and \ref{ch01:thm:notd
 Corollary~\ref{ch01:cor:insufficient}, and Lemma~\ref{ch01:lem:contract} with its use in
 Sections~\ref{ch01:sec:compute}--\ref{ch01:sec:real}.
 
-Version 2 adds Theorem~\ref{ch01:thm:interleave} (resolving the two-repeat case of the
-additivity question left open in version 1), Proposition~\ref{ch01:prop:three} (three repeats,
-refuting the chord-rank guess), the real-genome computation of
-Section~\ref{ch01:sec:real}, the counting convention of Remark~\ref{ch01:rem:convention}, the
-self-loop clause of Lemma~\ref{ch01:lem:contract}, the minimal collapse witnesses, and the
-warning about eigenspace decompositions in Open~(c). These changes respond to a detailed
-reading of version 1, for which we are grateful; the referee's four corrections were all
-right and are all incorporated.
+A detailed reading of an earlier version of this chapter made four corrections; all were
+right and all are incorporated, and we are grateful for them.

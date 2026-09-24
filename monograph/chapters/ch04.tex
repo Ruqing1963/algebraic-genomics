@@ -7,7 +7,7 @@ the group $\K(D_w)$ of the transition digraph of the circular word of repeat occ
 Chapter~\ref{chap:ch03}. For repeats of multiplicity two, $\K(D_w)$ is the critical group of a
 one-vertex map: $\coker(A+I)$ for Bouchet's signed interlace matrix, by a theorem of
 Merino, Moffatt and Noble --- a presentation whose entries are \emph{pairwise} data
-about the repeats. This note asks what survives for repeats with three or more copies.
+about the repeats. This chapter asks what survives for repeats with three or more copies.
 Two families of any multiplicities $r,s$ give $\K(D_w)=\Z/c$, where $c$ is the number of
 transitions from one family to the other, $1\le c\le\min(r,s)$; this contains the
 interleaving theorem for two-copy repeats. Beyond two families nothing pairwise survives:
@@ -26,8 +26,8 @@ large. Four checks, all exact.
 \section{Introduction}\label{ch04:sec:intro}
 
 Let $S$ be a circular sequence with repeat families $W_1,\dots,W_m$ of multiplicities
-$r_i$, clean in the sense of Chapter~\ref{chap:ch01}, and let $w$ be the circular word of their
-occurrences. The bundle-chain splitting theorem Chapter~\ref{chap:ch03} gives
+$r_i$, clean in the sense of Corollary~\ref{ch03:cor:clean}, and let $w$ be the circular word of their
+occurrences. The splitting theorem (Corollary~\ref{ch03:cor:clean}) gives
 \[
 \K\bigl(G_k(S)\bigr)\;\cong\;\bigoplus_i(\Z/r_i)^{\,s_i-1}\;\oplus\;\K(D_w),
 \]
@@ -43,7 +43,7 @@ interlace polynomial at $1$ \cite{ABS}, the number of Euler circuits of $D_w$
 
 Real genomes have repeats with more than two copies. In $\varphi$X174 the skeleton of
 Chapter~\ref{chap:ch03} is $2$-in $2$-out at $k=11$ and $k=10$ but has vertices of out-degree $3$ and
-$4$ at $k=9$ and up to $6$ at $k=7$ (Table~\ref{ch04:tab:phix}). This note asks whether the
+$4$ at $k=9$ and up to $6$ at $k=7$ (Table~\ref{ch04:tab:phix}). This chapter asks whether the
 two-copy description extends. The answer is: only in the smallest case.
 
 \paragraph{What is known.} For $2$-in $2$-out digraphs the determinant formula
@@ -55,17 +55,17 @@ arborescences rather than circuits; we could not locate it. Lauri's own attempt 
 extensions \cite{Lauri} is described by its reviewer as inconclusive. For rotor-routing
 the picture is different: T\'othm\'er\'esz \cite{Toth} constructs a canonical simply
 transitive action of the sandpile group on compatible Euler tours of any Eulerian ribbon
-digraph, whatever the degrees, so the torsor of Chapter~\ref{chap:ch02} generalises even though, as
+digraph, whatever the degrees, so the torsor of Theorem~\ref{ch02:thm:torsor} generalises even though, as
 we show, the matrix presentation does not.
 
 \section{Setting}\label{ch04:sec:setting}
 
-$D_w$ is the transition digraph of the circular word $w$: vertices the letters, one arc
+As in Section~\ref{ch03:sec:split}, $D_w$ is the transition digraph of the circular word $w$: vertices the letters, one arc
 $e\to f$ per occurrence of $e$ immediately followed by $f$ around the circle; loops are
 deleted (they do not affect the Laplacian). It is balanced with $d^{\pm}(e)=r_e$. Its
 sandpile group is $\K(D_w)=\coker(\Delta_{\hat s}^{\mathsf T})$ with $\Delta=D^{+}-T$,
-$T_{ef}$ the number of transitions $e\to f$; the isomorphism class does not depend on the
-sink $s$ \cite[Lem.~4.12]{HLMPPW}. Groups are compared by elementary divisors. The
+$T_{ef}$ the number of transitions $e\to f$; as throughout Part~I, the sink does not
+matter and groups are compared by elementary divisors. The
 \emph{pairwise pattern} of two letters $e,f$ is the circular binary word obtained by
 deleting all other letters from $w$, taken up to rotation.
 
@@ -88,7 +88,7 @@ $A^{r-c+1}B^{s-c+1}(AB)^{c-1}$ realises $c$, and $c\le\min(r,s)$ since each bloc
 contains at least one letter.
 \end{proof}
 
-For $r=s=2$ this is the interleaving theorem Chapter~\ref{chap:ch01}, Thm.~6: $c=1$ for
+For $r=s=2$ this is Theorem~\ref{ch01:thm:interleave}: $c=1$ for
 $A\,A\,B\,B$ and $A\,B\,B\,A$ (disjoint or nested, no arrangement ambiguity) and $c=2$
 for $A\,B\,A\,B$. For two families the arrangement ambiguity is thus a single cyclic
 factor whose order is a crossing number, and no sign is needed. Check~(A) verifies the
@@ -152,14 +152,14 @@ computed by splitting it into a two-copy one and applying \cite{MMN}.
 
 \begin{remark}[What does determine it]
 Trivially, the transition matrix $T$: the arrangement group is the sandpile group of the
-transition digraph, which is what Chapter~\ref{chap:ch03} says. The content of the two-copy theory is
+transition digraph, which is Corollary~\ref{ch03:cor:clean}. The content of the two-copy theory is
 that $T$ can be traded for interlacement --- a different, topological parametrisation of
 the same group. Propositions~\ref{ch04:prop:pair} and~\ref{ch04:prop:detach} say that for three or
 more copies no such trade is available through pairwise data or through two-copy
 surrogates. A Gram-matrix route (the form $x^{\mathsf T}(I-S)y$ of the position cycle
 restricted to consecutive-occurrence differences) was also tried and is not the
-Merino--Moffatt--Noble matrix even for two copies; it is recorded in the ancillary
-README so that it is not retried.
+Merino--Moffatt--Noble matrix even for two copies; it is recorded in the README of the
+chapter's folder in the repository so that it is not retried.
 \end{remark}
 
 \section{Census}\label{ch04:sec:census}
@@ -171,12 +171,12 @@ The last column counts the classes of pairwise patterns and, in parentheses, how
 them carry more than one group. For two families the groups are exactly $\Z/c$,
 $c\le\min(r,s)$, as Theorem~\ref{ch04:thm:two} predicts, and every pairwise class is pure.
 From three families on the arrangement group is far richer than for two-copy repeats
---- three two-copy repeats give only $0,\Z/2,\Z/3,(\Z/2)^{2}$ Chapter~\ref{chap:ch01}, Prop.~8,
+--- three two-copy repeats give only $0,\Z/2,\Z/3,(\Z/2)^{2}$ (Proposition~\ref{ch01:prop:three}),
 three three-copy repeats give nine groups up to order $9$ --- and most pairwise classes
 are mixed.
 
 \begin{table}[ht]
-\centering\footnotesize
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrlr}
 \toprule
 mult. & words & $D_w$ & groups & $\max|\K|$ & non-cyclic groups & pairwise (mixed)\\
@@ -195,13 +195,13 @@ $(3,3,3,3)$   & 30804 & 96 & 28 & 27 & those, and $(\Z/2)^{3},(\Z/3)^{3},\Z/2{\o
 \label{ch04:tab:census}
 \end{table}
 
-\section{$\varphi$X174}\label{ch04:sec:phix}
+\section{\texorpdfstring{$\varphi$X174}{phiX174}}\label{ch04:sec:phix}
 
 Table~\ref{ch04:tab:phix} gives the out-degree profile of the bundle-contracted skeleton of
 $\varphi$X174 (NC\_001422.1) at $k=12,\dots,7$. At $k=11$ and $k=10$ every skeleton
 vertex has in- and out-degree $2$, and the signed interlace matrix of an Euler circuit
 found by Hierholzer's algorithm gives $\coker(A+I)=\Z/3\oplus\Z/11$ and
-$\Z/4\oplus\Z/1076338579$, the groups computed in Chapter~\ref{chap:ch03} from the Laplacian
+$\Z/4\oplus\Z/1076338579$, the groups of Table~\ref{ch03:tab:phix}, computed there from the Laplacian
 (check~(D)) --- the theorem of \cite{MMN} on a real genome. From $k=9$ down the skeleton
 has vertices of out-degree $3$ ($5$ of them at $k=9$, $42$ at $k=8$, $147$ at $k=7$),
 $4$, $5$ and $6$: the two-copy presentation stops applying at the same $k$ at which the
@@ -255,7 +255,7 @@ key & check & mode\\
 \emph{Proved.} Theorem~\ref{ch04:thm:two}; Propositions~\ref{ch04:prop:pair}
 and~\ref{ch04:prop:detach} by explicit witness.
 
-\emph{Quoted.} The splitting theorem Chapter~\ref{chap:ch03}; the two-copy presentation \cite{MMN};
+\emph{Quoted.} The splitting theorem (Theorem~\ref{ch03:thm:split}); the two-copy presentation \cite{MMN};
 the determinant formula \cite{MacrisPule,Jonsson} and interlace polynomial \cite{ABS};
 sink-independence \cite{HLMPPW}; the rotor torsor for Eulerian ribbon digraphs
 \cite{Toth}.
@@ -269,13 +269,13 @@ is not ruled out; Proposition~\ref{ch04:prop:pair} shows it cannot be pairwise. 
 census suggests questions we have not pursued: which groups occur for $(r,r,r)$ as $r$
 grows, and whether the largest order is always attained by an elementary abelian group.
 (c) The $\varphi$X174 skeleton at $k=8$ ($312$ vertices) is beyond the dense exact Smith
-form used here; a modular Smith form would extend Table~\ref{ch04:tab:phix} of Chapter~\ref{chap:ch03}.
+form used here; a modular Smith form would extend Table~\ref{ch03:tab:phix}.
 
 \section*{Provenance}
 
-Unrefereed preprint. Theorem~\ref{ch04:thm:two} is elementary and, as far as we can find,
+Theorem~\ref{ch04:thm:two} is elementary and, as far as we can find,
 unstated in this form; the propositions are negative results established by explicit
-computation and are the reason this note exists: the natural extension of \cite{MMN} to
+computation and are the reason this chapter exists: the natural extension of \cite{MMN} to
 multi-copy repeats was the obvious next step after Chapter~\ref{chap:ch03}, and it does not exist in
 any pairwise form. We searched for an interlacement or determinant formula for Euler
 circuits of $r$-in $r$-out digraphs with $r\ge3$ and found none; a search cannot

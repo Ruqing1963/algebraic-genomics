@@ -182,7 +182,7 @@ decide.
 
 Two more quantities in \eqref{ch09:eq:sum} are not arc-local.
 
-\paragraph{$\Loc$.} $(d^+_c(v)-1)!$ needs the whole out-degree of $v$ at once. The partial
+\paragraph{\texorpdfstring{$\Loc$.}{Loc.}} $(d^+_c(v)-1)!$ needs the whole out-degree of $v$ at once. The partial
 out-degree is therefore carried as well --- but only on the sub-frontier of the vertices whose
 out-arcs are not all decided, which at $k=10$ is $18$ wide against the $26$ of the frontier
 itself, and is narrower still under an order chosen with it in mind. It is spent, and dropped,
@@ -234,7 +234,7 @@ The sweep reproduces $\#\DS=10$ at $k=12$ and $864$ at $k=11$ from the half-box,
 fixed root and one division at the end. It also agrees with the brute-force sum on twelve
 random covers. At $k=11$ it peaks at $560$ states.
 
-\section{Why the frontier stops short of $k=10$}\label{ch09:sec:wall}
+\section{\texorpdfstring{Why the frontier stops short of $k=10$}{Why the frontier stops short of k=10}}\label{ch09:sec:wall}
 
 The frontier state of Section~\ref{ch09:sec:sweep} is \emph{linear}. At a fixed imbalance it is a
 vector in the exterior algebra of the open generators, and summing over histories adds vectors.
@@ -329,14 +329,14 @@ connected points (Corollary~\ref{ch09:cor:half}; the involution preserves connec
 fixed point on the box).
 \end{enumerate}
 
-\section{$\phi$X174 at $k=10$}\label{ch09:sec:result}
+\section{\texorpdfstring{$\phi$X174 at $k=10$}{phiX174 at k=10}}\label{ch09:sec:result}
 
 The root is vertex $20$, the tail of orbit $33$, which has multiplicity $1$. The enumeration
 visits
-\[
-1\,240\,843\,950=\tfrac12\cdot 2\,481\,687\,900 \ \text{points, of which}\
+\begin{gather*}
+1\,240\,843\,950=\tfrac12\cdot 2\,481\,687\,900 \ \text{points, of which}\\
 454\,551\,605=\tfrac12\cdot 909\,103\,210\ \text{have connected support},
-\]
+\end{gather*}
 with no overflow of the work arrays. It takes about thirty-five minutes on sixteen threads.
 The sum of $\Nseq$ over the half-box, doubled, is
 \[

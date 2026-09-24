@@ -165,7 +165,7 @@ snarls & vertices & arcs & front (snarl) & front (min-deg.) & $\mu$s / vertex & 
 \label{ch16:tab:scale}
 \end{table}
 
-\paragraph{$\phi$X174.} The de Bruijn graph of the circular genome at word length $k$ has one vertex per
+\paragraph{\texorpdfstring{$\phi$X174.}{phiX174.}} The de Bruijn graph of the circular genome at word length $k$ has one vertex per
 distinct $k$-mer and $5\,386$ arcs. It has no snarl tree given in advance, so we use minimum-degree order.
 Table~\ref{ch16:tab:phix} compares it with forced-arc contraction; the two agree exactly. The front measures
 how tangled the graph is. At $k=7$, where most $7$-mers recur by chance, it is $196$, and the elimination
@@ -206,6 +206,7 @@ different problem from counting.
 \end{itemize}
 
 \section*{Ancillary file}
-\texttt{bio14\_verify.py} (standard library; imports \texttt{ds\_fermion.py} of Chapter~\ref{chap:ch09} and
-\texttt{spectral\_fibres.py} of Chapter~\ref{chap:ch12}) runs checks (M), (F), (B), (E), (P) and (S). It writes
-\texttt{bio14\_output.txt}.
+The script \texttt{bio14\_verify.py} runs checks (M), (F), (B), (E), (P) and (S) and writes
+\texttt{bio14\_output.txt}. It needs only the standard library and imports two earlier scripts:
+\texttt{ds\_fermion.py} of Chapter~\ref{chap:ch09} and \texttt{spectral\_fibres.py} of
+Chapter~\ref{chap:ch12}.

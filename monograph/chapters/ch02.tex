@@ -19,17 +19,17 @@ computable. The centrepiece is a real genome: for bacteriophage $\varphi$X174 th
 spectrum leaves exactly one global choice, $\K=\Z/2$; the two reconstructions are
 exhibited, they are $A\,X\,B\,Y\,A\,Z\,B\,U$ and $A\,X\,B\,U\,A\,Z\,B\,Y$ for two interleaved
 repeated $12$-mers, and a single chip exchanges the $433$ and $181$ bp segments. This is
-the $\Z/2$ of the interleaving theorem of the companion paper, realised in the first
+the $\Z/2$ of the interleaving theorem of Chapter~\ref{chap:ch01}, realised in the first
 genome ever sequenced. Seven checks, exact except the two sampling rows.
 \end{chaptersummary}
 
 \section{Introduction}\label{ch02:sec:intro}
 
-A companion paper Chapter~\ref{chap:ch01} showed that the number of reconstructions of a circular
+Chapter~\ref{chap:ch01} showed that the number of reconstructions of a circular
 sequence from its $k$-mer spectrum factors, by the BEST theorem, into a local part
 $\prod_v(d^+(v)-1)!$ determined by branch statistics and a global part $|\K(G_k)|$, the
 order of the sandpile group, which branch statistics do not determine; and that the group
-structure of $\K(G_k)$ records repeat length, multiplicity and interleaving. This note is
+structure of $\K(G_k)$ records repeat length, multiplicity and interleaving. This chapter is
 about the group itself rather than its order: what does the group \emph{do} to the set of
 reconstructions?
 
@@ -49,9 +49,8 @@ digraph with a sink acts freely and transitively on the spanning arborescences t
 sink (their \S3), and in their \S4 give a bijective proof of BEST by a rotor walk: an
 Eulerian tour is exactly one full turn of every rotor (Cor.~4.10). The rotor-router model
 itself is the ``Eulerian walkers'' model of Priezzhev et al.\ \cite{PDDK}.
-\item \emph{Sandpile groups of de Bruijn graphs.} Levine \cite{Levine} computed
-$\K(\mathrm{DB}_n)$ for the complete binary de Bruijn graph; Bidkhori--Kishore and
-Chan--Hollmann--Pasechnik extended this \cite{BidkhoriKishore,CHP}. None concern genome graphs.
+\item \emph{Sandpile groups of de Bruijn graphs} are known for the complete graphs
+\cite{Levine,BidkhoriKishore,CHP} (Section~\ref{ch01:sec:intro}). None concern genome graphs.
 \end{itemize}
 
 \paragraph{What is here.} We compose these into a statement about assembly
@@ -72,10 +71,9 @@ with rearrangement, and the $\varphi$X174 computation.
 
 \section{Setting}\label{ch02:sec:setting}
 
-$S$ is a circular sequence, $G=G_k(S)$ its de Bruijn multigraph (vertices the distinct
-$k$-mers, one arc per $(k{+}1)$-mer occurrence), which is connected and balanced with $S$
-an Eulerian circuit; $\Rec(G)$ denotes the set of arc-rooted Eulerian circuits, i.e.\ the
-reconstructions Chapter~\ref{chap:ch01}, Rem.~1. Fix a sink $s\in V$ and let $\Arb(G)$ be the set of
+$S$ is a circular sequence and $G=G_k(S)$ its de Bruijn multigraph, as in
+Section~\ref{ch01:sec:setting}; $\Rec(G)$ denotes the set of arc-rooted Eulerian circuits, the
+reconstructions in the convention of Remark~\ref{ch01:rem:convention}. Fix a sink $s\in V$ and let $\Arb(G)$ be the set of
 spanning arborescences oriented toward $s$; for balanced $G$ the count $|\Arb(G)|$ and the
 group $\K(G)=\coker\Delta^{\mathsf T}$ do not depend on $s$ \cite[Lem.~4.12]{HLMPPW}.
 Here $\Delta=D^{+}-A$ is the out-Laplacian with the row and column of $s$ deleted; its
@@ -93,7 +91,7 @@ recurrent chip configuration and toppling back to the recurrent representative, 
 the rotor-router group and the sandpile group coincide \cite[Lem.~3.19]{HLMPPW}; we use
 the dynamical description because it delivers the new arborescence directly.
 
-By the contraction lemma of Chapter~\ref{chap:ch01}, Lem.~4, both $\K(G)$ and, arc for arc, $\Arb(G)$
+By Lemma~\ref{ch01:lem:contract}, both $\K(G)$ and, arc for arc, $\Arb(G)$
 are unchanged when every vertex of in- and out-degree $1$ is smoothed away, so all of the
 following may be computed on the compacted (unitig) graph; the contracted arcs carry the
 concatenated labels and a circuit on the compacted graph is spelled back into a
@@ -128,7 +126,7 @@ four graphs).
 The local choices at a branch vertex of out-degree $d$ --- which of the $d-1$ non-tree
 exits to take first --- are what the local factor $\prod(d-1)!$ counts, and they are
 independent of one another and of the arborescence. They are the ambiguity that branch
-statistics \emph{do} see. The torsor lives on what remains, which Chapter~\ref{chap:ch01} showed is
+statistics \emph{do} see. The torsor lives on what remains, which Theorem~\ref{ch01:thm:notdeg} showed is
 invisible to branch statistics; Theorem~\ref{ch02:thm:torsor} says it nevertheless has the
 structure of a finite abelian group, given explicitly by the Smith normal form of the
 out-Laplacian.
@@ -209,11 +207,10 @@ arborescences is not linear in it, and a ``congruence solver'' for long-read
 disambiguation would have to be a search over the torsor, not a system of congruences.
 \end{remark}
 
-\section{$\varphi$X174: one global choice}\label{ch02:sec:phix}
+\section{\texorpdfstring{$\varphi$X174: one global choice}{phiX174: one global choice}}\label{ch02:sec:phix}
 
-The companion paper computed the sandpile spectrum of bacteriophage $\varphi$X174
-(NC\_001422.1, $5386$ bp) and found $\K(G_{12})=\Z/2$ and $\K(G_{11})=\Z/2\oplus\Z/66$
-Chapter~\ref{chap:ch01}, Tab.~1. Theorem~\ref{ch02:thm:torsor} says that the $12$-mer spectrum of the phage
+Table~\ref{ch01:tab:phix} gives the sandpile spectrum of bacteriophage $\varphi$X174
+(NC\_001422.1, $5386$ bp): $\K(G_{12})=\Z/2$ and $\K(G_{11})=\Z/2\oplus\Z/66$. Theorem~\ref{ch02:thm:torsor} says that the $12$-mer spectrum of the phage
 leaves exactly \emph{two} global reconstructions. Check~(F) exhibits them.
 
 \begin{proposition}[$\varphi$X174 at $k=12$]\label{ch02:prop:phix}
@@ -240,13 +237,14 @@ four unique segments and the four occurrences of the two $12$-mers; the exchange
 permutes segments, so both reconstructions have the same length and, segment by segment,
 the same content.
 
-This is precisely the situation of the interleaving theorem Chapter~\ref{chap:ch01}, Thm.~6 at $s=1$:
+This is precisely the situation of Theorem~\ref{ch01:thm:interleave} at $s=1$:
 a single repeat of multiplicity two leaves no circular ambiguity (its two threadings are
 rotations of one another), so a surviving $\Z/2$ at $k=L$ must come from two interleaved
 repeats, and the one bit it records is which of the two $B$-exits follows which $A$. The
 first genome ever sequenced has exactly one such pair of $12$-mers, and the group finds it.
 At $k=11$ the $132$ classes of $\Z/2\oplus\Z/66$ are the corresponding statement one
-level down; we have not analysed their structure.
+level down; Chapter~\ref{chap:ch03} splits the group as $(\Z/2)^{2}\oplus\Z/3\oplus\Z/11$ into a
+part that longer $k$-mers remove and a part that they do not (Table~\ref{ch03:tab:phix}).
 
 The biology of the one bit is worth stating, because it is not what one might hope. By
 the feature table of NC\_001422.1, the exchanged segment $U$ ($276..456$) spans the
@@ -288,7 +286,8 @@ key & check & mode\\
 
 \emph{Quoted.} The torsor and the rotor proof of BEST \cite{HLMPPW}; uniform sampling
 \cite{CMN,PW,Wilson,CC} and its bioinformatic use \cite{AE,KMUW,uShuffle}; counting
-\cite{ABCS,KSP}; the spectrum of $\varphi$X174 and the interleaving theorem Chapter~\ref{chap:ch01}.
+\cite{ABCS,KSP}; the spectrum of $\varphi$X174 and the interleaving theorem (Table~\ref{ch01:tab:phix},
+Theorem~\ref{ch01:thm:interleave}).
 
 \emph{New here, as far as we can determine.} Theorem~\ref{ch02:thm:torsor}(iii) as a statement
 about assemblies; chip-firing as rearrangement and the word metric of
@@ -300,9 +299,9 @@ Proposition~\ref{ch02:prop:phix}.
 reversing direction, so the passage from the $k$-mer digraph to the bidirected graph is not
 a covering of digraphs and the covering theory of critical groups \cite{RT14} does not apply
 as it stands; a sandpile theory for bidirected de Bruijn graphs would have to start from
-the signed or bidirected Laplacian \cite{Zas82}, and we know of none. (b) The $132$
-classes of $\varphi$X174 at $k=11$, and more generally what the invariant factors of a
-real genome's group mean position by position. (c) Whether the directed distance of
+the signed or bidirected Laplacian \cite{Zas82}; Part~II takes this up. (b) What the
+invariant factors of a real genome's group mean position by position; Chapter~\ref{chap:ch03}
+separates the length-driven factors from the arrangement factors, and goes no further. (c) Whether the directed distance of
 Proposition~\ref{ch02:prop:distance} relates to any edit distance between assemblies; since a
 single chip can re-thread many junctions (Section~\ref{ch02:sec:moves}), it is not the
 transposition distance, and any relation would have to pass through the structure of
@@ -310,7 +309,7 @@ rotor walks on the compacted graph.
 
 \section*{Provenance}
 
-Unrefereed preprint. Theorem~\ref{ch02:thm:torsor} is a composition of published results and is
+Theorem~\ref{ch02:thm:torsor} is a composition of published results and is
 verified, not reproved; Proposition~\ref{ch02:prop:distance} is immediate from it;
 Proposition~\ref{ch02:prop:phix} is an exact computation reproducible in seconds. We searched
 for prior use of the sandpile torsor on genome graphs and for any critical-group treatment

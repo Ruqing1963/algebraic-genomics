@@ -2,7 +2,7 @@
 % Source paper: Bio 3
 \chapter[The sandpile group splits along the repeats]{The sandpile group of a de Bruijn graph splits along its repeats}\label{chap:ch03}
 \begin{chaptersummary}
-Two companion papers showed that the sandpile group $\K(G_k)$ of a genome's de Bruijn
+Chapter~\ref{chap:ch01} showed that the sandpile group $\K(G_k)$ of a genome's de Bruijn
 graph records repeat length, multiplicity and interleaving --- a single repeat of length
 $L$ and multiplicity $r$ contributes $(\Z/r)^{L-k}$, two interleaved repeats add a $\Z/2$,
 three can add a $\Z/3$ --- and showed that the correction is not a rank of the chord
@@ -35,30 +35,26 @@ arrangement of repeats. Seven checks, all exact.
 
 \section{Introduction}\label{ch03:sec:intro}
 
-For a circular sequence $S$ and $k\ge1$, $G_k(S)$ is the de Bruijn multigraph whose
-vertices are the distinct $k$-mers and whose arcs are the occurrences of $(k{+}1)$-mers;
-$S$ is an Eulerian circuit, and by the BEST theorem \cite{BEST,SmithTutte} the number of
-reconstructions of $S$ from its $k$-mer spectrum is $|\K(G_k)|\prod_v(d^+(v)-1)!$ with
-$\K(G_k)$ the sandpile group. The first companion paper Chapter~\ref{chap:ch01} showed that $\K(G_k)$
-is not determined by the branch statistics and computed it in three model situations: a
-single repeat of length $L$ and multiplicity $r$ gives $(\Z/r)^{L-k}$; two repeats of
-multiplicity two give $(\Z/2)^{2s-2}$ if they are disjoint or nested and $(\Z/2)^{2s-1}$ if
-interleaved, $s=L-k+1$; three repeats give a correction that is $\Z/2$, $\Z/3$ or
-$(\Z/2)^{2}$ according to their crossing pattern; since the three non-trivial patterns
-have intersection matrices of the same rank over $\F_2$, the correction is not a function
-of that rank (Remark~\ref{ch03:rem:chord} sharpens this). The second
-paper Chapter~\ref{chap:ch02} used the group as a coordinate system on reconstructions and found that
-for $\varphi$X174 at $k=12$ the single surviving $\Z/2$ is a pair of interleaved
-$12$-mers.
+Chapter~\ref{chap:ch01} computed the sandpile group $\K(G_k)$ in three model situations: a
+single repeat of length $L$ and multiplicity $r$ gives $(\Z/r)^{L-k}$
+(Theorem~\ref{ch01:thm:repeat}); two repeats of multiplicity two give $(\Z/2)^{2s-2}$ if they
+are disjoint or nested and $(\Z/2)^{2s-1}$ if interleaved, $s=L-k+1$
+(Theorem~\ref{ch01:thm:interleave}); three repeats give a correction that is $\Z/2$, $\Z/3$ or
+$(\Z/2)^{2}$ according to their crossing pattern (Proposition~\ref{ch01:prop:three}); since the
+three non-trivial patterns have intersection matrices of the same rank over $\F_2$, the
+correction is not a function of that rank (Remark~\ref{ch03:rem:chord} sharpens this).
+Chapter~\ref{chap:ch02} used the group as a coordinate system on reconstructions and found that
+for $\varphi$X174 at $k=12$ the single surviving $\Z/2$ is a pair of interleaved $12$-mers
+(Proposition~\ref{ch02:prop:phix}).
 
-Those three model computations are special cases of one structural fact, which this note
+Those three model computations are special cases of one structural fact, which this chapter
 proves. The fact is local and holds in any balanced multidigraph; its consequence for
 genomes is that the sandpile group splits as a direct sum of a \emph{length-driven} part,
 one cyclic factor per shared $k$-mer of each repeat, and an \emph{arrangement} part, the
 sandpile group of a repeat-adjacency skeleton.
 
 \paragraph{What is known.} Contracting a vertex of in- and out-degree one leaves the
-sandpile group unchanged Chapter~\ref{chap:ch01}, Lem.~4; this is the $r=1$ case of
+sandpile group unchanged (Lemma~\ref{ch01:lem:contract}); this is the $r=1$ case of
 Lemma~\ref{ch03:lem:bundle} and is the reason assemblers' compacted (unitig) graphs
 \cite{BCALM,KM} carry the same group. For \emph{undirected} graphs with multiple edges
 the sandpile groups of thick trees \cite{ChenSchedler} and thick cycles \cite{Alar} are
@@ -83,11 +79,9 @@ a negative.
 \section{Setting}\label{ch03:sec:setting}
 
 All digraphs are finite multidigraphs, balanced ($d^-(v)=d^+(v)$ at every vertex) and
-connected. The out-Laplacian is $\Delta=D^+-A$; the sandpile group is
-$\K(G)=\coker(\Delta_{\hat s}^{\mathsf T})$, the row and column of a sink $s$ deleted; for
-balanced $G$ the isomorphism class does not depend on $s$ \cite[Lem.~4.12]{HLMPPW}, and
-$|\K(G)|$ is the number of spanning arborescences toward $s$. We compare finite abelian
-groups by their elementary divisors.
+connected; $\Delta=D^+-A$ is the out-Laplacian and $\K(G)$ the sandpile group of
+Section~\ref{ch01:sec:setting}, with the sink conventions of Section~\ref{ch02:sec:setting}. We
+compare finite abelian groups by their elementary divisors.
 
 \begin{definition}[Bundle chain]\label{ch03:def:chain}
 A \emph{bundle chain} of multiplicity $r$ and length $s\ge2$ is a sequence of distinct
@@ -135,11 +129,11 @@ Hence $\K(G)\cong\bigoplus_{t<s}\Z/r\oplus\K(G/C)$.
 
 If $G$ consists of the chain alone --- the only vertices are $v_1,\dots,v_s$ and the $r$
 arcs of $v_s$ return to $v_1$ --- the same computation rooted at $v_1$ gives
-$\K(G)\cong(\Z/r)^{s-1}$; this is the single-repeat theorem of Chapter~\ref{chap:ch01}, Thm.~5.
+$\K(G)\cong(\Z/r)^{s-1}$; this is Theorem~\ref{ch01:thm:repeat}.
 
 \begin{remark}\label{ch03:rem:r1}
 For $r=1$ the summand is trivial and the lemma says that smoothing a vertex of in- and
-out-degree one preserves the group, which is Chapter~\ref{chap:ch01}, Lem.~4. The content of the
+out-degree one preserves the group, which is Lemma~\ref{ch01:lem:contract}. The content of the
 lemma for $r>1$ is that a vertex which \emph{cannot} be smoothed --- it has $r$ parallel
 exits --- can nevertheless be removed at the exact cost of a $\Z/r$.
 \end{remark}
@@ -203,7 +197,7 @@ Induction on the number of contractions, using Lemma~\ref{ch03:lem:bundle} at ea
 \end{proof}
 
 Now let $S$ be a sequence with repeats $W_1,\dots,W_m$ of lengths $L_i$ and
-multiplicities $r_i$, and suppose the \emph{clean} hypothesis of Chapter~\ref{chap:ch01}: the $k$-mers
+multiplicities $r_i$, and suppose the \emph{clean} hypothesis of Theorem~\ref{ch01:thm:repeat}: the $k$-mers
 inside $W_i$ occur exactly $r_i$ times each and every other $k$-mer once. Write $w$ for
 the circular word of repeat occurrences and $D_w$ for the \emph{connector digraph}: one
 vertex per repeat, one arc $i\to j$ for each occurrence of $W_i$ immediately followed
@@ -223,11 +217,11 @@ multiplicity $r_i$ and length $s_i$ --- joined by the connector arcs; contractin
 spines gives $D_w$. Apply Theorem~\ref{ch03:thm:split}.
 \end{proof}
 
-\begin{corollary}[The published cases]\label{ch03:cor:cases}
-For $m=1$, $D_w$ is a single vertex and $\K=(\Z/r)^{s-1}$ Chapter~\ref{chap:ch01}, Thm.~5. For $m=2$,
+\begin{corollary}[The cases of Chapter~\ref{chap:ch01}]\label{ch03:cor:cases}
+For $m=1$, $D_w$ is a single vertex and $\K=(\Z/r)^{s-1}$ (Theorem~\ref{ch01:thm:repeat}). For $m=2$,
 $r_1=r_2=2$: $D_w$ is trivial for $A\,A\,B\,B$ and $A\,B\,B\,A$ and is the doubled
-$2$-cycle, with $\K(D_w)=\Z/2$, for $A\,B\,A\,B$ Chapter~\ref{chap:ch01}, Thm.~6. For $m=3$ the four
-crossing patterns give $\K(D_w)=0,\ \Z/2,\ \Z/3,\ (\Z/2)^{2}$ Chapter~\ref{chap:ch01}, Prop.~8; the
+$2$-cycle, with $\K(D_w)=\Z/2$, for $A\,B\,A\,B$ (Theorem~\ref{ch01:thm:interleave}). For $m=3$ the four
+crossing patterns give $\K(D_w)=0,\ \Z/2,\ \Z/3,\ (\Z/2)^{2}$ (Proposition~\ref{ch01:prop:three}); the
 $\Z/3$ is the sandpile group of the complete symmetric digraph on three vertices, which is
 $D_w$ for $A\,B\,A\,C\,B\,C$.
 \end{corollary}
@@ -285,7 +279,8 @@ of an assembly's ambiguity, for two-copy repeats, is the critical group of the b
 whose edges are the repeats, computable from a signed $m\times m$ matrix rather than
 from the de Bruijn graph; and the reason it is not a function of the chord-crossing
 graph is the reason \cite{MMN} record: the signs matter. For $r_i>2$ the occurrences
-form a hypergraph rather than a chord diagram and we know of no analogue.
+form a hypergraph rather than a chord diagram, and Chapter~\ref{chap:ch04} shows that no pairwise
+analogue exists.
 \end{remark}
 
 \begin{remark}[What $k$ can and cannot remove]\label{ch03:rem:k}
@@ -298,11 +293,10 @@ pairs, a reference --- can resolve, and the second part is exactly the sandpile 
 the repeat-adjacency skeleton. By BEST applied to $D_w$, $|\K(D_w)|\cdot\prod_i(r_i-1)!$ is the number
 of Eulerian circuits of $D_w$, i.e.\ of circular words with the same adjacency counts as
 $w$: the number of ways to thread the repeats, ignoring their lengths. That this is
-$|\K(D_w)|$ up to the local factor is the repeat-level form of the decomposition of
-Chapter~\ref{chap:ch01}.
+$|\K(D_w)|$ up to the local factor is the repeat-level form of Proposition~\ref{ch01:prop:decomp}.
 \end{remark}
 
-\section{$\varphi$X174}\label{ch03:sec:phix}
+\section{\texorpdfstring{$\varphi$X174}{phiX174}}\label{ch03:sec:phix}
 
 Table~\ref{ch03:tab:phix} applies the theorem to the first sequenced genome (NC\_001422.1,
 $5386$ bp). At each $k$ the compacted graph is bundle-contracted; the chains, the
@@ -310,7 +304,7 @@ skeleton, and the two summands are listed, and where the compacted graph is smal
 the group is also computed directly for comparison. Two things happen. The direct and
 decomposed groups agree wherever both exist ($k=10,11,12$). And at $k=9$, where the
 compacted graph has $146$ branch vertices and was beyond the dense exact Smith form used
-in Chapter~\ref{chap:ch01}, the skeleton has $110$ and is not: the spectrum extends by one level, with
+for Table~\ref{ch01:tab:phix}, the skeleton has $110$ and is not: the spectrum extends by one level, with
 the length-driven part $(\Z/2)^{36}$ split off exactly and the arrangement part read off
 the skeleton.
 
@@ -357,7 +351,7 @@ key & check & mode\\
 \midrule
 (A) & Corollary~\ref{ch03:cor:clean} on $120$ clean random sequences, $m\le4$, $r_i\le4$ & exact\\
 (B) & Lemma~\ref{ch03:lem:bundle} on $60$ random balanced digraphs with a planted chain, $r\le6$, $s\le4$ & exact\\
-(C) & Corollary~\ref{ch03:cor:cases}: the nine published values are the formula on $D_w$ & exact\\
+(C) & Corollary~\ref{ch03:cor:cases}: the nine values of Chapter~\ref{chap:ch01} are the formula on $D_w$ & exact\\
 (D) & Remark~\ref{ch03:rem:chord}: all double-occurrence words, $m\le5$; rank, Smith form, graph & exact\\
 (E) & Lemma~\ref{ch03:lem:canon} on $100$ relabelled digraphs; Remark~\ref{ch03:rem:rg} on $200$ words & exact\\
 (F) & Table~\ref{ch03:tab:phix}: decomposition vs.\ direct computation; extension to $k=9$ & exact\\
@@ -377,28 +371,28 @@ enters only in identifying the skeleton with $D_w$.
 Eulerian formulation and the repeat graph \cite{PTW,PTT,Flye}; the thick-graph and
 line-digraph results that are the lemma's nearest relatives
 \cite{ChenSchedler,Alar,Levine,PSX}; the special cases and the $\varphi$X174 spectrum
-Chapters~\ref{chap:ch01}, \ref{chap:ch02}.
+(Chapters~\ref{chap:ch01} and~\ref{chap:ch02}).
 
 \emph{Open.} (a) A structure theorem for $\K(D_w)$ itself --- for which circular words is
 it trivial, and what bounds its exponent? For $r_i=2$ this is the critical group of a
 bouquet (Remark~\ref{ch03:rem:chord}), and \cite{MMN} note that for $3$-connected regular
 delta-matroids the group is well defined on the delta-matroid; whether $\K(D_w)$ is
 determined by the interlace graph whenever that graph is prime (no split) we have not
-examined. For $r_i>2$ nothing of the kind is available. (b) Real genomes are not clean: the
+examined. For $r_i>2$ nothing of the kind is available (Chapter~\ref{chap:ch04}). (b) Real genomes are not clean: the
 skeleton of $\varphi$X174 at $k=9$ has $110$ vertices and carries factors as large as
 $2707831823$. All six factors above $100$ in Table~\ref{ch03:tab:phix} ($523$, $3779$, $5297$,
 $7669$, $1076338579$, $2707831823$) are prime, which is what the sandpile group of a
 generic digraph looks like (typically cyclic, or nearly so); we see no reason to expect a
 topological reading of a large prime cyclic factor and claim none. (c) Double strands: reverse complementation reverses arc
 direction, so a bidirected version of Lemma~\ref{ch03:lem:bundle} must start from the signed
-Laplacian; we have not attempted it.
+Laplacian of Chapter~\ref{chap:ch06}; we have not attempted it.
 
 \section*{Provenance}
 
-Unrefereed preprint. Lemmas~\ref{ch03:lem:bundle} and~\ref{ch03:lem:canon} are proved in full
+Lemmas~\ref{ch03:lem:bundle} and~\ref{ch03:lem:canon} are proved in full
 above and are the only new mathematics; Remark~\ref{ch03:rem:chord} is a translation of
 published results \cite{ABS,MMN} into the assembly setting, verified computationally ---
-an earlier draft of this note conjectured that the group was an invariant of the unsigned
+an earlier draft of this chapter conjectured that the group was an invariant of the unsigned
 interlace graph, which \cite[Rem.~6.7]{MMN} had already shown to be false; everything
 else is either quoted or an exact computation reproducible in seconds. We searched for the $r>1$ splitting in the sandpile literature and for any use of
 the sandpile group of a repeat graph or repeat-adjacency skeleton and found neither; the
