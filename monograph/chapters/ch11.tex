@@ -26,13 +26,9 @@ by a Tate-cohomology computation, confirmed on $600$ random covers. When the ind
 class is exactly an inversion vector.
 (iii)~$\phi$X174 at $k=10$ carries $31$ inversions flanked by inverted repeats of length $10$. Random
 walks of $20\,000$ moves stay inside the fibre of $31\,925\,753\,246\,212$ reconstructions and visit
-about $5\,000$ of its lattice points. The inversion-group programme proposed for this paper (Artin
+about $5\,000$ of its lattice points. The inversion-group programme proposed for this chapter (Artin
 groups, Garside normal forms) is set aside, and we say why.
 \end{chaptersummary}
-
-\medskip
-\noindent\textbf{Keywords.} de Bruijn graph, reverse complement, inverted repeats, chromosomal
-inversions, Eulerian circuits, transpositions, Tate cohomology, genome assembly.
 
 \section{The question}\label{ch11:sec:question}
 
@@ -45,38 +41,33 @@ related by \emph{transpositions}: exchanges of segments that start and end at re
 \]
 and the set $\DS(S,k)$ of circular $T$ satisfying this is larger. Chapter~\ref{chap:ch07} wrote its size as a sum over the
 points of a lattice $\Lm$ in a box, Chapter~\ref{chap:ch08} counted the box, and Chapter~\ref{chap:ch09} computed
-$\#\DS(\phi\mathrm X174,10)=31\,925\,753\,246\,212$ Chapters~\ref{chap:ch07}, \ref{chap:ch08}, \ref{chap:ch09}. A transposition never
-leaves the lattice point of $T$. So the question of this note is \emph{which moves carry one lattice point
+$\#\DS(\phi\mathrm X174,10)=31\,925\,753\,246\,212$. A transposition never
+leaves the lattice point of $T$. So the question of this chapter is \emph{which moves carry one lattice point
 to another}, and whether together with transpositions they connect the fibre.
 
-The move itself is Chapter~\ref{chap:ch07}'s \emph{inversion flip} Chapter~\ref{chap:ch07}, \S7: an inversion between two copies of an
+The move itself is the \emph{inversion flip} of Definition~\ref{ch07:def:flip}: an inversion between two copies of an
 inverted repeat. It is an operation every geneticist knows. In the human genome it is the classical
 mechanism of recurrent inversions, via non-allelic homologous recombination between inverted low-copy
 repeats \cite{SL02}, and here it is the combinatorial content of the second strand. Chapter~\ref{chap:ch07} proved two
 things about it. The flips preserve the double-stranded spectrum, and a genome without inverted repeats
 admits none, so its flip graph is discrete. It also computed that for $\phi$X174 at $k=12$ and $k=11$ the
-flips alone connect all $10$ and $864$ reconstructions. This note adds three things. It combines flips
+flips alone connect all $10$ and $864$ reconstructions. This chapter adds three things. It combines flips
 with transpositions, which removes that obstruction and gives a general conjecture. It computes the
 lattice spanned by flip vectors (the Tate dichotomy). And it walks the fibre at $k=10$.
 
 \section{Setting}\label{ch11:sec:setting}
 
-We keep Chapter~\ref{chap:ch07}'s notation. $D_k$ is the labelled reverse-complement double cover of $S$. Its vertices are
-the $k$-mers that occur at least twice in $S$ and $\rc S$ together. Its arcs, the \emph{contents}, are
-the stretches between consecutive such $k$-mers. The involution $\rho$ is reverse complementation, on
-vertices ($v\mapsto\bar v$) and on contents; a content $a\colon t\to h$ goes to
+We keep the notation of Chapter~\ref{chap:ch07}. $D_k$ is the labelled double cover of
+Definition~\ref{ch07:def:cover}, whose arcs are the \emph{contents}; $\rho$ is reverse
+complementation on vertices ($v\mapsto\bar v$) and on contents, a content $a\colon t\to h$ going to
 $\rho a\colon\bar h\to\bar t$. A reconstruction $T\in\DS(S,k)$ is an Eulerian circuit of the multigraph
-with $c(a)$ copies of each content, where $c+\rho c=m$ and $m$ is the multiplicity vector of $D_k$. With
-$f=2c-m$ one has $f\in\Lm=\{f\in Z_1(D_k):\rho f=-f\}$ inside the box $|f|\le m$, and
-\[
-\#\DS(S,k)=\sum_f\Nseq\bigl(\tfrac{m+f}2\bigr)
-\]
-Chapter~\ref{chap:ch07}. Here $(\rho z)(a)=z(\rho a)$ on $1$-chains. A vertex is \emph{palindromic} if $\bar v=v$, and
+with $c(a)$ copies of each content, where $c+\rho c=m$, and $\#\DS(S,k)$ is the lattice sum of
+Theorem~\ref{ch07:thm:lattice} over the box points $f=2c-m$ of $\Lm$. Here $(\rho z)(a)=z(\rho a)$ on $1$-chains. A vertex is \emph{palindromic} if $\bar v=v$, and
 a content is \emph{self-complementary} if $\rho a=a$.
 
 \section{Inversions at inverted repeats}\label{ch11:sec:inv}
 
-\begin{theorem}[flips preserve the double-stranded spectrum {Chapter~\ref{chap:ch07}, Prop.~(flip)(a)}]\label{ch11:thm:inv}
+\begin{theorem}[flips preserve the double-stranded spectrum {Proposition~\ref{ch07:prop:flip}(a)}]\label{ch11:thm:inv}
 Let $T$ be circular and $w$ a $k$-mer with an occurrence of $w$ and a later occurrence of $\rc(w)$, so
 that, read from the first, $T=Z\,R$ with $Z=w\,Z'\,\rc(w)$. Let $T'=\rc(Z)\,R$. Then
 $\spec_{k+1}(T')+\spec_{k+1}(\rc T')=\spec_{k+1}(T)+\spec_{k+1}(\rc T)$.
@@ -90,8 +81,8 @@ replaced by their reverse complements, so
 $\spec(T')=\spec(T)-\spec(Z)+\rc\,\spec(Z)$. Applying $\rc$ and adding gives the claim.
 \end{proof}
 
-This is Chapter~\ref{chap:ch07}'s Proposition on the inversion flip, part~(a), and its proof is Chapter~\ref{chap:ch07}'s. We repeat it only
-to fix notation; in Chapter~\ref{chap:ch07}'s words, the move of this section is a \emph{flip}.
+This is Proposition~\ref{ch07:prop:flip}(a), with the same proof; we repeat it only to fix
+notation. The move of this section is a \emph{flip} in the sense of Definition~\ref{ch07:def:flip}.
 
 On the double cover, the two copies $w$, $\rc(w)$ are vertices $v$, $\bar v$. The segment $Z$ is a path
 $z$ of contents from $v$ to $\bar v$, and $\rho z$ is again a path from $v$ to $\bar v$, because $\rho$
@@ -145,16 +136,16 @@ closure visits $8$ and $218$ lattice points, exactly the box points with connect
 Chapter~\ref{chap:ch07} and Chapter~\ref{chap:ch08}.}\label{ch11:tab:gen}
 \end{table}
 
-For $\phi$X174 these closures refine Chapter~\ref{chap:ch07}'s Theorem on flips, which showed that at $k=12$ and
+For $\phi$X174 these closures refine Theorem~\ref{ch07:thm:flips}, which showed that at $k=12$ and
 $k=11$ the flips \emph{alone}, without transpositions and without reverse complementation, already
-connect the fibre Chapter~\ref{chap:ch07}, \S7. What transpositions add is the general case: Chapter~\ref{chap:ch07}'s
-Proposition~(flip)(d) shows that a genome without inverted repeats admits no flip at all.
+connect the fibre. What transpositions add is the general case:
+Proposition~\ref{ch07:prop:flip}(d) shows that a genome without inverted repeats admits no flip at all.
 Table~\ref{ch11:tab:gen} separates the contributions. Transpositions alone give the single-stranded fibre of
 $S$: $\Nseq$ at its own lattice point, $2$ and $33$ for $\phi$X174. Reverse complementation doubles
 this. The inversions are what carry the closure across the lattice. At $k=11$ they alone, with
 transpositions, reach all $864$ reconstructions and all $218$ lattice points with connected support. In
-one random case of twenty-four, T and I reach only part of the fibre and R is needed as well. By Chapter~\ref{chap:ch07}'s
-Proposition~(flip)(c), reverse complementation is itself a flip only at a palindromic visit. We have not
+one random case of twenty-four, T and I reach only part of the fibre and R is needed as well. By
+Proposition~\ref{ch07:prop:flip}(c), reverse complementation is itself a flip only at a palindromic visit. We have not
 checked whether the exceptional case lacks one.
 
 \begin{conjecture}[double-stranded Ukkonen--Pevzner]\label{ch11:conj:gen}
@@ -162,7 +153,8 @@ For every circular $S$ and every $k$, $\DS(S,k)$ is connected under transpositio
 $k$-mers, inversions at inverted repeats of length $k$, and global reverse complementation.
 \end{conjecture}
 
-Within one lattice point the conjecture is the classical theorem. The open part is the passage
+Within one lattice point the conjecture is the classical theorem, and on the palindromic genomes of
+Section~\ref{ch10:sec:real} it holds by Kotzig's theorem (Section~\ref{ch10:sec:by}). The open part is the passage
 between lattice points: whether any two box points with connected support are joined by a chain of
 inversions that are realizable, i.e.\ whose flanking copies $v$, $\bar v$ are actually visited by the
 current circuit. Section~\ref{ch11:sec:lattice} shows that nothing is lost at the level of the lattice.
@@ -249,7 +241,7 @@ the missing half needs an open path from a word to its complement: a genuine inv
 \section{\texorpdfstring{$\phi$X174 at $k=10$}{phiX174 at k=10}}\label{ch11:sec:phix}
 
 At $k=10$ the fibre has $31\,925\,753\,246\,212$ elements on $1\,240\,843\,950\times2$ box points
-Chapter~\ref{chap:ch09}. It cannot be closed, but it can be walked. The genome carries $31$ inversions at inverted
+(Chapter~\ref{chap:ch09}). It cannot be closed, but it can be walked. The genome carries $31$ inversions at inverted
 repeats of length $10$. The count on the cover is $32$. The extra one comes from a copy of $\rc(w)$ at
 position $4482$ and a copy of $w$ at $4484$. Their two flanks overlap, and the string-level count
 excludes that case. One inversion from $\phi$X174 reaches $23$ other lattice
@@ -268,14 +260,14 @@ These are the two classical products of non-allelic homologous recombination: de
 duplications and translocations between direct repeats, and inversions between inverted ones
 \cite{SL02}. The first class preserves the content of one strand and the second only the content of
 both. Any strand-agnostic encoder that depends on $k$-mer content alone is blind to both. That includes
-a reverse-complement-invariant local DNA encoder of window $k+1$, in the sense of our companion note on
-spectral fibres Chapter~\ref{chap:ch12}. A short-read assembler faces the same limit. The inversion lattice being
+a reverse-complement-invariant local DNA encoder of window $k+1$, in the sense of
+Section~\ref{ch12:sec:dna}. A short-read assembler faces the same limit. The inversion lattice being
 all of $\Lm$ means that, algebraically, these two mechanisms already account for every direction in
 which the double-stranded fibre extends.
 
 \section{On the proposed inversion-group programme}\label{ch11:sec:programme}
 
-This paper was specified with a different programme: a group $G_{\mathrm{inv}}$ generated by adjacent
+This chapter was specified with a different programme: a group $G_{\mathrm{inv}}$ generated by adjacent
 exchanges and segment inversions, embedded in an Artin--Tits group, shown to be Garside, with the
 minimum inversion distance read off a Garside normal form. We set it aside for three reasons.
 \begin{itemize}
@@ -287,7 +279,7 @@ polynomial time by Hannenhalli and Pevzner \cite{HP99}. Word length in $B_n$ wit
 Coxeter generators is a different quantity, and it does not model inversions of arbitrary segments.
 \item The object that is new, and that belongs to algebraic genomics, is not the group of all inversions
 but the inversions that preserve the double-stranded spectrum. Those are the ones flanked by inverted
-repeats, and they are what this note studies.
+repeats, and they are what this chapter studies.
 \end{itemize}
 
 \section*{Ancillary file}

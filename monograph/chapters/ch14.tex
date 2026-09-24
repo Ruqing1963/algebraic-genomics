@@ -3,8 +3,8 @@
 \chapter[The recombination group of a pan-genome]{The pan-genome sheaf sees nothing: the recombination group of a pan-genome graph, and its torsion}\label{chap:ch14}
 \begin{chaptersummary}
 A pan-genome graph is the pooled de Bruijn multigraph $G$ of strains $H_1,\dots,H_p$ together
-with the strain walks, so the decomposition of the pooled flow into strains, which the
-phasing note had to count, is here given. The natural cellular sheaf on $G$ --- stalk the
+with the strain walks, so the decomposition of the pooled flow into strains, which
+Chapter~\ref{chap:ch13} had to count, is here given. The natural cellular sheaf on $G$ --- stalk the
 free abelian group on the strains through a vertex, restriction maps the projections --- is
 the direct sum of the constant sheaves on the strain subgraphs $G_i$: its cohomology is
 $\Z^p$ and $\bigoplus_i H^1(G_i)$, and the integer cokernel of its sheaf Laplacian is
@@ -34,17 +34,11 @@ a large kernel; the rank of $\RecGrp$ saturates as strains are added, measuring 
 the set rather than its size.
 \end{chaptersummary}
 
-\medskip
-\noindent\textbf{Keywords.} pan-genome graph, variation graph, cellular sheaf, sheaf
-Laplacian, cycle space, Mayer--Vietoris spectral sequence, nerve, recombination, torsion.
-
-\noindent\textbf{MSC 2020.} 05C20, 05C50, 55N30, 55T99, 92D20.
-
 \section{What was asked, and what is true}
 
-The plan for this volume listed a note on ``cellular sheaves on pan-genome graphs'' and ranked
-it last, with the warning that the sheaf might turn out to be a relabelling of what the
-phasing note already had. This note carries out the construction and reports that the
+The plan for this book listed a chapter on ``cellular sheaves on pan-genome graphs'' and ranked
+it last, with the warning that the sheaf might turn out to be a relabelling of what
+Chapter~\ref{chap:ch13} already had. This chapter carries out the construction and reports that the
 warning was right in one direction and wrong in another. The cellular sheaf that a pan-genome
 graph carries naturally is trivial in a precise sense (Proposition~\ref{ch14:prop:sheaf}); but
 the question the sheaf was meant to ask --- what does the pooled graph know that no single
@@ -52,9 +46,9 @@ strain knows --- has a clean answer that is not a relabelling of anything, and i
 an integer invariant that can be torsion.
 
 A pan-genome graph is a sequence graph together with the walks of the individual genomes
-through it \cite{GSN18,EPN20}. In the de Bruijn setting of these notes, that is the pooled
+through it \cite{GSN18,EPN20}. In the de Bruijn setting of this book, that is the pooled
 multigraph $G=G_k(H_1{+}\dots{+}H_p)$ of Chapter~\ref{chap:ch13} with the decomposition
-$m=\sum_i\spec(H_i)$ \emph{known}. The phasing note counted the decompositions; here there is
+$m=\sum_i\spec(H_i)$ \emph{known}. Chapter~\ref{chap:ch13} counted the decompositions (Theorem~\ref{ch13:thm:lattice}); here there is
 one, and the object of interest is the relation between the strain subgraphs $G_i$ and their
 union. The cellular sheaf $\sheaf$ that records, at each vertex and arc, which strains pass
 through it is the sheaf-theoretic encoding of that relation, and by the spectral theory of
@@ -81,7 +75,7 @@ Proposition~\ref{ch14:prop:rp2} exhibits six strains with $\RecGrp=\Z/2$. Sectio
 verifies all of it, and computes $\RecGrp$ for six deposited $\phi$X174 genomes.
 
 Throughout, strains are circular sequences over $\{A,C,G,T\}$, $k$ is fixed, and the pooled
-graph is unitig-compacted with the branch criterion of Chapter~\ref{chap:ch13} (a $k$-mer is a vertex if
+graph is unitig-compacted with the branch criterion of Definition~\ref{ch13:def:pool} (a $k$-mer is a vertex if
 it has two distinct successors or two distinct predecessors in the pool); a \emph{content}
 is a unitig string, $A$ the set of contents, and $Z_1(G)\subset\Z^A$ the circulation lattice.
 All computations are exact; the script \texttt{pangenome\_sheaf.py} reproduces every number
@@ -300,7 +294,7 @@ carries that out.
 \paragraph{The pool.} Complete \emph{Escherichia coli} chromosomes were taken from GenBank
 and brought to the strand of K-12 MG1655 by $k$-mer overlap; a circular genome's $k$-mer set
 is rotation invariant, so only the strand has to be fixed. The pooled graph is compacted by
-the criterion of Chapter~\ref{chap:ch13}: a $k$-mer is a vertex when it has two distinct successors or
+the criterion of Definition~\ref{ch13:def:pool}: a $k$-mer is a vertex when it has two distinct successors or
 two distinct predecessors \emph{in the pool}. Branch vertices are found by hashing on the
 pairs (k-mer, next base) and (k-mer, previous base) and then re-tested on the exact strings,
 so a collision can only propose a candidate that the string pass discards; check (A) audits
@@ -362,7 +356,7 @@ pivots being units. Check (E).}
 
 \paragraph{The answer.} $\RecGrp$ is free, with a certificate, on every pool from two to eight
 complete chromosomes (Table~\ref{ch14:tab:real}). This settles the first open question of an
-earlier version of this note for those strains, and the reason is visible in the same table. A
+earlier version of this chapter for those strains, and the reason is visible in the same table. A
 torsion class needs a tight two-dimensional cycle: the projective-plane pool of
 Proposition~\ref{ch14:prop:rp2} has exactly one component per simplex, so its nerve \emph{is} a
 triangulated surface. A real pan-genome nerve is the opposite shape. Each pair of divergent
@@ -423,7 +417,7 @@ Corollary~\ref{ch14:cor:two} and Proposition~\ref{ch14:prop:cert} hold for arbit
 Proposition~\ref{ch14:prop:rp2} is a construction; Section~\ref{ch14:sec:real} is a computation on
 named genomes and claims nothing beyond them.
 The pooled graph is single-stranded, as in Chapter~\ref{chap:ch13}; the reverse-complement
-version would pool $D_k$'s and is not attempted. ``Recombination'' is used in the graph sense
+version would pool double covers (Chapter~\ref{chap:ch05}) and is not attempted. ``Recombination'' is used in the graph sense
 --- a cycle that switches strain --- and no claim is made about the biological mechanism that
 produced any particular mosaic.
 
@@ -442,12 +436,13 @@ triangulated surface a torsion class needs. What is open is whether any real pan
 one. A plausible place to look is a set of strains whose shared blocks are \emph{few and
 large}, so that the nerve is small enough to close up: closely related strains with a
 handful of recombination breakpoints, rather than the divergent ones used here. \emph{Second},
-the relation of $H_1(\Nerve)$ to the snarl tree of \cite{Pat18}, which organises the pairwise
+the relation of $H_1(\Nerve)$ to the snarl tree of \cite{Pat18} (used for elimination in
+Chapter~\ref{chap:ch16}), which organises the pairwise
 components hierarchically. \emph{Third}, a bidirected pooled graph, so that an inversion is
 homology rather than strain-specific sequence; by the last paragraph of Section~\ref{ch14:sec:real}
-this changes the rank of $\RecGrp$ for divergent strains, and Chapter~\ref{chap:ch06}'s anti-automorphism theorem
+this changes the rank of $\RecGrp$ for divergent strains, and the anti-automorphism theorem (Theorem~\ref{ch06:thm:anti})
 says the repair cannot be a quotient by the strand involution. \emph{Fourth}, a sheaf that
 does see interaction: the restriction maps would
 have to mix strains, and the natural candidate is the sheaf of local decompositions of the
-pooled flow, whose stalk at a bubble is the homogeneous space of Chapter~\ref{chap:ch13}; it is not a
+pooled flow, whose stalk at a bubble is the homogeneous space of Theorem~\ref{ch13:thm:sites}; it is not a
 sheaf of abelian groups.

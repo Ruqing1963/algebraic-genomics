@@ -8,8 +8,8 @@ the recovery of the summands. We show that the labelled phasings --- ordered $p$
 circular sequences whose spectra add to $m$ --- are counted by a sum over the ordered
 decompositions $m=c_1+\dots+c_p$ into connected balanced points of the box $[0,m]$ of the
 circulation lattice, each term the product of the per-sequence BEST counts
-$\Nseq(c_i)=t(c_i)\prod(d^+-1)!/\prod c_i(a)!$. This is the lattice sum of the preceding
-note with the strand involution removed and one constraint replaced by a $p$-fold partition.
+$\Nseq(c_i)=t(c_i)\prod(d^+-1)!/\prod c_i(a)!$. This is the lattice sum of
+Chapter~\ref{chap:ch07} with the strand involution removed and one constraint replaced by a $p$-fold partition.
 The symmetric group $\Sym_p$ permutes the parts of a decomposition; it does \emph{not} act on
 the pooled graph, and the natural map from the disjoint union of the haplotype graphs to the
 pooled graph is a covering only when the haplotypes share no $k$-mer, so there is no
@@ -28,15 +28,9 @@ circles, whose weight in the sum is $1/2$. Every count is verified on $\phi$X174
 substitutions at $p=2$ and $p=3$ by an enumeration of walks that does not use the lattice.
 \end{chaptersummary}
 
-\medskip
-\noindent\textbf{Keywords.} de Bruijn graph, haplotype phasing, polyploid, BEST theorem,
-circulation lattice, flow decomposition, homogeneous space, copy-number variation.
-
-\noindent\textbf{MSC 2020.} 05C20, 05C21, 05C45, 05C50, 92D20.
-
 \section{What was asked, and what is true}
 
-The preceding note Chapter~\ref{chap:ch07} showed that a double-stranded reconstruction of a circular
+Chapter~\ref{chap:ch07} showed that a double-stranded reconstruction of a circular
 sequence $S$ is a closed walk through half the arcs of the reverse-complement double cover
 whose image under the strand involution $\rho$ walks the other half, and that the count is a
 sum over the box points of the $(-1)$-eigenlattice of $\rho$ on circulations. The involution
@@ -51,7 +45,7 @@ is a permutation of the summands; it does not reverse anything. One is tempted t
 symmetric group $\Sym_p$ acts on the pooled graph as a genuine automorphism group, that the
 haplotypes are the sheets of a $p$-fold cover, and that the phasing space is the space of flat
 $\Sym_p$-connections $H^1(G_k,\Sym_p)=\Hom(\pi_1(G_k),\Sym_p)$ on the pooled graph, with a
-transposition at each heterozygous site. The specification of this note said so, and so did
+transposition at each heterozygous site. The specification of this chapter said so, and so did
 its planning.
 
 None of that is so, and the correct statements are simpler. $\Sym_p$ acts on the set of
@@ -74,7 +68,7 @@ labelled phasings are counted exactly by
   \Lab(H_1{+}\dots{+}H_p,k)=\sum_{\substack{c_1+\dots+c_p=m\\ c_i\in Z_1\cap[0,m],\ \supp c_i
   \text{ connected}}}\ \prod_{i=1}^p\Nseq(c_i),
 \]
-with $\Nseq$ the per-sequence BEST count of Chapter~\ref{chap:ch07}; the unlabelled phasings by a multiset
+with $\Nseq$ the per-sequence BEST count of Theorem~\ref{ch07:thm:lattice}; the unlabelled phasings by a multiset
 formula over the unordered decompositions (Section~\ref{ch13:sec:unlabelled}); and when the parts
 are not required to have the reference length the sum exposes the copy-number ambiguity
 through repeats, including tandem-dimer circles whose weight is $1/2$ (Section~\ref{ch13:sec:cnv}).
@@ -99,7 +93,7 @@ content $a$, $\ell(a)$ its number of $(k{+}1)$-mers, and $\partial\colon\Z^A\to\
 boundary. $Z_1=\ker\partial$ is the circulation lattice.
 \end{definition}
 
-The compaction criterion differs from the one used for a single genome in Chapter~\ref{chap:ch15}, where a
+The compaction criterion differs from the one used for a single genome in Lemma~\ref{ch15:lem:branch}, where a
 $k$-mer is a branch vertex if and only if it is repeated. In a pool every shared $k$-mer is
 repeated, so that criterion would contract nothing; the criterion of
 Definition~\ref{ch13:def:pool} contracts exactly the $k$-mers through which every haplotype must
@@ -107,14 +101,14 @@ pass in the same way. The per-sequence count below is intrinsic and does not dep
 compaction is used.
 
 \begin{definition}\label{ch13:def:nseq}
-For $c\in\Z^A_{\ge0}$ balanced with connected support let $G_c$ be the multigraph with $c(a)$
+As in Section~\ref{ch07:sec:lattice}, for $c\in\Z^A_{\ge0}$ balanced with connected support let $G_c$ be the multigraph with $c(a)$
 labelled parallel arcs of content $a$, $t(c)$ its number of spanning arborescences
 converging on a root, $\Loc(c)=\prod_v(d^+_c(v)-1)!$ over the vertices of positive $c$-degree,
 and
 \[
   \Nseq(c)=\frac{t(c)\,\Loc(c)}{\prod_a c(a)!}\;=\;\sum_{\spec T=c}\frac1{d(T)}\in\Q_{>0},
 \]
-the second equality being Chapter~\ref{chap:ch07}, Thm.~6. $\Nseq(c)=0$ if the support is disconnected.
+the second equality being Theorem~\ref{ch07:thm:lattice}. $\Nseq(c)=0$ if the support is disconnected.
 The \emph{length} of $c$ is $|c|=\sum_a c(a)\ell(a)$.
 \end{definition}
 
@@ -339,7 +333,7 @@ excision--integration ambiguities of the pooled spectrum, and the lattice sum en
 
 \begin{sloppypar}
 For $\phi$X174 at $k=12$ the single-strand graph is the interleaved two-copy repeat of
-Chapter~\ref{chap:ch01}, $a\,X_1\,b\,Y_1\,a\,X_2\,b\,Y_2$: two branch $12$-mers $a,b$ and four unitigs,
+Proposition~\ref{ch02:prop:phix}, $a\,X_1\,b\,Y_1\,a\,X_2\,b\,Y_2$: two branch $12$-mers $a,b$ and four unitigs,
 with $\Nseq(S)=2$. The sub-circles $aX_ibY_j$ have lengths $2496$, $2890$, $2638$ and $2748$,
 in two complementary pairs summing to $N=5386$. The pool $S+S$ has $m=2$ on each unitig, and
 its ordered decompositions with connected parts number $17$: one with two parts of length $N$,
@@ -458,8 +452,8 @@ counted here is the ambiguity that remains before any read is used, which is the
 phasing of the reconstruction count of \cite{KSP} for assembly.
 
 \paragraph{Provenance.} The BEST theorem is \cite{BEST,SmithTutte}, its per-sequence
-normalisation and the notation $\Nseq$ are Chapter~\ref{chap:ch07}, and the single-genome decomposition
-of $\phi$X174 at $k=12$ is Chapter~\ref{chap:ch01}. Haplotype assembly as a combinatorial problem on
+normalisation and the notation $\Nseq$ are Theorem~\ref{ch07:thm:lattice}, and the single-genome
+decomposition of $\phi$X174 at $k=12$ is Proposition~\ref{ch02:prop:phix}. Haplotype assembly as a combinatorial problem on
 sites is \cite{LBIL01}; the cycle-basis formulation of \cite{AI12} is the closest in spirit to
 the circulation lattice here, though it lives on a graph of sites and reads rather than on the
 de Bruijn graph. Polyploid phasing methods are surveyed in \cite{Garg21}. We are not aware of
@@ -472,7 +466,7 @@ Remark~\ref{ch13:rem:repeats}: characterise the references for which $p\,\spec(R
 balanced connected sub-vector of length $N$ beyond the allele selections. \emph{Third}, the
 copy-number decompositions at genome scale, where the lattice has the rank of $Z_1$ of the
 pooled skeleton and the sum is not enumerable; a transfer-matrix evaluation along the genome
-is the natural tool, as it is for the double-stranded sum of Chapter~\ref{chap:ch07}. \emph{Fourth}, the
+is the natural tool, as Chapter~\ref{chap:ch08} shows for the double-stranded sum. \emph{Fourth}, the
 effect of reads: a read spanning sites $s,s'$ is a linear constraint on the decomposition,
 and the phasings compatible with a read set are a sub-lattice section; whether the standard
 phasing objectives (minimum error correction, maximum fragments cut) have an expression in

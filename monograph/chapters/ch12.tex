@@ -31,11 +31,6 @@ strand-agnostic encoder is constant on the double-stranded reconstruction set. F
 $\phi$X174 at $k=10$ that set has $31\,925\,753\,246\,212$ elements.
 \end{chaptersummary}
 
-\medskip
-\noindent\textbf{Keywords.} perturbation modelling, protein language models, pseudo amino acid
-composition, ECFP, de Bruijn graph, Eulerian trails, BEST theorem, matrix-tree theorem, tandem
-repeats, segmental duplication, KRAB zinc-finger proteins, reverse complement.
-
 \section{Introduction}\label{ch12:sec:intro}
 
 UniPert-G2CP \cite{UniPert} is a two-stage framework for perturbation modelling. UniPert places genetic
@@ -49,9 +44,8 @@ with \texttt{propy}, $68$-dimensional, with lag $\lambda=24$; this is Chou's amp
 
 The question we ask is structural: \emph{what can an encoder of a given form not distinguish?} For
 the family of encoders built from local statistics the answer is exact, and it is a question of
-algebraic genomics. In earlier work we counted the circular sequences that share a double-stranded
-$k$-mer spectrum with a genome, by a lattice sum over the circulations of a de Bruijn double cover
-Chapters~\ref{chap:ch07}, \ref{chap:ch08}, \ref{chap:ch09}. For single-stranded linear sequences the same count is a single BEST
+algebraic genomics. Chapters~\ref{chap:ch07}--\ref{chap:ch09} count the circular sequences that share a double-stranded
+$k$-mer spectrum with a genome, by a lattice sum over the circulations of a de Bruijn double cover. For single-stranded linear sequences the same count is a single BEST
 determinant \cite{BEST}. It can be computed for every protein of the human proteome, and it measures
 precisely what a local encoder discards.
 
@@ -130,18 +124,19 @@ Dividing first does not give an integer, e.g.\ for $S=\mathtt{AAA}$, $k=2$.
 \begin{remark}[relation to the BEST theorem]\label{ch12:rem:best}
 For a connected balanced multigraph $G$ with labelled arcs, the BEST theorem counts Eulerian circuits
 up to rotation: $\mathrm{ec}(G)=\tau_r(G)\prod_v(d^{+}(v)-1)!$, the same for every root $r$
-\cite{BEST}. Formula~\eqref{ch12:eq:fibre} is $\mathrm{ec}$ of the closed-up graph with two corrections. The
+\cite{BEST}; this is \eqref{ch01:eq:best}. Formula~\eqref{ch12:eq:fibre} is $\mathrm{ec}$ of the closed-up graph with two corrections. The
 factor $m^{[s=t]}$ restores the starting point that ``up to rotation'' forgets. The division by
 $\prod_a\mu(a)!$ removes the labels, because a $k$-mer occurring $\mu$ times gives $\mu!$ labelled
-copies of the same string. The same constant appears in Chapter~\ref{chap:ch07}'s count
-$N_{\mathrm{seq}}(c)=t(G_c)\operatorname{Loc}(G_c)/\prod_ac(a)!$ for circular sequences Chapter~\ref{chap:ch07}.
+copies of the same string. The same constant appears in the count
+$N_{\mathrm{seq}}(c)=t(G_c)\operatorname{Loc}(G_c)/\prod_ac(a)!$ of Theorem~\ref{ch07:thm:lattice} for
+circular sequences.
 \end{remark}
 
 When $s=t$, the fibre also contains the rotations that start elsewhere. The encoders of
 Proposition~\ref{ch12:prop:local} are constant on the subset that starts at $s$. In the human proteome,
 $s=t$ occurs for a handful of proteins and only at $k\le3$.
 
-\begin{lemma}[forced arcs Chapter~\ref{chap:ch09}]\label{ch12:lem:forced}
+\begin{lemma}[forced arcs, Lemma~\ref{ch09:lem:forced}]\label{ch12:lem:forced}
 If a vertex $v\ne r$ has all its out-arcs ($w\ge1$ of them) ending at one vertex $u\ne v$, then
 $\tau_r(G)=w\,\tau_r(G/vu)$. Here $G/vu$ merges $v$ into $u$, deletes the arcs $v\to u$ and redirects
 the arcs into $v$.
@@ -448,7 +443,7 @@ order of substituents along a chain, the placement of equal units around a macro
 lie in the same fibre. This is the exact analogue of a transposition between repeated
 $(k-1)$-mers. The default ECFP also carries no stereochemistry, so stereoisomers (enantiomers,
 \emph{cis}/\emph{trans} isomers) always share a fingerprint unless chirality flags are switched on.
-Both are \emph{molecular fibres} in the sense of this note: sets of distinct perturbagens that a local
+Both are \emph{molecular fibres} in the sense of this chapter: sets of distinct perturbagens that a local
 encoder cannot tell apart, whatever it was trained on. We do not compute molecular fibres here. We note only
 that in UniPert-G2CP both perturbagen types would have been local, had the protein encoder been
 PseAAC: the gain on the genetic side comes precisely from giving up locality.
@@ -468,17 +463,17 @@ A strand-agnostic local encoder of order $k$ is constant on $\DS(S,k)$. For circ
 |\DS(S,k)|=\sum_{f}N_{\mathrm{seq}}\Bigl(\tfrac{m+f}{2}\Bigr),
 \]
 the sum running over the points $f$ of the $(-1)$-eigenlattice of the reverse-complement involution
-on the circulations of the double cover $D_k$, inside the box $|f|\le m$ Chapter~\ref{chap:ch07}.
+on the circulations of the double cover $D_k$, inside the box $|f|\le m$ (Theorem~\ref{ch07:thm:lattice}).
 \end{proposition}
 
 This fibre is not given by a single determinant. It is a lattice sum of determinants, and it is
 much harder to compute. For the $5\,386$-bp genome of $\phi$X174 at $k=10$, the lattice has rank $48$
-and the box has $2\,481\,687\,900$ points, of which $909\,103\,210$ have connected support Chapter~\ref{chap:ch08}.
+and the box has $2\,481\,687\,900$ points, of which $909\,103\,210$ have connected support (Chapter~\ref{chap:ch08}).
 The number of double-stranded reconstructions is
 \[
 |\DS(\phi\mathrm{X}174,10)|=31\,925\,753\,246\,212
 \]
-Chapter~\ref{chap:ch09}. A strand-agnostic local DNA encoder of window $10$ assigns all of them the same
+(Chapter~\ref{chap:ch09}). A strand-agnostic local DNA encoder of window $10$ assigns all of them the same
 vector. The design choice ``make the encoder reverse-complement invariant'' is sound, but it has a
 price. For local encoders that price is exactly the passage from a sequence fibre to a
 double-stranded fibre.
@@ -510,7 +505,7 @@ limitation: non-coding perturbations & a strand-agnostic local DNA encoder is co
 double-stranded reconstruction set, $3.19\cdot10^{13}$ sequences for $\phi$X174 at $k=10$\\
 \bottomrule
 \end{tabular}
-\caption{The results of this note set against the corresponding statements of UniPert-G2CP.}\label{ch12:tab:vs}
+\caption{The results of this chapter set against the corresponding statements of UniPert-G2CP.}\label{ch12:tab:vs}
 \end{table}
 
 Table~\ref{ch12:tab:vs} sets our results against the statements of UniPert-G2CP. Three limitations

@@ -2,11 +2,11 @@
 % Source paper: Bio 5
 \chapter[\texorpdfstring{The bundle-chain decomposition of \emph{E.~coli}}{The bundle-chain decomposition of E. coli}]{\texorpdfstring{The bundle-chain decomposition of a bacterial genome: \emph{Escherichia coli} K-12 at five $k$-mer lengths}{The bundle-chain decomposition of a bacterial genome: Escherichia coli K-12 at five k-mer lengths}}\label{chap:ch15}
 \begin{chaptersummary}
-The companion notes computed the sandpile group of a de Bruijn graph on a $5386$\,bp
-phage. This one computes it on a $4\,641\,652$\,bp bacterium, \emph{Escherichia coli}
+Part~I computed the sandpile group of a de Bruijn graph on a $5386$\,bp
+phage. This chapter computes it on a $4\,641\,652$\,bp bacterium, \emph{Escherichia coli}
 str.\ K-12 substr.\ MG1655 (NC\_000913.3), at $k=31,51,75,100,150$. The computation is
 possible because of one observation that costs a line: in the convention used throughout
-this series every vertex of $G_k$ satisfies $d^{+}(v)=d^{-}(v)=\operatorname{mult}(v)$, so
+this book every vertex of $G_k$ satisfies $d^{+}(v)=d^{-}(v)=\operatorname{mult}(v)$, so
 a vertex survives unitig contraction \emph{if and only if its $k$-mer is repeated}. The
 $4.6$-million-vertex graph is therefore never built; the compacted graph is read off the
 repeated $k$-mers directly, and the whole pipeline runs in about $13$ seconds. Three
@@ -18,28 +18,28 @@ $10^{49.7}$, so $99.5\%$ of the exponent is removable by longer $k$-mers and $0.
 removable by no $k$ at all, while the irreducible part still grows by $10^{344}$ as $k$
 falls to $31$. \emph{Three:} the seven ribosomal operons do \emph{not} form a
 multiplicity-seven repeat family, at any $k$. Five lie on one strand and two on the
-other, and the single-strand theory of this series sees a repeat only between co-oriented
+other, and the single-strand theory of Part~I sees a repeat only between co-oriented
 copies; the two minus-strand operons give the longest clean spine in the genome
 ($4030$\,bp at $k=150$) and the five plus-strand ones a separate, fragmented family. This
-is a quantitative measure of what a bidirected theory would have to supply. Six checks,
-all exact, including a rerun of the whole fast pipeline against the published phage
-decomposition.
+is a quantitative measure of what a strand-aware theory has to supply, and the double cover of
+Chapter~\ref{chap:ch05} supplies it. Six checks,
+all exact, including a rerun of the whole fast pipeline against the phage
+decomposition of Chapter~\ref{chap:ch03}.
 \end{chaptersummary}
 
 \section{Introduction}\label{ch15:sec:intro}
 
-For a circular sequence $S$ and $k\ge1$, $G_k(S)$ is the de Bruijn multigraph whose
-vertices are the distinct $k$-mers and whose arcs are the occurrences of $(k{+}1)$-mers;
-$S$ is an Eulerian circuit, and by the BEST theorem the number of reconstructions of $S$
-from its $k$-mer spectrum is $|\K(G_k)|\prod_v(d^{+}(v)-1)!$ with $\K(G_k)$ the sandpile
-group Chapter~\ref{chap:ch01}. The bundle-chain splitting theorem Chapter~\ref{chap:ch03} writes
+For a circular sequence $S$, $G_k(S)$ is the de Bruijn multigraph of
+Section~\ref{ch01:sec:setting}; by the BEST theorem the number of reconstructions of $S$ from its
+$k$-mer spectrum is $|\K(G_k)|\prod_v(d^{+}(v)-1)!$ (Proposition~\ref{ch01:prop:decomp}), and the
+splitting theorem (Theorem~\ref{ch03:thm:split}) writes
 \[
 \K\bigl(G_k(S)\bigr)\;\cong\;\bigoplus_{\text{chains }c}(\Z/r_c)^{\,\ell_c-1}
 \;\oplus\;\K(\Sk),
 \]
 a \emph{length-driven} summand that longer $k$-mers remove and an \emph{arrangement}
 summand, the sandpile group of the repeat-adjacency skeleton, that no $k$ removes.
-Everything so far has been computed on $\varphi$X174, $5386$\,bp. The question this note
+Part~I computed everything on $\varphi$X174, $5386$\,bp. The question this chapter
 answers is what the decomposition looks like on a genome three orders of magnitude
 larger.
 
@@ -57,7 +57,7 @@ part of the ambiguity that a longer read length removes and the part it cannot.
 \begin{lemma}[Branch vertices are the repeated $k$-mers]\label{ch15:lem:branch}
 In $G_k(S)$, $d^{+}(v)=d^{-}(v)=\operatorname{mult}(v)$, the number of occurrences of the
 $k$-mer $v$ in the circular sequence. Consequently a vertex has in- and out-degree one
---- i.e.\ is smoothed away by the unitig contraction of Chapter~\ref{chap:ch01}, Lem.~4 --- if and
+--- i.e.\ is smoothed away by the unitig contraction of Lemma~\ref{ch01:lem:contract} --- if and
 only if its $k$-mer occurs exactly once.
 \end{lemma}
 
@@ -75,7 +75,7 @@ one arc $S[p_t..p_t{+}k)\to S[p_{t+1}..p_{t+1}{+}k)$ for each $t$ cyclically, be
 walk leaving a branch vertex runs through unique $k$-mers until the next repeat position.
 For \emph{E.\ coli} this replaces $4\,641\,652$ vertices by between $23\,933$ and
 $34\,272$ (Table~\ref{ch15:tab:main}), and the decomposition of Chapter~\ref{chap:ch03} then runs in one
-pass, since the chain-step relation is a partial injection Chapter~\ref{chap:ch03}, Lem.~6.
+pass, since the chain-step relation is a partial injection (Lemma~\ref{ch03:lem:canon}).
 
 Finding the repeated $k$-mers is the only step that touches the whole genome. We hash
 each of the $N$ positions to $64$ bits, take multiplicities with a sort, and then --- this
@@ -160,13 +160,13 @@ $10^{31748.76}$ at $k=31$.
 \section{The ribosomal operons, and a correction}\label{ch15:sec:rrna}
 
 \emph{E.\ coli} K-12 has seven ribosomal RNA operons, each about $5$\,kb, and the natural
-expectation --- the one the task that prompted this note recorded --- is a repeat family
+expectation --- the one recorded in the specification of this chapter --- is a repeat family
 of multiplicity seven. \emph{No such family exists, at any $k$.}
 
 The reason is structural, not numerical. The NCBI feature table places five operons on
 the $+$ strand (at $223\,771$, $3\,941\,808$, $4\,035\,531$, $4\,166\,659$, $4\,208\,147$)
 and two on the $-$ strand (at $2\,726\,069$ and $3\,423\,423$). The theory of
-Chapters~\ref{chap:ch01}, \ref{chap:ch02}, \ref{chap:ch03}, \ref{chap:ch04} is single-strand: two copies are a repeat of $G_k(S)$ only if
+Part~I is single-strand: two copies are a repeat of $G_k(S)$ only if
 they are co-oriented \emph{in $S$}. The seven operons therefore cannot form one family.
 They split by strand, and the computation confirms the split exactly (check~(R)):
 
@@ -192,12 +192,12 @@ the REP/BIME extragenic palindromic elements, which are shorter than $51$ and so
 completely from the graph at every larger $k$ tested.
 
 \begin{remark}[What this measures]\label{ch15:rem:bidirected}
-A bidirected theory --- the open problem of Chapter~\ref{chap:ch02}, Open (a) --- would see all seven
-operons as one family, and would see the IS copies that sit in inverted orientation. The
-$5+2$ split is a quantitative statement of what the single-strand restriction costs on a
-real genome: not a footnote, but the dominant feature of the largest repeat family
-present. We do not have the bidirected theory and claim nothing about what it would give;
-we can now say precisely what it would have to explain.
+A strand-aware theory --- the open problem of Section~\ref{ch02:sec:scope}, item~(a) --- should
+see all seven operons as one family, and the IS copies that sit in inverted orientation. The
+double cover of Chapter~\ref{chap:ch05} does so for the operons (Corollary~\ref{ch05:cor:rrna}), and
+Chapter~\ref{chap:ch06} shows what the bidirected quotient can and cannot add. The $5+2$ split is a
+quantitative statement of what the single-strand restriction costs on a real genome: not a
+footnote, but the dominant feature of the largest repeat family present.
 \end{remark}
 
 \section{Verification}\label{ch15:sec:battery}
@@ -213,10 +213,10 @@ it and re-fetched from the NCBI E-utilities API if absent.
 \toprule
 key & check & mode\\
 \midrule
-(V) & the fast path reproduces the published $\varphi$X174 decomposition, $k=9,\dots,12$ & exact\\
+(V) & the fast path reproduces the $\varphi$X174 decomposition of Table~\ref{ch03:tab:phix}, $k=9,\dots,12$ & exact\\
 (H) & hashing finds candidates, strings decide; no collision survives & exact\\
 (C) & the compacted graph is balanced with $d^{+}(v)=\operatorname{mult}(v)$ & exact\\
-(B) & maximal bundle chains in one pass; Lemma~6 injectivity asserted on $1541$ chains & exact\\
+(B) & maximal bundle chains in one pass; Lemma~\ref{ch03:lem:canon} injectivity asserted on $1541$ chains & exact\\
 (K) & the arrangement group, exactly for skeletons of $\le200$ vertices & exact/numeric\\
 (R) & no rRNA chain has multiplicity $7$; the longest chain is the minus-strand pair & exact\\
 \bottomrule
@@ -247,12 +247,12 @@ family against the feature table.
 logarithm is at the level of machine precision times the dimension, but it is not an
 exact integer and is not claimed to be.
 
-\emph{Single-strand.} As in Chapters~\ref{chap:ch01}, \ref{chap:ch02}, \ref{chap:ch03}, \ref{chap:ch04}. Section~\ref{ch15:sec:rrna} is the
+\emph{Single-strand.} As in Part~I; Chapter~\ref{chap:ch05} lifts the restriction. Section~\ref{ch15:sec:rrna} is the
 measurement of what that costs here.
 
 \emph{Open.} (a) The two exact arrangement groups each carry one large prime factor
 ($21\,308\,303$ at $k=150$, $3\,448\,649$ at $k=100$) that we do not interpret; as in
-Chapter~\ref{chap:ch03} that is what the sandpile group of a generic digraph looks like, and no
+Section~\ref{ch03:sec:scope} that is what the sandpile group of a generic digraph looks like, and no
 topological reading is claimed. (b) The $870$-vertex skeleton at $k=31$ is out of exact
 reach; a modular Smith form would settle it, and nothing in principle prevents that.
 (c) Whether the $10^{344}$ growth of the arrangement summand between $k=150$ and $k=31$
@@ -260,10 +260,10 @@ has a law in terms of the repeat-length distribution.
 
 \section*{Provenance}
 
-Unrefereed preprint. Lemma~\ref{ch15:lem:branch} is elementary and is stated because it is
-what makes the computation possible, not because it is deep; everything else in this note
+Lemma~\ref{ch15:lem:branch} is elementary and is stated because it is
+what makes the computation possible, not because it is deep; everything else in this chapter
 is computation on public data. The genome is NC\_000913.3 and the annotation is the NCBI
 feature table for the same accession, both downloaded by the script and cached with it.
 The expectation of a multiplicity-seven rRNA family, which Section~\ref{ch15:sec:rrna}
-corrects, was the premise of the task that prompted this note, and is recorded here
+corrects, was the premise of the specification of this chapter, and is recorded here
 because the correction is the useful part.

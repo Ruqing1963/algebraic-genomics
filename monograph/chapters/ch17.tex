@@ -25,25 +25,19 @@ identity and the vertex statements are verified exactly on $238$ flows, and no i
 a real minimum below the integer minimum was found among $232$ random small flows.
 \end{chaptersummary}
 
-\medskip
-\noindent\textbf{Keywords.} splicing graph, alternative splicing, flow decomposition, isoform
-quantification, identifiability, BEST theorem, fibre polytope, Dscam.
-
-\noindent\textbf{MSC 2020.} 05C20, 05C21, 05C45, 52B12, 90C27, 92D20.
-
 \section{What was asked, and what is true}
 
-The Bio strand of these notes reads assembly ambiguity off the critical group of a de Bruijn
-graph Chapter~\ref{chap:ch01}, double-stranded ambiguity off the box points of an eigenlattice of the
-strand involution Chapter~\ref{chap:ch07}, and polyploid phasing off the $p$-fold decompositions of a
-pooled flow Chapter~\ref{chap:ch13}. The common object is the decomposition of a balanced integer flow
+This book reads assembly ambiguity off the critical group of a de Bruijn graph
+(Chapter~\ref{chap:ch01}), double-stranded ambiguity off the box points of an eigenlattice of the
+strand involution (Chapter~\ref{chap:ch07}), and polyploid phasing off the $p$-fold decompositions
+of a pooled flow (Chapter~\ref{chap:ch13}). The common object is the decomposition of a balanced integer flow
 into closed walks. Transcript quantification is the same object with the circle cut open: a
 splicing graph is a DAG with a source and a sink \cite{HAST02}, read counts are a flow, and
 the isoforms are $s$--$t$ paths; the question ``which isoforms, in what abundance'' is the
 question of decomposing the flow into paths, and the ambiguity is the polytope of such
 decompositions.
 
-The specification of this note asked for a proof that ``minimum flow decompositions
+The specification of this chapter asked for a proof that ``minimum flow decompositions
 correspond to convex combinations of integer lattice points on the extreme rays of the flow
 polytope''. That sentence runs three distinct objects together, and it is worth separating
 them because two of the three are elementary and the third is false as stated. The extreme
@@ -66,7 +60,8 @@ non-identifiability of isoform deconvolution from junction counts, a phenomenon 
 series and the number $37\,924$ for Dscam. And the BEST theorem, applied to the flow closed
 up by $F$ return arcs, evaluates the multinomial-weighted sum over the integer points of
 $\Th(w)$ as a determinant (Theorem~\ref{ch17:thm:best}): the same normalisation by
-$\prod c(a)!$ that Chapter~\ref{chap:ch07} needed for double strands appears here as the passage from
+$\prod c(a)!$ that Theorem~\ref{ch07:thm:lattice} needed for double strands
+(Remark~\ref{ch07:rem:norm}) appears here as the passage from
 cyclic sequences of isoforms to abundance vectors. The script
 \texttt{isoform\_polytope.py} verifies every statement and reproduces every number; it prints
 a seven-line pass/fail battery.
@@ -194,7 +189,7 @@ $|E|-|V|+2$ on the number of paths needed \cite{VCCM08} and exact solvers in pra
 
 Close the flow up. Let $\Ghat_w$ be the multigraph with $w(a)$ labelled parallel copies of
 each arc $a\in E_w$ and $F$ labelled \emph{return arcs} $t\to s$. It is balanced and
-connected, so it has Eulerian circuits, and the per-sequence count of Chapter~\ref{chap:ch07} applies:
+connected, so it has Eulerian circuits, and the per-sequence count of Theorem~\ref{ch07:thm:lattice} applies:
 \[
   \Nseq(\Ghat_w)=\frac{t(\Ghat_w)\,\Loc(\Ghat_w)}{F!\,\prod_{a}w(a)!}
   =\sum_{T}\frac1{d(T)},
@@ -235,8 +230,8 @@ determinantal formula, and Theorem~\ref{ch17:thm:best} says precisely which weig
 determinantal.
 
 \begin{remark}
-On one strand, $\prod w(a)!$ is a constant and the single-genome notes count arc-rooted
-circuits without it. Here, as in the double-stranded and polyploid sums, the divisor varies
+On one strand, $\prod w(a)!$ is a constant and Part~I counts arc-rooted
+circuits without it (Remark~\ref{ch01:rem:convention}). Here, as in the double-stranded and polyploid sums, the divisor varies
 with the point: for the tropomyosin-like flow of Table~\ref{ch17:tab:flows} the arborescence count
 is $t=3\,628\,800\,000$, and only after multiplying by $\Loc$ and dividing by
 $F!\prod_aw(a)!$ does one obtain $\Nseq=22\,680\,000$, the quantity that matches the lattice
@@ -318,8 +313,8 @@ isoform deconvolution is \cite{LSGB08,HJXW09}; the $|E|-|V|+2$ bound on the numb
 in a decomposition and the greedy algorithms are \cite{VCCM08}; NP-hardness of minimum flow
 decomposition is \cite{HHKS12}; practical exact solvers are \cite{KKO18,DT22}; the Dscam
 isoform count is \cite{SCH00}; the BEST theorem is \cite{BEST,SmithTutte} and its
-per-sequence normalisation is Chapter~\ref{chap:ch07}. The tropical geometry of statistical models,
-which the planning of this note once proposed to bring in, is \cite{PS04} and is not used:
+per-sequence normalisation is Theorem~\ref{ch07:thm:lattice}. The tropical geometry of statistical models,
+which the planning of this chapter once proposed to bring in, is \cite{PS04} and is not used:
 nothing in the polytope $\Th(w)$ is tropical. We are not aware of prior work stating the
 dimension of the isoform fibre in closed form, or of the BEST identity of
 Theorem~\ref{ch17:thm:best}; a targeted search found neither.

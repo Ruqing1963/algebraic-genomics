@@ -19,7 +19,9 @@ mechanism is simple: palindromic $k$-mers make the reverse-complement involution
 vertices, so that choosing a strand for each $\rho$-orbit is the same as orienting an edge. Two
 corollaries follow. The number of box points, Chapter~\ref{chap:ch08}'s first column, is the number of Eulerian
 orientations of $G$, which is $\sP$-complete as well. And on this class the generation conjecture of
-Chapter~\ref{chap:ch11} holds, by Kotzig's theorem. All identities are verified exactly on $23$ graphs by
+Chapter~\ref{chap:ch11} (that transpositions at repeated $k$-mers, inversions at inverted repeats
+and global reverse complementation connect all double-stranded reconstructions) holds, by
+Kotzig's theorem. All identities are verified exactly on $23$ graphs by
 \texttt{bio19\_verify.py}. The lattice sum, and the frontier and enumeration methods used to evaluate
 it, are therefore not an artefact of the approach; they are what the problem requires.
 \end{chaptersummary}
@@ -184,8 +186,8 @@ degrees $2,4$ & 4 & 6 & 180 & 6 & 6 & 12\\
 \end{tabular}
 \caption{A selection of the $23$ graphs of checks (E), (R), (D), (K). $\varepsilon(G)$ is found by exhaustive
 enumeration of trails. $\#\DS$ comes from Chapter~\ref{chap:ch07}'s lattice sum on the double cover built from the
-definition, and it equals $2\varepsilon(G)$ in every case. So does the closure of $S$ under Chapter~\ref{chap:ch11}'s
-moves. The box points equal the Eulerian orientations in every case.}\label{ch10:tab:res}
+definition, and it equals $2\varepsilon(G)$ in every case. So does the closure of $S$ under the
+moves of Conjecture~\ref{ch11:conj:gen}. The box points equal the Eulerian orientations in every case.}\label{ch10:tab:res}
 \end{table}
 
 Table~\ref{ch10:tab:res} shows a selection of the verified cases. In every case, the double cover of the

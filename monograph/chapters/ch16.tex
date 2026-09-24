@@ -5,7 +5,7 @@
 The number of sequences that spell a given single-stranded genome graph is a determinant, by the BEST
 theorem: $\ec(G)=t_r(G)\prod_v(d^+_v-1)!$, where $t_r(G)=\det\Lt$ is a reduced Laplacian. Genome and
 variation graphs are locally tangled but globally chain-like, organized by their snarl tree. A proposal
-for this paper was to count Eulerian circuits by contracting a ``snarl tensor network'' along that tree.
+for this chapter was to count Eulerian circuits by contracting a ``snarl tensor network'' along that tree.
 What survives is simpler and exact. Eliminating the interior $I$ of a snarl is taking a Schur complement:
 $\det\Lt=\det\Lt_{II}\cdot\det(\Lt/\Lt_{II})$. The Schur complement is again a reduced Laplacian, of a
 weighted digraph on the snarl's boundary. And $\det\Lt_{II}$ counts the spanning forests of the interior
@@ -20,15 +20,11 @@ $\sP$-hard (Chapter~\ref{chap:ch10}). The proposal's claims about polyploid phas
 addressed.
 \end{chaptersummary}
 
-\medskip
-\noindent\textbf{Keywords.} BEST theorem, matrix-tree theorem, Schur complement, Kron reduction,
-snarl decomposition, genome graphs, variation graphs, Gaussian elimination, fill-in, genome assembly.
-
 \section{The question}\label{ch16:sec:q}
 
 A single-stranded genome graph $G$ is a balanced multidigraph. Its vertices are the $k$-mers and its arcs
 the $(k+1)$-mers, with multiplicity. The circular sequences it spells are its Eulerian circuits, and the
-BEST theorem counts them \cite{BEST}:
+BEST theorem counts them \cite{BEST} (Proposition~\ref{ch01:prop:decomp}):
 \[
 \ec(G)=t_r(G)\prod_v(d^+_v-1)!,\qquad t_r(G)=\det\Lt,
 \]
@@ -37,7 +33,7 @@ counting is already polynomial. The issue is size: a pangenome graph has million
 dense determinant is cubic.
 
 Genome graphs are not dense. Variation graphs decompose into \emph{snarls}, subgraphs separated from the
-rest by a pair of boundary nodes, nested in a snarl tree \cite{Pat18}. The proposal for this paper was to
+rest by a pair of boundary nodes, nested in a snarl tree \cite{Pat18}. The proposal for this chapter was to
 turn each snarl into a ``local transition tensor'' and contract a tree tensor network, with bond
 dimensions truncated by singular value decomposition. We keep the geometry and replace the machinery. The
 right object is the Schur complement, it needs no truncation, and it is exact.
@@ -127,7 +123,8 @@ $40$ random digraphs with up to $12$ arcs against exhaustive enumeration of Eule
 $2$--$4$ haplotypes, as one closed walk. Each snarl has an interior pool of four vertices and a nested
 bubble with its own pool. The snarl order eliminates the nested interior, the nested boundary, the
 snarl interior, and then the entry vertex. Table~\ref{ch16:tab:syn} compares it with dense Bareiss
-elimination and with the forced-arc contraction of our spectral-fibres paper Chapter~\ref{chap:ch12}. All three are
+elimination and with forced-arc contraction (Lemma~\ref{ch09:lem:forced}, as implemented for
+Chapter~\ref{chap:ch12}). All three are
 exact and agree.
 
 \begin{table}[t]
@@ -191,9 +188,10 @@ minimum-degree Schur elimination and by forced-arc contraction.}\label{ch16:tab:
 
 \begin{itemize}
 \item \emph{It does not touch the double-stranded count.} $\#\DS$ is a sum of determinants over the points
-of a lattice in a box, and it is $\sP$-hard Chapter~\ref{chap:ch10}. A Schur complement is a function of one
-matrix. It does not commute with a sum over lattice points, which is why Chapter~\ref{chap:ch09}'s frontier had to carry
-combinatorial states instead of boundary matrices Chapter~\ref{chap:ch09}.
+of a lattice in a box, and it is $\sP$-hard (Corollary~\ref{ch10:cor:hard}). A Schur complement is a function of one
+matrix. It does not commute with a sum over lattice points, which is why the frontier eliminations of
+Chapters~\ref{chap:ch08} and~\ref{chap:ch09} carry combinatorial or fermionic states instead of
+boundary matrices.
 \item \emph{It does not change the complexity class of the single-stranded count}, which BEST already
 places in polynomial time. It turns a cubic dense computation into a linear sparse one when the snarl
 width is bounded. The $\phi$X174 graphs at small $k$ show that the width need not be small.
