@@ -12,6 +12,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning}
 \usepackage[hidelinks]{hyperref}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
 \emergencystretch=2em
 
 \theoremstyle{plain}
@@ -94,10 +95,11 @@ with \texttt{propy}, $68$-dimensional, with lag $\lambda=24$; this is Chou's amp
 
 The question we ask is structural: \emph{what can an encoder of a given form not distinguish?} For
 the family of encoders built from local statistics the answer is exact, and it is a question of
-algebraic genomics. In earlier work we counted the circular sequences that share a double-stranded
-$k$-mer spectrum with a genome, by a lattice sum over the circulations of a de Bruijn double cover
-\cite{Bio8,Bio12,Bio13}. For single-stranded linear sequences the same count is a single BEST
-determinant \cite{BEST}. It can be computed for every protein of the human proteome, and it measures
+algebraic genomics. In earlier work one of us (R.C.) counted the circular sequences that share a
+double-stranded $k$-mer spectrum with a genome, by a lattice sum over the circulations of a de Bruijn
+double cover \cite{AG7,AG8,AG9}; that work is collected in the monograph \cite{AG}, which also contains
+a version of the present paper as its Chapter~12 (pp.~89--99). For single-stranded linear sequences the
+same count is a single BEST determinant \cite{BEST,SmithTutte}. It can be computed for every protein of the human proteome, and it measures
 precisely what a local encoder discards.
 
 Section~\ref{sec:fibres} sets up local encoders and their fibres, and proves the counting formula.
@@ -178,15 +180,16 @@ up to rotation: $\mathrm{ec}(G)=\tau_r(G)\prod_v(d^{+}(v)-1)!$, the same for eve
 \cite{BEST}. Formula~\eqref{eq:fibre} is $\mathrm{ec}$ of the closed-up graph with two corrections. The
 factor $m^{[s=t]}$ restores the starting point that ``up to rotation'' forgets. The division by
 $\prod_a\mu(a)!$ removes the labels, because a $k$-mer occurring $\mu$ times gives $\mu!$ labelled
-copies of the same string. The same constant appears in Bio~8's count
-$N_{\mathrm{seq}}(c)=t(G_c)\operatorname{Loc}(G_c)/\prod_ac(a)!$ for circular sequences \cite{Bio8}.
+copies of the same string. The same constant appears in the count
+$N_{\mathrm{seq}}(c)=t(G_c)\operatorname{Loc}(G_c)/\prod_ac(a)!$ for circular sequences
+\cite[Theorem~7.6 and Remark~7.7, p.~52]{AG7}.
 \end{remark}
 
 When $s=t$, the fibre also contains the rotations that start elsewhere. The encoders of
 Proposition~\ref{prop:local} are constant on the subset that starts at $s$. In the human proteome,
 $s=t$ occurs for a handful of proteins and only at $k\le3$.
 
-\begin{lemma}[forced arcs \cite{Bio13}]\label{lem:forced}
+\begin{lemma}[forced arcs {\cite[Lemma~9.7, p.~71]{AG9}}]\label{lem:forced}
 If a vertex $v\ne r$ has all its out-arcs ($w\ge1$ of them) ending at one vertex $u\ne v$, then
 $\tau_r(G)=w\,\tau_r(G/vu)$. Here $G/vu$ merges $v$ into $u$, deletes the arcs $v\to u$ and redirects
 the arcs into $v$.
@@ -493,7 +496,7 @@ order of substituents along a chain, the placement of equal units around a macro
 lie in the same fibre. This is the exact analogue of a transposition between repeated
 $(k-1)$-mers. The default ECFP also carries no stereochemistry, so stereoisomers (enantiomers,
 \emph{cis}/\emph{trans} isomers) always share a fingerprint unless chirality flags are switched on.
-Both are \emph{molecular fibres} in the sense of this note: sets of distinct perturbagens that a local
+Both are \emph{molecular fibres} in the sense of this paper: sets of distinct perturbagens that a local
 encoder cannot tell apart, whatever it was trained on. We do not compute molecular fibres here. We note only
 that in UniPert-G2CP both perturbagen types would have been local, had the protein encoder been
 PseAAC: the gain on the genetic side comes precisely from giving up locality.
@@ -508,25 +511,46 @@ property depends only on the \emph{double-stranded} spectrum $\spec_k(S)+\spec_k
 is the set $\DS(S,k)$ of double-stranded reconstructions.
 
 \begin{proposition}\label{prop:ds}
-A strand-agnostic local encoder of order $k$ is constant on $\DS(S,k)$. For circular $S$,
+A strand-agnostic local encoder of order $k+1$ is constant on $\DS(S,k)$. For circular $S$,
 \[
 |\DS(S,k)|=\sum_{f}N_{\mathrm{seq}}\Bigl(\tfrac{m+f}{2}\Bigr),
 \]
 the sum running over the points $f$ of the $(-1)$-eigenlattice of the reverse-complement involution
-on the circulations of the double cover $D_k$, inside the box $|f|\le m$ \cite{Bio8}.
+on the circulations of the double cover $D_k$, inside the box $|f|\le m$
+\cite[Theorem~7.6, p.~52]{AG7}.
 \end{proposition}
 
+As in \cite[Definition~7.3, p.~51]{AG7}, $\DS(S,k)$ is defined by the $(k+1)$-mer spectra of both
+strands, the $k$-mers being the vertices of $D_k$. An encoder of order $k+1$ therefore sees exactly the
+double-stranded data defining $\DS(S,k)$, and an encoder of any smaller order sees less, so it is
+constant on $\DS(S,k)$ as well.
+
 This fibre is not given by a single determinant. It is a lattice sum of determinants, and it is
-much harder to compute. For the $5\,386$-bp genome of $\phi$X174 at $k=10$, the lattice has rank $48$
-and the box has $2\,481\,687\,900$ points, of which $909\,103\,210$ have connected support \cite{Bio12}.
+much harder to compute: counting double-stranded reconstructions is $\#$P-hard in general
+\cite[Corollary~10.6, p.~78]{AG10}, so no closed formula exists unless $\mathrm{FP}=\#\mathrm{P}$.
+For the $5\,386$-bp genome of $\phi$X174 at $k=10$, the lattice has rank $48$
+and the box has $2\,481\,687\,900$ points, of which $909\,103\,210$ have connected support
+\cite[Section~8.5 and Table~8.2, p.~63]{AG8}.
 The number of double-stranded reconstructions is
 \[
 |\DS(\phi\mathrm{X}174,10)|=31\,925\,753\,246\,212
 \]
-\cite{Bio13}. A strand-agnostic local DNA encoder of window $10$ assigns all of them the same
-vector. The design choice ``make the encoder reverse-complement invariant'' is sound, but it has a
+\cite[Section~9.8 and Table~9.1, pp.~72--73]{AG9}. A strand-agnostic local DNA encoder of window
+$11$, or of any smaller window, assigns all of them the same vector. The design choice ``make the encoder reverse-complement invariant'' is sound, but it has a
 price. For local encoders that price is exactly the passage from a sequence fibre to a
 double-stranded fibre.
+
+The rearrangements hidden in that passage can be named. On one strand, the members of a fibre differ by
+transpositions of segments between direct repeats \cite{Ukk92,Pev95}. On two strands there is a second
+move: a segment flanked by an inverted repeat $w\cdots\bar w$, with $w$ a $k$-mer, may be replaced by its
+reverse complement without changing the double-stranded $(k+1)$-mer spectrum
+\cite[Theorem~11.1, p.~84]{AG11}. Transpositions between direct repeats and inversions between
+inverted repeats are the two classical products of non-allelic homologous recombination, so a
+strand-agnostic local DNA encoder of window $k+1$ is blind to exactly the rearrangements that
+recombination between repeats of length $k$ produces. For $\phi$X174 at $k=11$ and $k=12$ these two moves,
+together with global reverse complementation, connect all $864$ and $10$ double-stranded
+reconstructions; that they connect every double-stranded fibre is a conjecture
+\cite[Section~11.4 and Conjecture~11.2, pp.~85--86]{AG11}.
 
 \section{What this does and does not imply}\label{sec:discussion}
 
@@ -555,7 +579,7 @@ limitation: non-coding perturbations & a strand-agnostic local DNA encoder is co
 double-stranded reconstruction set, $3.19\cdot10^{13}$ sequences for $\phi$X174 at $k=10$\\
 \bottomrule
 \end{tabular}
-\caption{The results of this note set against the corresponding statements of UniPert-G2CP.}\label{tab:vs}
+\caption{The results of this paper set against the corresponding statements of UniPert-G2CP.}\label{tab:vs}
 \end{table}
 
 Table~\ref{tab:vs} sets our results against the statements of UniPert-G2CP. Three limitations
@@ -590,40 +614,53 @@ biological question. Our analysis says only that a local encoder cannot represen
 floating-point determinants) downloads the reviewed human proteome from UniProt. It then runs the
 five checks (formula, contraction, proteome, collisions, fibre-mates) and writes the per-protein
 results (\texttt{fibre\_results.json}). The transcript is \texttt{spectral\_fibres\_output.txt}. The
-double-stranded count of Section~\ref{sec:dna} is reproduced by the ancillary files of \cite{Bio13}.
+script, its transcript and the figure script are in the repository of \cite{AG},
+\url{https://github.com/Ruqing1963/algebraic-genomics}, folder
+\texttt{papers/Ch12\_Spectral\_Fibres}. The double-stranded count of Section~\ref{sec:dna} is reproduced
+by \texttt{ds\_fermion.py} and \texttt{ds\_count.py}, the scripts of \cite{AG9}, in the same
+repository.
 
 \begin{thebibliography}{99}
 \bibitem{UniPert} Y.~Li, M.~Zeng, J.~Zhu, L.~Liu, F.~Wang, L.~Huang, F.~Yang, M.~Li, J.~Yao,
 \emph{UniPert-G2CP bridges genetic and chemical screens from molecular representation to phenotype
-modeling}, Cell \textbf{189} (2026) 4946--4963.
+modeling}, Cell \textbf{189} (2026) 4946--4963. \doi{10.1016/j.cell.2026.06.005}
 \bibitem{RH10} D.~Rogers, M.~Hahn, \emph{Extended-connectivity fingerprints}, J.\ Chem.\ Inf.\ Model.\
-\textbf{50} (2010) 742--754.
+\textbf{50} (2010) 742--754. \doi{10.1021/ci100050t}
 \bibitem{ESM2} Z.~Lin et al., \emph{Evolutionary-scale prediction of atomic-level protein structure
-with a language model}, Science \textbf{379} (2023) 1123--1130.
+with a language model}, Science \textbf{379} (2023) 1123--1130. \doi{10.1126/science.ade2574}
 \bibitem{Chou01} K.-C.~Chou, \emph{Prediction of protein cellular attributes using pseudo-amino acid
-composition}, Proteins \textbf{43} (2001) 246--255.
+composition}, Proteins \textbf{43} (2001) 246--255. \doi{10.1002/prot.1072}
 \bibitem{Chou05} K.-C.~Chou, \emph{Using amphiphilic pseudo amino acid composition to predict enzyme
-subfamily classes}, Bioinformatics \textbf{21} (2005) 10--19.
+subfamily classes}, Bioinformatics \textbf{21} (2005) 10--19. \doi{10.1093/bioinformatics/bth466}
 \bibitem{BEST} T.~van Aardenne-Ehrenfest, N.~G.~de Bruijn, \emph{Circuits and trees in oriented linear
 graphs}, Simon Stevin \textbf{28} (1951) 203--217.
+\bibitem{SmithTutte} C.~A.~B.~Smith, W.~T.~Tutte, \emph{On unicursal paths in a network of degree 4},
+Amer.\ Math.\ Monthly \textbf{48} (1941) 233--237. \doi{10.1080/00029890.1941.11991103}
 \bibitem{Ukk92} E.~Ukkonen, \emph{Approximate string-matching with $q$-grams and maximal matches},
-Theoret.\ Comput.\ Sci.\ \textbf{92} (1992) 191--211.
+Theoret.\ Comput.\ Sci.\ \textbf{92} (1992) 191--211. \doi{10.1016/0304-3975(92)90143-4}
 \bibitem{Pev95} P.~A.~Pevzner, \emph{DNA physical mapping and alternating Eulerian cycles in colored
-graphs}, Algorithmica \textbf{13} (1995) 77--105.
+graphs}, Algorithmica \textbf{13} (1995) 77--105. \doi{10.1007/bf01188582}
 \bibitem{UniProt} The UniProt Consortium, \emph{UniProt: the Universal Protein Knowledgebase in 2023},
-Nucleic Acids Res.\ \textbf{51} (2023) D523--D531.
+Nucleic Acids Res.\ \textbf{51} (2023) D523--D531. \doi{10.1093/nar/gkac1052}
 \bibitem{OBl12} M.~O'Bleness et al., \emph{Evolutionary history and genome organization of DUF1220
-protein domains}, G3 \textbf{2} (2012) 977--986.
+protein domains}, G3 \textbf{2} (2012) 977--986. \doi{10.1534/g3.112.003061}
 \bibitem{Imb17} M.~Imbeault, P.-Y.~Helleboid, D.~Trono, \emph{KRAB zinc-finger proteins contribute to
-the evolution of gene regulatory networks}, Nature \textbf{543} (2017) 550--554.
+the evolution of gene regulatory networks}, Nature \textbf{543} (2017) 550--554. \doi{10.1038/nature21683}
 \bibitem{XHLJ19} K.~Xu, W.~Hu, J.~Leskovec, S.~Jegelka, \emph{How powerful are graph neural networks?},
 International Conference on Learning Representations (2019).
-\bibitem{Bio8} R.~Chen, \emph{Double-stranded reconstruction and the lattice of a reverse-complement
-double cover}, Algebraic Genomics, Bio~8 (2026).
-\bibitem{Bio12} R.~Chen, \emph{The double-stranded lattice sum by frontier elimination}, Algebraic
-Genomics, Bio~12 (2026).
-\bibitem{Bio13} R.~Chen, \emph{The double-stranded lattice sum as a fermionic partition function},
-Algebraic Genomics, Bio~13 (2026).
+\bibitem{AG} R.~Chen, \emph{Algebraic Genomics: The Combinatorics of Sequence Reconstruction and
+Representation}, monograph, Zenodo (2026). \doi{10.5281/zenodo.22943487}
+\bibitem{AG7} R.~Chen, \emph{Double-stranded genome assembly as a lattice sum, and the inversion-flip group},
+Chapter~7 of \cite{AG},
+pp.~49--57.
+\bibitem{AG8} R.~Chen, \emph{The double-stranded lattice sum by frontier elimination}, Chapter~8 of \cite{AG}, pp.~59--65.
+\bibitem{AG9} R.~Chen, \emph{The double-stranded lattice sum as a fermionic partition function},
+Chapter~9 of
+\cite{AG}, pp.~67--73.
+\bibitem{AG10} R.~Chen, \emph{Why there is no closed formula for $\#\mathrm{DS}$: double-stranded reconstruction
+is $\#$P-hard}, Chapter~10 of \cite{AG},
+pp.~75--79.
+\bibitem{AG11} R.~Chen, \emph{Inversions at inverted repeats and the double-stranded fibre}, Chapter~11 of \cite{AG}, pp.~83--88.
 \end{thebibliography}
 
 \end{document}
