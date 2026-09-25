@@ -47,7 +47,7 @@ All figures are regenerated, and every number in them re-checked, by `python cod
 Folders are numbered by **monograph chapter**, `Ch01` to `Ch17`, without gaps. The paper's own series
 number stays in the folder name (`Ch10_Bio_19_…`), because the papers cite one another by it. Bio 15,
 16 and 18 were specified and then withdrawn before being written, so those numbers are retired, not
-missing. Chapter 12 is joint work with Zhengyi Chen and carries no Bio number.
+missing. Chapter 12 is joint work with Zhengyi Chen and carries no Bio number; the paper is published separately, [doi:10.5281/zenodo.22950095](https://doi.org/10.5281/zenodo.22950095), with its own repository [spectral-fibres](https://github.com/Ruqing1963/spectral-fibres).
 
 Checks = the chapter script's own battery (`TOTAL a/b passed` in its reference transcript).
 *quick*: runs in `build_all.py --quick`; *full*: only in `--full`.

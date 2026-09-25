@@ -42,7 +42,7 @@ Guilin 541199, P.~R.~China\\
 Ruqing Chen\\[2pt]
 \normalsize GUT Geoservice Inc., Montreal, Qu\'ebec, Canada\\
 \normalsize\texttt{ruqing@hotmail.com}}
-\date{24 September 2026}
+\date{24 September 2026\\[4pt]\small DOI: \href{https://doi.org/10.5281/zenodo.22950095}{10.5281/zenodo.22950095}}
 
 \begin{document}
 \maketitle
@@ -97,8 +97,8 @@ The question we ask is structural: \emph{what can an encoder of a given form not
 the family of encoders built from local statistics the answer is exact, and it is a question of
 algebraic genomics. In earlier work one of us (R.C.) counted the circular sequences that share a
 double-stranded $k$-mer spectrum with a genome, by a lattice sum over the circulations of a de Bruijn
-double cover \cite{AG7,AG8,AG9}; that work is collected in the monograph \cite{AG}, which also contains
-a version of the present paper as its Chapter~12 (pp.~89--99). For single-stranded linear sequences the
+double cover \cite[Chs.~7--9, pp.~49--73]{AG}. That monograph also contains a version of the present
+paper as its Chapter~12 (pp.~89--99). For single-stranded linear sequences the
 same count is a single BEST determinant \cite{BEST,SmithTutte}. It can be computed for every protein of the human proteome, and it measures
 precisely what a local encoder discards.
 
@@ -182,14 +182,14 @@ factor $m^{[s=t]}$ restores the starting point that ``up to rotation'' forgets. 
 $\prod_a\mu(a)!$ removes the labels, because a $k$-mer occurring $\mu$ times gives $\mu!$ labelled
 copies of the same string. The same constant appears in the count
 $N_{\mathrm{seq}}(c)=t(G_c)\operatorname{Loc}(G_c)/\prod_ac(a)!$ for circular sequences
-\cite[Theorem~7.6 and Remark~7.7, p.~52]{AG7}.
+\cite[Ch.~7, Theorem~7.6 and Remark~7.7, p.~52]{AG}.
 \end{remark}
 
 When $s=t$, the fibre also contains the rotations that start elsewhere. The encoders of
 Proposition~\ref{prop:local} are constant on the subset that starts at $s$. In the human proteome,
 $s=t$ occurs for a handful of proteins and only at $k\le3$.
 
-\begin{lemma}[forced arcs {\cite[Lemma~9.7, p.~71]{AG9}}]\label{lem:forced}
+\begin{lemma}[forced arcs {\cite[Ch.~9, Lemma~9.7, p.~71]{AG}}]\label{lem:forced}
 If a vertex $v\ne r$ has all its out-arcs ($w\ge1$ of them) ending at one vertex $u\ne v$, then
 $\tau_r(G)=w\,\tau_r(G/vu)$. Here $G/vu$ merges $v$ into $u$, deletes the arcs $v\to u$ and redirects
 the arcs into $v$.
@@ -517,25 +517,25 @@ A strand-agnostic local encoder of order $k+1$ is constant on $\DS(S,k)$. For ci
 \]
 the sum running over the points $f$ of the $(-1)$-eigenlattice of the reverse-complement involution
 on the circulations of the double cover $D_k$, inside the box $|f|\le m$
-\cite[Theorem~7.6, p.~52]{AG7}.
+\cite[Ch.~7, Theorem~7.6, p.~52]{AG}.
 \end{proposition}
 
-As in \cite[Definition~7.3, p.~51]{AG7}, $\DS(S,k)$ is defined by the $(k+1)$-mer spectra of both
+As in \cite[Ch.~7, Definition~7.3, p.~51]{AG}, $\DS(S,k)$ is defined by the $(k+1)$-mer spectra of both
 strands, the $k$-mers being the vertices of $D_k$. An encoder of order $k+1$ therefore sees exactly the
 double-stranded data defining $\DS(S,k)$, and an encoder of any smaller order sees less, so it is
 constant on $\DS(S,k)$ as well.
 
 This fibre is not given by a single determinant. It is a lattice sum of determinants, and it is
 much harder to compute: counting double-stranded reconstructions is $\#$P-hard in general
-\cite[Corollary~10.6, p.~78]{AG10}, so no closed formula exists unless $\mathrm{FP}=\#\mathrm{P}$.
+\cite[Ch.~10, Corollary~10.6, p.~78]{AG}, so no closed formula exists unless $\mathrm{FP}=\#\mathrm{P}$.
 For the $5\,386$-bp genome of $\phi$X174 at $k=10$, the lattice has rank $48$
 and the box has $2\,481\,687\,900$ points, of which $909\,103\,210$ have connected support
-\cite[Section~8.5 and Table~8.2, p.~63]{AG8}.
+\cite[Ch.~8, Section~8.5 and Table~8.2, p.~63]{AG}.
 The number of double-stranded reconstructions is
 \[
 |\DS(\phi\mathrm{X}174,10)|=31\,925\,753\,246\,212
 \]
-\cite[Section~9.8 and Table~9.1, pp.~72--73]{AG9}. A strand-agnostic local DNA encoder of window
+\cite[Ch.~9, Section~9.8 and Table~9.1, pp.~72--73]{AG}. A strand-agnostic local DNA encoder of window
 $11$, or of any smaller window, assigns all of them the same vector. The design choice ``make the encoder reverse-complement invariant'' is sound, but it has a
 price. For local encoders that price is exactly the passage from a sequence fibre to a
 double-stranded fibre.
@@ -544,13 +544,13 @@ The rearrangements hidden in that passage can be named. On one strand, the membe
 transpositions of segments between direct repeats \cite{Ukk92,Pev95}. On two strands there is a second
 move: a segment flanked by an inverted repeat $w\cdots\bar w$, with $w$ a $k$-mer, may be replaced by its
 reverse complement without changing the double-stranded $(k+1)$-mer spectrum
-\cite[Theorem~11.1, p.~84]{AG11}. Transpositions between direct repeats and inversions between
+\cite[Ch.~11, Theorem~11.1, p.~84]{AG}. Transpositions between direct repeats and inversions between
 inverted repeats are the two classical products of non-allelic homologous recombination, so a
 strand-agnostic local DNA encoder of window $k+1$ is blind to exactly the rearrangements that
 recombination between repeats of length $k$ produces. For $\phi$X174 at $k=11$ and $k=12$ these two moves,
 together with global reverse complementation, connect all $864$ and $10$ double-stranded
 reconstructions; that they connect every double-stranded fibre is a conjecture
-\cite[Section~11.4 and Conjecture~11.2, pp.~85--86]{AG11}.
+\cite[Ch.~11, Section~11.4 and Conjecture~11.2, pp.~85--86]{AG}.
 
 \section{What this does and does not imply}\label{sec:discussion}
 
@@ -613,12 +613,14 @@ biological question. Our analysis says only that a local encoder cannot represen
 \texttt{spectral\_fibres.py} (Python 3.10+, standard library; \texttt{numpy} only for the
 floating-point determinants) downloads the reviewed human proteome from UniProt. It then runs the
 five checks (formula, contraction, proteome, collisions, fibre-mates) and writes the per-protein
-results (\texttt{fibre\_results.json}). The transcript is \texttt{spectral\_fibres\_output.txt}. The
-script, its transcript and the figure script are in the repository of \cite{AG},
-\url{https://github.com/Ruqing1963/algebraic-genomics}, folder
-\texttt{papers/Ch12\_Spectral\_Fibres}. The double-stranded count of Section~\ref{sec:dna} is reproduced
-by \texttt{ds\_fermion.py} and \texttt{ds\_count.py}, the scripts of \cite{AG9}, in the same
-repository.
+results (\texttt{fibre\_results.json}). The transcript is \texttt{spectral\_fibres\_output.txt};
+\texttt{make\_figures.py} draws Figures~\ref{fig:resolution}--\ref{fig:mates}, and \texttt{mates\_sw.py}
+computes the alignment ratios of Table~\ref{tab:mates}. The code, the UniProt snapshot used here
+and all results are at \url{https://github.com/Ruqing1963/spectral-fibres}, and this paper with
+them is archived at \href{https://doi.org/10.5281/zenodo.22950095}{doi:10.5281/zenodo.22950095}. The
+double-stranded count of Section~\ref{sec:dna} is reproduced by \texttt{ds\_fermion.py} and
+\texttt{ds\_count.py} \cite[Ch.~9]{AG}, in the repository of the monograph,
+\url{https://github.com/Ruqing1963/algebraic-genomics}.
 
 \begin{thebibliography}{99}
 \bibitem{UniPert} Y.~Li, M.~Zeng, J.~Zhu, L.~Liu, F.~Wang, L.~Huang, F.~Yang, M.~Li, J.~Yao,
@@ -650,17 +652,6 @@ the evolution of gene regulatory networks}, Nature \textbf{543} (2017) 550--554.
 International Conference on Learning Representations (2019).
 \bibitem{AG} R.~Chen, \emph{Algebraic Genomics: The Combinatorics of Sequence Reconstruction and
 Representation}, monograph, Zenodo (2026). \doi{10.5281/zenodo.22943487}
-\bibitem{AG7} R.~Chen, \emph{Double-stranded genome assembly as a lattice sum, and the inversion-flip group},
-Chapter~7 of \cite{AG},
-pp.~49--57.
-\bibitem{AG8} R.~Chen, \emph{The double-stranded lattice sum by frontier elimination}, Chapter~8 of \cite{AG}, pp.~59--65.
-\bibitem{AG9} R.~Chen, \emph{The double-stranded lattice sum as a fermionic partition function},
-Chapter~9 of
-\cite{AG}, pp.~67--73.
-\bibitem{AG10} R.~Chen, \emph{Why there is no closed formula for $\#\mathrm{DS}$: double-stranded reconstruction
-is $\#$P-hard}, Chapter~10 of \cite{AG},
-pp.~75--79.
-\bibitem{AG11} R.~Chen, \emph{Inversions at inverted repeats and the double-stranded fibre}, Chapter~11 of \cite{AG}, pp.~83--88.
 \end{thebibliography}
 
 \end{document}

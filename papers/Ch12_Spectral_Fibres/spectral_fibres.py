@@ -10,7 +10,7 @@ convolutional encoder of window k are local.  A local encoder is constant on the
     F_k(S) = { T : spec_k(T) = spec_k(S) },
 
 whose size is an Eulerian-trail count in the de Bruijn multigraph of S (BEST theorem), computed here
-exactly, with the forced-arc contraction of Bio 13, for every reviewed human protein.
+exactly, with forced-arc contraction (Algebraic Genomics, Lemma 9.7), for every reviewed human protein.
 
 Checks (all exact):
   (T) the fibre formula against brute-force enumeration of all strings, small alphabets;
@@ -93,7 +93,7 @@ def laplacian_det(out, verts, root):
 
 def tree_count(out0, verts, root, contract=True):
     """in-arborescences to `root` of the multidigraph out0[v] = Counter(head -> multiplicity)
-    (loops excluded).  With `contract`, forced arcs are contracted first (Bio 13, Lemma 7)."""
+    (loops excluded).  With `contract`, forced arcs are contracted first (Algebraic Genomics, Lemma 9.7)."""
     out = {v: collections.Counter(out0.get(v, {})) for v in verts}
     if not contract:
         return laplacian_det(out, verts, root)
