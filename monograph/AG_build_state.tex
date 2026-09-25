@@ -3,32 +3,57 @@
 \addcontentsline{toc}{chapter}{Build record}
 \markboth{Build record}{Build record}
 
-The repository was built with \texttt{python build\_all.py -{}-quick} on 24 September 2026 (Python
-3.12.4, Windows~11), after the chapter folders were renumbered. The build compiles every paper twice
-with \texttt{pdflatex} and reruns its verification scripts; a script passes when it exits normally and
-its final line reports all of its checks passed.
+The repository was built with \texttt{python build\_all.py -{}-full} on 24 September 2026 (Python
+3.12.4, Windows~11). The build compiles every paper with \texttt{pdflatex}, compiles this volume
+with \texttt{pdflatex}, \texttt{bibtex} and \texttt{pdflatex} twice, and reruns every verification
+script with its full computation. A script passes when it exits normally and its final line reports all
+of its checks passed.
 
 \begin{center}
 \begin{tabular}{lr}
 \toprule
-items passed & 37\\
+items passed & 42\\
 items failed & 0\\
-items skipped (run only with \texttt{-{}-full}) & 4\\
-wall-clock time & 24 min\\
+items skipped & 0\\
+wall-clock time & 2 h 46 min\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\noindent All $17$ papers compile with no error and no undefined reference. Every script run in quick mode
-passes all of its checks. Two of them, Chapter~\ref{chap:ch08} (\texttt{ds\_transfer\_matrix.py}) and
-Chapter~\ref{chap:ch09} (\texttt{ds\_count.py}), run a subset of their checks in quick mode ($7$ of
-$8$, $2$ of $4$).
+\noindent All $17$ papers and this volume compile with no error and no undefined reference; this volume
+has no overfull line, and three of the standalone papers have four slightly overfull lines between
+them, which the build reports as warnings. Every verification script passes all of its checks.
 
-\paragraph{Not rerun in this build.} The four items that run only with \texttt{-{}-full} are the
-signed-quotient battery of Chapter~\ref{chap:ch06}, the eight-strain pan-genome of
-Chapter~\ref{chap:ch14}, and the proteome computation and its figures in Chapter~\ref{chap:ch12}. The
-long computations of Chapters~\ref{chap:ch08} and~\ref{chap:ch09} were also run only in their quick
-form. These are the connected count at $k=10$ and the enumeration of the $1\,240\,843\,950$ half-box
-points. For all of them the numbers in the text come from the reference transcripts in the repository,
-which were produced when the chapters were written. A \texttt{-{}-full} build, of about four hours,
-reruns them.
+\paragraph{The long computations.} All of them were rerun from scratch in this build, with no
+checkpoint available to the scripts:
+\begin{itemize}
+\item the connected count of Chapter~\ref{chap:ch08} at $k=10$, $909\,103\,210$ points
+($81$ minutes);
+\item the enumeration of the $1\,240\,843\,950$ half-box points of Chapter~\ref{chap:ch09}, giving
+$\#\DS(\phi\mathrm X174,10)=31\,925\,753\,246\,212$ ($39$ minutes);
+\item the signed-quotient battery of Chapter~\ref{chap:ch06} ($14$ minutes);
+\item the proteome computation of Chapter~\ref{chap:ch12} and its figures ($11$ minutes);
+\item the eight-strain pan-genome of Chapter~\ref{chap:ch14}, $\RecGrp=\Z^{117\,848}$ with its
+freeness certificate ($3$ minutes).
+\end{itemize}
+
+\paragraph{Comparison with the reference transcripts.} After timings are removed, $14$ of the $20$
+transcripts with a reference are identical to it line for line. In the other six every check passes as
+in the reference and every exact result is the same; the differences are these.
+\begin{itemize}
+\item \texttt{ds\_count.py}: the reference was saved in a different text encoding; decoded, it has the
+same counts.
+\item \texttt{real\_pangenome.py}: the transcript now begins with the header lines that the script
+writes to its output file.
+\item \texttt{repeat\_splitting.py}: two diagnostic dictionaries are printed with their entries in a
+different order.
+\item \texttt{ds\_fermion.py}: the reference was saved from a quick run; the full run adds the progress
+lines of the abandoned frontier attempts described in Section~\ref{ch09:sec:wall}.
+\item \texttt{bio14\_verify.py}: the time per vertex in Table~\ref{ch16:tab:scale} was $10.6$, $10.8$
+and $11.9\,\mu$s in this build, against $9.2$, $9.3$ and $10.7\,\mu$s in the text. Timings depend on
+the machine and its load; the fronts and the agreement modulo both primes are unchanged.
+\item \texttt{spectral\_fibres.py}: the floating-point check of Section~\ref{ch12:sec:proteome} draws
+its $200$ test sequences at random and found a worst relative error of $6.2\cdot10^{-16}$, against the
+$6.5\cdot10^{-16}$ quoted. Two alignment ratios that the reference left undefined are now computed, and
+they are the values $0.981$ and $0.986$ of Table~\ref{ch12:tab:mates}.
+\end{itemize}
